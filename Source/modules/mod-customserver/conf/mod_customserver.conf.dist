@@ -1,0 +1,82 @@
+[worldserver]
+###################################################################################################
+#     ____    __                                         ____                           
+#    /\  _`\ /\ \__                  __                 /\  _`\                         
+#    \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+#     \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+#       /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+#       \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+#        \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+#                         /\___/ /\____/                                                
+#                         \/__/  \_/__/          http://stygianthebest.github.io                                         
+###################################################################################################
+#	CUSTOM SERVER
+###################################################################################################
+
+# Announce the module when the player logs in?
+
+Announce = 1
+
+
+###################################################################################################
+#  FIREWORKS ON LEVEL-UP
+###################################################################################################
+
+# 	Fireworks go off when the player levels up at specific intervals
+# 	Intervals: 5, 10, 20, 30, 40, 50, 60, 70, 80
+# 	Enable the module? (1: true | 0: false
+#
+
+FireworkLevels = 1
+
+
+###################################################################################################
+#  CORE MOD - TimeIsTimePlus (Day/Night Cycle)
+###################################################################################################
+
+#     TimeIsTimePlus
+#     	Adjust the number of game days per real day by adjusting the Realm Timer
+#     	Default : 1.0 (Blizzlike)
+#     	Example : 60 is 1 second (Real Time) = 1 minute (Realm Timer)
+#                 60.0  = 1 Game Day every 24   minutes
+#                 30.0  = 1 Game Day every 48   minutes         
+#                 15.0  = 1 Game Day every 96   minutes or 1.6  Hours
+#                 7.5   = 1 Game Day every 192  minutes or 3.2  Hours
+#                 3.75  = 1 Game Day every 384  minutes or 6.4  Hours        
+#                 1.875 = 1 Game Day every 768  minutes or 12.8 Hours
+#                 1.0     = 1 Game Day every 1440 minutes or 24.0 Hours        
+#
+
+TimeIsTimePlus = 7.5
+
+
+###################################################################################################
+#  CORE MOD - DUNGEON CHECKPOINTS
+###################################################################################################
+#
+#    Dungeon.Checkpoints.Enable
+#        Description: Allows players to appear at the last boss killed after dying in an dungeon.
+#        Default:     0 - Disabled
+#                     1 - Enabled
+#
+
+DungeonCheckpoints = 1
+
+
+###################################################################################################
+#  CORE MOD - TRACK BOTH RESOURCES
+###################################################################################################
+#
+#     AllowTrackBothResources
+#        Description: Allows players to track herbs and minerals at the same time (if they have the skills)
+#        Default:     0 - (Do not allow)
+#                     1 - (Allow)
+#
+#        Note:        The following are client limitations and cannot be coded for:
+#                     * The minimap tracking icon will display whichever skill is activated second.
+#                     * The minimap tracking list will only show a check mark next to the last skill activated (sometimes this
+#                       bugs out and doesn't switch the check mark. It has no effect on the actual tracking though).
+#                     * The minimap dots are yellow for both resources.
+#
+
+#TODO# AllowTrackBothResources = 1

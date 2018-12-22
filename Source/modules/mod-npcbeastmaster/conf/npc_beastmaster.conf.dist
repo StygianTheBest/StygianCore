@@ -1,0 +1,38 @@
+[worldserver]
+###################################################################################################
+#     ____    __                                         ____                           
+#    /\  _`\ /\ \__                  __                 /\  _`\                         
+#    \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+#     \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+#       /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+#       \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+#        \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+#                         /\___/ /\____/                                                
+#                         \/__/  \_/__/          http://stygianthebest.github.io                                         
+###################################################################################################
+#	BEASTMASTER NPC
+###################################################################################################
+
+# Announce the module when the player logs in?
+BeastMaster.Announce = 1
+
+# Is the core Pet.cpp modified? (default: 0)
+BeastMaster.CorePatch = 0
+
+# Require level to adopt beasts. (default: 10, 0 = disable)
+BeastMaster.MinLevel = 10
+
+# Enable only for the Hunter class? (default: 0)
+BeastMaster.HunterOnly = 0
+
+# Hunters are required to heave beast mastery to adopt exotic pets. (default: 0)
+BeastMaster.TalentRequired = 0
+
+# Allow adoption of exotic beasts (Spirit Beast) without Beast Mastery talent. (default: 1)
+BeastMaster.AdoptExotic = 1
+
+# Beast's are always happy! (default: 1)
+BeastMaster.KeepBeastHappy = 1
+
+# Make your beasts larger or smaller (default: 1.00)
+BeastMaster.BeastScale = 1.00
