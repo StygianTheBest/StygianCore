@@ -1,0 +1,146 @@
+/*
+StygianCore - stygianthebest.github.io
+*/
+html {
+	position: relative;
+	min-height: 100%;
+	}
+
+body{
+	background-image: url("img/background.jpg"); 
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	margin:0px;
+	text-shadow:#000 0 0 3px;
+	}
+	
+img{
+	border:0;
+	}
+	
+table.reg{
+	width:600px;
+	margin:40px 0 0 90px;
+	}
+	
+div.copy{
+	color:#ccc;
+	font-size:12px;
+	font-family:arial;
+	text-align:center;
+    font-weight: bold;
+	}
+	
+strong {
+	font-size: 18px;
+	font-weight: bold;
+}
+	
+
+.seradane {
+	font-weight: bold;
+	font-size: 18px;
+	color: #fff;
+}	
+
+div.thrallisyourdaddy{
+	color:#ccc;
+	font-size:16px;
+	font-family:arial;
+	text-align:center;
+    font-weight: bold;
+	text-shadow:#000 0 0 3px;
+	}
+		
+div.yallgotcleaned{
+	color:#A6DC94;
+	text-shadow:#000 0 0 3px;
+	font-size:16px;
+	font-family:arial;
+	text-align:center;
+    font-weight: bold;
+	}
+	
+div.forthehorde{
+	color:#ccc;
+	font-size:18px;
+	font-family:arial;
+	text-align:center;
+    font-weight: bold;
+	}
+	
+div.errors{
+	color:#ff6600;
+	font-family:arial;
+	font-size:12px;
+	font-weight:bold;
+	text-align:center;
+	}
+	
+table.form{
+	width:100%;
+	color:#fff;
+	margin:15px 0;
+	font-family:arial;
+	border-spacing: 5px;
+	font-size:16px;
+	}
+	
+input, select{
+	width:220px;
+	padding:3px;
+	background-color:#f7f7f7;
+	color:#454545;
+	border:0;
+	font-size:14px;
+	-moz-border-radius: 3px;  
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 3px #000;
+	-moz-box-shadow: 0px 0px 3px #000;
+	-webkit-box-shadow: 0px 0px 3px #000;
+	}
+	
+input:focus, select:focus{
+	box-shadow: 0px 0px 3px #fff;
+	-moz-box-shadow: 0px 0px 3px #fff;
+	-webkit-box-shadow: 0px 0px 3px #fff;
+	color:#1b1b1b;
+	}
+	
+input.sbm{
+	width:100px;
+	padding:3px 15px;
+	background-color:#383838;
+	color:#fff;
+	border:0;
+	font-size:14px;
+	-moz-border-radius: 3px;  
+	margin-top:30px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	box-shadow: 0px 0px 1px #ccc;
+	-moz-box-shadow: 0px 0px 1px #ccc;
+	-webkit-box-shadow: 0px 0px 1px #ccc;
+	}
+	
+	
+input.sbm:hover{
+	box-shadow: 0px 0px 3px #fff;
+	-moz-box-shadow: 0px 0px 3px #fff;
+	-webkit-box-shadow: 0px 0px 3px #fff;
+	color:#fff;
+	background-color:#75D0C1;
+	}
+	
+a:link {color:#ccc;}
+a:visited {color:#ccc;}
+a:hover {color:red;}
+a:active {color:#ccc;}
+
+.realmlist {
+	font-size: 16px;
+	color: #A6DC94;
+	text-shadow:#000 0 0 3px;
+}

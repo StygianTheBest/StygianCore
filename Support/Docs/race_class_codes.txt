@@ -1,0 +1,29 @@
+Race Codes:
+1) Human: 1
+2) Orc: 2
+3) Dwarf: 4
+4) Undead: 8
+5) Night Elf: 16
+6) Tauren: 32
+7) Gnome: 64
+8) Troll: 128
+9) Goblin: 256
+10) Blood Elf: 512
+11) Draenei: 1024
+12) Worgen: 2097152
+
+Class Codes:
+1) Warrior: 1
+2) Paladin: 2
+3) Hunter: 4
+4) Rogue: 8
+5) Priest: 16
+6) Death Knight: 32
+7) Shaman: 64
+8) Mage: 128
+9) Warlock: 256
+10) Monk: 512
+11) Druid: 1024
+
+* Bitmask controlling which races are valid. Add ids together to combine race possibilities. Use -1 for all races.
+** Bitmask controlling which classes are valid. Add ids together to combine class possibilities. "-1" if all classes can use it.

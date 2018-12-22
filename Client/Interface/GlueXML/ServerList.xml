@@ -1,0 +1,543 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+	<Script file="ServerList.lua"/>
+	
+	<Button name="ServerSortButtonTemplate" virtual="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture name="$parentLeft" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="5" y="19"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPLEFT"/>
+					</Anchors>
+					<TexCoords left="0" right="0.078125" top="0" bottom="0.59375"/>
+				</Texture>
+				<Texture name="$parentRight" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="4" y="19"/>
+					</Size>
+					<Anchors>
+						<Anchor point="TOPRIGHT"/>
+					</Anchors>
+					<TexCoords left="0.90625" right="0.96875" top="0" bottom="0.59375"/>
+				</Texture>
+				<Texture name="$parentMiddle" file="Interface\FriendsFrame\WhoFrame-ColumnTabs">
+					<Size>
+						<AbsDimension x="10" y="19"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT" relativeTo="$parentLeft" relativePoint="RIGHT"/>
+						<Anchor point="RIGHT" relativeTo="$parentRight" relativePoint="LEFT"/>
+					</Anchors>
+					<TexCoords left="0.078125" right="0.90625" top="0" bottom="0.59375"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<ButtonText name="$parentText">
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="8" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GlueFontHighlightSmall"/>
+	</Button>
+
+	<Button name="ServerListServerButtonTemplate" virtual="true">
+		<Size>
+			<AbsDimension x="512" y="16"/>
+		</Size>
+		<Layers>
+			<Layer level="BACKGROUND">
+				<FontString name="$parentDescription" inherits="GlueFontDisable" justifyH="LEFT">
+					<Size>
+						<AbsDimension x="320" y="12"/>
+					</Size>
+					<Anchors>
+						<Anchor point="LEFT"/>
+					</Anchors>
+				</FontString>
+			</Layer>
+		</Layers>
+		<Scripts>
+			<OnLoad>
+				_G[self:GetName().."Description"]:SetPoint("LEFT", self:GetName().."NormalText", "RIGHT", -10, 0);
+			</OnLoad>
+			<OnEnter>
+				if (self.tooltip) then
+					GlueTooltip_SetOwner(self, nil, -50, 0);
+					GlueTooltip_SetText(self.tooltip);
+				end
+			</OnEnter>
+			<OnLeave>
+				if (self.tooltip) then
+					GlueTooltip:Hide();
+				end
+			</OnLeave>
+			<OnClick>
+				ServerSelectButton_OnClick(self, self:GetID());
+			</OnClick>
+			<OnDoubleClick>
+				ServerSelectButton_OnDoubleClick(self, self:GetID());
+			</OnDoubleClick>
+		</Scripts>
+		<ButtonText name="$parentNormalText" justifyH="LEFT">
+			<Size>
+				<AbsDimension x="270" y="12"/>
+			</Size>
+			<Anchors>
+				<Anchor point="LEFT">
+					<Offset>
+						<AbsDimension x="10" y="0"/>
+					</Offset>
+				</Anchor>
+			</Anchors>
+		</ButtonText>
+		<NormalFont style="GlueFontHighlight"/>
+		<HighlightFont style="GlueFontLightYellow"/>
+	</Button>
+	<Frame name="ServerList" toplevel="true" parent="GlueParent" setAllPoints="true" enableMouse="true" enableKeyboard="true" frameStrata="DIALOG" hidden="true">
+		<Layers>
+			<Layer level="BACKGROUND">
+				<Texture setAllPoints="true">
+					<Color a="0.75" r="0" g="0" b="0"/>
+				</Texture>
+			</Layer>
+		</Layers>
+		<Frames>
+			<Frame name="ServerListBackground">
+				<Size>
+					<AbsDimension x="640" y="310"/>
+				</Size>
+				<Anchors>
+					<Anchor point="CENTER">
+						<Offset>
+							<AbsDimension x="24" y="0"/>
+						</Offset>
+					</Anchor>
+				</Anchors>
+				<HitRectInsets>
+					<AbsInset left="0" right="44" top="0" bottom="13"/>
+				</HitRectInsets>
+				<Layers>
+					<Layer level="BACKGROUND">
+						<Texture name="$parentTexTopLeft" file="Interface\HelpFrame\HelpFrame-TopLeft">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTexTopMiddle" file="Interface\HelpFrame\HelpFrame-Top">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPLEFT">
+									<Offset>
+										<AbsDimension x="256" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTexTopRight" file="Interface\HelpFrame\HelpFrame-TopRight">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="128" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOPRIGHT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTexBottomLeft" file="Interface\HelpFrame\HelpFrame-BotLeft">
+							<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT"/>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTexBottomMiddle" file="Interface\HelpFrame\HelpFrame-Bottom">
+							<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMLEFT">
+									<Offset>
+										<AbsDimension x="256" y="0"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<Texture name="$parentTexBottomRight" file="Interface\HelpFrame\HelpFrame-BotRight">
+							<TexCoords left="0" right="1" top="0.5" bottom="1"/>
+							<Size>
+								<AbsDimension x="128" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="BOTTOMRIGHT"/>
+							</Anchors>
+						</Texture>
+
+						<Texture file="Interface\HelpFrame\HelpFrame-BotLeft">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="$parentTexTopLeft" relativePoint="BOTTOM"/>
+								<Anchor point="BOTTOM" relativeTo="$parentTexBottomLeft" relativePoint="TOP"/>
+							</Anchors>
+						</Texture>
+						<Texture file="Interface\HelpFrame\HelpFrame-BotRight">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="128" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="$parentTexTopRight" relativePoint="BOTTOM"/>
+								<Anchor point="BOTTOM" relativeTo="$parentTexBottomRight" relativePoint="TOP"/>
+							</Anchors>
+						</Texture>
+						<Texture file="Interface\HelpFrame\HelpFrame-Bottom">
+							<TexCoords left="0" right="1" top="0" bottom="0.5"/>
+							<Size>
+								<AbsDimension x="256" y="128"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP" relativeTo="$parentTexTopMiddle" relativePoint="BOTTOM"/>
+								<Anchor point="BOTTOM" relativeTo="$parentTexBottomMiddle" relativePoint="TOP"/>
+							</Anchors>
+						</Texture>
+					</Layer>
+					<Layer level="ARTWORK">
+						<Texture name="ServerListHeader" file="Interface\DialogFrame\UI-DialogBox-Header">
+							<Size>
+								<AbsDimension x="256" y="64"/>
+							</Size>
+							<Anchors>
+								<Anchor point="TOP">
+									<Offset>
+										<AbsDimension x="-12" y="12"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</Texture>
+						<FontString inherits="GlueFontNormalSmall" text="VX_SERVERLIST_SERVER_SELECTION">
+							<Anchors>
+								<Anchor point="TOP" relativeTo="ServerListHeader">
+									<Offset>
+										<AbsDimension x="0" y="-14"/>
+									</Offset>
+								</Anchor>
+							</Anchors>
+						</FontString>
+					</Layer>
+				</Layers>
+				<Frames>
+					<Button name="ServerNameSort" inherits="ServerSortButtonTemplate" text="VX_SERVERLIST_SERVER_NAME">
+						<Size>
+							<AbsDimension x="273" y="19"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMLEFT" relativePoint="TOPLEFT">
+								<Offset>
+									<AbsDimension x="17" y="-50"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								--GlueTooltip_SetOwner(self, nil, -325, 0);
+								--GlueTooltip_SetText(ServerList_ServerNAME_TOOLTIP);
+							</OnEnter>
+							<OnLeave>
+								--GlueTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					<Button name="ServerTypeSort" inherits="ServerSortButtonTemplate" text="VX_SERVERLIST_SERVER_DESCRIPTION">
+						<Size>
+							<AbsDimension x="268" y="19"/>
+						</Size>
+						<Anchors>
+							<Anchor point="LEFT" relativeTo="ServerNameSort" relativePoint="RIGHT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnEnter>
+								--GlueTooltip_SetOwner(self, nil, -200, 0);
+								--GlueTooltip_SetText(ServerList_TYPE_TOOLTIP);
+							</OnEnter>
+							<OnLeave>
+								--GlueTooltip:Hide();
+							</OnLeave>
+						</Scripts>
+					</Button>
+					
+					<Button name="ServerListCloseButton" inherits="GlueCloseButton">
+						<Anchors>
+							<Anchor point="TOPRIGHT">
+								<Offset>
+									<AbsDimension x="-42" y="-3"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								ServerList:Hide();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Frame name="ServerListHighlight" hidden="true">
+						<Size>
+							<AbsDimension x="557" y="16"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT"/>
+						</Anchors>
+						<Layers>
+							<Layer level="ARTWORK">
+								<Texture name="ServerListHighlightTexture" file="Interface\QuestFrame\UI-QuestLogTitleHighlight" alphaMode="ADD"/>
+							</Layer>
+						</Layers>
+					</Frame>
+					<Button name="ServerListServerButton1" inherits="ServerListServerButtonTemplate" hidden="true" id="1">
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="22" y="-56"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton2" inherits="ServerListServerButtonTemplate" id="2">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton1" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton3" inherits="ServerListServerButtonTemplate" id="3">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton2" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton4" inherits="ServerListServerButtonTemplate" id="4">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton3" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton5" inherits="ServerListServerButtonTemplate" id="5">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton4" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton6" inherits="ServerListServerButtonTemplate" id="6">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton5" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton7" inherits="ServerListServerButtonTemplate" id="7">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton6" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton8" inherits="ServerListServerButtonTemplate" id="8">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton7" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton9" inherits="ServerListServerButtonTemplate" id="9">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton8" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<Button name="ServerListServerButton10" inherits="ServerListServerButtonTemplate" id="10">
+						<Anchors>
+							<Anchor point="TOP" relativeTo="ServerListServerButton9" relativePoint="BOTTOM">
+								<Offset>
+									<AbsDimension x="0" y="-4"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+					</Button>
+					<ScrollFrame name="ServerListScrollFrame" inherits="GlueScrollFrameTemplate">
+						<Size>
+							<AbsDimension x="510" y="207"/>
+						</Size>
+						<Anchors>
+							<Anchor point="TOPLEFT">
+								<Offset>
+									<AbsDimension x="49" y="-55"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Layers>
+							<Layer level="BACKGROUND">
+								<Texture name="$parentScrollBarTop" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="128"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOPLEFT" relativePoint="TOPRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="5"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top="0" bottom="0.5"/>
+								</Texture>
+								<Texture name="$parentScrollBarMiddle" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="60"/>
+									</Size>
+									<Anchors>
+										<Anchor point="TOP" relativeTo="$parentScrollBarTop" relativePoint="BOTTOM">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+										<Anchor point="BOTTOM" relativeTo="$parentScrollBarBottom" relativePoint="TOP">
+											<Offset>
+												<AbsDimension x="0" y="0"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0" right="0.484375" top=".75" bottom="1.0"/>
+								</Texture>
+								<Texture name="$parentScrollBarBottom" file="Interface\PaperDollInfoFrame\UI-Character-ScrollBar">
+									<Size>
+										<AbsDimension x="31" y="106"/>
+									</Size>
+									<Anchors>
+										<Anchor point="BOTTOMLEFT" relativePoint="BOTTOMRIGHT">
+											<Offset>
+												<AbsDimension x="-2" y="-2"/>
+											</Offset>
+										</Anchor>
+									</Anchors>
+									<TexCoords left="0.515625" right="1.0" top="0" bottom="0.41"/>
+								</Texture>
+							</Layer>
+						</Layers>
+						<Scripts>
+							<OnVerticalScroll>
+								ServerListScrollFrame_OnVerticalScroll(self, offset);
+							</OnVerticalScroll>
+						</Scripts>
+						<ScrollChild>
+							<Frame name="ServerListScrollFrameScrollChildFrame">
+								<Size>
+									<AbsDimension x="510" y="185"/>
+								</Size>
+							</Frame>
+						</ScrollChild>
+					</ScrollFrame>
+					<Button name="ServerListCancelButton" inherits="GlueDialogButtonTemplate" text="CANCEL">
+						<Size>
+							<AbsDimension x="150" y="48"/>
+						</Size>
+						<Anchors>
+							<Anchor point="BOTTOMRIGHT">
+								<Offset>
+									<AbsDimension x="-46" y="7"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsLoginChangeServerCancel");
+								ServerList_OnCancel();
+							</OnClick>
+						</Scripts>
+					</Button>
+					<Button name="ServerListOkButton" inherits="GlueDialogButtonTemplate" text="OKAY">
+						<Size>
+							<AbsDimension x="150" y="48"/>
+						</Size>
+						<Anchors>
+							<Anchor point="RIGHT" relativeTo="ServerListCancelButton" relativePoint="LEFT">
+								<Offset>
+									<AbsDimension x="0" y="0"/>
+								</Offset>
+							</Anchor>
+						</Anchors>
+						<Scripts>
+							<OnClick>
+								PlaySound("gsLoginChangeServerOK");
+								ServerList_OnOk();
+							</OnClick>
+						</Scripts>
+					</Button>
+				</Frames>
+			</Frame>
+		</Frames>
+		<Scripts>
+			<OnLoad>
+				--ServerList_OnLoad(self);
+				self.SelectedName = nil;
+				self.selectedServer = 0;
+				self.offset = 0;
+			</OnLoad>
+			<OnEvent>
+				--ServerList_OnEvent(self, event);
+			</OnEvent>
+			<OnKeyDown>
+				ServerList_OnKeyDown(key);
+			</OnKeyDown>
+			<OnShow>
+				--ServerList_OnShow(self);
+				ServerList_OnShow();
+			</OnShow>
+			<OnHide>
+				--ServerList_OnHide();
+			</OnHide>
+			<OnUpdate>
+				--ServerList_OnUpdate(self, elapsed);
+			</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>

@@ -1,0 +1,176 @@
+/*
+-- ################################################################################### --
+--  ____    __                                         ____                           
+-- /\  _`\ /\ \__                  __                 /\  _`\                         
+-- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+--  \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+--    /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+--    \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+--     \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+--                      /\___/ /\____/                                                
+--                      \/__/  \_/__/          http://stygianthebest.github.io                                         
+-- 
+-- ################################################################################### --
+-- 
+-- LUA COLOR REFERENCE
+--
+-- These colors can be used in C++, SQL, and config files.
+-- Enter the code before the text. |r returns to the previous color.
+--
+-- Ex: This is |cffffffffWHITE|r. |cffff0000RED|r. |cff00ff00GREEN|r.  
+--
+-- ################################################################################### --
+*/
+|cff888888	GREY 		
+|cffffffff	WHITE  		
+|cffbbbbbb	SUBWHITE 		
+|cffff00ff	MAGENTA  		
+|cffffff00	YELLOW  		
+|cff00ffff	CYAN   		
+|cffff6060	LIGHTRED 		
+|cff00ccff	LIGHTBLUE  		
+|cff0000ff	BLUE  		
+|cff00ff00	GREEN  		
+|cffff0000	RED  		
+|cffffcc00	GOLD  		
+|cFFF0F8FF	ALICEBLUE		
+|cFFFAEBD7	ANTIQUEWHITE	
+|cFF00FFFF	AQUA  		
+|cFF7FFFD4	AQUAMARINE  	
+|cFFF0FFFF	AZURE 		
+|cFFF5F5DC	BEIGE 		
+|cFFFFE4C4	BISQUE		
+|cFF000000	BLACK 		
+|cFFFFEBCD	BLANCHEDALMOND 	
+|cFF0000FF	BLUE  		
+|cFF8A2BE2	BLUEVIOLET  	
+|cFFA52A2A	BROWN 		
+|cFFDEB887	BURLYWOOD		
+|cFF5F9EA0	CADETBLUE		
+|cFF7FFF00	CHARTREUSE  	
+|cFFD2691E	CHOCOLATE		
+|cFFFF7F50	CORAL 		
+|cFF6495ED	CORNFLOWERBLUE 	
+|cFFFFF8DC	CORNSILK 		
+|cFFDC143C	CRIMSON  		
+|cFF00FFFF	CYAN  		
+|cFF00008B	DARKBLUE 		
+|cFF008B8B	DARKCYAN 		
+|cFFB8860B	DARKGOLDENROD  	
+|cFFA9A9A9	DARKGRAY 		
+|cFF006400	DARKGREEN		
+|cFFBDB76B	DARKKHAKI		
+|cFF8B008B	DARKMAGENTA 	
+|cFF556B2F	DARKOLIVEGREEN 	
+|cFFFF8C00	DARKORANGE  	
+|cFF9932CC	DARKORCHID  	
+|cFF8B0000	DARKRED  		
+|cFFE9967A	DARKSALMON  	
+|cFF8FBC8B	DARKSEAGREEN	
+|cFF483D8B	DARKSLATEBLUE  	
+|cFF2F4F4F	DARKSLATEGRAY  	
+|cFF00CED1	DARKTURQUOISE  	
+|cFF9400D3	DARKVIOLET  	
+|cFFFF1493	DEEPPINK 		
+|cFF00BFFF	DEEPSKYBLUE 	
+|cFF696969	DIMGRAY  		
+|cFF1E90FF	DODGERBLUE  	
+|cFFB22222	FIREBRICK		
+|cFFFFFAF0	FLORALWHITE 	
+|cFF228B22	FORESTGREEN 	
+|cFFFF00FF	FUCHSIA  		
+|cFFDCDCDC	GAINSBORO		
+|cFFF8F8FF	GHOSTWHITE  	
+|cFFFFD700	GOLD  		
+|cFFDAA520	GOLDENROD		
+|cFF808080	GRAY  		
+|cFF008000	GREEN 		
+|cFFADFF2F	GREENYELLOW 	
+|cFFF0FFF0	HONEYDEW 		
+|cFFFF69B4	HOTPINK  		
+|cFFCD5C5C	INDIANRED		
+|cFF4B0082	INDIGO		
+|cFFFFFFF0	IVORY 		
+|cFFF0E68C	KHAKI 		
+|cFFE6E6FA	LAVENDER 		
+|cFFFFF0F5	LAVENDERBLUSH  	
+|cFF7CFC00	LAWNGREEN		
+|cFFFFFACD	LEMONCHIFFON	
+|cFFADD8E6	LIGHTBLUE		
+|cFFF08080	LIGHTCORAL  	
+|cFFE0FFFF	LIGHTCYAN		
+|cFFD3D3D3	LIGHTGRAY		
+|cFF90EE90	LIGHTGREEN  	
+|cFFFFB6C1	LIGHTPINK		
+|cFFFF6060	LIGHTRED 		
+|cFFFFA07A	LIGHTSALMON 	
+|cFF20B2AA	LIGHTSEAGREEN  	
+|cFF87CEFA	LIGHTSKYBLUE	
+|cFF778899	LIGHTSLATEGRAY 	
+|cFFB0C4DE	LIGHTSTEELBLUE 	
+|cFFFFFFE0	LIGHTYELLOW 	
+|cFF00FF00	LIME  		
+|cFF32CD32	LIMEGREEN		
+|cFFFAF0E6	LINEN 		
+|cFFFF00FF	MAGENTA  		
+|cFF800000	MAROON		
+|cFF66CDAA	MEDIUMAQUAMARINE
+|cFF0000CD	MEDIUMBLUE  	
+|cFFBA55D3	MEDIUMORCHID	
+|cFF9370DB	MEDIUMPURPLE	
+|cFF3CB371	MEDIUMSEAGREEN 	
+|cFF7B68EE	MEDIUMSLATEBLUE	
+|cFF00FA9A	MEDIUMSPRINGGREE
+|cFF48D1CC	MEDIUMTURQUOISE	
+|cFFC71585	MEDIUMVIOLETRED	
+|cFF191970	MIDNIGHTBLUE	
+|cFFF5FFFA	MINTCREAM		
+|cFFFFE4E1	MISTYROSE		
+|cFFFFE4B5	MOCCASIN 		
+|cFFFFDEAD	NAVAJOWHITE 	
+|cFF000080	NAVY  		
+|cFFFDF5E6	OLDLACE  		
+|cFF808000	OLIVE 		
+|cFF6B8E23	OLIVEDRAB		
+|cFFFFA500	ORANGE		
+|cFFFF4500	ORANGERED		
+|cFFDA70D6	ORCHID		
+|cFFEEE8AA	PALEGOLDENROD  	
+|cFF98FB98	PALEGREEN		
+|cFFAFEEEE	PALETURQUOISE  	
+|cFFDB7093	PALEVIOLETRED  	
+|cFFFFEFD5	PAPAYAWHIP  	
+|cFFFFDAB9	PEACHPUFF		
+|cFFCD853F	PERU  		
+|cFFFFC0CB	PINK  		
+|cFFDDA0DD	PLUM  		
+|cFFB0E0E6	POWDERBLUE  	
+|cFF800080	PURPLE		
+|cFFFF0000	RED		
+|cFFBC8F8F	ROSYBROWN		
+|cFF4169E1	ROYALBLUE		
+|cFF8B4513	SADDLEBROWN 	
+|cFFFA8072	SALMON		
+|cFFF4A460	SANDYBROWN  	
+|cFF2E8B57	SEAGREEN 		
+|cFFFFF5EE	SEASHELL 		
+|cFFA0522D	SIENNA		
+|cFFC0C0C0	SILVER		
+|cFF87CEEB	SKYBLUE  		
+|cFF6A5ACD	SLATEBLUE		
+|cFF708090	SLATEGRAY		
+|cFFFFFAFA	SNOW  		
+|cFF00FF7F	SPRINGGREEN 	
+|cFF4682B4	STEELBLUE		
+|cFFD2B48C	TAN		
+|cFF008080	TEAL  		
+|cFFD8BFD8	THISTLE  		
+|cFFFF6347	TOMATO		
+|c00FFFFFF	TRANSPARENT 
+|cFF40E0D0	TURQUOISE	
+|cFFEE82EE	VIOLET		
+|cFFF5DEB3	WHEAT 		
+|cFFFFFFFF	WHITE 		
+|cFFF5F5F5	WHITESMOKE  
+|cFFFFFF00	YELLOW		
+|cFF9ACD32	YELLOWGREEN 

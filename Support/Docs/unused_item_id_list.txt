@@ -1,0 +1,2379 @@
+1157	2	0	One Hand Axe
+1259	2	0	One Hand Axe
+1719	2	0	One Hand Axe
+1904	2	0	One Hand Axe
+1905	2	0	One Hand Axe
+1909	2	0	One Hand Axe
+1910	2	0	One Hand Axe
+2183	2	0	One Hand Axe
+2482	2	0	One Hand Axe
+2498	2	0	One Hand Axe
+2827	2	0	One Hand Axe
+3895	2	0	One Hand Axe
+4730	2	0	One Hand Axe
+4965	2	0	One Hand Axe
+5255	2	0	One Hand Axe
+5286	2	0	One Hand Axe
+5551	2	0	One Hand Axe
+5597	2	0	One Hand Axe
+5598	2	0	One Hand Axe
+5599	2	0	One Hand Axe
+10611	2	0	One Hand Axe
+10612	2	0	One Hand Axe
+11762	2	0	One Hand Axe
+11763	2	0	One Hand Axe
+12290	2	0	One Hand Axe
+12348	2	0	One Hand Axe
+12482	2	0	One Hand Axe
+12502	2	0	One Hand Axe
+12629	2	0	One Hand Axe
+13104	2	0	One Hand Axe
+13625	2	0	One Hand Axe
+14534	2	0	One Hand Axe
+14874	2	0	One Hand Axe
+14875	2	0	One Hand Axe
+14876	2	0	One Hand Axe
+14877	2	0	One Hand Axe
+14880	2	0	One Hand Axe
+14881	2	0	One Hand Axe
+14882	2	0	One Hand Axe
+14893	2	0	One Hand Axe
+17382	2	0	One Hand Axe
+17462	2	0	One Hand Axe
+18293	2	0	One Hand Axe
+18596	2	0	One Hand Axe
+19014	2	0	One Hand Axe
+19015	2	0	One Hand Axe
+19762	2	0	One Hand Axe
+20417	2	0	One Hand Axe
+20979	2	0	One Hand Axe
+21129	2	0	One Hand Axe
+21465	2	0	One Hand Axe
+23428	2	0	One Hand Axe
+23582	2	0	One Hand Axe
+23996	2	0	One Hand Axe
+24320	2	0	One Hand Axe
+24327	2	0	One Hand Axe
+24409	2	0	One Hand Axe
+25799	2	0	One Hand Axe
+25859	2	0	One Hand Axe
+26672	2	0	One Hand Axe
+26673	2	0	One Hand Axe
+26674	2	0	One Hand Axe
+26675	2	0	One Hand Axe
+26676	2	0	One Hand Axe
+26677	2	0	One Hand Axe
+26678	2	0	One Hand Axe
+26679	2	0	One Hand Axe
+26680	2	0	One Hand Axe
+26681	2	0	One Hand Axe
+26682	2	0	One Hand Axe
+26683	2	0	One Hand Axe
+26684	2	0	One Hand Axe
+26685	2	0	One Hand Axe
+27849	2	0	One Hand Axe
+27850	2	0	One Hand Axe
+29413	2	0	One Hand Axe
+29414	2	0	One Hand Axe
+29417	2	0	One Hand Axe
+29418	2	0	One Hand Axe
+29419	2	0	One Hand Axe
+29422	2	0	One Hand Axe
+29430	2	0	One Hand Axe
+29433	2	0	One Hand Axe
+29436	2	0	One Hand Axe
+29437	2	0	One Hand Axe
+29438	2	0	One Hand Axe
+29444	2	0	One Hand Axe
+29541	2	0	One Hand Axe
+29705	2	0	One Hand Axe
+29706	2	0	One Hand Axe
+29707	2	0	One Hand Axe
+29708	2	0	One Hand Axe
+29709	2	0	One Hand Axe
+29710	2	0	One Hand Axe
+29711	2	0	One Hand Axe
+29712	2	0	One Hand Axe
+29809	2	0	One Hand Axe
+29900	2	0	One Hand Axe
+30176	2	0	One Hand Axe
+30180	2	0	One Hand Axe
+30208	2	0	One Hand Axe
+30209	2	0	One Hand Axe
+30661	2	0	One Hand Axe
+30699	2	0	One Hand Axe
+30702	2	0	One Hand Axe
+30715	2	0	One Hand Axe
+31205	2	0	One Hand Axe
+31206	2	0	One Hand Axe
+31353	2	0	One Hand Axe
+31600	2	0	One Hand Axe
+32065	2	0	One Hand Axe
+32066	2	0	One Hand Axe
+32174	2	0	One Hand Axe
+32175	2	0	One Hand Axe
+32604	2	0	One Hand Axe
+32743	2	0	One Hand Axe
+32886	2	0	One Hand Axe
+32887	2	0	One Hand Axe
+33049	2	0	One Hand Axe
+33094	2	0	One Hand Axe
+33169	2	0	One Hand Axe
+33171	2	0	One Hand Axe
+33318	2	0	One Hand Axe
+33320	2	0	One Hand Axe
+33542	2	0	One Hand Axe
+33544	2	0	One Hand Axe
+33594	2	0	One Hand Axe
+33649	2	0	One Hand Axe
+33790	2	0	One Hand Axe
+33980	2	0	One Hand Axe
+33981	2	0	One Hand Axe
+33982	2	0	One Hand Axe
+34080	2	0	One Hand Axe
+34506	2	0	One Hand Axe
+34507	2	0	One Hand Axe
+34508	2	0	One Hand Axe
+34509	2	0	One Hand Axe
+34510	2	0	One Hand Axe
+34511	2	0	One Hand Axe
+34512	2	0	One Hand Axe
+34513	2	0	One Hand Axe
+34514	2	0	One Hand Axe
+34515	2	0	One Hand Axe
+34520	2	0	One Hand Axe
+34521	2	0	One Hand Axe
+34522	2	0	One Hand Axe
+34523	2	0	One Hand Axe
+34524	2	0	One Hand Axe
+34525	2	0	One Hand Axe
+34526	2	0	One Hand Axe
+34637	2	0	One Hand Axe
+34816	2	0	One Hand Axe
+34883	2	0	One Hand Axe
+35463	2	0	One Hand Axe
+35779	2	0	One Hand Axe
+36575	2	0	One Hand Axe
+37608	2	0	One Hand Axe
+37832	2	0	One Hand Axe
+37834	2	0	One Hand Axe
+38216	2	0	One Hand Axe
+38721	2	0	One Hand Axe
+39137	2	0	One Hand Axe
+39290	2	0	One Hand Axe
+39325	2	0	One Hand Axe
+39382	2	0	One Hand Axe
+39993	2	0	One Hand Axe
+40534	2	0	One Hand Axe
+40540	2	0	One Hand Axe
+40542	2	0	One Hand Axe
+40609	2	0	One Hand Axe
+41691	2	0	One Hand Axe
+41764	2	0	One Hand Axe
+42206	2	0	One Hand Axe
+42207	2	0	One Hand Axe
+42211	2	0	One Hand Axe
+42212	2	0	One Hand Axe
+42213	2	0	One Hand Axe
+42214	2	0	One Hand Axe
+42226	2	0	One Hand Axe
+42230	2	0	One Hand Axe
+42231	2	0	One Hand Axe
+42235	2	0	One Hand Axe
+42236	2	0	One Hand Axe
+42238	2	0	One Hand Axe
+42239	2	0	One Hand Axe
+42240	2	0	One Hand Axe
+43175	2	0	One Hand Axe
+43296	2	0	One Hand Axe
+43625	2	0	One Hand Axe
+44056	2	0	One Hand Axe
+45575	2	0	One Hand Axe
+45630	2	0	One Hand Axe
+46020	2	0	One Hand Axe
+47024	2	0	One Hand Axe
+47032	2	0	One Hand Axe
+47161	2	0	One Hand Axe
+47347	2	0	One Hand Axe
+47396	2	0	One Hand Axe
+48947	2	0	One Hand Axe
+49689	2	0	One Hand Axe
+49690	2	0	One Hand Axe
+49691	2	0	One Hand Axe
+49774	2	0	One Hand Axe
+50012	2	0	One Hand Axe
+50251	2	0	One Hand Axe
+50256	2	0	One Hand Axe
+50433	2	0	One Hand Axe
+50526	2	0	One Hand Axe
+50654	2	0	One Hand Axe
+50737	2	0	One Hand Axe
+51795	2	0	One Hand Axe
+51916	2	0	One Hand Axe
+51938	2	0	One Hand Axe
+51947	2	0	One Hand Axe
+1311	2	1	Two Hand Axe
+1386	2	1	Two Hand Axe
+2483	2	1	Two Hand Axe
+5287	2	1	Two Hand Axe
+5288	2	1	Two Hand Axe
+5289	2	1	Two Hand Axe
+5552	2	1	Two Hand Axe
+7612	2	1	Two Hand Axe
+7940	2	1	Two Hand Axe
+11317	2	1	Two Hand Axe
+11342	2	1	Two Hand Axe
+12285	2	1	Two Hand Axe
+12294	2	1	Two Hand Axe
+12461	2	1	Two Hand Axe
+12754	2	1	Two Hand Axe
+12951	2	1	Two Hand Axe
+13706	2	1	Two Hand Axe
+14475	2	1	Two Hand Axe
+14643	2	1	Two Hand Axe
+14870	2	1	Two Hand Axe
+17383	2	1	Two Hand Axe
+17463	2	1	Two Hand Axe
+18419	2	1	Two Hand Axe
+19184	2	1	Two Hand Axe
+19185	2	1	Two Hand Axe
+19186	2	1	Two Hand Axe
+19187	2	1	Two Hand Axe
+19188	2	1	Two Hand Axe
+19189	2	1	Two Hand Axe
+19190	2	1	Two Hand Axe
+19191	2	1	Two Hand Axe
+19192	2	1	Two Hand Axe
+19193	2	1	Two Hand Axe
+19194	2	1	Two Hand Axe
+19195	2	1	Two Hand Axe
+19196	2	1	Two Hand Axe
+19197	2	1	Two Hand Axe
+19198	2	1	Two Hand Axe
+19199	2	1	Two Hand Axe
+19200	2	1	Two Hand Axe
+19201	2	1	Two Hand Axe
+19455	2	1	Two Hand Axe
+19662	2	1	Two Hand Axe
+19809	2	1	Two Hand Axe
+19811	2	1	Two Hand Axe
+20149	2	1	Two Hand Axe
+20238	2	1	Two Hand Axe
+20280	2	1	Two Hand Axe
+20784	2	1	Two Hand Axe
+20796	2	1	Two Hand Axe
+21034	2	1	Two Hand Axe
+21192	2	1	Two Hand Axe
+21286	2	1	Two Hand Axe
+21580	2	1	Two Hand Axe
+22199	2	1	Two Hand Axe
+23420	2	1	Two Hand Axe
+24512	2	1	Two Hand Axe
+24524	2	1	Two Hand Axe
+24525	2	1	Two Hand Axe
+25493	2	1	Two Hand Axe
+26686	2	1	Two Hand Axe
+26687	2	1	Two Hand Axe
+26688	2	1	Two Hand Axe
+26689	2	1	Two Hand Axe
+26690	2	1	Two Hand Axe
+26691	2	1	Two Hand Axe
+26692	2	1	Two Hand Axe
+26693	2	1	Two Hand Axe
+26694	2	1	Two Hand Axe
+26695	2	1	Two Hand Axe
+26696	2	1	Two Hand Axe
+26697	2	1	Two Hand Axe
+26698	2	1	Two Hand Axe
+26699	2	1	Two Hand Axe
+28354	2	1	Two Hand Axe
+29620	2	1	Two Hand Axe
+29621	2	1	Two Hand Axe
+29622	2	1	Two Hand Axe
+29623	2	1	Two Hand Axe
+29651	2	1	Two Hand Axe
+29652	2	1	Two Hand Axe
+29653	2	1	Two Hand Axe
+29654	2	1	Two Hand Axe
+29655	2	1	Two Hand Axe
+29656	2	1	Two Hand Axe
+29657	2	1	Two Hand Axe
+29658	2	1	Two Hand Axe
+29659	2	1	Two Hand Axe
+29660	2	1	Two Hand Axe
+29661	2	1	Two Hand Axe
+29662	2	1	Two Hand Axe
+29663	2	1	Two Hand Axe
+29665	2	1	Two Hand Axe
+29833	2	1	Two Hand Axe
+29834	2	1	Two Hand Axe
+29880	2	1	Two Hand Axe
+29881	2	1	Two Hand Axe
+30178	2	1	Two Hand Axe
+30388	2	1	Two Hand Axe
+30414	2	1	Two Hand Axe
+30502	2	1	Two Hand Axe
+30577	2	1	Two Hand Axe
+30625	2	1	Two Hand Axe
+30848	2	1	Two Hand Axe
+31601	2	1	Two Hand Axe
+31604	2	1	Two Hand Axe
+32182	2	1	Two Hand Axe
+32421	2	1	Two Hand Axe
+32422	2	1	Two Hand Axe
+32565	2	1	Two Hand Axe
+32612	2	1	Two Hand Axe
+32699	2	1	Two Hand Axe
+32875	2	1	Two Hand Axe
+33116	2	1	Two Hand Axe
+33177	2	1	Two Hand Axe
+33178	2	1	Two Hand Axe
+33276	2	1	Two Hand Axe
+33301	2	1	Two Hand Axe
+33319	2	1	Two Hand Axe
+33597	2	1	Two Hand Axe
+33650	2	1	Two Hand Axe
+34093	2	1	Two Hand Axe
+34096	2	1	Two Hand Axe
+34097	2	1	Two Hand Axe
+34638	2	1	Two Hand Axe
+34668	2	1	Two Hand Axe
+34817	2	1	Two Hand Axe
+36589	2	1	Two Hand Axe
+38099	2	1	Two Hand Axe
+38244	2	1	Two Hand Axe
+38304	2	1	Two Hand Axe
+38481	2	1	Two Hand Axe
+38509	2	1	Two Hand Axe
+39359	2	1	Two Hand Axe
+39381	2	1	Two Hand Axe
+39447	2	1	Two Hand Axe
+39741	2	1	Two Hand Axe
+40435	2	1	Two Hand Axe
+40487	2	1	Two Hand Axe
+40537	2	1	Two Hand Axe
+40608	2	1	Two Hand Axe
+41175	2	1	Two Hand Axe
+41261	2	1	Two Hand Axe
+41583	2	1	Two Hand Axe
+41753	2	1	Two Hand Axe
+42294	2	1	Two Hand Axe
+42316	2	1	Two Hand Axe
+42320	2	1	Two Hand Axe
+42919	2	1	Two Hand Axe
+43008	2	1	Two Hand Axe
+43111	2	1	Two Hand Axe
+43532	2	1	Two Hand Axe
+43623	2	1	Two Hand Axe
+44172	2	1	Two Hand Axe
+44191	2	1	Two Hand Axe
+44227	2	1	Two Hand Axe
+44252	2	1	Two Hand Axe
+44924	2	1	Two Hand Axe
+44948	2	1	Two Hand Axe
+45048	2	1	Two Hand Axe
+45174	2	1	Two Hand Axe
+45528	2	1	Two Hand Axe
+47034	2	1	Two Hand Axe
+47118	2	1	Two Hand Axe
+47376	2	1	Two Hand Axe
+48949	2	1	Two Hand Axe
+49148	2	1	Two Hand Axe
+49156	2	1	Two Hand Axe
+49198	2	1	Two Hand Axe
+49291	2	1	Two Hand Axe
+49645	2	1	Two Hand Axe
+49681	2	1	Two Hand Axe
+49773	2	1	Two Hand Axe
+49886	2	1	Two Hand Axe
+50043	2	1	Two Hand Axe
+50221	2	1	Two Hand Axe
+50434	2	1	Two Hand Axe
+50581	2	1	Two Hand Axe
+50709	2	1	Two Hand Axe
+51322	2	1	Two Hand Axe
+51905	2	1	Two Hand Axe
+2550	2	2	Bow
+3028	2	2	Bow
+3038	2	2	Bow
+4763	2	2	Bow
+5258	2	2	Bow
+5259	2	2	Bow
+5260	2	2	Bow
+5261	2	2	Bow
+5262	2	2	Bow
+5290	2	2	Bow
+5548	2	2	Bow
+5748	2	2	Bow
+13147	2	2	Bow
+14105	2	2	Bow
+14118	2	2	Bow
+14394	2	2	Bow
+19490	2	2	Bow
+19868	2	2	Bow
+19966	2	2	Bow
+20278	2	2	Bow
+20299	2	2	Bow
+20313	2	2	Bow
+20368	2	2	Bow
+21036	2	2	Bow
+23889	2	2	Bow
+24319	2	2	Bow
+24326	2	2	Bow
+26714	2	2	Bow
+26715	2	2	Bow
+26716	2	2	Bow
+26717	2	2	Bow
+26718	2	2	Bow
+26719	2	2	Bow
+26720	2	2	Bow
+26721	2	2	Bow
+26722	2	2	Bow
+26723	2	2	Bow
+26724	2	2	Bow
+26725	2	2	Bow
+26726	2	2	Bow
+26727	2	2	Bow
+30390	2	2	Bow
+30452	2	2	Bow
+30456	2	2	Bow
+30557	2	2	Bow
+31083	2	2	Bow
+31325	2	2	Bow
+31348	2	2	Bow
+32613	2	2	Bow
+32730	2	2	Bow
+32826	2	2	Bow
+32827	2	2	Bow
+33991	2	2	Bow
+34039	2	2	Bow
+34263	2	2	Bow
+34264	2	2	Bow
+34265	2	2	Bow
+34266	2	2	Bow
+34267	2	2	Bow
+34268	2	2	Bow
+34269	2	2	Bow
+34270	2	2	Bow
+34271	2	2	Bow
+34272	2	2	Bow
+34273	2	2	Bow
+34274	2	2	Bow
+34275	2	2	Bow
+34276	2	2	Bow
+34277	2	2	Bow
+34278	2	2	Bow
+34279	2	2	Bow
+34280	2	2	Bow
+34281	2	2	Bow
+34873	2	2	Bow
+35804	2	2	Bow
+36617	2	2	Bow
+36755	2	2	Bow
+37249	2	2	Bow
+37919	2	2	Bow
+38168	2	2	Bow
+38185	2	2	Bow
+38395	2	2	Bow
+39032	2	2	Bow
+39101	2	2	Bow
+39994	2	2	Bow
+40759	2	2	Bow
+41360	2	2	Bow
+42140	2	2	Bow
+42445	2	2	Bow
+42489	2	2	Bow
+42493	2	2	Bow
+42775	2	2	Bow
+42921	2	2	Bow
+43224	2	2	Bow
+47014	2	2	Bow
+47122	2	2	Bow
+49022	2	2	Bow
+49158	2	2	Bow
+49761	2	2	Bow
+49862	2	2	Bow
+49914	2	2	Bow
+50510	2	2	Bow
+50638	2	2	Bow
+51927	2	2	Bow
+52058	2	2	Bow
+1046	2	3	Gun
+1047	2	3	Gun
+2552	2	3	Gun
+5550	2	3	Gun
+6255	2	3	Gun
+11021	2	3	Gun
+12523	2	3	Gun
+13923	2	3	Gun
+13924	2	3	Gun
+14642	2	3	Gun
+15460	2	3	Gun
+18763	2	3	Gun
+18764	2	3	Gun
+18765	2	3	Gun
+20146	2	3	Gun
+20245	2	3	Gun
+20285	2	3	Gun
+21554	2	3	Gun
+21564	2	3	Gun
+24244	2	3	Gun
+24530	2	3	Gun
+26742	2	3	Gun
+26743	2	3	Gun
+26744	2	3	Gun
+26745	2	3	Gun
+26746	2	3	Gun
+26747	2	3	Gun
+26748	2	3	Gun
+26749	2	3	Gun
+26750	2	3	Gun
+26751	2	3	Gun
+26752	2	3	Gun
+26753	2	3	Gun
+26754	2	3	Gun
+26755	2	3	Gun
+28165	2	3	Gun
+29626	2	3	Gun
+29627	2	3	Gun
+29628	2	3	Gun
+29629	2	3	Gun
+29884	2	3	Gun
+29888	2	3	Gun
+30128	2	3	Gun
+33080	2	3	Gun
+34034	2	3	Gun
+34098	2	3	Gun
+35805	2	3	Gun
+36645	2	3	Gun
+38166	2	3	Gun
+38246	2	3	Gun
+38471	2	3	Gun
+41613	2	3	Gun
+42447	2	3	Gun
+42484	2	3	Gun
+42488	2	3	Gun
+42776	2	3	Gun
+44715	2	3	Gun
+46112	2	3	Gun
+46998	2	3	Gun
+49762	2	3	Gun
+50817	2	3	Gun
+51385	2	3	Gun
+51561	2	3	Gun
+51834	2	3	Gun
+51845	2	3	Gun
+751	2	4	One Hand Mace
+1117	2	4	One Hand Mace
+1312	2	4	One Hand Mace
+1901	2	4	One Hand Mace
+1902	2	4	One Hand Mace
+1903	2	4	One Hand Mace
+1906	2	4	One Hand Mace
+1911	2	4	One Hand Mace
+2056	2	4	One Hand Mace
+2182	2	4	One Hand Mace
+2189	2	4	One Hand Mace
+2196	2	4	One Hand Mace
+2197	2	4	One Hand Mace
+2202	2	4	One Hand Mace
+2485	2	4	One Hand Mace
+2558	2	4	One Hand Mace
+2695	2	4	One Hand Mace
+2809	2	4	One Hand Mace
+2810	2	4	One Hand Mace
+2813	2	4	One Hand Mace
+2884	2	4	One Hand Mace
+3044	2	4	One Hand Mace
+3350	2	4	One Hand Mace
+3361	2	4	One Hand Mace
+3774	2	4	One Hand Mace
+4993	2	4	One Hand Mace
+4996	2	4	One Hand Mace
+5291	2	4	One Hand Mace
+5495	2	4	One Hand Mace
+5553	2	4	One Hand Mace
+6334	2	4	One Hand Mace
+6618	2	4	One Hand Mace
+6946	2	4	One Hand Mace
+9659	2	4	One Hand Mace
+10591	2	4	One Hand Mace
+11264	2	4	One Hand Mace
+11369	2	4	One Hand Mace
+11383	2	4	One Hand Mace
+12183	2	4	One Hand Mace
+12786	2	4	One Hand Mace
+12787	2	4	One Hand Mace
+12788	2	4	One Hand Mace
+12883	2	4	One Hand Mace
+12934	2	4	One Hand Mace
+13220	2	4	One Hand Mace
+13312	2	4	One Hand Mace
+13894	2	4	One Hand Mace
+14533	2	4	One Hand Mace
+14575	2	4	One Hand Mace
+16792	2	4	One Hand Mace
+17040	2	4	One Hand Mace
+17041	2	4	One Hand Mace
+18800	2	4	One Hand Mace
+19359	2	4	One Hand Mace
+19404	2	4	One Hand Mace
+19916	2	4	One Hand Mace
+20738	2	4	One Hand Mace
+21127	2	4	One Hand Mace
+22213	2	4	One Hand Mace
+22341	2	4	One Hand Mace
+22724	2	4	One Hand Mace
+23362	2	4	One Hand Mace
+23583	2	4	One Hand Mace
+23708	2	4	One Hand Mace
+23906	2	4	One Hand Mace
+24332	2	4	One Hand Mace
+24333	2	4	One Hand Mace
+25646	2	4	One Hand Mace
+25663	2	4	One Hand Mace
+26588	2	4	One Hand Mace
+26589	2	4	One Hand Mace
+26590	2	4	One Hand Mace
+26591	2	4	One Hand Mace
+26592	2	4	One Hand Mace
+26593	2	4	One Hand Mace
+26594	2	4	One Hand Mace
+26595	2	4	One Hand Mace
+26596	2	4	One Hand Mace
+26597	2	4	One Hand Mace
+26598	2	4	One Hand Mace
+26599	2	4	One Hand Mace
+26600	2	4	One Hand Mace
+26601	2	4	One Hand Mace
+26784	2	4	One Hand Mace
+26785	2	4	One Hand Mace
+26786	2	4	One Hand Mace
+26787	2	4	One Hand Mace
+26788	2	4	One Hand Mace
+26789	2	4	One Hand Mace
+26790	2	4	One Hand Mace
+26791	2	4	One Hand Mace
+26792	2	4	One Hand Mace
+26793	2	4	One Hand Mace
+26794	2	4	One Hand Mace
+26795	2	4	One Hand Mace
+26796	2	4	One Hand Mace
+26797	2	4	One Hand Mace
+27407	2	4	One Hand Mace
+27701	2	4	One Hand Mace
+27836	2	4	One Hand Mace
+28201	2	4	One Hand Mace
+28487	2	4	One Hand Mace
+28489	2	4	One Hand Mace
+28736	2	4	One Hand Mace
+29424	2	4	One Hand Mace
+29543	2	4	One Hand Mace
+29619	2	4	One Hand Mace
+29630	2	4	One Hand Mace
+29631	2	4	One Hand Mace
+29632	2	4	One Hand Mace
+29633	2	4	One Hand Mace
+29634	2	4	One Hand Mace
+30078	2	4	One Hand Mace
+30376	2	4	One Hand Mace
+30387	2	4	One Hand Mace
+30445	2	4	One Hand Mace
+30670	2	4	One Hand Mace
+30671	2	4	One Hand Mace
+31654	2	4	One Hand Mace
+31743	2	4	One Hand Mace
+32091	2	4	One Hand Mace
+32173	2	4	One Hand Mace
+32176	2	4	One Hand Mace
+32246	2	4	One Hand Mace
+32463	2	4	One Hand Mace
+32611	2	4	One Hand Mace
+32644	2	4	One Hand Mace
+32719	2	4	One Hand Mace
+32892	2	4	One Hand Mace
+32950	2	4	One Hand Mace
+33168	2	4	One Hand Mace
+33595	2	4	One Hand Mace
+33642	2	4	One Hand Mace
+33793	2	4	One Hand Mace
+34516	2	4	One Hand Mace
+34517	2	4	One Hand Mace
+34819	2	4	One Hand Mace
+34885	2	4	One Hand Mace
+35727	2	4	One Hand Mace
+36491	2	4	One Hand Mace
+36687	2	4	One Hand Mace
+37120	2	4	One Hand Mace
+37310	2	4	One Hand Mace
+37536	2	4	One Hand Mace
+37579	2	4	One Hand Mace
+37740	2	4	One Hand Mace
+37914	2	4	One Hand Mace
+38139	2	4	One Hand Mace
+38468	2	4	One Hand Mace
+38511	2	4	One Hand Mace
+38722	2	4	One Hand Mace
+39145	2	4	One Hand Mace
+39661	2	4	One Hand Mace
+39663	2	4	One Hand Mace
+39749	2	4	One Hand Mace
+39752	2	4	One Hand Mace
+40452	2	4	One Hand Mace
+40501	2	4	One Hand Mace
+40595	2	4	One Hand Mace
+40598	2	4	One Hand Mace
+40770	2	4	One Hand Mace
+42168	2	4	One Hand Mace
+42221	2	4	One Hand Mace
+42222	2	4	One Hand Mace
+42274	2	4	One Hand Mace
+42278	2	4	One Hand Mace
+42279	2	4	One Hand Mace
+42283	2	4	One Hand Mace
+42344	2	4	One Hand Mace
+42351	2	4	One Hand Mace
+42355	2	4	One Hand Mace
+42506	2	4	One Hand Mace
+42544	2	4	One Hand Mace
+42755	2	4	One Hand Mace
+42759	2	4	One Hand Mace
+42939	2	4	One Hand Mace
+42940	2	4	One Hand Mace
+43112	2	4	One Hand Mace
+43113	2	4	One Hand Mace
+43199	2	4	One Hand Mace
+43525	2	4	One Hand Mace
+43581	2	4	One Hand Mace
+44232	2	4	One Hand Mace
+44726	2	4	One Hand Mace
+44733	2	4	One Hand Mace
+45123	2	4	One Hand Mace
+45173	2	4	One Hand Mace
+45726	2	4	One Hand Mace
+45900	2	4	One Hand Mace
+46987	2	4	One Hand Mace
+47120	2	4	One Hand Mace
+47339	2	4	One Hand Mace
+49018	2	4	One Hand Mace
+49020	2	4	One Hand Mace
+49024	2	4	One Hand Mace
+49206	2	4	One Hand Mace
+49357	2	4	One Hand Mace
+49358	2	4	One Hand Mace
+49717	2	4	One Hand Mace
+49725	2	4	One Hand Mace
+49731	2	4	One Hand Mace
+49737	2	4	One Hand Mace
+49775	2	4	One Hand Mace
+49997	2	4	One Hand Mace
+50028	2	4	One Hand Mace
+50179	2	4	One Hand Mace
+50428	2	4	One Hand Mace
+50431	2	4	One Hand Mace
+50557	2	4	One Hand Mace
+50580	2	4	One Hand Mace
+50685	2	4	One Hand Mace
+50708	2	4	One Hand Mace
+50734	2	4	One Hand Mace
+50738	2	4	One Hand Mace
+50752	2	4	One Hand Mace
+50753	2	4	One Hand Mace
+50810	2	4	One Hand Mace
+51004	2	4	One Hand Mace
+51798	2	4	One Hand Mace
+51875	2	4	One Hand Mace
+51893	2	4	One Hand Mace
+51937	2	4	One Hand Mace
+51944	2	4	One Hand Mace
+52015	2	4	One Hand Mace
+52037	2	4	One Hand Mace
+52042	2	4	One Hand Mace
+1385	2	5	Two Hand Mace
+2486	2	5	Two Hand Mace
+2557	2	5	Two Hand Mace
+2814	2	5	Two Hand Mace
+3326	2	5	Two Hand Mace
+4943	2	5	Two Hand Mace
+5292	2	5	Two Hand Mace
+5293	2	5	Two Hand Mace
+5300	2	5	Two Hand Mace
+5301	2	5	Two Hand Mace
+5491	2	5	Two Hand Mace
+5554	2	5	Two Hand Mace
+7706	2	5	Two Hand Mace
+7707	2	5	Two Hand Mace
+10568	2	5	Two Hand Mace
+10685	2	5	Two Hand Mace
+10756	2	5	Two Hand Mace
+12901	2	5	Two Hand Mace
+12950	2	5	Two Hand Mace
+13925	2	5	Two Hand Mace
+14082	2	5	Two Hand Mace
+14084	2	5	Two Hand Mace
+14527	2	5	Two Hand Mace
+14532	2	5	Two Hand Mace
+14818	2	5	Two Hand Mace
+14819	2	5	Two Hand Mace
+14820	2	5	Two Hand Mace
+14822	2	5	Two Hand Mace
+14823	2	5	Two Hand Mace
+14824	2	5	Two Hand Mace
+17942	2	5	Two Hand Mace
+18062	2	5	Two Hand Mace
+18881	2	5	Two Hand Mace
+19158	2	5	Two Hand Mace
+19623	2	5	Two Hand Mace
+19988	2	5	Two Hand Mace
+21555	2	5	Two Hand Mace
+22346	2	5	Two Hand Mace
+23457	2	5	Two Hand Mace
+23856	2	5	Two Hand Mace
+24011	2	5	Two Hand Mace
+24012	2	5	Two Hand Mace
+24013	2	5	Two Hand Mace
+24014	2	5	Two Hand Mace
+24015	2	5	Two Hand Mace
+24016	2	5	Two Hand Mace
+24017	2	5	Two Hand Mace
+24018	2	5	Two Hand Mace
+24019	2	5	Two Hand Mace
+25588	2	5	Two Hand Mace
+26602	2	5	Two Hand Mace
+26603	2	5	Two Hand Mace
+26604	2	5	Two Hand Mace
+26605	2	5	Two Hand Mace
+26606	2	5	Two Hand Mace
+26607	2	5	Two Hand Mace
+26608	2	5	Two Hand Mace
+26609	2	5	Two Hand Mace
+26610	2	5	Two Hand Mace
+26611	2	5	Two Hand Mace
+26612	2	5	Two Hand Mace
+26613	2	5	Two Hand Mace
+26614	2	5	Two Hand Mace
+26615	2	5	Two Hand Mace
+27852	2	5	Two Hand Mace
+27862	2	5	Two Hand Mace
+29407	2	5	Two Hand Mace
+29408	2	5	Two Hand Mace
+29409	2	5	Two Hand Mace
+29410	2	5	Two Hand Mace
+29423	2	5	Two Hand Mace
+29455	2	5	Two Hand Mace
+29479	2	5	Two Hand Mace
+29484	2	5	Two Hand Mace
+30179	2	5	Two Hand Mace
+30261	2	5	Two Hand Mace
+30802	2	5	Two Hand Mace
+31082	2	5	Two Hand Mace
+31208	2	5	Two Hand Mace
+31551	2	5	Two Hand Mace
+31602	2	5	Two Hand Mace
+31667	2	5	Two Hand Mace
+32181	2	5	Two Hand Mace
+32183	2	5	Two Hand Mace
+32499	2	5	Two Hand Mace
+33511	2	5	Two Hand Mace
+33521	2	5	Two Hand Mace
+33643	2	5	Two Hand Mace
+33979	2	5	Two Hand Mace
+34536	2	5	Two Hand Mace
+34639	2	5	Two Hand Mace
+34784	2	5	Two Hand Mace
+34818	2	5	Two Hand Mace
+35674	2	5	Two Hand Mace
+35724	2	5	Two Hand Mace
+36505	2	5	Two Hand Mace
+38193	2	5	Two Hand Mace
+38235	2	5	Two Hand Mace
+38480	2	5	Two Hand Mace
+39456	2	5	Two Hand Mace
+39658	2	5	Two Hand Mace
+39753	2	5	Two Hand Mace
+40434	2	5	Two Hand Mace
+40535	2	5	Two Hand Mace
+41246	2	5	Two Hand Mace
+41977	2	5	Two Hand Mace
+41978	2	5	Two Hand Mace
+41979	2	5	Two Hand Mace
+41980	2	5	Two Hand Mace
+41981	2	5	Two Hand Mace
+41982	2	5	Two Hand Mace
+41983	2	5	Two Hand Mace
+42169	2	5	Two Hand Mace
+42295	2	5	Two Hand Mace
+42321	2	5	Two Hand Mace
+42325	2	5	Two Hand Mace
+43205	2	5	Two Hand Mace
+44169	2	5	Two Hand Mace
+44821	2	5	Two Hand Mace
+44845	2	5	Two Hand Mace
+44846	2	5	Two Hand Mace
+44847	2	5	Two Hand Mace
+44848	2	5	Two Hand Mace
+45041	2	5	Two Hand Mace
+45053	2	5	Two Hand Mace
+45055	2	5	Two Hand Mace
+49293	2	5	Two Hand Mace
+49919	2	5	Two Hand Mace
+50129	2	5	Two Hand Mace
+50475	2	5	Two Hand Mace
+50603	2	5	Two Hand Mace
+50754	2	5	Two Hand Mace
+50755	2	5	Two Hand Mace
+50756	2	5	Two Hand Mace
+50757	2	5	Two Hand Mace
+50758	2	5	Two Hand Mace
+51562	2	5	Two Hand Mace
+51796	2	5	Two Hand Mace
+51833	2	5	Two Hand Mace
+51946	2	5	Two Hand Mace
+2023	2	6	Polearm
+3346	2	6	Polearm
+3367	2	6	Polearm
+3432	2	6	Polearm
+3433	2	6	Polearm
+4901	2	6	Polearm
+5545	2	6	Polearm
+5745	2	6	Polearm
+5746	2	6	Polearm
+5747	2	6	Polearm
+6680	2	6	Polearm
+11838	2	6	Polearm
+12063	2	6	Polearm
+12333	2	6	Polearm
+12338	2	6	Polearm
+12403	2	6	Polearm
+13631	2	6	Polearm
+13632	2	6	Polearm
+13919	2	6	Polearm
+14535	2	6	Polearm
+14879	2	6	Polearm
+15910	2	6	Polearm
+20412	2	6	Polearm
+22817	2	6	Polearm
+25520	2	6	Polearm
+25758	2	6	Polearm
+26700	2	6	Polearm
+26701	2	6	Polearm
+26702	2	6	Polearm
+26703	2	6	Polearm
+26704	2	6	Polearm
+26705	2	6	Polearm
+26706	2	6	Polearm
+26707	2	6	Polearm
+26708	2	6	Polearm
+26709	2	6	Polearm
+26710	2	6	Polearm
+26711	2	6	Polearm
+26712	2	6	Polearm
+26713	2	6	Polearm
+28365	2	6	Polearm
+28650	2	6	Polearm
+28914	2	6	Polearm
+28965	2	6	Polearm
+30182	2	6	Polearm
+30418	2	6	Polearm
+30439	2	6	Polearm
+30440	2	6	Polearm
+30697	2	6	Polearm
+30698	2	6	Polearm
+30790	2	6	Polearm
+30795	2	6	Polearm
+31266	2	6	Polearm
+31273	2	6	Polearm
+31274	2	6	Polearm
+31327	2	6	Polearm
+32184	2	6	Polearm
+32371	2	6	Polearm
+32448	2	6	Polearm
+32507	2	6	Polearm
+32530	2	6	Polearm
+32729	2	6	Polearm
+32924	2	6	Polearm
+33598	2	6	Polearm
+34058	2	6	Polearm
+34681	2	6	Polearm
+34874	2	6	Polearm
+35235	2	6	Polearm
+36603	2	6	Polearm
+36778	2	6	Polearm
+36790	2	6	Polearm
+36791	2	6	Polearm
+36792	2	6	Polearm
+37917	2	6	Polearm
+38209	2	6	Polearm
+38210	2	6	Polearm
+38211	2	6	Polearm
+38296	2	6	Polearm
+38297	2	6	Polearm
+38482	2	6	Polearm
+38487	2	6	Polearm
+38488	2	6	Polearm
+38490	2	6	Polearm
+38491	2	6	Polearm
+38508	2	6	Polearm
+38604	2	6	Polearm
+38609	2	6	Polearm
+38720	2	6	Polearm
+39123	2	6	Polearm
+39184	2	6	Polearm
+39186	2	6	Polearm
+40436	2	6	Polearm
+40478	2	6	Polearm
+40485	2	6	Polearm
+40607	2	6	Polearm
+40729	2	6	Polearm
+41022	2	6	Polearm
+41256	2	6	Polearm
+41358	2	6	Polearm
+41695	2	6	Polearm
+41750	2	6	Polearm
+41889	2	6	Polearm
+42296	2	6	Polearm
+42326	2	6	Polearm
+42330	2	6	Polearm
+42507	2	6	Polearm
+42509	2	6	Polearm
+42873	2	6	Polearm
+43110	2	6	Polearm
+43114	2	6	Polearm
+43477	2	6	Polearm
+44236	2	6	Polearm
+44603	2	6	Polearm
+44952	2	6	Polearm
+45081	2	6	Polearm
+45884	2	6	Polearm
+46837	2	6	Polearm
+47013	2	6	Polearm
+47031	2	6	Polearm
+47332	2	6	Polearm
+47505	2	6	Polearm
+49353	2	6	Polearm
+49363	2	6	Polearm
+49654	2	6	Polearm
+50178	2	6	Polearm
+50425	2	6	Polearm
+50599	2	6	Polearm
+50727	2	6	Polearm
+50735	2	6	Polearm
+50814	2	6	Polearm
+51022	2	6	Polearm
+51857	2	6	Polearm
+51949	2	6	Polearm
+52010	2	6	Polearm
+788	2	7	One Hand Sword
+945	2	7	One Hand Sword
+948	2	7	One Hand Sword
+997	2	7	One Hand Sword
+1018	2	7	One Hand Sword
+1895	2	7	One Hand Sword
+1896	2	7	One Hand Sword
+1897	2	7	One Hand Sword
+1899	2	7	One Hand Sword
+1900	2	7	One Hand Sword
+2147	2	7	One Hand Sword
+2178	2	7	One Hand Sword
+2179	2	7	One Hand Sword
+2180	2	7	One Hand Sword
+2481	2	7	One Hand Sword
+2496	2	7	One Hand Sword
+3278	2	7	One Hand Sword
+3359	2	7	One Hand Sword
+3364	2	7	One Hand Sword
+3933	2	7	One Hand Sword
+5305	2	7	One Hand Sword
+5502	2	7	One Hand Sword
+5555	2	7	One Hand Sword
+5953	2	7	One Hand Sword
+5954	2	7	One Hand Sword
+7171	2	7	One Hand Sword
+10613	2	7	One Hand Sword
+10614	2	7	One Hand Sword
+10615	2	7	One Hand Sword
+10825	2	7	One Hand Sword
+10878	2	7	One Hand Sword
+10898	2	7	One Hand Sword
+11019	2	7	One Hand Sword
+11025	2	7	One Hand Sword
+11042	2	7	One Hand Sword
+12142	2	7	One Hand Sword
+12297	2	7	One Hand Sword
+12304	2	7	One Hand Sword
+12593	2	7	One Hand Sword
+12890	2	7	One Hand Sword
+12892	2	7	One Hand Sword
+12944	2	7	One Hand Sword
+12971	2	7	One Hand Sword
+12972	2	7	One Hand Sword
+12993	2	7	One Hand Sword
+13165	2	7	One Hand Sword
+13222	2	7	One Hand Sword
+13504	2	7	One Hand Sword
+13627	2	7	One Hand Sword
+13707	2	7	One Hand Sword
+13718	2	7	One Hand Sword
+13719	2	7	One Hand Sword
+14085	2	7	One Hand Sword
+14391	2	7	One Hand Sword
+14524	2	7	One Hand Sword
+14871	2	7	One Hand Sword
+14883	2	7	One Hand Sword
+14884	2	7	One Hand Sword
+14885	2	7	One Hand Sword
+14886	2	7	One Hand Sword
+14887	2	7	One Hand Sword
+14888	2	7	One Hand Sword
+14889	2	7	One Hand Sword
+14890	2	7	One Hand Sword
+14891	2	7	One Hand Sword
+14892	2	7	One Hand Sword
+16212	2	7	One Hand Sword
+17123	2	7	One Hand Sword
+17342	2	7	One Hand Sword
+17802	2	7	One Hand Sword
+18167	2	7	One Hand Sword
+18983	2	7	One Hand Sword
+18985	2	7	One Hand Sword
+19427	2	7	One Hand Sword
+19428	2	7	One Hand Sword
+19456	2	7	One Hand Sword
+19457	2	7	One Hand Sword
+19502	2	7	One Hand Sword
+19503	2	7	One Hand Sword
+19504	2	7	One Hand Sword
+20811	2	7	One Hand Sword
+20977	2	7	One Hand Sword
+21573	2	7	One Hand Sword
+21782	2	7	One Hand Sword
+22738	2	7	One Hand Sword
+22805	2	7	One Hand Sword
+23225	2	7	One Hand Sword
+23229	2	7	One Hand Sword
+23230	2	7	One Hand Sword
+23232	2	7	One Hand Sword
+23241	2	7	One Hand Sword
+23382	2	7	One Hand Sword
+23421	2	7	One Hand Sword
+23647	2	7	One Hand Sword
+23648	2	7	One Hand Sword
+23649	2	7	One Hand Sword
+23651	2	7	One Hand Sword
+23652	2	7	One Hand Sword
+23653	2	7	One Hand Sword
+23673	2	7	One Hand Sword
+23741	2	7	One Hand Sword
+23743	2	7	One Hand Sword
+23913	2	7	One Hand Sword
+23914	2	7	One Hand Sword
+23918	2	7	One Hand Sword
+24034	2	7	One Hand Sword
+25145	2	7	One Hand Sword
+25816	2	7	One Hand Sword
+25860	2	7	One Hand Sword
+25879	2	7	One Hand Sword
+26616	2	7	One Hand Sword
+26617	2	7	One Hand Sword
+26618	2	7	One Hand Sword
+26619	2	7	One Hand Sword
+26620	2	7	One Hand Sword
+26621	2	7	One Hand Sword
+26622	2	7	One Hand Sword
+26623	2	7	One Hand Sword
+26624	2	7	One Hand Sword
+26625	2	7	One Hand Sword
+26626	2	7	One Hand Sword
+26627	2	7	One Hand Sword
+26628	2	7	One Hand Sword
+26629	2	7	One Hand Sword
+27405	2	7	One Hand Sword
+28037	2	7	One Hand Sword
+28087	2	7	One Hand Sword
+28133	2	7	One Hand Sword
+29403	2	7	One Hand Sword
+29404	2	7	One Hand Sword
+29405	2	7	One Hand Sword
+29406	2	7	One Hand Sword
+29415	2	7	One Hand Sword
+29420	2	7	One Hand Sword
+29439	2	7	One Hand Sword
+29446	2	7	One Hand Sword
+29462	2	7	One Hand Sword
+29542	2	7	One Hand Sword
+29666	2	7	One Hand Sword
+29667	2	7	One Hand Sword
+29668	2	7	One Hand Sword
+29670	2	7	One Hand Sword
+29671	2	7	One Hand Sword
+29816	2	7	One Hand Sword
+29820	2	7	One Hand Sword
+29831	2	7	One Hand Sword
+29832	2	7	One Hand Sword
+30147	2	7	One Hand Sword
+30181	2	7	One Hand Sword
+30393	2	7	One Hand Sword
+30403	2	7	One Hand Sword
+30405	2	7	One Hand Sword
+30406	2	7	One Hand Sword
+30407	2	7	One Hand Sword
+30408	2	7	One Hand Sword
+30409	2	7	One Hand Sword
+30410	2	7	One Hand Sword
+30411	2	7	One Hand Sword
+30412	2	7	One Hand Sword
+30484	2	7	One Hand Sword
+30485	2	7	One Hand Sword
+30624	2	7	One Hand Sword
+30647	2	7	One Hand Sword
+30648	2	7	One Hand Sword
+31259	2	7	One Hand Sword
+31302	2	7	One Hand Sword
+31311	2	7	One Hand Sword
+31603	2	7	One Hand Sword
+31611	2	7	One Hand Sword
+31612	2	7	One Hand Sword
+31806	2	7	One Hand Sword
+31822	2	7	One Hand Sword
+32177	2	7	One Hand Sword
+32180	2	7	One Hand Sword
+32272	2	7	One Hand Sword
+32384	2	7	One Hand Sword
+32425	2	7	One Hand Sword
+32466	2	7	One Hand Sword
+32484	2	7	One Hand Sword
+32615	2	7	One Hand Sword
+32632	2	7	One Hand Sword
+32633	2	7	One Hand Sword
+32874	2	7	One Hand Sword
+32889	2	7	One Hand Sword
+32890	2	7	One Hand Sword
+32949	2	7	One Hand Sword
+33295	2	7	One Hand Sword
+33609	2	7	One Hand Sword
+33984	2	7	One Hand Sword
+33990	2	7	One Hand Sword
+33992	2	7	One Hand Sword
+34282	2	7	One Hand Sword
+34283	2	7	One Hand Sword
+34284	2	7	One Hand Sword
+34285	2	7	One Hand Sword
+34286	2	7	One Hand Sword
+34288	2	7	One Hand Sword
+34324	2	7	One Hand Sword
+34505	2	7	One Hand Sword
+34531	2	7	One Hand Sword
+34552	2	7	One Hand Sword
+34596	2	7	One Hand Sword
+34640	2	7	One Hand Sword
+34682	2	7	One Hand Sword
+34696	2	7	One Hand Sword
+34821	2	7	One Hand Sword
+34879	2	7	One Hand Sword
+34880	2	7	One Hand Sword
+34886	2	7	One Hand Sword
+35117	2	7	One Hand Sword
+35510	2	7	One Hand Sword
+35515	2	7	One Hand Sword
+35561	2	7	One Hand Sword
+35780	2	7	One Hand Sword
+36519	2	7	One Hand Sword
+36749	2	7	One Hand Sword
+36990	2	7	One Hand Sword
+37001	2	7	One Hand Sword
+38158	2	7	One Hand Sword
+38183	2	7	One Hand Sword
+38199	2	7	One Hand Sword
+38215	2	7	One Hand Sword
+38391	2	7	One Hand Sword
+38693	2	7	One Hand Sword
+38723	2	7	One Hand Sword
+39287	2	7	One Hand Sword
+39659	2	7	One Hand Sword
+39662	2	7	One Hand Sword
+39754	2	7	One Hand Sword
+40276	2	7	One Hand Sword
+40553	2	7	One Hand Sword
+40894	2	7	One Hand Sword
+41177	2	7	One Hand Sword
+41263	2	7	One Hand Sword
+41343	2	7	One Hand Sword
+41748	2	7	One Hand Sword
+42161	2	7	One Hand Sword
+42223	2	7	One Hand Sword
+42224	2	7	One Hand Sword
+42284	2	7	One Hand Sword
+42288	2	7	One Hand Sword
+42289	2	7	One Hand Sword
+42293	2	7	One Hand Sword
+42427	2	7	One Hand Sword
+42757	2	7	One Hand Sword
+42920	2	7	One Hand Sword
+42932	2	7	One Hand Sword
+42933	2	7	One Hand Sword
+43091	2	7	One Hand Sword
+43221	2	7	One Hand Sword
+43267	2	7	One Hand Sword
+43487	2	7	One Hand Sword
+43580	2	7	One Hand Sword
+43922	2	7	One Hand Sword
+43967	2	7	One Hand Sword
+44162	2	7	One Hand Sword
+44237	2	7	One Hand Sword
+44238	2	7	One Hand Sword
+44439	2	7	One Hand Sword
+44705	2	7	One Hand Sword
+44727	2	7	One Hand Sword
+45727	2	7	One Hand Sword
+45899	2	7	One Hand Sword
+46957	2	7	One Hand Sword
+47137	2	7	One Hand Sword
+47513	2	7	One Hand Sword
+47846	2	7	One Hand Sword
+49340	2	7	One Hand Sword
+49341	2	7	One Hand Sword
+49342	2	7	One Hand Sword
+49344	2	7	One Hand Sword
+49345	2	7	One Hand Sword
+49346	2	7	One Hand Sword
+49637	2	7	One Hand Sword
+49687	2	7	One Hand Sword
+49719	2	7	One Hand Sword
+49721	2	7	One Hand Sword
+49727	2	7	One Hand Sword
+49729	2	7	One Hand Sword
+49763	2	7	One Hand Sword
+49814	2	7	One Hand Sword
+49931	2	7	One Hand Sword
+50068	2	7	One Hand Sword
+50217	2	7	One Hand Sword
+50248	2	7	One Hand Sword
+50249	2	7	One Hand Sword
+50252	2	7	One Hand Sword
+50257	2	7	One Hand Sword
+50427	2	7	One Hand Sword
+50544	2	7	One Hand Sword
+50576	2	7	One Hand Sword
+50672	2	7	One Hand Sword
+50704	2	7	One Hand Sword
+50732	2	7	One Hand Sword
+50815	2	7	One Hand Sword
+51010	2	7	One Hand Sword
+51021	2	7	One Hand Sword
+51323	2	7	One Hand Sword
+51858	2	7	One Hand Sword
+51869	2	7	One Hand Sword
+51932	2	7	One Hand Sword
+52007	2	7	One Hand Sword
+52034	2	7	One Hand Sword
+913	2	8	Two Hand Sword
+1266	2	8	Two Hand Sword
+1983	2	8	Two Hand Sword
+2128	2	8	Two Hand Sword
+2181	2	8	Two Hand Sword
+2497	2	8	Two Hand Sword
+3366	2	8	Two Hand Sword
+3687	2	8	Two Hand Sword
+3934	2	8	Two Hand Sword
+4991	2	8	Two Hand Sword
+5031	2	8	Two Hand Sword
+5032	2	8	Two Hand Sword
+5033	2	8	Two Hand Sword
+5034	2	8	Two Hand Sword
+5035	2	8	Two Hand Sword
+5036	2	8	Two Hand Sword
+5037	2	8	Two Hand Sword
+5039	2	8	Two Hand Sword
+5556	2	8	Two Hand Sword
+6224	2	8	Two Hand Sword
+7677	2	8	Two Hand Sword
+11087	2	8	Two Hand Sword
+11321	2	8	Two Hand Sword
+11322	2	8	Two Hand Sword
+11323	2	8	Two Hand Sword
+11591	2	8	Two Hand Sword
+12331	2	8	Two Hand Sword
+12469	2	8	Two Hand Sword
+12755	2	8	Two Hand Sword
+12882	2	8	Two Hand Sword
+12889	2	8	Two Hand Sword
+12902	2	8	Two Hand Sword
+12949	2	8	Two Hand Sword
+13150	2	8	Two Hand Sword
+13160	2	8	Two Hand Sword
+13316	2	8	Two Hand Sword
+13623	2	8	Two Hand Sword
+13708	2	8	Two Hand Sword
+14878	2	8	Two Hand Sword
+18882	2	8	Two Hand Sword
+19981	2	8	Two Hand Sword
+21553	2	8	Two Hand Sword
+21794	2	8	Two Hand Sword
+21797	2	8	Two Hand Sword
+21798	2	8	Two Hand Sword
+21799	2	8	Two Hand Sword
+22596	2	8	Two Hand Sword
+22709	2	8	Two Hand Sword
+22814	2	8	Two Hand Sword
+23328	2	8	Two Hand Sword
+23432	2	8	Two Hand Sword
+24325	2	8	Two Hand Sword
+24495	2	8	Two Hand Sword
+25159	2	8	Two Hand Sword
+25688	2	8	Two Hand Sword
+26003	2	8	Two Hand Sword
+26630	2	8	Two Hand Sword
+26631	2	8	Two Hand Sword
+26632	2	8	Two Hand Sword
+26633	2	8	Two Hand Sword
+26634	2	8	Two Hand Sword
+26635	2	8	Two Hand Sword
+26636	2	8	Two Hand Sword
+26637	2	8	Two Hand Sword
+26638	2	8	Two Hand Sword
+26639	2	8	Two Hand Sword
+26640	2	8	Two Hand Sword
+26641	2	8	Two Hand Sword
+26642	2	8	Two Hand Sword
+26643	2	8	Two Hand Sword
+27961	2	8	Two Hand Sword
+27962	2	8	Two Hand Sword
+27974	2	8	Two Hand Sword
+27975	2	8	Two Hand Sword
+28008	2	8	Two Hand Sword
+28009	2	8	Two Hand Sword
+28021	2	8	Two Hand Sword
+28022	2	8	Two Hand Sword
+28115	2	8	Two Hand Sword
+28125	2	8	Two Hand Sword
+28488	2	8	Two Hand Sword
+28916	2	8	Two Hand Sword
+29538	2	8	Two Hand Sword
+29643	2	8	Two Hand Sword
+29644	2	8	Two Hand Sword
+29645	2	8	Two Hand Sword
+29646	2	8	Two Hand Sword
+29647	2	8	Two Hand Sword
+29648	2	8	Two Hand Sword
+29649	2	8	Two Hand Sword
+29650	2	8	Two Hand Sword
+29819	2	8	Two Hand Sword
+30204	2	8	Two Hand Sword
+30367	2	8	Two Hand Sword
+30455	2	8	Two Hand Sword
+30482	2	8	Two Hand Sword
+30636	2	8	Two Hand Sword
+30714	2	8	Two Hand Sword
+30801	2	8	Two Hand Sword
+31081	2	8	Two Hand Sword
+31207	2	8	Two Hand Sword
+31267	2	8	Two Hand Sword
+32186	2	8	Two Hand Sword
+32460	2	8	Two Hand Sword
+32603	2	8	Two Hand Sword
+32614	2	8	Two Hand Sword
+32824	2	8	Two Hand Sword
+32879	2	8	Two Hand Sword
+32922	2	8	Two Hand Sword
+32925	2	8	Two Hand Sword
+32928	2	8	Two Hand Sword
+32930	2	8	Two Hand Sword
+32932	2	8	Two Hand Sword
+32934	2	8	Two Hand Sword
+32935	2	8	Two Hand Sword
+32938	2	8	Two Hand Sword
+32940	2	8	Two Hand Sword
+32951	2	8	Two Hand Sword
+32953	2	8	Two Hand Sword
+33172	2	8	Two Hand Sword
+33180	2	8	Two Hand Sword
+33213	2	8	Two Hand Sword
+33275	2	8	Two Hand Sword
+33350	2	8	Two Hand Sword
+33475	2	8	Two Hand Sword
+33773	2	8	Two Hand Sword
+34287	2	8	Two Hand Sword
+34289	2	8	Two Hand Sword
+34290	2	8	Two Hand Sword
+34291	2	8	Two Hand Sword
+34292	2	8	Two Hand Sword
+34293	2	8	Two Hand Sword
+34294	2	8	Two Hand Sword
+34295	2	8	Two Hand Sword
+34296	2	8	Two Hand Sword
+34297	2	8	Two Hand Sword
+34298	2	8	Two Hand Sword
+34299	2	8	Two Hand Sword
+34300	2	8	Two Hand Sword
+34301	2	8	Two Hand Sword
+34302	2	8	Two Hand Sword
+34303	2	8	Two Hand Sword
+34304	2	8	Two Hand Sword
+34305	2	8	Two Hand Sword
+34306	2	8	Two Hand Sword
+34307	2	8	Two Hand Sword
+34308	2	8	Two Hand Sword
+34309	2	8	Two Hand Sword
+34310	2	8	Two Hand Sword
+34311	2	8	Two Hand Sword
+34661	2	8	Two Hand Sword
+34693	2	8	Two Hand Sword
+34694	2	8	Two Hand Sword
+34820	2	8	Two Hand Sword
+34876	2	8	Two Hand Sword
+35236	2	8	Two Hand Sword
+35559	2	8	Two Hand Sword
+35560	2	8	Two Hand Sword
+35712	2	8	Two Hand Sword
+35757	2	8	Two Hand Sword
+35939	2	8	Two Hand Sword
+36533	2	8	Two Hand Sword
+36942	2	8	Two Hand Sword
+37123	2	8	Two Hand Sword
+37146	2	8	Two Hand Sword
+37308	2	8	Two Hand Sword
+37609	2	8	Two Hand Sword
+37610	2	8	Two Hand Sword
+38182	2	8	Two Hand Sword
+38282	2	8	Two Hand Sword
+38392	2	8	Two Hand Sword
+38691	2	8	Two Hand Sword
+39024	2	8	Two Hand Sword
+39312	2	8	Two Hand Sword
+39370	2	8	Two Hand Sword
+39751	2	8	Two Hand Sword
+40464	2	8	Two Hand Sword
+40480	2	8	Two Hand Sword
+40644	2	8	Two Hand Sword
+41259	2	8	Two Hand Sword
+41370	2	8	Two Hand Sword
+41371	2	8	Two Hand Sword
+42297	2	8	Two Hand Sword
+42331	2	8	Two Hand Sword
+42335	2	8	Two Hand Sword
+42477	2	8	Two Hand Sword
+42478	2	8	Two Hand Sword
+42547	2	8	Two Hand Sword
+42934	2	8	Two Hand Sword
+42935	2	8	Two Hand Sword
+43578	2	8	Two Hand Sword
+43579	2	8	Two Hand Sword
+43692	2	8	Two Hand Sword
+44926	2	8	Two Hand Sword
+45124	2	8	Two Hand Sword
+45692	2	8	Two Hand Sword
+45926	2	8	Two Hand Sword
+46736	2	8	Two Hand Sword
+46737	2	8	Two Hand Sword
+49106	2	8	Two Hand Sword
+49292	2	8	Two Hand Sword
+49666	2	8	Two Hand Sword
+49684	2	8	Two Hand Sword
+49706	2	8	Two Hand Sword
+49708	2	8	Two Hand Sword
+49733	2	8	Two Hand Sword
+49767	2	8	Two Hand Sword
+49864	2	8	Two Hand Sword
+49984	2	8	Two Hand Sword
+50039	2	8	Two Hand Sword
+50070	2	8	Two Hand Sword
+50442	2	8	Two Hand Sword
+50730	2	8	Two Hand Sword
+51028	2	8	Two Hand Sword
+51936	2	8	Two Hand Sword
+52011	2	8	Two Hand Sword
+52062	2	8	Two Hand Sword
+1907	2	10	Staff
+1908	2	10	Staff
+1948	2	10	Staff
+2176	2	10	Staff
+2177	2	10	Staff
+2487	2	10	Staff
+2559	2	10	Staff
+2811	2	10	Staff
+3738	2	10	Staff
+5276	2	10	Staff
+5277	2	10	Staff
+5303	2	10	Staff
+5304	2	10	Staff
+5558	2	10	Staff
+6322	2	10	Staff
+7826	2	10	Staff
+11343	2	10	Staff
+11365	2	10	Staff
+11424	2	10	Staff
+11542	2	10	Staff
+11588	2	10	Staff
+12182	2	10	Staff
+12322	2	10	Staff
+12328	2	10	Staff
+12329	2	10	Staff
+12421	2	10	Staff
+12591	2	10	Staff
+12937	2	10	Staff
+12943	2	10	Staff
+12959	2	10	Staff
+13050	2	10	Staff
+13061	2	10	Staff
+13069	2	10	Staff
+13078	2	10	Staff
+13336	2	10	Staff
+13337	2	10	Staff
+13338	2	10	Staff
+13339	2	10	Staff
+13622	2	10	Staff
+13698	2	10	Staff
+13705	2	10	Staff
+13709	2	10	Staff
+13720	2	10	Staff
+13721	2	10	Staff
+13722	2	10	Staff
+13723	2	10	Staff
+13750	2	10	Staff
+13751	2	10	Staff
+13753	2	10	Staff
+14083	2	10	Staff
+14092	2	10	Staff
+14392	2	10	Staff
+14618	2	10	Staff
+14706	2	10	Staff
+14707	2	10	Staff
+14836	2	10	Staff
+14837	2	10	Staff
+14845	2	10	Staff
+14873	2	10	Staff
+18122	2	10	Staff
+18123	2	10	Staff
+18644	2	10	Staff
+18801	2	10	Staff
+19214	2	10	Staff
+20334	2	10	Staff
+20349	2	10	Staff
+20362	2	10	Staff
+20370	2	10	Staff
+20372	2	10	Staff
+20522	2	10	Staff
+20718	2	10	Staff
+20719	2	10	Staff
+21056	2	10	Staff
+21069	2	10	Staff
+21084	2	10	Staff
+21097	2	10	Staff
+21101	2	10	Staff
+21102	2	10	Staff
+21125	2	10	Staff
+21276	2	10	Staff
+21795	2	10	Staff
+22391	2	10	Staff
+23240	2	10	Staff
+23335	2	10	Staff
+23416	2	10	Staff
+23998	2	10	Staff
+24321	2	10	Staff
+24570	2	10	Staff
+25173	2	10	Staff
+25625	2	10	Staff
+25698	2	10	Staff
+25839	2	10	Staff
+25885	2	10	Staff
+26644	2	10	Staff
+26645	2	10	Staff
+26646	2	10	Staff
+26647	2	10	Staff
+26648	2	10	Staff
+26649	2	10	Staff
+26650	2	10	Staff
+26651	2	10	Staff
+26652	2	10	Staff
+26653	2	10	Staff
+26654	2	10	Staff
+26655	2	10	Staff
+26656	2	10	Staff
+26657	2	10	Staff
+26798	2	10	Staff
+26799	2	10	Staff
+26800	2	10	Staff
+26801	2	10	Staff
+26802	2	10	Staff
+26803	2	10	Staff
+26804	2	10	Staff
+26805	2	10	Staff
+26806	2	10	Staff
+26807	2	10	Staff
+26808	2	10	Staff
+26809	2	10	Staff
+26810	2	10	Staff
+26811	2	10	Staff
+27923	2	10	Staff
+28067	2	10	Staff
+28195	2	10	Staff
+28196	2	10	Staff
+28197	2	10	Staff
+28198	2	10	Staff
+28199	2	10	Staff
+28200	2	10	Staff
+28208	2	10	Staff
+28456	2	10	Staff
+28738	2	10	Staff
+28739	2	10	Staff
+29107	2	10	Staff
+29114	2	10	Staff
+29310	2	10	Staff
+29416	2	10	Staff
+29421	2	10	Staff
+29431	2	10	Staff
+29432	2	10	Staff
+29440	2	10	Staff
+29441	2	10	Staff
+29442	2	10	Staff
+29537	2	10	Staff
+29544	2	10	Staff
+29676	2	10	Staff
+29678	2	10	Staff
+29679	2	10	Staff
+29680	2	10	Staff
+29681	2	10	Staff
+29683	2	10	Staff
+29685	2	10	Staff
+29686	2	10	Staff
+29687	2	10	Staff
+29688	2	10	Staff
+29690	2	10	Staff
+29692	2	10	Staff
+29694	2	10	Staff
+29695	2	10	Staff
+29696	2	10	Staff
+29697	2	10	Staff
+29715	2	10	Staff
+29716	2	10	Staff
+29748	2	10	Staff
+30310	2	10	Staff
+30392	2	10	Staff
+30423	2	10	Staff
+30424	2	10	Staff
+30441	2	10	Staff
+30669	2	10	Staff
+31253	2	10	Staff
+31257	2	10	Staff
+31296	2	10	Staff
+31301	2	10	Staff
+31309	2	10	Staff
+31605	2	10	Staff
+31608	2	10	Staff
+31801	2	10	Staff
+32185	2	10	Staff
+32360	2	10	Staff
+32605	2	10	Staff
+32607	2	10	Staff
+32610	2	10	Staff
+32873	2	10	Staff
+32884	2	10	Staff
+32893	2	10	Staff
+33002	2	10	Staff
+33170	2	10	Staff
+33608	2	10	Staff
+33795	2	10	Staff
+33798	2	10	Staff
+33983	2	10	Staff
+34079	2	10	Staff
+34771	2	10	Staff
+34877	2	10	Staff
+34878	2	10	Staff
+34882	2	10	Staff
+34884	2	10	Staff
+34899	2	10	Staff
+35220	2	10	Staff
+35714	2	10	Staff
+35740	2	10	Staff
+35741	2	10	Staff
+35742	2	10	Staff
+35743	2	10	Staff
+35781	2	10	Staff
+35942	2	10	Staff
+36701	2	10	Staff
+36750	2	10	Staff
+36869	2	10	Staff
+38136	2	10	Staff
+38140	2	10	Staff
+38245	2	10	Staff
+38248	2	10	Staff
+38298	2	10	Staff
+38315	2	10	Staff
+38507	2	10	Staff
+38580	2	10	Staff
+38652	2	10	Staff
+38692	2	10	Staff
+39111	2	10	Staff
+39122	2	10	Staff
+39289	2	10	Staff
+39699	2	10	Staff
+39742	2	10	Staff
+39743	2	10	Staff
+39744	2	10	Staff
+39745	2	10	Staff
+39746	2	10	Staff
+39750	2	10	Staff
+39892	2	10	Staff
+40605	2	10	Staff
+40606	2	10	Staff
+41090	2	10	Staff
+41176	2	10	Staff
+41180	2	10	Staff
+41342	2	10	Staff
+41364	2	10	Staff
+41365	2	10	Staff
+42139	2	10	Staff
+42165	2	10	Staff
+42356	2	10	Staff
+42357	2	10	Staff
+42358	2	10	Staff
+42359	2	10	Staff
+42367	2	10	Staff
+42382	2	10	Staff
+42383	2	10	Staff
+42387	2	10	Staff
+42388	2	10	Staff
+42389	2	10	Staff
+42393	2	10	Staff
+42426	2	10	Staff
+42773	2	10	Staff
+42923	2	10	Staff
+42924	2	10	Staff
+42925	2	10	Staff
+42941	2	10	Staff
+43014	2	10	Staff
+43093	2	10	Staff
+43152	2	10	Staff
+43196	2	10	Staff
+43216	2	10	Staff
+43219	2	10	Staff
+43220	2	10	Staff
+43223	2	10	Staff
+43226	2	10	Staff
+43227	2	10	Staff
+43474	2	10	Staff
+43596	2	10	Staff
+43617	2	10	Staff
+43618	2	10	Staff
+43619	2	10	Staff
+44415	2	10	Staff
+44416	2	10	Staff
+44417	2	10	Staff
+44418	2	10	Staff
+44425	2	10	Staff
+44426	2	10	Staff
+44604	2	10	Staff
+44706	2	10	Staff
+46738	2	10	Staff
+46983	2	10	Staff
+46984	2	10	Staff
+47123	2	10	Staff
+47359	2	10	Staff
+49311	2	10	Staff
+49653	2	10	Staff
+49709	2	10	Staff
+49716	2	10	Staff
+49724	2	10	Staff
+49736	2	10	Staff
+50040	2	10	Staff
+50181	2	10	Staff
+50224	2	10	Staff
+50225	2	10	Staff
+50429	2	10	Staff
+50520	2	10	Staff
+50567	2	10	Staff
+50597	2	10	Staff
+50648	2	10	Staff
+50695	2	10	Staff
+50725	2	10	Staff
+50731	2	10	Staff
+50966	2	10	Staff
+50998	2	10	Staff
+51582	2	10	Staff
+51797	2	10	Staff
+51799	2	10	Staff
+51828	2	10	Staff
+51881	2	10	Staff
+51887	2	10	Staff
+51898	2	10	Staff
+51943	2	10	Staff
+51945	2	10	Staff
+52009	2	10	Staff
+52012	2	10	Staff
+52016	2	10	Staff
+52033	2	10	Staff
+3494	2	13	Fist
+5600	2	13	Fist
+11314	2	13	Fist
+11505	2	13	Fist
+11506	2	13	Fist
+19226	2	13	Fist
+20003	2	13	Fist
+20005	2	13	Fist
+22210	2	13	Fist
+22211	2	13	Fist
+26658	2	13	Fist
+26659	2	13	Fist
+26660	2	13	Fist
+26661	2	13	Fist
+26662	2	13	Fist
+26663	2	13	Fist
+26664	2	13	Fist
+26665	2	13	Fist
+26666	2	13	Fist
+26667	2	13	Fist
+26668	2	13	Fist
+26669	2	13	Fist
+26670	2	13	Fist
+26671	2	13	Fist
+28905	2	13	Fist
+28906	2	13	Fist
+31802	2	13	Fist
+31803	2	13	Fist
+32188	2	13	Fist
+32189	2	13	Fist
+32477	2	13	Fist
+32504	2	13	Fist
+32877	2	13	Fist
+32878	2	13	Fist
+33525	2	13	Fist
+33526	2	13	Fist
+33975	2	13	Fist
+35312	2	13	Fist
+35719	2	13	Fist
+36561	2	13	Fist
+38159	2	13	Fist
+38179	2	13	Fist
+38180	2	13	Fist
+38243	2	13	Fist
+38469	2	13	Fist
+38602	2	13	Fist
+38603	2	13	Fist
+39155	2	13	Fist
+40967	2	13	Fist
+40968	2	13	Fist
+42218	2	13	Fist
+42219	2	13	Fist
+42220	2	13	Fist
+42259	2	13	Fist
+42263	2	13	Fist
+42264	2	13	Fist
+42268	2	13	Fist
+42269	2	13	Fist
+42273	2	13	Fist
+46981	2	13	Fist
+46982	2	13	Fist
+49070	2	13	Fist
+49072	2	13	Fist
+50035	2	13	Fist
+50184	2	13	Fist
+50564	2	13	Fist
+50582	2	13	Fist
+50692	2	13	Fist
+50710	2	13	Fist
+51003	2	13	Fist
+51784	2	13	Fist
+51801	2	13	Fist
+51819	2	13	Fist
+51876	2	13	Fist
+51941	2	13	Fist
+1313	2	15	Dagger
+2184	2	15	Dagger
+2206	2	15	Dagger
+2484	2	15	Dagger
+2664	2	15	Dagger
+2711	2	15	Dagger
+2812	2	15	Dagger
+3145	2	15	Dagger
+3865	2	15	Dagger
+5278	2	15	Dagger
+5280	2	15	Dagger
+5281	2	15	Dagger
+5282	2	15	Dagger
+5283	2	15	Dagger
+5284	2	15	Dagger
+5285	2	15	Dagger
+5549	2	15	Dagger
+6036	2	15	Dagger
+7167	2	15	Dagger
+7169	2	15	Dagger
+9042	2	15	Dagger
+10616	2	15	Dagger
+10617	2	15	Dagger
+10618	2	15	Dagger
+10619	2	15	Dagger
+12298	2	15	Dagger
+12332	2	15	Dagger
+12686	2	15	Dagger
+12767	2	15	Dagger
+12991	2	15	Dagger
+17282	2	15	Dagger
+17283	2	15	Dagger
+19313	2	15	Dagger
+19314	2	15	Dagger
+19622	2	15	Dagger
+19810	2	15	Dagger
+19924	2	15	Dagger
+19980	2	15	Dagger
+19987	2	15	Dagger
+20279	2	15	Dagger
+20303	2	15	Dagger
+20317	2	15	Dagger
+21035	2	15	Dagger
+21122	2	15	Dagger
+21516	2	15	Dagger
+21518	2	15	Dagger
+21551	2	15	Dagger
+22215	2	15	Dagger
+23174	2	15	Dagger
+23369	2	15	Dagger
+23419	2	15	Dagger
+23422	2	15	Dagger
+23450	2	15	Dagger
+23481	2	15	Dagger
+23650	2	15	Dagger
+23905	2	15	Dagger
+23908	2	15	Dagger
+23911	2	15	Dagger
+23912	2	15	Dagger
+23915	2	15	Dagger
+23916	2	15	Dagger
+23917	2	15	Dagger
+24070	2	15	Dagger
+24071	2	15	Dagger
+24100	2	15	Dagger
+24324	2	15	Dagger
+24377	2	15	Dagger
+24418	2	15	Dagger
+26574	2	15	Dagger
+26575	2	15	Dagger
+26576	2	15	Dagger
+26577	2	15	Dagger
+26578	2	15	Dagger
+26579	2	15	Dagger
+26580	2	15	Dagger
+26581	2	15	Dagger
+26582	2	15	Dagger
+26583	2	15	Dagger
+26584	2	15	Dagger
+26585	2	15	Dagger
+26586	2	15	Dagger
+26587	2	15	Dagger
+26770	2	15	Dagger
+26771	2	15	Dagger
+26772	2	15	Dagger
+26773	2	15	Dagger
+26774	2	15	Dagger
+26775	2	15	Dagger
+26776	2	15	Dagger
+26777	2	15	Dagger
+26778	2	15	Dagger
+26780	2	15	Dagger
+26781	2	15	Dagger
+26782	2	15	Dagger
+26783	2	15	Dagger
+27496	2	15	Dagger
+28678	2	15	Dagger
+29435	2	15	Dagger
+29825	2	15	Dagger
+29826	2	15	Dagger
+29827	2	15	Dagger
+29828	2	15	Dagger
+30389	2	15	Dagger
+30576	2	15	Dagger
+30578	2	15	Dagger
+30660	2	15	Dagger
+31609	2	15	Dagger
+31669	2	15	Dagger
+31805	2	15	Dagger
+32178	2	15	Dagger
+32179	2	15	Dagger
+32190	2	15	Dagger
+32562	2	15	Dagger
+32731	2	15	Dagger
+32841	2	15	Dagger
+32856	2	15	Dagger
+32894	2	15	Dagger
+32914	2	15	Dagger
+32923	2	15	Dagger
+32926	2	15	Dagger
+32927	2	15	Dagger
+32929	2	15	Dagger
+32931	2	15	Dagger
+32933	2	15	Dagger
+32936	2	15	Dagger
+32937	2	15	Dagger
+32939	2	15	Dagger
+33543	2	15	Dagger
+34045	2	15	Dagger
+34449	2	15	Dagger
+34450	2	15	Dagger
+34451	2	15	Dagger
+34452	2	15	Dagger
+34453	2	15	Dagger
+34454	2	15	Dagger
+34455	2	15	Dagger
+34456	2	15	Dagger
+34457	2	15	Dagger
+34458	2	15	Dagger
+34459	2	15	Dagger
+34460	2	15	Dagger
+34461	2	15	Dagger
+34462	2	15	Dagger
+34463	2	15	Dagger
+34875	2	15	Dagger
+35684	2	15	Dagger
+35793	2	15	Dagger
+36477	2	15	Dagger
+36673	2	15	Dagger
+37596	2	15	Dagger
+37611	2	15	Dagger
+37649	2	15	Dagger
+37697	2	15	Dagger
+37739	2	15	Dagger
+37924	2	15	Dagger
+38184	2	15	Dagger
+38247	2	15	Dagger
+38470	2	15	Dagger
+39126	2	15	Dagger
+40183	2	15	Dagger
+41244	2	15	Dagger
+42166	2	15	Dagger
+42167	2	15	Dagger
+42215	2	15	Dagger
+42216	2	15	Dagger
+42217	2	15	Dagger
+42241	2	15	Dagger
+42245	2	15	Dagger
+42247	2	15	Dagger
+42251	2	15	Dagger
+42254	2	15	Dagger
+42258	2	15	Dagger
+42343	2	15	Dagger
+42345	2	15	Dagger
+42349	2	15	Dagger
+43479	2	15	Dagger
+43598	2	15	Dagger
+45172	2	15	Dagger
+45484	2	15	Dagger
+45910	2	15	Dagger
+45913	2	15	Dagger
+45914	2	15	Dagger
+45915	2	15	Dagger
+45916	2	15	Dagger
+45917	2	15	Dagger
+45918	2	15	Dagger
+45919	2	15	Dagger
+45920	2	15	Dagger
+45921	2	15	Dagger
+45922	2	15	Dagger
+45923	2	15	Dagger
+45925	2	15	Dagger
+45985	2	15	Dagger
+46089	2	15	Dagger
+46090	2	15	Dagger
+46107	2	15	Dagger
+46841	2	15	Dagger
+47005	2	15	Dagger
+47117	2	15	Dagger
+47361	2	15	Dagger
+47401	2	15	Dagger
+47407	2	15	Dagger
+47844	2	15	Dagger
+49152	2	15	Dagger
+49154	2	15	Dagger
+49713	2	15	Dagger
+49714	2	15	Dagger
+49734	2	15	Dagger
+49735	2	15	Dagger
+49764	2	15	Dagger
+49935	2	15	Dagger
+50016	2	15	Dagger
+50183	2	15	Dagger
+50426	2	15	Dagger
+50480	2	15	Dagger
+50493	2	15	Dagger
+50513	2	15	Dagger
+50548	2	15	Dagger
+50608	2	15	Dagger
+50621	2	15	Dagger
+50641	2	15	Dagger
+50676	2	15	Dagger
+50736	2	15	Dagger
+51011	2	15	Dagger
+51029	2	15	Dagger
+51384	2	15	Dagger
+51788	2	15	Dagger
+51800	2	15	Dagger
+51803	2	15	Dagger
+51815	2	15	Dagger
+51846	2	15	Dagger
+51868	2	15	Dagger
+51910	2	15	Dagger
+51939	2	15	Dagger
+51942	2	15	Dagger
+5856	2	16	Thrown
+5870	2	16	Thrown
+6088	2	16	Thrown
+6886	2	16	Thrown
+25871	2	16	Thrown
+25877	2	16	Thrown
+28023	2	16	Thrown
+28932	2	16	Thrown
+28958	2	16	Thrown
+29210	2	16	Thrown
+31385	2	16	Thrown
+31388	2	16	Thrown
+31497	2	16	Thrown
+31499	2	16	Thrown
+32740	2	16	Thrown
+33089	2	16	Thrown
+33338	2	16	Thrown
+34662	2	16	Thrown
+36715	2	16	Thrown
+37130	2	16	Thrown
+37534	2	16	Thrown
+38167	2	16	Thrown
+38192	2	16	Thrown
+38249	2	16	Thrown
+39185	2	16	Thrown
+42444	2	16	Thrown
+42449	2	16	Thrown
+42452	2	16	Thrown
+44454	2	16	Thrown
+49873	2	16	Thrown
+50999	2	16	Thrown
+51880	2	16	Thrown
+4900	2	17	Spear
+5557	2	17	Spear
+12986	2	17	Spear
+2551	2	18	CrossBow
+4899	2	18	CrossBow
+5546	2	18	CrossBow
+19489	2	18	CrossBow
+21550	2	18	CrossBow
+23052	2	18	CrossBow
+26728	2	18	CrossBow
+26729	2	18	CrossBow
+26730	2	18	CrossBow
+26731	2	18	CrossBow
+26732	2	18	CrossBow
+26733	2	18	CrossBow
+26734	2	18	CrossBow
+26735	2	18	CrossBow
+26736	2	18	CrossBow
+26737	2	18	CrossBow
+26738	2	18	CrossBow
+26739	2	18	CrossBow
+26740	2	18	CrossBow
+26741	2	18	CrossBow
+30580	2	18	CrossBow
+31352	2	18	CrossBow
+32187	2	18	CrossBow
+32876	2	18	CrossBow
+34312	2	18	CrossBow
+34313	2	18	CrossBow
+34314	2	18	CrossBow
+34315	2	18	CrossBow
+34316	2	18	CrossBow
+34317	2	18	CrossBow
+34318	2	18	CrossBow
+34320	2	18	CrossBow
+34321	2	18	CrossBow
+34322	2	18	CrossBow
+34323	2	18	CrossBow
+34325	2	18	CrossBow
+34326	2	18	CrossBow
+34327	2	18	CrossBow
+34328	2	18	CrossBow
+36631	2	18	CrossBow
+36762	2	18	CrossBow
+38200	2	18	CrossBow
+38472	2	18	CrossBow
+42446	2	18	CrossBow
+42494	2	18	CrossBow
+42497	2	18	CrossBow
+45175	2	18	CrossBow
+47025	2	18	CrossBow
+47394	2	18	CrossBow
+49981	2	18	CrossBow
+50733	2	18	CrossBow
+51802	2	18	CrossBow
+51940	2	18	CrossBow
+4902	2	19	Wand
+4912	2	19	Wand
+4985	2	19	Wand
+5070	2	19	Wand
+5560	2	19	Wand
+6230	2	19	Wand
+6231	2	19	Wand
+7186	2	19	Wand
+12468	2	19	Wand
+12941	2	19	Wand
+13290	2	19	Wand
+13291	2	19	Wand
+13292	2	19	Wand
+13293	2	19	Wand
+16582	2	19	Wand
+19983	2	19	Wand
+20335	2	19	Wand
+20350	2	19	Wand
+20363	2	19	Wand
+21057	2	19	Wand
+21070	2	19	Wand
+21085	2	19	Wand
+21098	2	19	Wand
+21124	2	19	Wand
+24569	2	19	Wand
+25285	2	19	Wand
+26756	2	19	Wand
+26757	2	19	Wand
+26758	2	19	Wand
+26759	2	19	Wand
+26760	2	19	Wand
+26761	2	19	Wand
+26762	2	19	Wand
+26763	2	19	Wand
+26764	2	19	Wand
+26766	2	19	Wand
+26767	2	19	Wand
+26768	2	19	Wand
+26769	2	19	Wand
+32482	2	19	Wand
+34138	2	19	Wand
+34139	2	19	Wand
+34144	2	19	Wand
+34145	2	19	Wand
+34146	2	19	Wand
+34147	2	19	Wand
+34148	2	19	Wand
+34149	2	19	Wand
+36659	2	19	Wand
+37266	2	19	Wand
+38201	2	19	Wand
+38203	2	19	Wand
+38204	2	19	Wand
+38205	2	19	Wand
+38394	2	19	Wand
+39007	2	19	Wand
+39008	2	19	Wand
+42448	2	19	Wand
+42501	2	19	Wand
+42505	2	19	Wand
+42511	2	19	Wand
+42512	2	19	Wand
+42516	2	19	Wand
+42517	2	19	Wand
+42518	2	19	Wand
+42522	2	19	Wand
+50033	2	19	Wand
+50204	2	19	Wand
+50472	2	19	Wand
+50503	2	19	Wand
+50556	2	19	Wand
+50631	2	19	Wand
+50684	2	19	Wand
+51326	2	19	Wand
+51553	2	19	Wand
+51838	2	19	Wand
+51852	2	19	Wand

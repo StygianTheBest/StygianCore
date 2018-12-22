@@ -1,0 +1,29 @@
+[worldserver]
+###################################################################################################
+#     ____    __                                         ____                           
+#    /\  _`\ /\ \__                  __                 /\  _`\                         
+#    \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+#     \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+#       /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+#       \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+#        \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+#                         /\___/ /\____/                                                
+#                         \/__/  \_/__/          http://stygianthebest.github.io                                         
+###################################################################################################
+#	GAMBLER NPC
+###################################################################################################
+
+# Announce the module when the player logs in?
+GamblerNPC.Announce = 1
+
+# Gambling amounts in gold the player can choose from.
+# The random win/loss works well, but larger amounts can be abused.
+# Defaults: 1, 2, 3, 4, 5
+Gambler.Amount1 = 1
+Gambler.Amount2 = 2
+Gambler.Amount3 = 3
+Gambler.Amount4 = 4
+Gambler.Amount5 = 5
+
+# Jackpot (default: 50) Amount In Gold (If 100 rolled in the first 10 bets)
+Gambler.Jackpot = 50
