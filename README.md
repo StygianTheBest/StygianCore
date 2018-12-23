@@ -136,6 +136,8 @@ The Support folder also contains documentation and other support files. You can 
 
 ### PLAYER ITEMS
 
+> _A [client patch](https://github.com/StygianTheBest/StygianCore/tree/master/Client/Data) is required to see the icons for the custom items in this repack._
+
 - **Personal Teleporter:** An item that spawns a teleport NPC that fades after use.
 - **Level-Up Token:** An item that levels the player up on use. This is a unique item.
 - **Tome of World Flying:** Sold by all flight masters. Allows flying in classic zones.
