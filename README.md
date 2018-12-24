@@ -88,6 +88,18 @@ The Support folder also contains documentation and other support files. You can 
 - Random chance to enchant gear on drop, quest, or craft
 - Day/Night Cycle configurable - One game day passes every 6 hours
 - XP Rate configurable as you play. From the console type: .xp set <rate 0-10>
+- Cross-Faction
+  - Accounts
+  - Auction House
+  - Calendar
+  - Channel
+  - Chat
+  - Friends
+  - Group
+  - Guild
+  - Mail
+  - Trade
+  - WhoList
 
 ### LIFE, DEATH, AND COMBAT
 
