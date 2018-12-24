@@ -93,6 +93,8 @@ INSERT INTO npc_text (ID, text0_0, em0_1) VALUES
 
 -- --------------------------------------------------------------------------------------
 -- Conditions for gossip option and menu factions
+-- ConditionTypeOrReference = 6 (Faction - 67 Horde, 469 - Alliance)
+-- ConditionTypeOrReference = 27 (Level Required - )
 -- --------------------------------------------------------------------------------------
 INSERT INTO conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, ConditionTypeOrReference, ConditionValue1, Comment) VALUES
 (15, @GOSSIP_MENU, 1, 6, 469, "Stormwind"),
@@ -137,6 +139,9 @@ INSERT INTO conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, Condi
 
 -- --------------------------------------------------------------------------------------
 -- Conditions for gossip option levels
+--
+-- ConditionTypeOrReference = 27 (Level Required - Level)
+--
 -- --------------------------------------------------------------------------------------
 INSERT INTO conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, ConditionTypeOrReference, ConditionValue1, ConditionValue2, ConditionValue3, Comment) VALUES
 (15, @GOSSIP_MENU+8, 9, 27, 77, 3, 0, "Portal Master - Level req"),
@@ -454,7 +459,7 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU+9, 1, 2, "Silithus Camp", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Silithus Camp?"),
 (@GOSSIP_MENU+9, 2, 2, "Koiter's Shrine", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Koiter's Shrine?"),
 (@GOSSIP_MENU+9, 3, 2, "Dead King's Crypt", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Dead King's Crypt?"),
-(@GOSSIP_MENU+9, 4, 2, "Everlook", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Everlook?"),
+(@GOSSIP_MENU+9, 4, 2, "Winterspring", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Winterspring?"),
 (@GOSSIP_MENU+9, 5, 2, "Moonglade Gem Vendors", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Moonglade Gem Vendors?"),
 (@GOSSIP_MENU+9, 6, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
 
@@ -604,9 +609,8 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silthus Camp"),
 (@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
 (@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
-(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Everlook"),
+(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
 (@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade");
-
 
 -- --------------------------------------------------------------------------------------
 -- Teleporter Spawns
@@ -629,7 +633,7 @@ INSERT INTO creature (id, map, spawnMask, phaseMask, modelid, position_x, positi
 -- StygianCore
 -- --------------------------------------------------------------------------------------
 (@ENTRY, 1, 1, 1, 0, -10750.6, 2470.34, 5.34563, 5.86648, 25, 0, 13700, 6540), 	-- Silithus Camp
-(@ENTRY, 1, 1, 1, 0, 6766.89, -4638.56, 722.002, 0.649926, 25, 0, 13700, 6540), -- Everlook
+(@ENTRY, 1, 1, 1, 0, 6766.89, -4638.56, 722.002, 0.649926, 25, 0, 13700, 6540), -- Winterspring
 (@ENTRY, 1, 1, 1, 0, 1009.35, 1031.26, 104.883, 1.52364, 25, 0, 13700, 6540); 	-- Sunrock Retreat
 
 
