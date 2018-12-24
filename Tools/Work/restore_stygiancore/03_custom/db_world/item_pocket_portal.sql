@@ -12,7 +12,7 @@
 -- 
 -- ################################################################################### --
 --
--- WORLD: PERSONAL TELEPORTER
+-- WORLD: POCKET PORTAL
 --
 -- Creates a personal teleporter that can be carried by the player.
 --
@@ -40,24 +40,165 @@ SET @GOSSIP_MENU    	:= 50000;
 SET @SCRIPTNAME			:= ""; -- internalitemhanler
 
 -- --------------------------------------------------------------------------------------
--- Clean Up
--- --------------------------------------------------------------------------------------
-DELETE FROM `item_template` WHERE (`entry`=@ITEMENTRY);
-DELETE FROM `creature_template` WHERE (`entry`=@ENTRY);
-DELETE FROM `creature_equip_template` WHERE (`CreatureID`=@ENTRY);
-DELETE FROM `smart_scripts` WHERE (`entryorguid`=@ENTRY) AND (`source_type`=@SOURCETYPE) AND (`id` = @SSID);
-
--- --------------------------------------------------------------------------------------
 -- Teleporter Item
 -- --------------------------------------------------------------------------------------
+DELETE FROM `item_template` WHERE (`entry`=@ITEMENTRY);
 INSERT INTO `item_template` (`entry`, `class`, `subclass`, `name`, `displayid`, `Quality`, `Flags`, `FlagsExtra`, `BuyCount`, `BuyPrice`, `SellPrice`, `InventoryType`, `AllowableClass`, `AllowableRace`, `ItemLevel`, `RequiredLevel`, `RequiredSkill`, `RequiredSkillRank`, `requiredspell`, `requiredhonorrank`, `RequiredCityRank`, `RequiredReputationFaction`, `RequiredReputationRank`, `maxcount`, `stackable`, `ContainerSlots`, `StatsCount`, `stat_type1`, `stat_value1`, `stat_type2`, `stat_value2`, `stat_type3`, `stat_value3`, `stat_type4`, `stat_value4`, `stat_type5`, `stat_value5`, `stat_type6`, `stat_value6`, `stat_type7`, `stat_value7`, `stat_type8`, `stat_value8`, `stat_type9`, `stat_value9`, `stat_type10`, `stat_value10`, `ScalingStatDistribution`, `ScalingStatValue`, `dmg_min1`, `dmg_max1`, `dmg_type1`, `dmg_min2`, `dmg_max2`, `dmg_type2`, `armor`, `holy_res`, `fire_res`, `nature_res`, `frost_res`, `shadow_res`, `arcane_res`, `delay`, `ammo_type`, `RangedModRange`, `spellid_1`, `spelltrigger_1`, `spellcharges_1`, `spellppmRate_1`, `spellcooldown_1`, `spellcategory_1`, `spellcategorycooldown_1`, `spellid_2`, `spelltrigger_2`, `spellcharges_2`, `spellppmRate_2`, `spellcooldown_2`, `spellcategory_2`, `spellcategorycooldown_2`, `spellid_3`, `spelltrigger_3`, `spellcharges_3`, `spellppmRate_3`, `spellcooldown_3`, `spellcategory_3`, `spellcategorycooldown_3`, `spellid_4`, `spelltrigger_4`, `spellcharges_4`, `spellppmRate_4`, `spellcooldown_4`, `spellcategory_4`, `spellcategorycooldown_4`, `spellid_5`, `spelltrigger_5`, `spellcharges_5`, `spellppmRate_5`, `spellcooldown_5`, `spellcategory_5`, `spellcategorycooldown_5`, `bonding`, `description`, `PageText`, `LanguageID`, `PageMaterial`, `startquest`, `lockid`, `Material`, `sheath`, `RandomProperty`, `RandomSuffix`, `block`, `itemset`, `MaxDurability`, `area`, `Map`, `BagFamily`, `TotemCategory`, `socketColor_1`, `socketContent_1`, `socketColor_2`, `socketContent_2`, `socketColor_3`, `socketContent_3`, `socketBonus`, `GemProperties`, `RequiredDisenchantSkill`, `ArmorDamageModifier`, `Duration`, `ItemLimitCategory`, `HolidayId`, `ScriptName`, `DisenchantID`, `FoodType`, `minMoneyLoot`, `maxMoneyLoot`, `VerifiedBuild`) 
-VALUES (@ITEMENTRY, 0, 0, @NAME, 28862, 6, 0, 0, 1, 20000, 10000, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 897, 0, 0, 0, @COOLDOWN, 1193, 60000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '', 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @SCRIPTNAME, 0, 0, 0, 0, 12340);
+VALUES (@ITEMENTRY, 0, 0, @NAME, 28862, 7, 0, 0, 1, 20000, 10000, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 897, 0, 0, 0, @COOLDOWN, 1193, 60000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '', 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @SCRIPTNAME, 0, 0, 0, 0, 12340);
+
+-- Easy View
+UPDATE `stygian_world`.`item_template`
+SET `entry` = '701002',
+ `class` = '0',
+ `subclass` = '0',
+ `SoundOverrideSubclass` = '-1',
+ `name` = 'Pocket Portal',
+ `displayid` = '28862', -- 28862 (Goblin Mechanic)
+ `Quality` = '6', -- BOA
+ `Flags` = '64',
+ `FlagsExtra` = '131072', -- BNET ACCOUNT
+ `BuyCount` = '1',
+ `BuyPrice` = '20000',
+ `SellPrice` = '10000',
+ `InventoryType` = '0',
+ `AllowableClass` = '-1',
+ `AllowableRace` = '-1',
+ `ItemLevel` = '277',
+ `RequiredLevel` = '0',
+ `RequiredSkill` = '0',
+ `RequiredSkillRank` = '0',
+ `requiredspell` = '0',
+ `requiredhonorrank` = '0',
+ `RequiredCityRank` = '0',
+ `RequiredReputationFaction` = '0',
+ `RequiredReputationRank` = '0',
+ `maxcount` = '0',
+ `stackable` = '1',
+ `ContainerSlots` = '0',
+ `StatsCount` = '0',
+ `stat_type1` = '0',
+ `stat_value1` = '0',
+ `stat_type2` = '0',
+ `stat_value2` = '0',
+ `stat_type3` = '0',
+ `stat_value3` = '0',
+ `stat_type4` = '0',
+ `stat_value4` = '0',
+ `stat_type5` = '0',
+ `stat_value5` = '0',
+ `stat_type6` = '0',
+ `stat_value6` = '0',
+ `stat_type7` = '0',
+ `stat_value7` = '0',
+ `stat_type8` = '0',
+ `stat_value8` = '0',
+ `stat_type9` = '0',
+ `stat_value9` = '0',
+ `stat_type10` = '0',
+ `stat_value10` = '0',
+ `ScalingStatDistribution` = '0',
+ `ScalingStatValue` = '0',
+ `dmg_min1` = '0',
+ `dmg_max1` = '0',
+ `dmg_type1` = '0',
+ `dmg_min2` = '0',
+ `dmg_max2` = '0',
+ `dmg_type2` = '0',
+ `armor` = '0',
+ `holy_res` = '0',
+ `fire_res` = '0',
+ `nature_res` = '0',
+ `frost_res` = '0',
+ `shadow_res` = '0',
+ `arcane_res` = '0',
+ `delay` = '0',
+ `ammo_type` = '0',
+ `RangedModRange` = '0',
+ `spellid_1` = '897',
+ `spelltrigger_1` = '0',
+ `spellcharges_1` = '0',
+ `spellppmRate_1` = '0',
+ `spellcooldown_1` = '30000',
+ `spellcategory_1` = '1193',
+ `spellcategorycooldown_1` = '60000',
+ `spellid_2` = '0',
+ `spelltrigger_2` = '0',
+ `spellcharges_2` = '0',
+ `spellppmRate_2` = '0',
+ `spellcooldown_2` = '0',
+ `spellcategory_2` = '0',
+ `spellcategorycooldown_2` = '0',
+ `spellid_3` = '0',
+ `spelltrigger_3` = '0',
+ `spellcharges_3` = '0',
+ `spellppmRate_3` = '0',
+ `spellcooldown_3` = '0',
+ `spellcategory_3` = '0',
+ `spellcategorycooldown_3` = '0',
+ `spellid_4` = '0',
+ `spelltrigger_4` = '0',
+ `spellcharges_4` = '0',
+ `spellppmRate_4` = '0',
+ `spellcooldown_4` = '0',
+ `spellcategory_4` = '0',
+ `spellcategorycooldown_4` = '0',
+ `spellid_5` = '0',
+ `spelltrigger_5` = '0',
+ `spellcharges_5` = '0',
+ `spellppmRate_5` = '0',
+ `spellcooldown_5` = '0',
+ `spellcategory_5` = '0',
+ `spellcategorycooldown_5` = '0',
+ `bonding` = '1',
+ `description` = '',
+ `PageText` = '0',
+ `LanguageID` = '0',
+ `PageMaterial` = '0',
+ `startquest` = '0',
+ `lockid` = '0',
+ `Material` = '-1',
+ `sheath` = '0',
+ `RandomProperty` = '0',
+ `RandomSuffix` = '0',
+ `block` = '0',
+ `itemset` = '0',
+ `MaxDurability` = '0',
+ `area` = '0',
+ `Map` = '0',
+ `BagFamily` = '0',
+ `TotemCategory` = '0',
+ `socketColor_1` = '0',
+ `socketContent_1` = '0',
+ `socketColor_2` = '0',
+ `socketContent_2` = '0',
+ `socketColor_3` = '0',
+ `socketContent_3` = '0',
+ `socketBonus` = '0',
+ `GemProperties` = '0',
+ `RequiredDisenchantSkill` = '0',
+ `ArmorDamageModifier` = '0',
+ `duration` = '0',
+ `ItemLimitCategory` = '0',
+ `HolidayId` = '0',
+ `ScriptName` = '',
+ `DisenchantID` = '0',
+ `FoodType` = '0',
+ `minMoneyLoot` = '0',
+ `maxMoneyLoot` = '0',
+ `flagsCustom` = '0',
+ `VerifiedBuild` = '12340'
+WHERE
+	(`entry` = '701002');
 
 -- --------------------------------------------------------------------------------------
 -- Teleporter NPC
+--
+-- `modelid` = 30076 (Jeeves), 27320 (Goblin Mechanic), 21572 (Elven Portal Master)
+--
 -- --------------------------------------------------------------------------------------
+DELETE FROM `creature_template` WHERE (`entry`=@ENTRY);
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, Health_mod, Mana_mod, Armor_mod, faction, npcflag, speed_walk, speed_run, scale, rank, dmg_multiplier, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName) VALUES
-(@ENTRY, '27320', "Pocket Portal", "", 'Directions', '50000', 80, 83, 1.56, 1.56, 1.56, 35, 3, 1, 1.14286, 1.25, 1, 1, 1, 2, 7, 138936390, 3, 1, 2, 'SmartAI');
+(@ENTRY, '30076', "Pocket Portal", "", 'Directions', '50000', 80, 83, 1.56, 1.56, 1.56, 35, 3, 1, 1.14286, .6, 1, 1, 1, 2, 7, 138936390, 3, 1, 2, 'SmartAI');
 
 -- --------------------------------------------------------------------------------------
 -- Update Creature SmartAI
@@ -67,7 +208,8 @@ UPDATE creature_template SET AIName="SmartAI" WHERE entry=@ENTRY LIMIT 1;
 -- --------------------------------------------------------------------------------------
 -- Give the creature a few items
 -- --------------------------------------------------------------------------------------
-INSERT INTO `creature_equip_template` (`CreatureID`,`ItemID1`,`ItemID2`,`ItemID3`) VALUES (@ENTRY,11855,5956,0);
+-- DELETE FROM `creature_equip_template` WHERE (`CreatureID`=@ENTRY);
+-- INSERT INTO `creature_equip_template` (`CreatureID`,`ItemID1`,`ItemID2`,`ItemID3`) VALUES (@ENTRY,11855,5956,0);
 
 -- --------------------------------------------------------------------------------------
 -- Set Teleporter Despawn Time
@@ -82,6 +224,8 @@ SET @APARM1		:= 15000; 	-- Milliseconds until despawn occurs
 SET @TTYPE		:= 19;  	-- 19 - SMART_TARGET_CLOSEST_CREATURE
 SET @TPARM1		:= 128; 	-- SMART_TARGET CREATURE ID
 SET @NOTE		:= "Personal Teleporter Despawn";
+
+DELETE FROM `smart_scripts` WHERE (`entryorguid`=@ENTRY) AND (`source_type`=@SOURCETYPE) AND (`id` = @SSID);
 INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
 (@ENTRY,@SOURCETYPE,@SSID,@LINK,@EVENTTYPE,0,100,0,0,0,0,0,@ACTIONTYPE,@APARM1,0,0,0,0,0,@TTYPE,@TPARM1,0,0,0.0,0.0,0.0,0.0,@NOTE);
 
@@ -89,6 +233,7 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 -- Smart Scripts
 -- These mirror the same destinations as the StygianCore Portal Master
 -- --------------------------------------------------------------------------------------
+DELETE FROM `smart_scripts` WHERE (`entryorguid`=@ENTRY) AND (`source_type`=@SOURCETYPE) AND (`event_type`=62);
 INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES 
 (@ENTRY, 0, 1, 0, 62, 0, 100, 0, @GOSSIP_MENU, 1, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -8842.09, 626.358, 94.0867, 3.61363, "Teleporter script"),
 (@ENTRY, 0, 2, 0, 62, 0, 100, 0, @GOSSIP_MENU, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 1601.08, -4378.69, 9.9846, 2.14362, "Teleporter script"),
@@ -231,5 +376,5 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silthus Camp"),
 (@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
 (@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
-(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Everlook"),
+(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
 (@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade");
