@@ -461,7 +461,9 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU+9, 3, 2, "Dead King's Crypt", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Dead King's Crypt?"),
 (@GOSSIP_MENU+9, 4, 2, "Winterspring", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Winterspring?"),
 (@GOSSIP_MENU+9, 5, 2, "Moonglade Gem Vendors", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Moonglade Gem Vendors?"),
-(@GOSSIP_MENU+9, 6, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
+(@GOSSIP_MENU+9, 6, 2, "Elise\'s Happy Place", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Elise\'s Happy Place?"),
+(@GOSSIP_MENU+9, 7, 2, "LM: Shatterspear Vale", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to LM: Shatterspear Vale?"),
+(@GOSSIP_MENU+9, 8, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
 
 
 -- --------------------------------------------------------------------------------------
@@ -610,7 +612,9 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
 (@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
 (@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
-(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade");
+(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade"),
+(@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Elise\'s Happy Place"),
+(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "LM: Shatterspear Vale");
 
 -- --------------------------------------------------------------------------------------
 -- Teleporter Spawns

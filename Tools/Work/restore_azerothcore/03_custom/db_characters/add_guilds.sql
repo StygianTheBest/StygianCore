@@ -62,7 +62,7 @@ SET
 @MOTD 		:= "Welcome to Sons of the Storm!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1498723958;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 126, 14, 5, 10, 31, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 --
 -- Faction: Alliance
@@ -79,7 +79,7 @@ SET
 @MOTD 		:= "Welcome to Emerald Dreams!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1499669732;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 112, 3, 5, 3, 35, @Info, @MOTD, @CreatedOn, @BankMoney);
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 42, 14, 5, 14, 31, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 
 

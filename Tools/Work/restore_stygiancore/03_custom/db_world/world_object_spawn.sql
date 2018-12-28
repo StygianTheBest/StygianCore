@@ -73,11 +73,27 @@ INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `pha
 
 
 -- --------------------------------------------------------------------------------------
+-- Alterac Mountains
+-- --------------------------------------------------------------------------------------
+
+-- Christmas Tree
+DELETE FROM `gameobject` WHERE `guid`=501444;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501444, 192129, 0, 1, 1, 171.202, -275.448, 150.482, 6.23073, -0, -0, -0.0262259, 0.999656, 300, 0, 1, 0);
+
+-- Christmas Tree
+DELETE FROM `gameobject` WHERE `guid`=501445;
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501455, 178558, 0, 1, 1, 179.436, -270.605, 148.081, 0.139975, -0, -0, -0.0699302, -0.997552, 300, 0, 1, 0);
+
+
+-- --------------------------------------------------------------------------------------
 -- Thunder Bluff
 -- --------------------------------------------------------------------------------------
 
 -- Campfire (Pet Vendor)
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (269199, 194017, 1, 1, 1, -1105.89, 33.3562, 140.598, 0.616385, -0, -0, -0.303337, -0.952883, 300, 0, 1, 0); 
+
+-- Elise Place Christmas Tree
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES ('501857', '178668', '1', '1', '1', '-746.052', '-1060.43', '193.402', '5.76076', '-0', '-0', '-0.258255', '0.966077', '300', '0', '1', '0');
 
 
 -- ################################################################################### --
