@@ -45,6 +45,7 @@ great and just like they do on a Hunter in or out of dungeons.
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
+- v2019.01.08 - Fix 'Core Hound' pet issues on relog, death, or teleport
 - v2017.09.03 - Release
 
 
@@ -457,7 +458,7 @@ public:
 
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_TALK, "Back..", GOSSIP_SENDER_MAIN, 50);
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Chimaera", GOSSIP_SENDER_MAIN, 20932);                     // Nuramoc
-            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Core Hound", GOSSIP_SENDER_MAIN, 11671);                   // Lava/Fire (21108 - Fel/Fire)
+            player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Core Hound", GOSSIP_SENDER_MAIN, 33502);                   // Tame 33502/Lava (11671)/Fire (21108 - Fel/Fire)
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Devilsaur", GOSSIP_SENDER_MAIN, 32485);                    // King Krush
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Rhino", GOSSIP_SENDER_MAIN, 25487);                        // Wooly Rhino Matriarch Brown
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_VENDOR, "Silithid", GOSSIP_SENDER_MAIN, 6582);                      // Clutchmother Zavas
