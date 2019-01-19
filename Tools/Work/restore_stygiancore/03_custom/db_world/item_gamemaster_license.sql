@@ -27,7 +27,7 @@ INSERT INTO `item_template` VALUES (701004, 15, 0, -1, 'GameMaster\'s License', 
 --	PAGE 1 - 3631
 -- --------------------------------------------------------------------------------------
 DELETE FROM `page_text` WHERE `ID`=3631;
-INSERT INTO `page_text` VALUES (3631, '$N!$B$BI hereby declare you an official World of Warcraft GameMaster. You will be briefed soon on your upcoming duties.$B$BStrength and Honor,$B$B - Koiter', 3632, 1);
+INSERT INTO `page_text` VALUES (3631, '$N!$B$BI hereby declare you an official World of Warcraft GameMaster. You will be briefed soon on your upcoming duties.$B$BStrength and Honor,$B$B - GM Koiter', 3632, 1);
 
 -- --------------------------------------------------------------------------------------
 --	PAGE 2 - 3632

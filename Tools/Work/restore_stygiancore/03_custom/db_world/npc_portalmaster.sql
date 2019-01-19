@@ -462,7 +462,7 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU+9, 4, 2, "Winterspring", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Winterspring?"),
 (@GOSSIP_MENU+9, 5, 2, "Moonglade Gem Vendors", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Moonglade Gem Vendors?"),
 (@GOSSIP_MENU+9, 6, 2, "Elise\'s Happy Place", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Elise\'s Happy Place?"),
-(@GOSSIP_MENU+9, 7, 2, "LM: Shatterspear Vale", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to LM: Shatterspear Vale?"),
+(@GOSSIP_MENU+9, 7, 2, "Shatterspear Vale", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Shatterspear Vale?"),
 (@GOSSIP_MENU+9, 8, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
 
 
