@@ -29,6 +29,11 @@ DELETE FROM `game_tele` WHERE `id` > 1423;
 -- --------------------------------------------------------------------------------------
 -- Add Teleport Locations
 -- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1465', '-700.315', '-1322.47', '259.742', '4.90748', '1', 'e3');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1464', '-745.952', '-989.286', '194.098', '2.01729', '1', 'e2');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1463', '-703.015', '-1066.34', '179.364', '0.0823302', '1', 'e1');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1462', '-827.503', '-1177.36', '150.009', '0.389758', '1', 'tb1');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1461', '3984.85', '-4764.04', '304.79', '4.60842', '1', 'bearsheadtower');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1460', '-8755.09', '853.976', '97.635', '3.84566', '0', 'stockades');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1459', '-6581.37', '-3485.41', '318.13', '0.474687', '0', 'deadkingscrypt');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1458', '-396.86', '-2183.42', '158.1', '0.162564', '1', 'koiter');

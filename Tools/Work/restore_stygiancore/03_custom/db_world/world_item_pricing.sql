@@ -552,7 +552,7 @@ UPDATE item_template SET buyprice=@1G WHERE entry = 35720; 	    -- Lord of Frost
 UPDATE item_template SET buyprice=@1G WHERE entry = 37934; 		-- Noble' Elementium Signet
 UPDATE item_template SET buyprice=@1G WHERE entry = 44792; 		-- Blossoming Branch
 UPDATE item_template SET buyprice=@1G WHERE entry = 38266; 		-- Rotund Relic
-UPDATE item_template SET buyprice=@25S WHERE entry = 17202; 	-- Snowball
+-- UPDATE item_template SET buyprice=@25S WHERE entry = 17202; 	-- Snowball
 UPDATE item_template SET buyprice=@25S WHERE entry = 43490; 	-- Tasty Cupcake
 UPDATE item_template SET buyprice=@1G WHERE entry = 33081; 		-- Voodoo Skull
 UPDATE item_template SET buyprice=@5G WHERE entry = 36862; 		-- Worn Troll Dice

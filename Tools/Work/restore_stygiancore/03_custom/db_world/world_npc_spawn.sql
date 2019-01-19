@@ -22,17 +22,9 @@
 USE stygian_world;
 
 
-
 -- ################################################################################### --
 --	CITIES, TOWNS, WILDERNESS
 -- ################################################################################### --
-
--- --------------------------------------------------------------------------------------
--- Loremaster (Crom) (Shatterspear Vale Hut) (ID: 1997500 - 19997750)
--- --------------------------------------------------------------------------------------
-DELETE FROM `creature` WHERE `guid`=1997500;
-INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('1997500', '601075', '1', '1', '1', '0', '1', '7452.25', '-1694.05', '195.624', '3.19806', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
-
 
 -- --------------------------------------------------------------------------------------
 -- Pet Vendor Exotic (Sunrock Retreat)
@@ -492,6 +484,6 @@ INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`
 -- ################################################################################### --
 --	SPIRIT HEALER
 -- ################################################################################### --
-DELETE FROM `creature` WHERE `guid`=2025026; -- Camp Silithis
+DELETE FROM `creature` WHERE `guid`=2025026; -- Camp Silithus
 INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2025026', '6491', '1', '1', '1', '0', '0', '-10715.8', '2350.14', '8.88242', '3.14925', '300', '0', '0', '4121', '0', '0', '0', '0', '0'); -- Spirit Healer
 
