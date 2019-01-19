@@ -29,7 +29,12 @@
 USE stygian_world;
 
 -- --------------------------------------------------------------------------------------
--- ITEM: Update Old Crqfty/Ironjaw Drop Rate)
+-- ITEM: Update Lootcard Mount Requirements
+-- --------------------------------------------------------------------------------------
+UPDATE `stygian_world`.`item_template` SET `RequiredLevel` = '20',`RequiredSkillRank` = '0' WHERE (`entry` = '54068'); -- Wooly Rhino
+
+-- --------------------------------------------------------------------------------------
+-- ITEM: Update Old Crqfty/Ironjaw Drop Rate
 -- --------------------------------------------------------------------------------------
 UPDATE `stygian_world`.`fishing_loot_template` SET `entry`='1637', `item`='34486', `ChanceOrQuestChance`='0.09', `lootmode`='1', `groupid`='0', `mincountOrRef`='1', `maxcount`='1' WHERE (`entry`='1637') AND (`item`='34486');
 UPDATE `stygian_world`.`fishing_loot_template` SET `entry`='1537', `item`='34484', `ChanceOrQuestChance`='0.11', `lootmode`='1', `groupid`='0', `mincountOrRef`='1', `maxcount`='1' WHERE (`entry`='1537') AND (`item`='34484');
