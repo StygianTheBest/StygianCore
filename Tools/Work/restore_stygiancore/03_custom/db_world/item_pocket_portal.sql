@@ -54,7 +54,7 @@ SET `entry` = '701002',
  `subclass` = '0',
  `SoundOverrideSubclass` = '-1',
  `name` = 'Pocket Portal',
- `displayid` = '28862', -- 28862 (Goblin Mechanic)
+ `displayid` = '30076', -- 30076 (Jeeves), 27320 (Goblin Mechanic), 21572 (Elven Portal Master)
  `Quality` = '6', -- BOA
  `Flags` = '64',
  `FlagsExtra` = '131072', -- BNET ACCOUNT
@@ -380,5 +380,4 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
 (@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade"),
 (@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Elise\'s Happy Place"),
-(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "LM: Shatterspear Vale");
--- (@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Shatterspear Vale");
+(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "Shatterspear Vale");
