@@ -427,6 +427,7 @@ public:
                 case CLASS_HUNTER:
                     player->learnSpell(674);	// Dual Wield
                     player->learnSpell(15590);	// Fists
+                    player->learnSpell(264);	// Bows
                     player->learnSpell(266);	// Guns
                     player->learnSpell(8737);	// Mail
                     player->learnSpell(200);	// PoleArms

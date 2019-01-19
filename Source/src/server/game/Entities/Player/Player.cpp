@@ -5586,7 +5586,7 @@ void Player::RepopAtGraveyard()
         std::string conf_path = _CONF_DIR;
         std::string cfg_file = conf_path + "mod_customserver.conf";
         sConfigMgr->LoadMore(cfg_file.c_str());
-        if (sConfigMgr->GetBoolDefault("Dungeon.Checkpoints.Enable", true))
+        if (sConfigMgr->GetBoolDefault("DungeonCheckpoints", true))
         {
             // If in a dungeon or raid check for an existing spawn point
             // If spaw point found ressurect there
