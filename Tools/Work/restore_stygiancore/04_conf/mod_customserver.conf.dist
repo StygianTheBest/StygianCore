@@ -54,7 +54,7 @@ TimeIsTimePlus = 7.5
 #  CORE MOD - DUNGEON CHECKPOINTS
 ###################################################################################################
 #
-#    Dungeon.Checkpoints.Enable
+#    DungeonCheckpoints
 #        Description: Allows players to appear at the last boss killed after dying in an dungeon.
 #        Default:     0 - Disabled
 #                     1 - Enabled
