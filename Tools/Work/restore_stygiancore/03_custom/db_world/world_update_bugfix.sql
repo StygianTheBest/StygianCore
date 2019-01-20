@@ -256,3 +256,280 @@ VALUES
 (@ENTRY * 100,9,0,0,54,0,100,0,0,0,0,0,11,52614,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sen''Jin Fetish - Just Summoned - Cast Spell ''Enchanted Tiki Warrior: Enchanted Tiki Warrior Visual 01'' (52614) on self'),
 (@ENTRY * 100 + 1,9,0,0,54,0,100,0,0,0,0,0,11,52617,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sen''Jin Fetish - Just Summoned - Cast Spell ''Enchanted Tiki Warrior: Enchanted Tiki Warrior Visual 02'' (52617) on self'),
 (@ENTRY * 100 + 2,9,0,0,54,0,100,0,0,0,0,0,11,52618,0,0,0,0,0,1,0,0,0,0,0,0,0,'Sen''Jin Fetish - Just Summoned - Cast Spell ''Enchanted Tiki Warrior: Enchanted Tiki Warrior Visual 03'' (52618) on self');
+
+-- --------------------------------------------------------------------------------------
+-- AC REPO FIXES
+-- --------------------------------------------------------------------------------------
+-- *** DB/Quest: Escape Through Force & Stealth. (#1100)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1544169970525311500');
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (3692, 369200, 369201);
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(3692, 0, 0, 1, 19, 0, 100, 0, 994, 0, 0, 0, 64, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Quest 'Escape Through Force' Taken - Store Targetlist"),
+(3692, 0, 1, 2, 61, 0, 100, 0, 0, 0, 0, 0, 80, 369200, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Quest 'Escape Through Force' Taken - Run Script"),
+(3692, 0, 2, 0, 61, 0, 100, 0, 0, 0, 0, 0, 91, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Remove Sit state"),
+(3692, 0, 3, 4, 19, 0, 100, 0, 995, 0, 0, 0, 64, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Quest 'Escape Through Stealth' Taken - Store Targetlist"),
+(3692, 0, 4, 0, 61, 0, 100, 0, 0, 0, 0, 0, 80, 369201, 2, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Quest 'Escape Through Stealth' Taken - Run Script"),
+(3692, 0, 5, 6, 40, 0, 100, 0, 15, 3692, 0, 0, 41, 10000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 15 Reached (Path 3692) - Despawn 10 Seconds"),
+(3692, 0, 6, 7, 61, 0, 100, 0, 0, 0, 0, 0, 1, 5, 0, 0, 0, 0, 0, 12, 1, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 15 Reached (Path 3692) - Say Line 5"),
+(3692, 0, 7, 0, 61, 0, 100, 0, 0, 0, 0, 0, 15, 994, 0, 0, 0, 0, 0, 12, 1, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 15 Reached (Path 3692) - Quest Credit 'Escape Through Force'"),
+(3692, 0, 8, 9, 40, 0, 100, 0, 2, 369200, 0, 0, 41, 5000, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 2 Reached (Path 369200) - Despawn 10 Seconds"),
+(3692, 0, 9, 10, 61, 0, 100, 0, 0, 0, 0, 0, 15, 995, 0, 0, 0, 0, 0, 12, 1, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 15 Reached (Path 3692) - Quest Credit 'Escape Through Force'"),
+(3692, 0, 10, 11, 61, 0, 100, 0, 0, 0, 0, 0, 1, 2, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 2 Reached (Path 369200) - Talk 2"),
+(3692, 0, 11, 12, 61, 0, 100, 0, 0, 0, 0, 0, 11, 6298, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Waypoint 2 Reached (Path 369200) - Cast Spell 'Form of the Moonstalker'"),
+(3692, 0, 12, 0, 4, 0, 100, 0, 0, 0, 0, 0, 1, 4, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Aggro - Talk 4'"),
+(369200, 9, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 19, 768, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Set Unit Flags"),
+(369200, 9, 1, 0, 0, 0, 100, 0, 0, 0, 0, 0, 83, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Remove Gossip+Questgiver npcflag"),
+(369200, 9, 2, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Say Line 3"),
+(369200, 9, 3, 0, 0, 0, 100, 0, 0, 0, 0, 0, 53, 0, 3692, 0, 0, 0, 2, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Start Waypoint"),
+(369201, 9, 0, 0, 0, 0, 100, 0, 0, 0, 0, 0, 19, 768, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Set Unit Flags"),
+(369201, 9, 1, 0, 0, 0, 100, 0, 0, 0, 0, 0, 83, 3, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Remove Gossip+Questgiver npcflag"),
+(369201, 9, 2, 0, 0, 0, 100, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 1, 3, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Say Line 1"),
+(369201, 9, 3, 0, 0, 0, 100, 0, 0, 0, 0, 0, 53, 0, 369200, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "Volcor - On Script - Start Waypoint");
+DELETE FROM `creature_addon` WHERE `guid`=37096;
+DELETE FROM `creature_template_addon` WHERE `entry`=3692;
+INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES
+(3692, 0, 0, 1, 4097, 0, "");
+DELETE FROM `creature_text` WHERE `entry`=3692 AND `groupid` BETWEEN 1 AND 5;
+INSERT INTO `creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextId`, `TextRange`, `comment`) VALUES
+(3692, 1, 0, (SELECT `MaleText` FROM `broadcast_text` WHERE `ID`=1236), 12, 7, 100, 0, 0, 0, 1236, 0, "Volcor"),
+(3692, 2, 0, (SELECT `MaleText` FROM `broadcast_text` WHERE `ID`=1238), 16, 7, 100, 0, 0, 0, 1238, 0, "Volcor"),
+(3692, 3, 0, (SELECT `MaleText` FROM `broadcast_text` WHERE `ID`=1237), 12, 7, 100, 0, 0, 0, 1237, 0, "Volcor"),
+(3692, 4, 0, (SELECT `MaleText` FROM `broadcast_text` WHERE `ID`=3744), 12, 7, 100, 0, 0, 0, 3744, 0, "Volcor"),
+(3692, 5, 0, (SELECT `MaleText` FROM `broadcast_text` WHERE `ID`=1243), 12, 7, 100, 0, 0, 0, 1243, 0, "Volcor");
+DELETE FROM `waypoints` WHERE `entry`=369200;
+INSERT INTO `waypoints` (`entry`, `pointid`, `position_x`, `position_y`, `position_z`, `point_comment`) VALUES
+(369200, 1, 4606.61, 2.96905, 69.909, "Volcor"),
+(369200, 2, 4612.4858, 14.2943, 69.8441, "Volcor");
+UPDATE `creature` SET `position_x`='4758.35', `position_y`='203.678', `position_z`='53.895' WHERE `guid`=37101;
+
+-- *** DB/Creature Add missing pet trainer / NPC text (#1115)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1544714673423311600');
+-- NPC Urcos correct Creature_Text
+UPDATE `creature_text` SET `text`='My freedom means nothing if we fail to save Ursoc.  Make haste, $N.' WHERE `entry`= 27328 AND `groupid`=2 AND `id`= 0;
+-- NPC entry 40405 Kieupid, Pet Trainer in Silvermoon City
+SET @CGUID = 3548;
+DELETE FROM `creature` WHERE `id` = 40405;
+INSERT INTO `creature` (`guid`,`id`,`map`,`spawnMask`,`phaseMask`,`modelid`,`equipment_id`,`position_x`,`position_y`,`position_z`,`orientation`,`spawntimesecs`,`spawndist`,`currentwaypoint`,`curhealth`,`curmana`,`MovementType`,`npcflag`,`unit_flags`,`dynamicflags`) VALUES
+(@CGUID,40405,530,1,1,0,0, 9924.067, -7400.503, 13.71723, 6.073746, 120,0,0,0,0,0,0,0,0);
+-- *** DB/Players: Apprentice Riding to Death Knight on creation (#810) 
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1520902066724046200');
+DELETE FROM `playercreateinfo_spell` WHERE `Spell`=33388 AND `racemask`=0 AND `classmask`=32;
+INSERT INTO `playercreateinfo_spell` (`racemask`, `classmask`, `Spell`, `Note`) VALUES (0, 32, 33388, 'Apprentice Riding');
+-- *** DB/SAI: fix Ward of Laze creature (#1145)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1545760746348146400');
+UPDATE `creature_template` SET `AIName` = 'SmartAI', `unit_flags` = 131076, `flags_extra` = 0 WHERE `entry` = 2667;
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 2667;
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(2667, 0, 0, 0, 0, 0, 100, 0, 3000, 3000, 3000, 3000, 11, 3826, 0, 0, 0, 0, 0, 24, 0, 0, 0, 0, 0, 0, 0, 'Ward of Laze - In Combat - Cast \'Ward of Laze Passive\'');
+
+-- *** DB/NPC: Quartermaster Bartlett can now repair (#1149)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1545780720578767600');
+DELETE FROM `creature_template_addon` WHERE `entry` = 27267;
+INSERT INTO `creature_template_addon` (`entry`, `bytes1`, `bytes2`, `emote`) VALUES (27267, 0, 0, 233);
+UPDATE `gossip_menu_option` SET `option_id` = 3, `npc_option_npcflag` = 128 WHERE `menu_id` = 9487;
+
+-- *** DB/SAI: Quest Forge Camp Annihilated (#1146)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1545767614007203800');
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 19210;
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`)
+VALUES
+(19210, 0, 0, 1, 8, 0, 100, 0, 33532, 0, 0, 0, 33, 19210, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 'On spell \'Fel Cannon: Fear\' (33532) hit  - Party invoker: Give kill credit \'Fel Cannon: Fear\' (19210)'),
+(19210, 0, 1, 2, 61, 0, 100, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 19, 19211, 100, 0, 0, 0, 0, 0, 'Linked - Self: Look at closest alive creature \'Fel Cannon: Fear Target\' (19211) in 100 yards'),
+(19210, 0, 2, 0, 61, 0, 100, 0, 0, 0, 0, 0, 22, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked - Self: Set event phase to 2'),
+(19210, 0, 3, 0, 1, 2, 100, 0, 3000, 3000, 10000, 10000, 11, 33535, 0, 0, 0, 0, 0, 19, 19211, 100, 0, 0, 0, 0, 0, 'When out of combat and timer at the begining between 3000 and 3000 ms (and later repeats every 10000 and 10000 ms) - Self: Cast spell \'Fel Energy Beam\' (33535) on closest alive creature \'Fel Cannon: Fear Target\' (19211) in 100 yards'),
+(19210, 0, 4, 5, 1, 2, 100, 0, 8000, 8000, 10000, 10000, 92, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 'When out of combat and timer at the begining between 8000 and 8000 ms (and later repeats every 10000 and 10000 ms) - Self: Interrupt cast spell'),
+(19210, 0, 5, 6, 61, 2, 100, 0, 0, 0, 0, 0, 86, 42346, 0, 19, 19211, 100, 0, 1, 0, 0, 0, 0, 0, 0, 0, 'Linked - Cross Cast \'Cosmetic - Flame Patch 2.0\' (42346) on closest alive creature \'Fel Cannon: Fear Target\' (19211) in 100 yards'),
+(19210, 0, 6, 7, 61, 0, 100, 0, 0, 0, 0, 0, 22, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked - Self: Set event phase to 1'),
+(19210, 0, 7, 0, 61, 0, 100, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 1.09956, 'Linked - Self: Reset to original orientation 1.09956');
+
+DELETE FROM `smart_scripts` WHERE `entryorguid` = 19067;
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`)
+VALUES
+(19067, 0, 0, 1, 8, 0, 100, 0, 33531, 0, 0, 0, 33, 19067, 0, 0, 0, 0, 0, 16, 0, 0, 0, 0, 0, 0, 0, 'On spell \'Fel Cannon: Hate\' (33531) hit  - Party invoker: Give kill credit \'Fel Cannon: Hate\' (19067)'),
+(19067, 0, 1, 2, 61, 0, 100, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 19, 19212, 100, 0, 0, 0, 0, 0, 'Linked - Self: Look at closest alive creature \'Fel Cannon: Hate Target\' (19212) in 100 yards'),
+(19067, 0, 2, 0, 61, 0, 100, 0, 0, 0, 0, 0, 22, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked - Self: Set event phase to 2'),
+(19067, 0, 3, 0, 1, 2, 100, 0, 3000, 3000, 10000, 10000, 11, 33535, 0, 0, 0, 0, 0, 19, 19212, 100, 0, 0, 0, 0, 0, 'When out of combat and timer at the begining between 3000 and 3000 ms (and later repeats every 10000 and 10000 ms) - Self: Cast spell \'Fel Energy Beam\' (33535) on closest alive creature \'Fel Cannon: Hate Target\' (19212) in 100 yards'),
+(19067, 0, 4, 5, 1, 2, 100, 0, 8000, 8000, 10000, 10000, 92, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 'When out of combat and timer at the begining between 8000 and 8000 ms (and later repeats every 10000 and 10000 ms) - Self: Interrupt cast spell'),
+(19067, 0, 5, 6, 61, 2, 100, 0, 0, 0, 0, 0, 86, 42346, 0, 19, 19212, 100, 0, 1, 0, 0, 0, 0, 0, 0, 0, 'Linked - Cross Cast \'Cosmetic - Flame Patch 2.0\' (42346) on closest alive creature \'Fel Cannon: Hate Target\' (19212) in 100 yards'),
+(19067, 0, 6, 7, 61, 0, 100, 0, 0, 0, 0, 0, 22, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 'Linked - Self: Set event phase to 1'),
+(19067, 0, 7, 0, 61, 0, 100, 0, 0, 0, 0, 0, 66, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 0, 0, 0, 0.610865, 'Linked - Self: Reset to original orientation 0.610865');
+
+-- *** DB: Flying pets can follow player on flying mount (#1212)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1546301159513401339');
+
+UPDATE `creature_template` SET `InhabitType` = 4 WHERE `entry` in
+(20408, 25110, 17255, 7391, 36482, 16701, 40624, 27346, 28883, 29147,
+27217, 36908, 28470, 18381, 26119, 33810, 23231, 25062, 33197, 29089,
+28513, 36909, 7547, 21056, 21010, 21076, 7543, 21055, 7553, 14755,
+7555, 22445, 36607, 7390, 7387, 7389, 14756, 21064, 21009, 21063,
+9662, 32589, 7544, 7545, 16085, 21018, 32590, 21008);
+
+-- *** DB/Core: Proper hover height + flying animations for vanity pets (#1237)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1546694249586814731');
+
+-- Moths:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (21008,21009,21010,21018);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(21008,0,0,33554432,0,0,''),
+(21009,0,0,33554432,0,0,''),
+(21010,0,0,33554432,0,0,''),
+(21018,0,0,33554432,0,0,'');
+UPDATE `creature_template` SET `ScriptName` = 'npc_pet_gen_moth' WHERE `entry` IN (21008,21009,21010,21018);
+
+-- Gryphon Hatchling / Wind Rider Cub:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (36908,36909);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(36908,0,0,50331648,0,0,''),
+(36909,0,0,50331648,0,0,'');
+
+-- The smart script for the Wind Rider Cub can also be used for the Gryphon Hatchling:
+UPDATE `creature_template` SET `ScriptName` = 'npc_pet_gen_wind_rider_cub' WHERE `entry` = 36908;
+
+-- Dragonhawk Hatchlings:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (21055,21056,21063,21064);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(21055,0,0,33554432,0,0,''),
+(21056,0,0,33554432,0,0,''),
+(21063,0,0,33554432,0,0,''),
+(21064,0,0,33554432,0,0,'');
+
+-- Dragon Whelplings (including Frosty and Netherwhelp):
+DELETE FROM `creature_template_addon` WHERE `entry` IN (7543,7544,7545,7547,36607,28883,18381);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(7543,0,0,33554432,0,0,''),
+(7544,0,0,33554432,0,0,''),
+(7545,0,0,33554432,0,0,''),
+(7547,0,0,33554432,0,0,''),
+(36607,0,0,33554432,0,0,''),
+(28883,0,0,33554432,0,0,''),
+(18381,0,0,33554432,0,0,'');
+
+-- Parrots:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (7390,7387,7391,22445,7389);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(7390,0,0,33554432,0,0,''),
+(7387,0,0,33554432,0,0,''),
+(7391,0,0,33554432,0,0,''),
+(22445,0,0,33554432,0,0,''),
+(7389,0,0,33554432,0,0,'');
+
+-- Tickbird Hatchlings:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (32589,32590);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(32589,0,0,33554432,0,0,''),
+(32590,0,0,33554432,0,0,'');
+
+-- Owls:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (7553,7555);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(7553,0,0,33554432,0,0,''),
+(7555,0,0,33554432,0,0,'');
+
+-- Batlings:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (28513,33197);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(28513,0,0,33554432,0,0,''),
+(33197,0,0,33554432,0,0,'');
+
+-- Sprite Darter Hatchling:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (9662);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(9662,0,0,33554432,0,0,'');
+
+-- Willy:
+UPDATE `creature_template_addon` SET `bytes1` = 33554432 WHERE `entry` = 23231;
+
+-- Firefly:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (21076);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(21076,0,0,33554432,0,0,'');
+
+-- Mana Wyrmling:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (20408);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(20408,0,0,33554432,0,0,'');
+
+-- Nether Ray Fry:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (28470);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(28470,0,0,33554432,0,0,'');
+
+-- Phoenix Hatchling:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (26119);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(26119,0,0,33554432,0,0,'');
+
+-- Tiny Sporebat:
+DELETE FROM `creature_template_addon` WHERE `entry` IN (25062);
+INSERT INTO `creature_template_addon` (`entry`,`path_id`,`mount`,`bytes1`,`bytes2`,`emote`,`auras`)
+VALUES
+(25062,0,0,33554432,0,0,'');
+
+-- *** Update waypoints for black knight in Trail of the champion to be more blizzlike.
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1543541842185737300');
+
+DELETE FROM `script_waypoint` WHERE `entry` = 35491 AND `pointid` IN (11,12);
+INSERT INTO `script_waypoint` VALUES (35491, 11, 753.757, 634.502, 411.579, 1000, '');
+INSERT INTO `script_waypoint` VALUES (35491, 12, 753.757, 634.502, 411.579, 0, '');
+
+-- *** Core/Quest: Mr.Floppy's Perilous Adventure Quest (#1158)
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1546128548989877900');
+
+UPDATE `creature_template` SET `VehicleId` = 0 WHERE `entry` = 26586;
+UPDATE `creature_template` SET `ScriptName` = 'npc_ravenous_worg' WHERE `entry` = 26590;
+
+-- *** DB/Quest Ulag the Cleaver 
+INSERT INTO version_db_world (`sql_rev`) VALUES ('1546933586341240000');
+
+-- Ulag the cleaver SAI
+SET @OGUID  =195629;
+DELETE FROM `gameobject` WHERE `guid`=@OGUID;
+INSERT INTO `gameobject` (`guid`,`id`,`map`,`spawnMask`,`phaseMask`,`position_x`,`position_y`,`position_z`,`orientation`,`spawntimesecs`,`animprogress`,`state`, `rotation2`, `rotation3`) VALUES
+(@OGUID,103813,0,1,1,2388.808, 338.269, 37.013, 2.242750, 10, 255,1, -0.891996, -0.452044);
+ 
+UPDATE `gameobject_template` SET `ScriptName`="" WHERE `entry` IN (104593,176594);
+UPDATE `gameobject_template` SET `flags`=`flags`|16 WHERE `entry` IN (176594,103813);
+UPDATE `gameobject_template` SET `ScriptName`="" WHERE `entry` IN (104593,176594);
+UPDATE `gameobject_template` SET `AIName`="SmartGameObjectAI" WHERE `entry` IN (104593);
+UPDATE `creature_template` SET `AIName`="SmartAI", `type_flags`=`type_flags`|2048 WHERE `entry` IN (6390);
+DELETE FROM `smart_scripts` WHERE `entryorguid`=104593 AND `source_type`=1;
+DELETE FROM `smart_scripts` WHERE `entryorguid`=6390 AND `source_type`=0;
+DELETE FROM `smart_scripts` WHERE `entryorguid` IN (639000,10459300) AND `source_type`=9;
+INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type`,`event_phase_mask`,`event_chance`,`event_flags`,`event_param1`,`event_param2`,`event_param3`,`event_param4`,`action_type`,`action_param1`,`action_param2`,`action_param3`,`action_param4`,`action_param5`,`action_param6`,`target_type`,`target_param1`,`target_param2`,`target_param3`,`target_x`,`target_y`,`target_z`,`target_o`,`comment`) VALUES
+(104593,1,0,0,70,0,100,0,2,0,0,0,80,10459300,0,0,0,0,0,1,0,0,0,0,0,0,0,"Mausoleum Trigger - Gob activated - action list"),
+(10459300,9,0,0,0,0,100,0,0,0,0,0,12,6390,3,180000,0,0,0,8,0,0,0,2390.26, 336.47, 40.01, 2.26,"Mausoleum Trigger - action list - Summon Ulag"),
+(10459300,9,1,0,0,0,100,0,0,0,0,0,9,0,0,0,0,0,0,20,103813,50,0,0,0,0,0,"Mausoleum Trigger - action list - Activate gob"),
+(10459300,9,2,0,0,0,100,0,3000,3000,0,0,9,0,0,0,0,0,0,20,176594,50,0,0,0,0,0,"Mausoleum Trigger - action list - Activate gob"),
+(10459300,9,3,0,0,0,100,0,6000,6000,0,0,9,0,0,0,0,0,0,20,103813,50,0,0,0,0,0,"Mausoleum Trigger - action list - Activate gob"),
+(6390,0,0,0,63,0,100,0,0,0,0,0,80,639000,2,0,0,0,0,1,0,0,0,0,0,0,0,"Ulag - On just summoned - action list"),
+(639000,9,0,0,0,0,100,0,0,0,0,0,43,0,10721,0,0,0,0,1,0,0,0,0,0,0,0,"Ulag - action list - mount"),
+(639000,9,1,0,0,0,100,0,4000,4000,0,0,69,0,0,0,0,0,0,8,0,0,0,2375.29, 354.41, 38.09,0,"Ulag - action list - move to pos"),
+(639000,9,2,0,0,0,100,0,4000,4000,0,0,43,0,0,0,0,0,0,1,0,0,0,0,0,0,0,"Ulag - action list - desmount"),
+(6390,0,1,0,7,0,100,0,0,0,0,0,41,0,0,0,0,0,0,1,0,0,0,0,0,0,0,"Ulag - On evadde - despawn");
+ 
+DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=22 AND `SourceEntry`=104593;
+INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
+(22,1,104593,1,0,29,1,6390,100,0,1,0,0,"","SAI triggers if Ulag is not summoned");
+
+
+-- ***
+-- ***
+-- ***
+-- ***
+-- ***
+-- ***
+-- ***
+-- ***
