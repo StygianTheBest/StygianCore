@@ -62,7 +62,7 @@ SET
  `Quality` = '7', -- BOA
  `Flags` = '134217728', -- BOA
  `FlagsExtra` = '0',
- `BuyCount` = '0',
+ `BuyCount` = '1',
  `BuyPrice` = '0',
  `SellPrice` = '0',
  `InventoryType` = '0',
