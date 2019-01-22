@@ -4,7 +4,7 @@
 ## Description
 
 This places a Loremaster NPC in the game world at various locations who recants the lore of the old world and
-brings back the lost memories of so many that sacrificed their lives for in this ravaged land we all call home.
+brings back the lost memories of so many that sacrificed their lives for this ravaged land we all call home.
 
 As of the release of this module, I have only had time to create three of these NPCs, but I have plans for many
 more in the future, and hope that the community can contribute. I have written the module so adding new Loremaster
