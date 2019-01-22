@@ -127,10 +127,10 @@ The Support folder also contains documentation and other support files. You can 
 - Enchanter NPC: Offers all weapon and armor enchantments
 - Fisherman NPC: A custom fishing vendor with a path, waypoints, and speech
 - Gambler NPC: Allows players to gamble their money
-- Gift Box NPC - Sends players gifts at specified times like level-up
-- Global Trainer NPC - Trains all classes and skills
-- Jukebox NPC - Plays much of the music content and videos in the game
-- Loremaster NPC - Recants lore and trivia of WoW at specific locations
+- Gift Box NPC: Sends players gifts at specified times like level-up
+- Global Trainer NPC: Trains all classes and skills
+- Jukebox NPC: Plays much of the music content and videos in the game
+- Loremaster NPC: Recants lore and trivia of WoW at specific locations
 - Portal Master NPC: Provides quick transport all over the realm
 - Transmogrifier NPC (ELUNA): Transmog your gear
 
