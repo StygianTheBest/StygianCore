@@ -18,10 +18,12 @@ You can create or edit accounts via the worldserver console or the Account Regis
   - account create (name) (password)**
 - **Make Account A GM**
   - account set gmlevel (name) 3 -1**
+- **Change Password**
+  - account set password (account) (password) (password)
 
 ## GM COMMANDS
 
-There are many commands for manipulating the game world. You can view more in the Index below or the entire list in the [GM Commands](GM_Commands_335a.html) document. The most useful for getting started are:
+There are many commands for manipulating the game world. You can view more in the Index below or the entire list in the [GM Commands](https://web.archive.org/web/20171112140309/https://www.reaper-x.com/2009/01/01/trinity-core-gm-commands/) document. The most useful for getting started are:
 
 ### GameMaster (GM)
 
@@ -92,6 +94,7 @@ The StygianCore repack comes with a few teleport related items
 
 - **Add the NPC to the game world**
   - .npc add (id)
+  - .npc add temp (id)
 - **Delete the NPC from the game world**
   - .npc delete (id)
 
