@@ -3,27 +3,28 @@
 
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
-WhiteFang is a Beastmaster NPC that howls! This NPC allows any player, or only Hunters, to adopt and use beasts. 
-He also teaches the player specific Hunter skills for use with their beasts. A player can adopt normal or exotic 
-beasts depending on how you've configured the NPC. For each type of beast I use a rare spawn model of a creature 
-of the same type, so they all look cool. He also sells a great selection of grub for every level of beast. Hunters 
-can access the stables as well. This has been a lot of fun for players on my server, StygianCore, and beasts work 
-great and just like they do on a Hunter in or out of dungeons.
+WhiteFang is a Beastmaster NPC that howls! This NPC allows any player, or only Hunters, to adopt and use beasts. He 
+also teaches the player specific Hunter skills for use with their beasts. A player can adopt normal, rare, or exotic 
+beasts depending on how you've configured the NPC. For each beast I use a model for a rare creature of the same type, so
+they all look cool. All beasts and models are configurable from the config file, so adding or changing beasts is easy
+to do. White Fang also sells a great selection of pet food for every level of pet. Hunters can access the 
+stables as well. This has been a lot of fun for players on my server, and pets work great and just like they do
+on a Hunter in or out of dungeons.
 
 
 ### Features ###
 ------------------------------------------------------------------------------------------------------------------
 - Adds a Worgen BeastMaster NPC with sounds/emotes
-- Allows adopting of beasts by level, class, and ability
-- Teaches player all required Hunter abilities
-- Sells beast food For all levels
-- The scale of the beast is configurable
-
-
-### To-Do ###
-------------------------------------------------------------------------------------------------------------------
-- If possible, create working stable for non-Hunter player
-- Fix beast spells disappearing from beast bar on relog/dismiss (Note: they persist if added back)
+- Allows all classes, or Hunters only, to adopt new pets
+- Teaches Normal, Rare, and Exotic Pets
+- Minimum level to adopt configurable
+- Beasts are always happy and don't need to be fed
+- Beasts and models can be added/changed in the config file
+- Beasts are automatically sorted in the game menu for each type
+- Allows Exotic Beast acquisition with or without spec
+- Teaches Hunter abilities to the player
+- Sells pet food For all pet levels
+- Pet scale is configurable
 
 
 ### Data ###
@@ -31,25 +32,88 @@ great and just like they do on a Hunter in or out of dungeons.
 - Type: NPC
 - Script: BeastMaster
 - Config: Yes
-    - Module Announce
-    - CorePatch check
-    - Level Requirement
-    - Enabled for Hunter class only
-    - Require Beast Mastery talent
-    - Allow Exotic Beasts for all classes (Teaches Beast Mastery)
-    - Set Beast Scale Factor
+    - Enable Module Announce
+    - Enable For Hunter Only
+    - Enable Exotic Beast Adoption Without Spec (Teaches Beast Mastery)
+    - Set Beast Scaling Factor
+	- Set Minimum Level To Adopt
+    - Enable PetAlwaysHappy
+    - Enable Core Handling Mod
+    - Add/Set beast ID and model for each type
 - SQL: Yes
     - NPC ID: 601026
 
 
+## Beasts ##
+------------------------------------------------------------------------------------------------------------------
+**Normal Beasts**
+- Bat 			-  Shadikith The Glider
+- Bear			-  Ursollok
+- Boar			-  Armored Brown
+- Cat			-  Shadowclaw
+- Carrion Bird 		-  Zaricotl
+- Crab			-  Crusty
+- Crocolisk 		-  Izod Green
+- Dragonhawk		-  Bloodfalcon
+- Gorilla 		-  King Mukla
+- Hound 		-  Darkhound - (Registers as Wolf Pre-Cata)
+- Hyena			-  Snort the Heckler
+- Moth			-  Aspatha the Broodmother
+- Nether Ray		-  Count Ungula
+- Owl			-  Olm the Wise
+- Raptor		-  Lar'korwi
+- Ravager		-  Rip-blade Ravager
+- Scorpid		-  Krellak
+- Serpent		-  Emperor Cobra
+- Spider		-  Krethis the Shadowspinner
+- Spore Bat		-  Sporewing
+- Tallstrider	 	-  Green/Purple
+- Turtle		-  Cranky Benj
+- Warp Stalker 		-  Gezzarak the Huntress
+- Wasp			-  Blacksting
+- Wind Serpent		-  Azzere the Skyblade
+- Wolf			-  Ghostpaw Alpha
+- Worg			-  Oil-Stained
+
+**Rare Beasts**
+- Bird 			-  Aotona
+- Chimaera    		-  Nuramoc
+- Core Hound		-  Molten Lava
+- Devilsaur		-  King Krush
+- Jormungar Worm      	-  Rattlebore
+- Rhino			-  Wooly Rhino Matriarch Brown
+- Silithid     		-  Clutchmother Zavas
+- Tallstrider Pink	-  Mazzranache
+- The Kurken		-  Wolf Core Hound
+ 
+**Exotic Beasts**
+- Arcturis		-  Spirit Bear
+- Gondria		-  Spirit Tiger
+- Loque'nahak		-  Spirit Leopard
+- Skoll			-  Spirit Worg
+
+
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
+- v2019.01.23 - Bugfixes, Merged config options by Stoabrogga
+- v2019.01.08 - Added "Better Pet Handling" & "PetAlwaysHappy" config options
+- v2017.09.30 - Add pet->InitLevelupSpellsForLevel(); recommended by Alistar
+- v2017.09.13 - Teaches additional hunter spells (Eagle Eye, Eyes of the Beast, Beast Lore)
+- v2017.09.11
+    - Added Exotic Pet: Spirit Bear
+    - Added Pet: Warp Stalker
+    - Added Pet: Wind Serpent
+    - Added Pet: Nether Ray
+    - Added Pet: Spore Bat
+    - Updated pet models to rare spawn models
+- v2017.09.08 - Created new Pet Food item list for all pet levels
+- v2017.09.04 - Fixed Spirit Beast persistence (teaches Beast Mastery to player)
 - v2017.09.03 - Release
 
 
 ### Credits ###
 ------------------------------------------------------------------------------------------------------------------
-#### An original module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
 
 ###### Additional Credits include:
 - [Blizzard Entertainment](http://blizzard.com)
@@ -64,6 +128,7 @@ great and just like they do on a Hunter in or out of dungeons.
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
 - [AoWoW](https://wotlk.evowow.com/)
+- [Stoabrogga] - Read pets from config file, Enums
 
 
 ### License ###
