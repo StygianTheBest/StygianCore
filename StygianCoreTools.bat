@@ -16,7 +16,7 @@ REM ############################################################################
 REM CHECK FOR RESTORATION ARCHIVES
 REM ########################################################################################
 
-IF EXIST %CD%\Tools\restore_stygiancore.zip. (
+IF EXIST %CD%\Tools\Work\restore_stygiancore.zip. (
 	goto initialize
 )
 (
@@ -32,9 +32,10 @@ IF EXIST %CD%\Tools\restore_stygiancore.zip. (
 		echo ... Server
 		echo ... Support
 		echo ... Tools
-		echo   .. [X] restore_stygiancore.zip - Required for server restore.
-		IF NOT EXIST %CD%\Tools\restore_azerothcore.zip. (
-			echo   .. [X] restore_azerothcore.zip - Required for sandbox.)
+		echo     .. Work
+		echo        ..[X] restore_stygiancore.zip - Required for server restore.
+		IF NOT EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
+		echo        ..[X] restore_azerothcore.zip - Required for sandbox.
 		)
 		(
 			echo.
@@ -49,12 +50,12 @@ REM ############################################################################
 : initialize
 REM // Version
 set acoredbrev=2018.12.04
-set toolsrev=2018.12.18
-set stygianrev=2018.12.25
+set toolsrev=2019.01.21
+set stygianrev=2019.01.21
 set wowbuild=12340
 
 REM // This is for launching the deploy batch file that automates debug and release testing
-REM // This batch file is located in the AzerothCore Solution root folder
+REM // This batch file should be placed in the AzerothCore Solution root folder
 set solutiondir=..\Dev\StygianCore\StygianBuild
 
 REM // DevTemp
@@ -63,7 +64,7 @@ set quickupdate=item_pricing.sql
 
 REM // Command
 REM 1(Blue), 2(Green), 3(Cyan), 4(Red), 5(Purple), 6(Yellow), 7(LGray), 8(Gray)
-MODE con:cols=88 lines=45
+
 COLOR 2F
 SET mod=%1
 SET NAME=StygianCore Tools
@@ -139,6 +140,9 @@ IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
 	REM SAVE STATE EXISTS - SHOW RESTORE OPTIONS
 ) ELSE (
 	echo ### IMPORT/EXPORT ######################################################################             
+	IF EXIST %CD%\Tools\Temp\PatchCore\patch_core_ready.txt. (
+		echo [ 0 ] - Patch Core: StygianCore %stygianrev% Release
+	)
 	echo [ 1 ] - Export World
 	echo [ 2 ] - Export Accounts/Characters
 	IF EXIST %CD%\Tools\Temp\%world%.sql. (
@@ -155,10 +159,10 @@ IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
 	echo [ 2 ] - Reset Sandbox Accounts 
 	echo [ 3 ] - Exit Sandbox Mode 
 ) ELSE (
-	IF EXIST %CD%\Tools\restore_stygiancore.zip. (
+	IF EXIST %CD%\Tools\Work\restore_stygiancore.zip. (
 		echo [ 5 ] - Restore Server: StygianCore %stygianrev% Release
 	)
-	IF EXIST %CD%\Tools\restore_azerothcore.zip. (
+	IF EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
 		echo [ 6 ] - SandBox Mode: AzerothCore %acoredbrev% Release 
 	)
 )
@@ -173,7 +177,7 @@ echo ###########################################################################
 echo                                                                    # Tools v%toolsrev% # 
 echo.
 set /P menu=%host% @ %port%: 
-if "%menu%"=="0" (goto menu)
+if "%menu%"=="0" (goto patch_core)
 IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
 	if "%menu%"=="1" (goto import_world)
 	if "%menu%"=="2" (goto import_accounts)
@@ -191,6 +195,98 @@ if "%menu%"=="8" (goto deploy)
 if "%menu%"=="9" (goto restore_savestate)
 if "%menu%"=="" (goto menu)
 
+REM ########################################################################################
+REM [- 0 -]
+REM ########################################################################################
+
+:patch_core
+cls
+echo.
+IF EXIST Tools\Temp\PatchCore\patch_core_ready.txt. (
+CLS
+echo.
+echo                     [-------------------]
+echo                     [- # CORE PATCH  # -]
+echo                     [-------------------]
+echo.
+echo This process will patch StygianCore to the latest revision. If you
+echo are seeing this, the required patch files are in the correct folder
+echo and are ready to deploy. Your current binaries and world database
+echo will be backed up automatically to the Tools\PatchBackup folder
+echo before the patch process begins.
+echo -------------------------------------------------------------------
+echo.
+set /P menu=Are you sure want to install the CORE PATCH? [Y/N]:
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto patch_backup)
+) else (
+    echo.
+	echo [- *** Invalid Core Patch Installation.. Exiting *** -]
+	pause
+	goto menu
+)
+
+:patch_backup
+echo.
+
+REM Create Patch Folder
+IF EXIST %CD%\Tools\PatchBackup\NUL (
+	REM Folder Exists
+) ELSE (
+	mkdir %CD%\Tools\PatchBackup
+)
+
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+CLS
+
+echo.
+echo [- Backing Up Current Core To Tools\PatchBackup -]
+xcopy /y /q Server\Core\* Tools\PatchBackup\
+
+echo.
+echo [- Backing Up Current World To Tools\PatchBackup -]
+Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %world% > Tools\PatchBackup\%world%.sql
+
+echo.
+IF EXIST Tools\Work\restore_stygiancore\01_default\db_world\creature.sql. (
+	echo [- Building Backup Restoration Archive To Tools\PatchBackup -]
+	CD Tools\Work
+	CALL build_restore_stygiancore.bat
+	CD ..
+	CD ..
+	xcopy /y /q Tools\Work\restore_stygiancore.zip Tools\PatchBackup\	
+) ELSE (
+	IF EXIST Tools\Work\restore_stygiancore.zip. (
+		echo [- WARNING!!! RESTORATION ARCHIVE DATA CORRUPT! CAN'T REBUILD! COPYING EXISTING ARCHIVE! -]
+		xcopy /y /q Tools\Work\restore_stygiancore.zip Tools\PatchBackup\
+	) ELSE (
+		echo [- WARNING!!! RESTORATION ARCHIVE DATA CORRUPT! CAN'T BACKUP! -]
+	)
+)
+
+echo.
+echo [- Patching Core -]
+xcopy /y /q Tools\Temp\PatchCore\*.dll Server\Core\
+xcopy /y /q Tools\Temp\PatchCore\*.exe Server\Core\
+xcopy /y /q Tools\Temp\PatchCore\*.dist Server\Core\
+
+echo.
+echo [- Patching World -]
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
+for %%i in (Tools\Temp\PatchCore\*sql) do if %%i neq Tools\Temp\PatchCore\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
+
+echo.
+echo [- Patching Restoration Archive -]
+RD /S /Q "Tools\Work\restore_stygiancore"
+Tools\7Z x -y Tools\Temp\PatchCore\restore_stygiancore.zip -o.\Tools\Work\
+RD /S /Q "Tools\Temp\PatchCore"
+echo.
+echo [- Patch Complete -]
+pause
+goto menu	
 
 REM ########################################################################################
 REM [- 1 -]
@@ -205,8 +301,8 @@ echo.
 echo ########################################################################################
 echo.
 set /P menu=Are you sure want to EXPORT the current WORLD database? [Y/N]:
-if /i "%menu%"=="n" (goto menu)
-if /i "%menu%"=="y" (goto export_world_go)
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto export_world_go)
 
 :export_world_go
 cls
@@ -238,8 +334,8 @@ echo.
 echo ########################################################################################
 echo.
 set /P menu=Are you sure want to EXPORT ACCOUNTS/CHARACTERS? [Y/N]:
-if /i "%menu%"=="n" (goto menu)
-if /i "%menu%"=="y" (goto export_accounts_go)
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto export_accounts_go)
 
 :export_accounts_go
 cls
@@ -279,8 +375,8 @@ IF EXIST Tools\SaveGameState\savestate-%world%.sql. (
 	SET action=saved_world
 )
 	set /P menu=Are you sure want to RESTORE %action% DATABASE [Y/N]?
-	if /i "%menu%"=="n" (goto menu)
-	if /i "%menu%"=="y" (goto do_import_%action%)
+	if /I "%menu%"=="n" (goto menu)
+	if /I "%menu%"=="y" (goto do_import_%action%)
 
 :do_import_saved_world
 cls
@@ -332,8 +428,8 @@ IF EXIST Tools\SaveGameState\savestate-%characters%.sql. (
 	SET action=saved_accounts
 )
 	set /P menu=Are you sure want to RESTORE %action% DATABASE [Y/N]?
-	if /i "%menu%"=="n" (goto menu)
-	if /i "%menu%"=="y" (goto do_import_%action%)
+	if /I "%menu%"=="n" (goto menu)
+	if /I "%menu%"=="y" (goto do_import_%action%)
 
 :do_import_saved_accounts
 cls
@@ -390,7 +486,7 @@ REM ############################################################################
 cls
 
 REM Check for restoration archive
-IF NOT EXIST %CD%\Tools\restore_stygiancore.zip. (
+IF NOT EXIST %CD%\Tools\Work\restore_stygiancore.zip. (
     echo [- *** No Default Restoration Archive Found *** -]
 	echo.
 	pause
@@ -410,8 +506,8 @@ echo folder and then use it to restore the server.
 echo.
 echo.
 set /P menu=Are you sure want to RESTORE STYGIANCORE DEFAULT DATABASES? [Y/N]:
-if /i "%menu%"=="n" (goto menu)
-if /i "%menu%"=="y" (goto restore_sc_prep)
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto restore_sc_prep)
 
 :restore_sc_prep
 cls
@@ -420,7 +516,7 @@ CD Tools\Work
 CALL build_restore_stygiancore.bat
 CD ..
 CD ..
-Tools\7Z x -y Tools\restore_stygiancore.zip -o.\Tools\Temp\
+Tools\7Z x -y Tools\Work\restore_stygiancore.zip -o.\Tools\Temp\
 echo.
 goto restore_default_sc
 
@@ -476,7 +572,7 @@ REM ############################################################################
 cls
 
 REM Check for restoration archive
-IF NOT EXIST %CD%\Tools\restore_azerothcore.zip. (
+IF NOT EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
     echo [- *** No Default Restoration Archive Found *** -]
 	echo.
 	pause
@@ -495,8 +591,8 @@ echo A backup of the current game state will be made before the restore begins.
 echo.
 echo.
 set /P menu=Are you sure want to ENTER SANDBOX MODE? [Y/N]:
-if /i "%menu%"=="n" (goto menu)
-if /i "%menu%"=="y" (goto sandbox_mode)
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto sandbox_mode)
 
 :sandbox_mode
 cls
@@ -540,7 +636,7 @@ CD Tools\Work
 CALL build_restore_azerothcore.bat
 CD ..
 CD ..
-Tools\7Z x -y Tools\restore_azerothcore.zip -o.\Tools\Temp\
+Tools\7Z x -y Tools\Work\restore_azerothcore.zip -o.\Tools\Temp\
 echo.
 echo [- Restoring Default Accounts -]
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"
@@ -616,8 +712,8 @@ echo This process will EXIT SANDBOX MODE and restore the previously saved
 echo game state.
 echo.
 set /P menu=Are you sure want to EXIT SANDBOX MODE? [Y/N]:
-if /i "%menu%"=="n" (goto menu)
-if /i "%menu%"=="y" (goto restore_game)
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto restore_game)
 
 :restore_game
 IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql (
