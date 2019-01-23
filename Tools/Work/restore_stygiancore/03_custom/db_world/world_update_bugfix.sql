@@ -29,6 +29,12 @@
 USE stygian_world;
 
 -- --------------------------------------------------------------------------------------
+-- DB: Fix trinity_string characters
+-- --------------------------------------------------------------------------------------
+UPDATE trinity_string
+   SET content_default = REPLACE(content_default,'│ ','|')
+
+   -- --------------------------------------------------------------------------------------
 -- ITEM: Update Lootcard Mount Requirements
 -- --------------------------------------------------------------------------------------
 UPDATE `stygian_world`.`item_template` SET `RequiredLevel` = '20',`RequiredSkillRank` = '0' WHERE (`entry` = '54068'); -- Wooly Rhino
