@@ -58,7 +58,7 @@ DELETE FROM `guild` WHERE `guildid`=1;
 SET
 @Name 		:= "Sons of the Storm",
 @LeaderGUID	:= 1, -- Horde
-@Info		:= "A Horde guild honoring the late Micahel Koiter. See you on the other side brother.",
+@Info		:= "A Horde guild honoring the late Michel Koiter. See you on the other side brother.",
 @MOTD 		:= "Welcome to Sons of the Storm!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1498723958;
