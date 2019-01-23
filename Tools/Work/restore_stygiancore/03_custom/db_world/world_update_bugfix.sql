@@ -31,8 +31,8 @@ USE stygian_world;
 -- --------------------------------------------------------------------------------------
 -- DB: Fix trinity_string characters
 -- --------------------------------------------------------------------------------------
-UPDATE trinity_string
-   SET content_default = REPLACE(content_default,'│ ','|')
+UPDATE trinity_string SET content_default = REPLACE(content_default,'│','|');
+UPDATE trinity_string SET content_default = REPLACE(content_default,'└','--|'); 
 
    -- --------------------------------------------------------------------------------------
 -- ITEM: Update Lootcard Mount Requirements
