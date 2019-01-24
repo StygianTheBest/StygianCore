@@ -324,6 +324,8 @@ This tool handles the archive, backup, and restore processes for StygianCore. Wh
 
 The menu and options on this tool are dynamic and will change as you perform different tasks. The default menu looks like this:
 
+- **[0] Patch Core**
+  - Only available if a repack update archive is present. Updates the repack to the latest release.
 - **[1] Export World**
   - This will save the current game world.
   - Worlds can be reloaded without affecting the account/character data.
@@ -354,9 +356,7 @@ The menu and options on this tool are dynamic and will change as you perform dif
   - This automates copying of Debug, RelWithDBInfo, and Release builds and confs while testing.
   - Has an 'Auto-Run' toggle for starting the server after copy.
   - You can skip this if you're not compiling.
-- **[0] Patch Core**
-  - Only available if a repack update archive is present. Updates the repack to the latest release.
-  
+
 ## REPACK UPDATES
 
 **[This repo](https://github.com/StygianTheBest/StygianCore) is the home of all future updates to any of the content in this repack. The folder structure is a mirror of the file structure within the repack archive, so you can easily download and copy file updates into your repack or restoration archive.**
@@ -391,6 +391,14 @@ The menu and options on this tool are dynamic and will change as you perform dif
   
 ## OTHER INFORMATION
 
+### COMPILING
+
+You will need a few things to compile the source of this repack. The source can be found in the [GitHub Repo](https://github.com/StygianTheBest/StygianCore/tree/master/Source). Below are the specific tools and versions I used to compile the repack on my virtual machine. You may be able to use updated versions.
+
+- [Visual Studio 2017 Community](https://visualstudio.microsoft.com/vs/community/)
+- [CMAKE 3.9.0](https://github.com/Kitware/CMake/releases/tag/v3.9.0)
+- [OpenSSL 1.0.2l](https://www.openssl.org/source/old/1.0.2/openssl-1.0.2l.tar.gz) 
+
 ### DEVBOX
 
 - Apple i7 Mac-Mini (MID-2012), SSD, 16GB RAM, Thunderbolt
@@ -407,13 +415,13 @@ The menu and options on this tool are dynamic and will change as you perform dif
 #### All mods are tagged with #SCMOD in the source
 
 - Beastmaster NPC - Better Pet Handling
-  - Edits: Pet.cpp, npc_beastmaster module
+  - Edits: Pet.cpp, npc_beastmaster.cpp
 
 - Day/Night Cycle Timer
-  - Edits: World.cpp, World.h, Player.cpp, customserver module
+  - Edits: World.cpp, World.h, Player.cpp, mod_customserver.cpp
 
 - Dungeon Checkpoints
-  - Edits: Player.cpp, customserver module
+  - Edits: Player.cpp, mod_customserver.cpp
   
 ### ADDITIONAL TOOLS USED
 
