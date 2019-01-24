@@ -398,6 +398,7 @@ You will need a few things to compile the source of this repack. The source can 
 - [Visual Studio 2017 Community](https://visualstudio.microsoft.com/vs/community/)
 - [CMAKE 3.9.0](https://github.com/Kitware/CMake/releases/tag/v3.9.0)
 - [OpenSSL 1.0.2l](https://www.openssl.org/source/old/1.0.2/openssl-1.0.2l.tar.gz) 
+- [MySQL v5.6.42](https://dev.mysql.com/downloads/mysql/5.6.html#downloads)
 
 ### DEVBOX
 
