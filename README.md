@@ -8,6 +8,12 @@
 - [Mirror 2 (MediaFire)](https://rebrand.ly/stygiancore_release_mediafire)
 - [Repack Update Patch 2019-01-21](https://github.com/StygianTheBest/StygianCore/tree/master/Tools/Patch)
 
+## NEWS January 24, 2019
+
+The team at AzerothCore (AC) have recently begun a process to upgrade the databases to more closely match the structure found in Trinity. What this means is that when this upgrade is finished, the AC project will be able to more easily absorb updates and fixes made to the TrinityCore 335 branch. 
+
+**What this also means is.. everything created before these changes occurred will need to be updated. This includes any existing Tools, C++ scripts, modules, SQL updates or anything else that references the old database structures.** My repack is the only AC repack, at the time of this writing, that is updated with all core and database fixes and will work with all existing tools and content. I plan to continue to develop this repack, and I've recently released a patch to bring it up to speed with the latest changes to the AC project. Eventually, when everything has matured, I will migrate it to the new AC database structure.
+
 ## GREETINGS
 
 Welcome to StygianCore. This repack is powered by AzerothCore and would not be possible without the players, developers, and communities of the World of Warcraft MMO emulator and private server scene. A big thanks to everyone for any and all contributions absorbed to make this repack possible. Your hard work is much appreciated!
