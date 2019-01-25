@@ -29,6 +29,25 @@ DELETE FROM `game_tele` WHERE `id` > 1423;
 -- --------------------------------------------------------------------------------------
 -- Add Teleport Locations
 -- --------------------------------------------------------------------------------------
+
+-- --------------------------------------------------------------------------------------
+-- Programmer Isle & Designer Isle (Will crash without client patch and/or updated DBC)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1471', '16302.5', '16220.3', '69', '1.5394', '451', 'programisle');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1470', '16303', '-16173', '40', '0.361313', '451', 'designisle'); 
+-- --------------------------------------------------------------------------------------
+
+-- --------------------------------------------------------------------------------------
+-- Emerald Dream (Requires an Updated MAP.DBC file on the server)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `instance_template` (`map`, `parent`, `script`, `allowMount`) VALUES ('169', '0', 'emerald_dream', '0');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1469', '-4199.78', '-2597.09', '138.207', '6.17003', '169', 'emdream4');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1468', '-2716.34', '-2519.49', '142.365', '3.22479', '169', 'emdream3');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1467', '3249.74', '-3140.2', '99.7819', '3.38187', '169', 'emdream2');
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1466', '2729.99', '2987.88', '23.2229', '0.326661', '169', 'emdream1'); 
+-- --------------------------------------------------------------------------------------
+
+
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1465', '-700.315', '-1322.47', '259.742', '4.90748', '1', 'e3');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1464', '-745.952', '-989.286', '194.098', '2.01729', '1', 'e2');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1463', '-703.015', '-1066.34', '179.364', '0.0823302', '1', 'e1');
