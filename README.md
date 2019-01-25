@@ -204,7 +204,7 @@ When possible, I've moved module functions to ELUNA. This is a work in progress.
 - [NPC Enchanter](https://github.com/StygianTheBest/mod-npcenchanter)
 - [NPC Gambler](https://github.com/StygianTheBest/mod-npcgambler)
 - [NPC Loremaster](https://github.com/StygianTheBest/mod-npcloremaster)
-- Random Enchants (https://github.com/azerothcore/mod-random-enchants)
+- [Random Enchants](https://github.com/azerothcore/mod-random-enchants)
   - % Chance to enchant is now configurable
   - Item Quality to enchant is now configurable
 - [Starting Guild](https://github.com/StygianTheBest/mod-startguild)
