@@ -1,4 +1,6 @@
 -- DB update 2018_10_16_00 -> 2018_10_17_00
+-- https://github.com/azerothcore/azerothcore-wotlk/blob/master/data/sql/updates/db_world/2018_10_17_00.sql
+
 DROP PROCEDURE IF EXISTS `updateDb`;
 DELIMITER //
 CREATE PROCEDURE updateDb ()
@@ -29,7 +31,8 @@ WHERE `name` = 'go object';
 UPDATE `command` SET `help` = '[DEPRECATED]: use ".lookup gobject" instead.\r\nSyntax: .go object #object_guid\r\nTeleport your character to gameobject with guid #object_guid'
 WHERE `name` = 'lookup object';
 
-UPDATE `command` SET `help` = '[DEPRECATED]: use ".list gobject" instead.\r\nSyntax: .go object #object_guid\r\nTeleport your character to gameobject with guid #object_guid';
+UPDATE `command` SET `help` = '[DEPRECATED]: use ".list gobject" instead.\r\nSyntax: .go object #object_guid\r\nTeleport your character to gameobject with guid #object_guid'
+WHERE `name` = 'list object'; -- FIX FUCKUP BY Barbz_YHOOL
 
 --
 -- END UPDATING QUERIES
