@@ -30,6 +30,8 @@ DELETE FROM `game_tele` WHERE `id` > 1423;
 -- Add Teleport Locations
 -- --------------------------------------------------------------------------------------
 
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1472', '-12879.3', '-1408.12', '120.106', '0.488073', '0', 'tigercave');
+
 -- --------------------------------------------------------------------------------------
 -- Programmer Isle & Designer Isle (Will crash without client patch and/or updated DBC)
 -- --------------------------------------------------------------------------------------
@@ -46,7 +48,6 @@ INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `posi
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1467', '3249.74', '-3140.2', '99.7819', '3.38187', '169', 'emdream2');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1466', '2729.99', '2987.88', '23.2229', '0.326661', '169', 'emdream1'); 
 -- --------------------------------------------------------------------------------------
-
 
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1465', '-700.315', '-1322.47', '259.742', '4.90748', '1', 'e3');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1464', '-745.952', '-989.286', '194.098', '2.01729', '1', 'e2');
