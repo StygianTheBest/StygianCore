@@ -309,7 +309,7 @@ cls
 echo.
 if exist Tools\Temp\%world%.sql (
 	echo [- Archiving Existing World -]
-	ren "Tools\Temp\%world%.sql" "stygian_world-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%world%.sql" "%world%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No World Backup Found *** -]
 )
@@ -342,7 +342,7 @@ cls
 echo.
 if exist Tools\Temp\%login%.sql (
 	echo [- Archiving Existing Accounts -]
-	ren "Tools\Temp\%login%.sql" "stygian_auth-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%login%.sql" "%login%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No Account Backup Found *** -]
 )
@@ -352,7 +352,7 @@ Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf --default-characte
 if exist Tools\Temp\%characters%.sql (
 	echo.
 	echo [- Archiving Existing Characters -]
-	ren "Tools\Temp\%characters%.sql" "stygian_characters-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%characters%.sql" "%characters%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No Character Backup Found *** -]
 )
@@ -381,11 +381,11 @@ IF EXIST Tools\SaveGameState\savestate-%world%.sql. (
 :do_import_saved_world
 cls
 echo.
-if exist Tools\Temp\stygian_world.sql. (
+if exist Tools\Temp\%world%.sql. (
 	echo [- Importing World from Tools\Temp\%world%.sql -]
 	Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "DROP DATABASE %world%"
 	Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "CREATE DATABASE %world%"
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Temp\stygian_world.sql
+	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Temp\%world%.sql
 	echo.
 	pause
 	goto menu
@@ -399,8 +399,8 @@ if exist Tools\Temp\stygian_world.sql. (
 :do_import_sandbox_world
 cls
 echo.
-if exist Tools\SaveGameState\savestate-stygian_world.sql. (
-	echo [- Resetting World  -]
+if exist Tools\SaveGameState\savestate-%world%.sql. (
+	echo [- Reset Sandbox World  -]
 	echo.
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
@@ -434,18 +434,18 @@ IF EXIST Tools\SaveGameState\savestate-%characters%.sql. (
 :do_import_saved_accounts
 cls
 echo.	
-	if exist Tools\Temp\stygian_characters.sql. (	
+	if exist Tools\Temp\%characters%.sql. (	
 
 	echo [- Restoring Default Accounts -]	
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"	
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %login%" 		
-	for %%i in (Tools\Temp\restore_stygiancore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_stygiancore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
-
+	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%login% < Tools\Temp\%login%.sql
+	
 	echo [- Restoring Default Characters -]
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
-	for %%i in (Tools\Temp\restore_stygiancore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_stygiancore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
-	
+	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%characters% < Tools\Temp\%characters%.sql
+		
 	pause
 	goto menu
 ) else (
@@ -458,16 +458,17 @@ echo.
 :do_import_sandbox_accounts
 cls
 echo.
-if exist Tools\Temp\restore_azerothcore\01_default\db_world\waypoints.sql. (	
-	echo [- Reset Accounts -]	
+if exist Tools\Temp\restore_azerothcore\01_default\db_auth\realmlist.sql. (	
+	echo [- Reset Sandbox Accounts -]	
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"	
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %login%" 		
-	for %%i in (Tools\Temp\restore_stygiancore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_stygiancore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
+	for %%i in (Tools\Temp\restore_azerothcore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
 
-	echo [- Reset Characters -]
+
+	echo [- Reset Sandbox Characters -]
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
-	for %%i in (Tools\Temp\restore_stygiancore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_stygiancore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
+	for %%i in (Tools\Temp\restore_azerothcore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
 	pause 
 	goto menu
 ) else (
@@ -638,41 +639,41 @@ CD ..
 CD ..
 Tools\7Z x -y Tools\Work\restore_azerothcore.zip -o.\Tools\Temp\
 echo.
-echo [- Restoring Default Accounts -]
+echo [- Restoring Default AzerothCore Accounts -]
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %login%" 
 for %%i in (Tools\Temp\restore_azerothcore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
 
-echo [- Restoring Default Characters -]
+echo [- Restoring Default AzerothCore Characters -]
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
 for %%i in (Tools\Temp\restore_azerothcore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
 
-echo [- Restoring Default World -]
+echo [- Restoring Default AzerothCore World -]
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
 for %%i in (Tools\Temp\restore_azerothcore\01_default\db_world\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_world\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
 
 REM -- UPDATES --
 
-echo [- Restoring Updates Accounts -]
+echo [- Restoring AzerothCore Updates Accounts -]
 for %%i in (Tools\Temp\restore_azerothcore\02_update\db_auth\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_auth\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
 
-echo [- Restoring Updates Characters -]
+echo [- Restoring AzerothCore Updates Characters -]
 for %%i in (Tools\Temp\restore_azerothcore\02_update\db_characters\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_characters\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
 
-echo [- Restoring Updates World -]
+echo [- Restoring AzerothCore Updates World -]
 for %%i in (Tools\Temp\restore_azerothcore\02_update\db_world\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_world\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
 
 REM -- CUSTOM --
 
-echo [- Restoring Custom Accounts -]
+echo [- Restoring AzerothCore Custom Accounts -]
 for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_auth\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_auth\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
 
-echo [- Restoring Custom Characters -]
+echo [- Restoring AzerothCore Custom Characters -]
 for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_characters\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_characters\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
 
-echo [- Restoring Custom World -]
+echo [- Restoring AzerothCore Custom World -]
 for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_world\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_world\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
 
 echo [- Restoring Binaries -]
