@@ -16,6 +16,11 @@
 --
 -- Reprices the items sold by custom NPC vendors in StygianCore.
 --
+-- Item Stack Note: 
+-- The `buyprice` for items in stacks is per item. Ex: Buying an item that stacks 
+-- to 5 (Snowballs) that has a `sellprice` of 2 silver should have the `buyprice` 
+-- set to 10 silver. This avoids buy low/sell high price exploits!
+-- 
 -- ################################################################################### --
 */
 
@@ -199,7 +204,7 @@ UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 21154;	    -
 UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 17712;	    -- Winter Veil Disguise Kit
 UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 21213;	    -- Preserved Holly
 UPDATE item_template SET sellprice=@25S, buyprice=@25S WHERE entry = 35557;	    -- Huge Snowball
-UPDATE item_template SET sellprice=@10S, buyprice=@10S WHERE entry = 17202;	    -- Snowball
+UPDATE item_template SET sellprice=@2S, buyprice=@10S WHERE entry = 17202;	    -- Snowball
 UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 21524;	    -- Red Winter Hat
 UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 21542;	    -- Festival Suit
 UPDATE item_template SET sellprice=@25S, buyprice=@1G WHERE entry = 34085;	    -- Red Winter Clothes
