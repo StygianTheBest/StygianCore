@@ -1,7 +1,12 @@
 # Data
 
-This folder holds client patches for game data files. These patches are not required to run the repack, but doing so ensures _as intended_ play.
+This folder holds repack specific client patches. All repack patches will include any updates to files located in this folder.
 
+- ## Patch-5.mpq
+
+  - Allows access to undeveloped (Emerald Dream) and developer zones (Programmer Isle / Designer Isle)
+  
 - ## Patch-Z.mpq
 
-  - Required to display icons for custom items and objects in StygianCore
+ - **This file is REQUIRED** to display custom items, icons, and textures included in the StygianCore repack
+ - **This is is updated from time to time. Be sure you have the latest version!**

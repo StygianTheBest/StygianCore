@@ -7,5 +7,7 @@
 ## LoginScreen
 
 - Edit the _LoginUI.lua_ and set the IP Address
-- Random animated login screens with music
-- Saves the player's username and password
+- Custom Login Screen & Music
+  - Save Account Name and Password Enabled
+  - [Random Animated Login Screens](https://stygianthebest.github.io/projects/client-randomscreen/) Enabled
+  - The Data\Extra folder contains the Classic and TBC login screen patches
