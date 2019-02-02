@@ -62,7 +62,7 @@ SET
 @MOTD 		:= "Welcome to Sons of the Storm!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1498723958;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 126, 14, 5, 10, 31, @Info, @MOTD, @CreatedOn, @BankMoney);
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (1, @Name, @LeaderGUID, 126, 16, 1, 14, 45, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 --
 -- Faction: Alliance
@@ -75,11 +75,11 @@ DELETE FROM `guild` WHERE `guildid`=2;
 SET
 @Name 		:= "Emerald Dreams",
 @LeaderGUID	:= 2, -- Alliance
-@Info		:= "An Alliance guild based out of Stormwind. Ask to visit our guild house.",
+@Info		:= "An Alliance guild based out of Stormwind. FOR THE ALLIANCE AND FOR KHAZ MODAN!",
 @MOTD 		:= "Welcome to Emerald Dreams!",
 @BankMoney 	:= 100000,
 @CreatedOn	:= 1499669732;
-INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 42, 14, 5, 14, 31, @Info, @MOTD, @CreatedOn, @BankMoney);
+INSERT INTO `guild` (`guildid`, `name`, `leaderguid`, `EmblemStyle`, `EmblemColor`, `BorderStyle`, `BorderColor`, `BackgroundColor`, `info`, `motd`, `createdate`, `BankMoney`) VALUES (2, @Name, @LeaderGUID, 42, 14, 4, 8, 20, @Info, @MOTD, @CreatedOn, @BankMoney);
 
 
 
