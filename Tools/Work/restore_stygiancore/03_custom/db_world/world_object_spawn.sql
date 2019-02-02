@@ -21,19 +21,29 @@
 
 USE stygian_world;
 
+-- ################################################################################### --
+-- Update StygianCore table structure for GOMove object import
+-- ################################################################################### --
+
+-- ALTER TABLE `stygian_world`.`gameobject` DROP COLUMN zoneId;
+-- ALTER TABLE `stygian_world`.`gameobject` DROP COLUMN areaId;
+-- ALTER TABLE `stygian_world`.`gameobject` DROP COLUMN ScriptName;
+
+ALTER TABLE `stygian_world`.`gameobject`
+ADD zoneId smallint(5),
+ADD areaId smallint(5),
+ADD ScriptName char(64);
 
 -- ################################################################################### --
 --	CITIES, TOWNS, WILDERNESS
 -- ################################################################################### --
 
 -- --------------------------------------------------------------------------------------
--- Clean Up GUIDs
--- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE guid >= 269190 AND guid <= 269200;
-
--- --------------------------------------------------------------------------------------
 -- Sunrock Retreat
 -- --------------------------------------------------------------------------------------
+
+-- Clean Up GUIDs
+DELETE FROM `gameobject` WHERE guid >= 269190 AND guid <= 269200;
 
 -- Campfire
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (269190, 192719, 1, 1, 1, 929.697, 968.275, 103.289, 2.31689, -0, -0, -0.916181, -0.400765, 300, 0, 1, 0);
