@@ -29,12 +29,34 @@
 USE stygian_world;
 
 -- --------------------------------------------------------------------------------------
+-- fix(DB/Quest): Mage Summoner (#1341)
+-- Added gossip menu option for Shaman Trainer
+-- Updated faction for creature Minor Water Guardian
+-- Updated flags for creature Sarilus Foulborne
+-- --------------------------------------------------------------------------------------
+-- Adding train option in gossip menu for Sagorne Creststrider <Shaman Trainer>
+UPDATE `gossip_menu_option` SET `option_text`='Teach me the ways of the spirits.' WHERE `menu_id`=5123 AND `option_id`=0;
+
+-- [Quest] Mage Summoner
+UPDATE `creature_template` SET `faction`=91 WHERE `entry`=3950;
+UPDATE `creature_template` SET `flags_extra`=2 WHERE `entry`=3986;
+
+-- Creature Sarilus Foulborne 3986 SAI
+SET @ENTRY := 3986;
+UPDATE `creature_template` SET `AIName`="SmartAI" WHERE `entry`= @ENTRY;
+DELETE FROM `smart_scripts` WHERE `entryorguid`=@ENTRY AND `source_type`=0;
+INSERT INTO `smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES
+(@ENTRY, 0, 0, 0, 0, 0, 100, 0, 4000, 4000, 5000, 8000, 11, 20806, 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, "When in combat and timer at the begining between 4000 and 4000 ms (and later repeats every 5000 and 8000 ms) - Self: Cast spell Frostbolt (20806) on Random hostile"),
+(@ENTRY, 0, 1, 0, 0, 0, 100, 1, 0, 1000, 0, 0, 11, 6490, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, "When in combat and timer at the begining between 0 and 1000 ms (and later repeats every 0 and 0 ms) - Self: Cast spell Sarilus's Elementals (6490) on Self"),
+(@ENTRY, 0, 2, 0, 7, 0, 100, 0, 0, 0, 0, 0, 41, 1000, 0, 0, 0, 0, 0, 9, 3950, 0, 40, 0, 0, 0, 0, "On evade - Creature Minor Water Guardian (3950) in 0 - 40 yards: Despawn in 1000 ms");
+
+-- --------------------------------------------------------------------------------------
 -- DB: Fix trinity_string characters
 -- --------------------------------------------------------------------------------------
 UPDATE trinity_string SET content_default = REPLACE(content_default,'│','|');
 UPDATE trinity_string SET content_default = REPLACE(content_default,'└','--|'); 
 
-   -- --------------------------------------------------------------------------------------
+-- --------------------------------------------------------------------------------------
 -- ITEM: Update Lootcard Mount Requirements
 -- --------------------------------------------------------------------------------------
 UPDATE `stygian_world`.`item_template` SET `RequiredLevel` = '20',`RequiredSkillRank` = '0' WHERE (`entry` = '54068'); -- Wooly Rhino
@@ -529,13 +551,3 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 DELETE FROM `conditions` WHERE `SourceTypeOrReferenceId`=22 AND `SourceEntry`=104593;
 INSERT INTO `conditions` (`SourceTypeOrReferenceId`, `SourceGroup`, `SourceEntry`, `SourceId`, `ElseGroup`, `ConditionTypeOrReference`, `ConditionTarget`, `ConditionValue1`, `ConditionValue2`, `ConditionValue3`, `NegativeCondition`, `ErrorType`, `ErrorTextId`, `ScriptName`, `Comment`) VALUES
 (22,1,104593,1,0,29,1,6390,100,0,1,0,0,"","SAI triggers if Ulag is not summoned");
-
-
--- ***
--- ***
--- ***
--- ***
--- ***
--- ***
--- ***
--- ***
