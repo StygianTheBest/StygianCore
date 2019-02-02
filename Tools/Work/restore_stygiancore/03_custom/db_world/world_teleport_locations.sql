@@ -29,7 +29,7 @@ DELETE FROM `game_tele` WHERE `id` > 1423;
 -- --------------------------------------------------------------------------------------
 -- Add Teleport Locations
 -- --------------------------------------------------------------------------------------
-
+INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1473', '1485.96', '5399.54', '0.496111', '2.13523', '571', 'terkyscave');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1472', '-12879.3', '-1408.12', '120.106', '0.488073', '0', 'tigercave');
 
 -- --------------------------------------------------------------------------------------
@@ -42,7 +42,7 @@ INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `posi
 -- --------------------------------------------------------------------------------------
 -- Emerald Dream (Requires an Updated MAP.DBC file on the server)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `instance_template` (`map`, `parent`, `script`, `allowMount`) VALUES ('169', '0', 'emerald_dream', '0');
+-- INSERT INTO `instance_template` (`map`, `parent`, `script`, `allowMount`) VALUES ('169', '0', 'emerald_dream', '0');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1469', '-4199.78', '-2597.09', '138.207', '6.17003', '169', 'emdream4');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1468', '-2716.34', '-2519.49', '142.365', '3.22479', '169', 'emdream3');
 INSERT INTO `stygian_world`.`game_tele` (`id`, `position_x`, `position_y`, `position_z`, `orientation`, `map`, `name`) VALUES ('1467', '3249.74', '-3140.2', '99.7819', '3.38187', '169', 'emdream2');
