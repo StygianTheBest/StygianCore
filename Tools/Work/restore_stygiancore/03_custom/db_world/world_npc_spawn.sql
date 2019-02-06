@@ -27,6 +27,24 @@ USE stygian_world;
 -- ################################################################################### --
 
 -- --------------------------------------------------------------------------------------
+-- Black Rats (Barbarian King's Crypt)
+-- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`creature` WHERE `guid` IN (2026023, 2026022, 2026021, 2026006, 2025992, 2025991, 2025990);
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2026023', '2110', '0', '1', '1', '0', '0', '-6554.18', '-3485.95', '292.678', '4.68442', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2026022', '2110', '0', '1', '1', '0', '0', '-6541.85', '-3489.82', '292.867', '6.27878', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2026021', '2110', '0', '1', '1', '0', '0', '-6567.08', '-3489.61', '292.867', '2.68951', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2026006', '2110', '0', '1', '1', '0', '0', '-6554.48', '-3494.7', '292.867', '4.73547', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2025992', '2110', '0', '1', '1', '0', '0', '-6554.6', '-3475.9', '295.694', '4.74726', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2025991', '2110', '0', '1', '1', '0', '0', '-6554.31', '-3467.46', '299.08', '0.00344742', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2025990', '2110', '0', '1', '1', '0', '0', '-6562.23', '-3467.49', '302.042', '0.00344742', '300', '6', '0', '1', '0', '1', '0', '0', '0');
+
+-- --------------------------------------------------------------------------------------
+-- Bengal Tiger Handler (Stranglethorn Cave)
+-- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`creature` WHERE `guid` = 2025782;
+INSERT INTO `stygian_world`.`creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES ('2025782', '601036', '0', '1', '1', '0', '0', '-12832.8', '-1376.24', '113.165', '3.74355', '300', '0', '0', '5342', '0', '0', '0', '0', '0');
+
+-- --------------------------------------------------------------------------------------
 -- Pet Vendor Exotic (Sunrock Retreat)
 -- --------------------------------------------------------------------------------------
 DELETE FROM `creature` WHERE `guid`=601000;

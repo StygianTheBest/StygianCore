@@ -75,6 +75,7 @@
 -- 601033 - Mounts
 -- 601034 - Banker		
 -- 601035 - GM Island Decorator
+-- 601036 - Bengal Tiger Handler
 */ 
 
 USE stygian_world;
@@ -799,6 +800,85 @@ INSERT INTO npc_vendor (entry, item) VALUES
 -- ANGLIN'
 (@Entry,34832), -- Captain Rumsey's Lager
 (@Entry,18229);	-- Nat Pagle's Guide to Extreme Anglin' 
+
+-- --------------------------------------------------------------------------------------
+-- CLEAN UP FISHERMAN WAYPOINTS
+-- --------------------------------------------------------------------------------------
+DELETE FROM `creature_addon` WHERE `guid`=1994210;
+DELETE FROM `db_script_string` WHERE entry >= 2000006050 AND entry <= 2000006052;
+DELETE FROM `waypoint_scripts` WHERE guid >= 938 AND guid <= 941;
+DELETE FROM `creature` WHERE guid >= 1995303 AND guid <= 1995315;
+DELETE FROM `waypoint_data` WHERE id = 1994210 AND point <= 13;
+
+-- --------------------------------------------------------------------------------------
+-- FISHERMAN CREATURE ADDON
+-- --------------------------------------------------------------------------------------
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (1994210, 1994210, 0, 0, 0, 0, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- FISHERMAN WAYPOINT STRINGS
+-- --------------------------------------------------------------------------------------
+INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) 
+VALUES 
+(2000006050, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2000006051, 'Many men go fishing all of their lives without knowing that it is not fish they are after.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2000006052, 'I wonder if they ever found that hidden treasure buried on the Isle of Dread?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- FISHERMAN WAYPOINT SCRIPTS
+-- --------------------------------------------------------------------------------------
+INSERT INTO `waypoint_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `dataint`, `x`, `y`, `z`, `o`, `guid`) 
+VALUES 
+(938, 0, 0, 0, 0, 2000006050, 0, 0, 0, 0, 938), -- Say
+(939, 0, 0, 0, 0, 2000006051, 0, 0, 0, 0, 939), -- Say
+(940, 0, 0, 0, 0, 2000006052, 0, 0, 0, 0, 940), -- Say
+(941, 0, 31, 601005, 0, 0, 0, 0, 0, 0, 941);	-- Equip
+
+-- --------------------------------------------------------------------------------------
+-- FISHERMAN WAYPOINT GUID
+-- --------------------------------------------------------------------------------------
+INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) 
+VALUES 
+(1995315, 1, 1, 1, 1, 0, 0, -10749, 2517.63, 1.60554, 1.43331, 300, 0, 0, 41, 0, 0, 0, 33554432, 0),
+(1995314, 1, 1, 1, 1, 0, 0, -10700.2, 2523.61, 0.792882, 1.43331, 300, 0, 0, 41, 0, 0, 0, 33554432, 0),
+(1995313, 1, 1, 1, 1, 0, 0, -10702.7, 2521.03, 2.26718, 1.43331, 300, 0, 0, 2, 0, 0, 0, 33554432, 0),
+(1995312, 1, 1, 1, 1, 0, 0, -10732.6, 2518.96, 1.79036, 1.43331, 300, 0, 0, 24, 0, 0, 0, 33554432, 0),
+(1995311, 1, 1, 1, 1, 0, 0, -10745.8, 2511.96, 3.60894, 1.43331, 300, 0, 0, 42, 0, 0, 0, 33554432, 0),
+(1995310, 1, 1, 1, 1, 0, 0, -10760.3, 2513.04, 1.92615, 1.43331, 300, 0, 0, 5, 0, 0, 0, 33554432, 0),
+(1995309, 1, 1, 1, 1, 0, 0, -10791.1, 2489.84, 1.98191, 1.43331, 300, 0, 0, 10, 0, 0, 0, 33554432, 0),
+(1995308, 1, 1, 1, 1, 0, 0, -10807.8, 2461.83, 1.04805, 1.43331, 300, 0, 0, 6, 0, 0, 0, 33554432, 0),
+(1995307, 1, 1, 1, 1, 0, 0, -10805.9, 2460.9, 2.03948, 1.43331, 300, 0, 0, 20, 0, 0, 0, 33554432, 0),
+(1995306, 1, 1, 1, 1, 0, 0, -10791.4, 2490.54, 1.74961, 1.43331, 300, 0, 0, 15, 0, 0, 0, 33554432, 0),
+(1995305, 1, 1, 1, 1, 0, 0, -10777.2, 2504.67, 0.528472, 1.43331, 300, 0, 0, 38, 0, 0, 0, 33554432, 0),
+(1995304, 1, 1, 1, 1, 0, 0, -10776.3, 2503.56, 1.20431, 1.43331, 300, 0, 0, 4, 0, 0, 0, 33554432, 0),
+(1995303, 1, 1, 1, 1, 0, 0, -10749.4, 2519.6, 0.203893, 1.43331, 300, 0, 0, 50, 0, 0, 0, 33554432, 0);
+
+-- --------------------------------------------------------------------------------------
+-- FISHERMAN WAYPOINT DATA
+-- --------------------------------------------------------------------------------------
+INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`) 
+VALUES 
+
+-- Start
+(1994210, 1, -10749.4, 2519.6, 0.203893, 0, 30000, 0, 939, 33, 1995303),
+(1994210, 2, -10776.3, 2503.56, 1.20431, 0, 0, 0, 0, 100, 1995304),
+(1994210, 3, -10777.2, 2504.67, 0.528472, 0, 30000, 0, 0, 100, 1995305),
+
+-- Headed to boats
+(1994210, 4, -10791.4, 2490.54, 1.74961, 0, 0, 0, 940, 10, 1995306),
+(1994210, 5, -10805.9, 2460.9, 2.03948, 0, 0, 0, 0, 100, 1995307),
+
+-- At the boats, TODO: equip fishing pole (EVENT 941)
+(1994210, 6, -10807.8, 2461.83, 1.04805, 0, 60000, 0, 941, 100, 1995308),
+(1994210, 7, -10791.1, 2489.84, 1.98191, 0, 0, 0, 0, 100, 1995309),
+(1994210, 8, -10760.3, 2513.04, 1.92615, 0, 0, 0, 0, 100, 1995310),
+(1994210, 9, -10745.8, 2511.96, 3.60894, 0, 0, 0, 0, 100, 1995311),
+(1994210, 10, -10732.6, 2518.96, 1.79036, 0, 0, 0, 0, 100, 1995312),
+(1994210, 11, -10702.7, 2521.03, 2.26718, 0, 0, 0, 0, 100, 1995313),
+
+-- Looking at sunset
+(1994210, 12, -10700.2, 2523.61, 0.792882, 0, 60000, 0, 938, 33, 1995314),
+(1994210, 13, -10749, 2517.63, 1.60554, 0, 0, 0, 0, 25, 1995315);
 
 -- --------------------------------------------------------------------------------------
 --	ARTIFACT VENDOR - 601006
@@ -2600,6 +2680,60 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
 -- --------------------------------------------------------------------------------------
+--	BENGAL TIGER VENDOR - 601036 - Smart Script Trainer
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601036,
+@Model 		:= 2575, -- Night Elf Female (Classic)
+@Name 		:= "Reina Sands",
+@Title 		:= "Bengal Tiger Handler",
+@Icon 		:= "Trainer",
+@GossipMenu := 60136,
+@MinLevel 	:= 80,
+@MaxLevel 	:= 80,
+@Faction 	:= 35,
+@NPCFlag 	:= 3, -- 
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 7,
+@TypeFlags 	:= 138936390,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Spell1		:= 828, 	-- Tiger Riding (828, 6745 passive)
+@Spell2		:= 10790,	-- Reins of the Bengal Tiger
+@Spell3 	:= 16609,	-- Pray to Elune
+@Item1		:= 8630,	-- Reins of the Bengal Tiger
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- Text
+DELETE FROM `npc_text` WHERE `ID` = @Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`, `text0_1`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild`) VALUES (@Entry, 'Greetings $N. Lucky you.. You\'ve arrived at just the right time.', NULL, 0, 0, 0, 6, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Gossip Menu Option
+DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'Train Tiger Riding', 1, 1, @GossipMenu, 0, 0, 0, '');
+INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 1, 2, 'Adopt a Bengal Tiger', 1, 1, @GossipMenu, 0, 0, 0, '');
+INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 2, 9, 'Pray to Elune', 1, 1, @GossipMenu, 0, 0, 0, '');
+
+-- Smart Scripts
+DELETE FROM `smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO smart_scripts (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, 0, 0, 0, 62, 0, 100, 0, @GossipMenu, 0, 0, 0, 85, @Spell1, 2, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, '');
+INSERT INTO smart_scripts (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, 0, 1, 0, 62, 0, 100, 0, @GossipMenu, 1, 0, 0, 56, @Item1, 1, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, '');
+INSERT INTO smart_scripts (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, 0, 2, 0, 62, 0, 100, 0, @GossipMenu, 2, 0, 0, 11, @Spell3, 2, 0, 0, 0, 0, 7, 0, 0, 0, 0, 0, 0, 0, '');
+
+-- Update Reins of the Bengal Tiger requirements
+UPDATE `stygian_world`.`item_template` SET `RequiredLevel`='1', `RequiredSkill`='150', `RequiredSkillRank`='1', `maxcount`='1' WHERE (`entry`='8630');
+
+-- --------------------------------------------------------------------------------------
 --	HEIRLOOM VENDOR - 601704
 -- --------------------------------------------------------------------------------------
 SET
@@ -2671,3 +2805,4 @@ INSERT INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`ExtendedC
 (@Entry,0,48716,0,0,0), -- Venerable Mass of McGowan
 (@Entry,0,48718,0,0,0), -- Repurposed Lava Dredger
 (@Entry,0,50255,0,0,0); -- Dread Pirate Ring
+
