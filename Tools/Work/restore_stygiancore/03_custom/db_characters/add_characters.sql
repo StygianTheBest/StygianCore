@@ -251,6 +251,15 @@ CREATE TABLE `playercreateinfo_item` (
 -- All players start with Pocket Portal 
 INSERT INTO `stygian_world`.`playercreateinfo_item` (`race`, `class`, `itemid`, `amount`) VALUES ('0', '0', '701002', '1');
 
+-- ALL players start with Tiger Riding
+--
+-- I preferred to have the Bengal Tiger Handler NPC teach you this via Smart Scripts, but for some reason
+-- it wouldn't work. I tried both spell Ids and then decided adding this would make life easy. If you know 
+-- the solution post it at https://github.com/StygianTheBest/StygianCore/.
+--
+INSERT INTO `stygian_world`.`playercreateinfo_spell` (`racemask`, `classmask`, `Spell`, `Note`) VALUES ('0', '0', '828', 'Tiger Riding');
+INSERT INTO `stygian_world`.`playercreateinfo_spell` (`racemask`, `classmask`, `Spell`, `Note`) VALUES ('0', '0', '6745', 'Tiger Riding');
+
 -- --------------------------------------------------------------------------------------
 -- REFERENCE/TEMPLATE
 -- --------------------------------------------------------------------------------------
