@@ -2,11 +2,9 @@
 
 ##### A repack for AzerothCore by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
 
-## DOWNLOAD
+# NEWS February 8, 2019
 
-- [Mirror 1 (MEGA)](https://rebrand.ly/stygiancore_release_mega)
-- [Mirror 2 (MediaFire)](https://rebrand.ly/stygiancore_release_mediafire)
-- [Repack Update Patch 2019-01-21](https://github.com/StygianTheBest/StygianCore/tree/master/Tools/Patch)
+**I am releasing a new version of the repack in a few days. These downloads have been disabled. Stay tuned!**
 
 ## NEWS January 24, 2019
 

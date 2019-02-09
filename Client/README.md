@@ -1,3 +1,7 @@
+# NEWS February 8, 2019
+
+**I am releasing a new version of the repack in a few days. These downloads have been disabled. Stay tuned!**
+
 # Client Modifications
 
 This folder holds additional client modifications for StygianCore. 
@@ -12,7 +16,7 @@ This StygianCore Client Update does not contain the full WoW 3.3.5a client, it o
 **Attempting to use this update with a client that has existing mods or patches may cause crashes, errors, or missing models/textures during gameplay.**
 
 - [World of Warcraft Client v3.3.5a](https://mega.nz/#F!UdsVHKbI!hsLVjihZgDgcIQiDZMg5qQ)
-- [StygianCore Client Update v2019.02.01](https://drive.google.com/open?id=1_B12g1N587XnTBWVz4oi9Ih8HIO_h7qC#)
+- [StygianCore Client Update v2019.02.01](#)
 
 ## Client Setup
 

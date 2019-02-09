@@ -1,12 +1,16 @@
+# NEWS February 8, 2019
+
+**I am releasing a new version of the repack in a few days. These downloads have been disabled. Stay tuned!**
+
 # How to update the StygianCore Repack
 
 ### Welcome to StygianCore. This update will upgrade the server binaries, module config files, world database, and restoration archive to the latest release.
 
 ### 1) Download the Repack Update
 
-- [Download Repack Update](https://drive.google.com/drive/folders/1f2SdTyA8yxrwjIDh9Ul3U1h3boPap91I?usp=sharing)
-- **start_corepatch.bat** - The tool for preparing the patch archive for install.
-- **StygianCorePatch_Revision_XXXX_XX_XX.zip** - The core patch archive.
+- [Download Repack Update](#)
+	- **start_corepatch.bat** - The tool for preparing the patch archive for install.
+	- **StygianCorePatch_Revision_XXXX_XX_XX.zip** - The core patch archive.
 
 ### 2) Prepare the Update
 
