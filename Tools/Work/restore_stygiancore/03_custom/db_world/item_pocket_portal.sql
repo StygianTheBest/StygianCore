@@ -35,9 +35,10 @@ SET
 @NAME				:= "Pocket Portal",
 @ENTRY 				:= 128,
 @QUALITY			:= 7,
+@MODEL				:= 29133,
 @FLAGS				:= 134217728, -- BOA
 @FLAGSEXTRA			:= 0,
-@SCALE				:= 0.8,
+@SCALE				:= 0.2,
 @SOURCETYPE 		:= 0,
 @COOLDOWN			:= 30000,
 @TEXT_ID        	:= 300000,
@@ -48,7 +49,7 @@ SET
 -- --------------------------------------------------------------------------------------
 DELETE FROM `item_template` WHERE (`entry`= @ITEMENTRY);
 INSERT INTO `item_template` (`entry`, `class`, `subclass`, `name`, `displayid`, `Quality`, `Flags`, `FlagsExtra`, `BuyCount`, `BuyPrice`, `SellPrice`, `InventoryType`, `AllowableClass`, `AllowableRace`, `ItemLevel`, `RequiredLevel`, `RequiredSkill`, `RequiredSkillRank`, `requiredspell`, `requiredhonorrank`, `RequiredCityRank`, `RequiredReputationFaction`, `RequiredReputationRank`, `maxcount`, `stackable`, `ContainerSlots`, `StatsCount`, `stat_type1`, `stat_value1`, `stat_type2`, `stat_value2`, `stat_type3`, `stat_value3`, `stat_type4`, `stat_value4`, `stat_type5`, `stat_value5`, `stat_type6`, `stat_value6`, `stat_type7`, `stat_value7`, `stat_type8`, `stat_value8`, `stat_type9`, `stat_value9`, `stat_type10`, `stat_value10`, `ScalingStatDistribution`, `ScalingStatValue`, `dmg_min1`, `dmg_max1`, `dmg_type1`, `dmg_min2`, `dmg_max2`, `dmg_type2`, `armor`, `holy_res`, `fire_res`, `nature_res`, `frost_res`, `shadow_res`, `arcane_res`, `delay`, `ammo_type`, `RangedModRange`, `spellid_1`, `spelltrigger_1`, `spellcharges_1`, `spellppmRate_1`, `spellcooldown_1`, `spellcategory_1`, `spellcategorycooldown_1`, `spellid_2`, `spelltrigger_2`, `spellcharges_2`, `spellppmRate_2`, `spellcooldown_2`, `spellcategory_2`, `spellcategorycooldown_2`, `spellid_3`, `spelltrigger_3`, `spellcharges_3`, `spellppmRate_3`, `spellcooldown_3`, `spellcategory_3`, `spellcategorycooldown_3`, `spellid_4`, `spelltrigger_4`, `spellcharges_4`, `spellppmRate_4`, `spellcooldown_4`, `spellcategory_4`, `spellcategorycooldown_4`, `spellid_5`, `spelltrigger_5`, `spellcharges_5`, `spellppmRate_5`, `spellcooldown_5`, `spellcategory_5`, `spellcategorycooldown_5`, `bonding`, `description`, `PageText`, `LanguageID`, `PageMaterial`, `startquest`, `lockid`, `Material`, `sheath`, `RandomProperty`, `RandomSuffix`, `block`, `itemset`, `MaxDurability`, `area`, `Map`, `BagFamily`, `TotemCategory`, `socketColor_1`, `socketContent_1`, `socketColor_2`, `socketContent_2`, `socketColor_3`, `socketContent_3`, `socketBonus`, `GemProperties`, `RequiredDisenchantSkill`, `ArmorDamageModifier`, `Duration`, `ItemLimitCategory`, `HolidayId`, `ScriptName`, `DisenchantID`, `FoodType`, `minMoneyLoot`, `maxMoneyLoot`, `VerifiedBuild`) 
-VALUES (@ITEMENTRY, 0, 0, @NAME, 28862, @QUALITY, @FLAGS, @FLAGSEXTRA, 1, 20000, 10000, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 897, 0, 0, 0, @COOLDOWN, 1193, 60000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '', 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @SCRIPTNAME, 0, 0, 0, 0, 12340);
+VALUES (@ITEMENTRY, 0, 0, @NAME, @Model, @QUALITY, @FLAGS, @FLAGSEXTRA, 1, 20000, 10000, 0, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 897, 0, 0, 0, @COOLDOWN, 1193, 60000, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '', 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @SCRIPTNAME, 0, 0, 0, 0, 12340);
 
 -- Easy View
 UPDATE `stygian_world`.`item_template`
@@ -58,7 +59,7 @@ SET
  `subclass` = '0',
  `SoundOverrideSubclass` = '-1',
  `name` = 'Pocket Portal',
- `displayid` = '30076', -- 30076 (Jeeves), 27320 (Goblin Mechanic), 21572 (Elven Portal Master)
+ `displayid` = @Model, -- 26341 (Purple Jeeves), 30076 (Jeeves), 27320 (Goblin Mechanic), 21572 (Elven Portal Master)
  `Quality` = '7', -- BOA
  `Flags` = '134217728', -- BOA
  `FlagsExtra` = '0',
@@ -155,7 +156,7 @@ SET
  `spellcategory_5` = '0',
  `spellcategorycooldown_5` = '0',
  `bonding` = '1',
- `description` = 'Peering into this rune you can see what appear to be mountains and oceans swirling together.',
+ `description` = 'The surface is somewhat transparent and peering deeper reveals a swirling maelstrom of mountains, oceans, and forests.',
  `PageText` = '0',
  `LanguageID` = '0',
  `PageMaterial` = '0',
@@ -201,14 +202,9 @@ WHERE
 -- `modelid` = 30076 (Jeeves), 27320 (Goblin Mechanic), 21572 (Elven Portal Master)
 --
 -- --------------------------------------------------------------------------------------
-DELETE FROM `creature_template` WHERE (`entry`=@ENTRY);
+DELETE FROM `creature_template` WHERE (`entry`= @ENTRY);
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, Health_mod, Mana_mod, Armor_mod, faction, npcflag, speed_walk, speed_run, scale, rank, dmg_multiplier, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName) VALUES
-(@ENTRY, '30076', "Pocket Portal", "", 'Directions', '50000', 80, 83, 1.56, 1.56, 1.56, 35, 3, 1, 1.14286, @SCALE, 1, 1, 1, 2, 7, 138936390, 3, 1, 2, 'SmartAI');
-
--- --------------------------------------------------------------------------------------
--- Update Creature SmartAI
--- --------------------------------------------------------------------------------------
-UPDATE creature_template SET AIName="SmartAI" WHERE entry=@ENTRY LIMIT 1;
+(@ENTRY, @Model, "Pocket Portal", "", 'Directions', '50000', 80, 83, 1.56, 1.56, 1.56, 35, 3, 1, 1.14286, @SCALE, 1, 1, 1, 2, 7, 138936390, 3, 1, 2, 'SmartAI');
 
 -- --------------------------------------------------------------------------------------
 -- Give the creature a few items
@@ -221,7 +217,7 @@ UPDATE creature_template SET AIName="SmartAI" WHERE entry=@ENTRY LIMIT 1;
 -- --------------------------------------------------------------------------------------
 SET @ENTRY		:= 128; 	-- CREATURE_TEMPLATE ID
 SET @SOURCETYPE	:= 0; 		-- 0 = CREATURE
-SET @SSID		:= 140; 	-- SCRIPT ID
+SET @SSID		:= 200; 	-- SCRIPT ID
 SET @LINK		:= 0; 		-- LINKED SCRIPT (EXECUTES AFTER)
 SET @EVENTTYPE	:= 25; 		-- 25 = SMART_EVENT_RESET (After spawn, respawn, etc.)
 SET @ACTIONTYPE := 41; 		-- 41 = SMART_ACTION_FORCE_DESPAWN
@@ -238,7 +234,7 @@ INSERT INTO `smart_scripts` (`entryorguid`,`source_type`,`id`,`link`,`event_type
 -- Smart Scripts
 -- These mirror the same destinations as the StygianCore Portal Master
 -- --------------------------------------------------------------------------------------
-DELETE FROM `smart_scripts` WHERE (`entryorguid`=@ENTRY) AND (`source_type`=@SOURCETYPE) AND (`event_type`=62);
+DELETE FROM `smart_scripts` WHERE (`entryorguid`= @ENTRY) AND (`source_type`= @SOURCETYPE) AND (`event_type`= 62);
 INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES 
 (@ENTRY, 0, 1, 0, 62, 0, 100, 0, @GOSSIP_MENU, 1, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -8842.09, 626.358, 94.0867, 3.61363, "Teleporter script"),
 (@ENTRY, 0, 2, 0, 62, 0, 100, 0, @GOSSIP_MENU, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 1601.08, -4378.69, 9.9846, 2.14362, "Teleporter script"),
@@ -372,16 +368,30 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 130, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 8, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 8323.28, 2763.5, 655.093, 2.87223, "Teleporter script"),
 (@ENTRY, 0, 131, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 9, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 4522.23, 2828.01, 389.975, 0.215009, "Teleporter script"),
 
--- --------------------------------------------------------------------------------------
 -- StygianCore Portals
 -- SmartScript Action 62 = MAPID (0 - KALIMDOR, 1 - AZEROTH (Eastern Kingdoms))
 -- Pay attention to the value of SmartScript action 62. It needs the correct value for the teleport location to work.
--- --------------------------------------------------------------------------------------
-(@ENTRY, 0, 132, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 0, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 966.147, 926.499, 104.649, 1.27231, "Sunrock Retreat"),
-(@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silthus Camp"),
-(@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
-(@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
+-- Asterisks show fields that must be updated when adding a new location.
+-- -----------*------------------------------------*------------*------------------------
+(@ENTRY, 0, 132, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 0, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Cairne's Overlook"),
+(@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 5813.9, 448.287, 658.752, 1.23946, "Dalaran"),
+(@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Moonglade"),
+(@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 966.147, 926.499, 104.649, 1.27231, "Sunrock Retreat"),
 (@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
-(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade"),
-(@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Elise\'s Happy Place"),
-(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "Shatterspear Vale");
+(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 451, 0, 0, 0, 0, 0, 7, 0, 0, 0, 16303, -16173, 40, 0.361313, "Zone: Designer Isle"),
+(@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 451, 0, 0, 0, 0, 0, 7, 0, 0, 0, 16205.5, 16123.6, 71.5889, 5.5253, "Zone: Programmer Isle"),
+
+-- --------------------------------------------------------------------------------------
+-- Loremaster Portals
+-- SmartScript Action 62 = MAPID (0 - KALIMDOR, 1 - AZEROTH (Eastern Kingdoms))
+-- Pay attention to the value of SmartScript action 62. It needs the correct value for the teleport location to work.
+-- Asterisks show fields that must be updated when adding a new location.
+-- -----------*-------------------------------------*------------*-----------------------
+(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 0, 0, 0, 62, 530, 0, 0, 0, 0, 0, 7, 0, 0, 0, -531.232, 7401.32, 186.393, 0.939364, "Challe's Home for Little Tykes"),
+(@ENTRY, 0, 140, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 1, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
+(@ENTRY, 0, 141, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 2, 0, 0, 62, 169, 0, 0, 0, 0, 0, 7, 0, 0, 0, 2729.99, 2987.88, 23.2229, 0.326661, "The Emerald Dream"),
+(@ENTRY, 0, 142, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -11068.6, -1808.88, 52.7882, 2.32419, "The Forgotten Crypt"),
+(@ENTRY, 0, 143, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
+(@ENTRY, 0, 144, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "Shatterspear Vale"),
+(@ENTRY, 0, 145, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silithus Camp");
+-- --------------------------------------------------------------------------------------
