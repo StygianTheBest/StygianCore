@@ -167,26 +167,32 @@ CREATE TABLE `item_instance` (
 -- shoulder of the model because it would have stuck into the shrine wall.
 --
 -- --------------------------------------------------------------------------------------
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('1', '701005', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Pauldrons');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('2', '701006', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Cuirass');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('3', '701007', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Belt');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('4', '701008', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Cuisses');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('5', '701009', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Greaves');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('6', '701010', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Vambraces');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('7', '701011', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Gauntlets');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('8', '701012', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Koiter\'s Claymore');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('9', '701002', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Guildmaster\'s License');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('10', '701004', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Pocket Portal');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('1', '701005', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Pauldrons');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('2', '701006', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Cuirass');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('3', '701007', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Belt');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('4', '701008', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Cuisses');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('5', '701009', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Greaves');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('6', '701010', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Vambraces');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('7', '701011', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Gauntlets');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('8', '701012', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Koiter\'s Claymore');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('9', '701002', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '0', 'Guildmaster\'s License');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('10', '701004', '1', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '0', 'Pocket Portal');
 
 -- --------------------------------------------------------------------------------------
 -- PLAYER 2 (MiaSara - Alliance GM)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('11', '12064', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'GM Hood');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('12', '2586', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'GM Robe');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('13', '11508', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'GM Slippers');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('14', '5976', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Guild Tabard');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('15', '701002', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Guildmaster\'s License');
-INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('16', '701004', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '20', 'Pocket Portal');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('11', '10125', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '60', 'Ornate Pauldrons');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('12', '10118', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '100', 'Ornate Breastplate');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('13', '10122', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '35', 'Ornate Girdle');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('14', '10124', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '75', 'Ornate Legguards');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('15', '10119', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '50', 'Ornate Greaves');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('16', '10126', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '35', 'Ornate Bracers');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('17', '10121', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '35', 'Ornate Gauntlets');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('18', '10120', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '0', 'Ornate Cloak');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('19', '15229', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '75', 'Blesswind Hammer');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('20', '10362', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '85', 'Ornate Shield');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('21', '701002', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '0', 'Guildmaster\'s License');
+INSERT INTO `item_instance` (`guid`, `itemEntry`, `owner_guid`, `count`, `enchantments`, `charges`, `durability`, `text`) VALUES ('22', '701004', '2', '1', '0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 ', '0', '0', 'Pocket Portal');
 
 -- --------------------------------------------------------------------------------------
 -- Table structure for character_inventory
@@ -225,14 +231,20 @@ INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `
 -- --------------------------------------------------------------------------------------
 
 -- Equipped
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '0', '11'); -- GM Hood
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '4', '12'); -- GM Robe
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '7', '13'); -- GM Slippers
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '18', '14'); -- Guild Tabard
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '2', '11'); -- Shoulders
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '4', '12'); -- Chest
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '5', '13'); -- Waist
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '6', '14'); -- Legs
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '7', '15'); -- Feet
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '8', '16'); -- Wrists
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '9', '17'); -- Hands
+-- INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '14', '18'); -- Cloak
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '15', '19'); -- Main Hand
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '16', '20'); -- Shield
 
 -- In Backpack
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '23', '15'); -- Pocket Portal
-INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '24', '16'); -- Gamemaster's License
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '23', '21'); -- Pocket Portal
+INSERT INTO `stygian_characters`.`character_inventory` (`guid`, `bag`, `slot`, `item`) VALUES ('2', '0', '24', '22'); -- Gamemaster's License
 
 -- --------------------------------------------------------------------------------------
 -- Table structure for playercreateinfo_item
