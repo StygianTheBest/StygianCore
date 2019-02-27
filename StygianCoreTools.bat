@@ -469,10 +469,9 @@ CLS
 REM Shutdown Server Processes
 taskkill /F /FI "IMAGENAME eq worldserver.exe"
 taskkill /F /FI "IMAGENAME eq authserver.exe"
+RD /S /Q "Tools\Temp\restore_stygiancore"
 
 CLS
-
-RD /S /Q "Tools\Temp\restore_stygiancore"
 CD Tools\Work
 CALL build_restore_stygiancore.bat
 CD ..
@@ -591,7 +590,7 @@ Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-se
 
 echo [- Randomizing GM Island NPC Models -]
 echo.
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Temp\restore_stygiancore\03_custom\db_world\npc_gm_island_mall_rand.sql
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Work\restore_stygiancore\03_custom\db_world\npc_gm_island_mall_rand.sql
 
 echo [- NPC Models Updated :: DELETE THE WOW CLIENT CACHE! -]
 echo.

@@ -1,6 +1,6 @@
-<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
+### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</p>
 
-<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
+#### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
 
 # GM Quick Start Guide
 
@@ -239,8 +239,9 @@ The menu and options on this tool are dynamic and will change as you perform dif
   - Use this after updating game files in the restoration archive to commit the changes for future rebuilds.
 - **[6] Start Server**
   - Starts/Restarts the Auth and Worldserver processes.
-- **[7] Randomize GM Island NPCs**
-  - Use this to randomize the NPC models on GM Island.
+- **[7] NPC Model Tools**
+  - Creates the ModelMall that allows you to preview thousands of NPC models at once.
+  - Randomizes the NPC models on GM Island.
 - **[8] Deploy Visual Studio Builds**
   - _You can ignore this option if you're not compiling._
   - Launches the UpdateDeploy.bat to handle deployment of build files.
@@ -254,7 +255,7 @@ The menu and options on this tool are dynamic and will change as you perform dif
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io))
+#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
 
 ### Additional Credits
 
@@ -273,4 +274,6 @@ The menu and options on this tool are dynamic and will change as you perform dif
 
 ## LICENSE
 
-This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+All code and scripts are released under [GNU AGPL v3](https://stygianthebest.github.io/license/).
+
+World of Warcraft© and Blizzard Entertainment© are all trademarks or registered trademarks of Blizzard Entertainment© in the United States and/or other countries. These [terms](http://us.blizzard.com/en-us/company/about/legal-faq.html) and all related materials, logos, and images are [copyright](http://us.blizzard.com/en-us/company/about/copyrightnotices.html) Blizzard Entertainment©. This site and content is in no way associated with or endorsed by Blizzard Entertainment©.

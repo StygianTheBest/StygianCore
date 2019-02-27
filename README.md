@@ -1,18 +1,36 @@
-<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
+### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</p>
 
-<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
+#### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
+
+## NEWS
+
+### StygianCore v2019.03.01 has been released! 
+
+- [Changelog](https://github.com/StygianTheBest/StygianCore#changelog) | [Bugfixes](https://github.com/StygianTheBest/StygianCore/blob/master/Tools/Work/restore_stygiancore/03_custom/db_world/world_update_bugfix.sql)
+- There are **MANY** new improvements and additions in this version.
+- If you are running a previous version, I **highly recommend** moving to this one ASAP.
 
 ## DOWNLOAD
 
-**REPACK DATA FILES ARE BEING UPLOADED. LINKS WILL APPEAR WHEN COMPLETE**
+- **StygianCore Repack** _(Release v2019.03.01)_
+  - [Mirror 1 (MEGA)](https://rebrand.ly/stygiancore_release_mega)
+  - [Mirror 2 (Google)](https://rebrand.ly/stygiancore_release_google)
+
+- **StygianCore HD Client Upgrade** _(Release v2019.03.01)_
+  - [View Project Details](https://rebrand.ly/stygiancore335client)
+  - [Mirror 1 (MEGA)](https://rebrand.ly/stygiancore_client_mega)
+  - [Mirror 2 (Google)](https://rebrand.ly/stygiancore_client_google)
+
 
 ## GREETINGS
 
 Welcome to StygianCore. This repack is powered by AzerothCore and would not be possible without the players, developers, and communities of the World of Warcraft MMO emulator and private server scene. A big thanks to everyone for any and all contributions absorbed to make this repack possible. Your hard work is much appreciated!
 
-#### This repack is dedicated to the late Michel Martin Koiter (May 4, 1984 – March 18, 2004). His shrine in World of Warcraft served as a place of solace for myself, my guildmates, and countless others in the classic days of World of Warcraft and beyond. 
+<div style="font-weight: bold; color:green;">This project is, and will always be, FREE! I designed it with lots of comments and templates to make life easier for new developers and creators to get started. My hope is that all of the hard work I put into this will inspire others to get involved and create more cool and interesting projects for the WoW Emulation community.</div>
 
-## <span style="display:block;text-align:center">![TRIBUTE TO MICHEL KOITER](https://stygianthebest.github.io/assets/img/projects/mod-michelkoiter/michel-koiter-tribute-stygianthebest.jpg "A Tribute to Michel Koiter")</span>
+#### This repack is dedicated to the late [Michel Martin Koiter](https://web.archive.org/web/20101201092653/http://www.sonsofthestorm.com/memorial_twincruiser.html) (May 4, 1984 – March 18, 2004). His shrine in World of Warcraft served as a place of solace for myself, my guildmates, and countless others in the classic days of World of Warcraft and beyond. 
+
+# <p align="center">![TRIBUTE TO MICHEL KOITER](https://stygianthebest.github.io/assets/img/projects/mod-michelkoiter/michel-koiter-tribute-stygianthebest.jpg "A Tribute to Michel Koiter")</p>
 
 Michel Koiter was one of Blizzard Entertainment's premium artists and a member of [Sons of the Storm](https://web.archive.org/web/20101201092653/http://www.sonsofthestorm.com/memorial_twincruiser.html). He went by the moniker "_Twincruiser_", an artistic collaboration with his twin brother René Koiter. Just a few months before World of Warcraft's release, he died of unexpected heart failure. He was 19 years old. The cause of his death was never really understood and remains shrouded in mystery.
 
@@ -23,22 +41,21 @@ Michel Koiter was one of Blizzard Entertainment's premium artists and a member o
   - I located each item in the data files _(quite the chore!)_ and updated the entries in the Item.dbc and ItemDisplayInfo.dbc to make them useable as item id 701005 thru 7010012.
   - The correct shoulders were found, but not the one-shoulder variant that Koiter's orc is wearing on the shrine. After looking at the shrine again, **_my theory_** is they removed the left shoulder of the model because it would have stuck into the shrine wall.
 
-<span style="display:block;text-align:center">_It is said that his ghost still wanders the Barrens looking for a good brawl._
-</span>
+#### <p align="center"> _It is said that his ghost still wanders the Barrens looking for a good brawl._
+</p>
 
-<span style="display:block;text-align:center">**_Rest In Peace.. See you on the other side brother._**
-</span>
+#### <p align="center"><span style="font-weight: bold; font-style: italic; color: #ff6600;">**_Rest In Peace.. See you on the other side brother._**</span></p>
 
 ## INTRODUCTION
 
-StygianCore is World of Warcraft v3.3.5a server powered by a modified build of the AzerothCore World of Warcraft v3.3.5a server emulator. It has been providing an enjoyable gaming experience to hundreds of kids at our school since summer of 2017. Last fall I promised to release a repack of this server for parents and students to host at home. Additionally, I wanted to share a fun levelling server for solo or 4-10 player groups and help others who want to get started with development, scripting, and building their own server experience.
+StygianCore is World of Warcraft v3.3.5a server powered by a modified build of the AzerothCore World of Warcraft v3.3.5a server emulator. Last fall I promised to release a repack of this server for friends to host at home. Additionally, I wanted to share a fun levelling server for solo or 4-10 player groups and help others who want to exprience the nostalgia of the past and get started with development, scripting, and building their own server experience.
 
 Included are custom tools and docs for maintaining the game database and automating archive, save, and restore operations for sandboxing, testing, and development.
 
 ### A bit of history...
 In addition to new content, this repack includes updated versions of my C++ modules, SQL templates, custom tools, and client modifications from my [AzerothCore Content](https://github.com/StygianTheBest/AzerothCore-Content) release in summer 2017 which included 11 new modules and a lot of ported C++ and SQL from TrinityCore.
 
-<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianTheBestThanksYouAll.jpg)</span>
+### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianTheBestThanksYouAll.jpg)</p>
 
 ## DOCUMENTATION & SUPPORT
 
@@ -52,6 +69,9 @@ Documentation for the this repack and its contents can be found throughout the d
 - TOOLS\WORK\README.MD
 
 The **Support** folder also contains documentation and other support files. You can view many these files by by starting the included Apache Web server and visiting the Account Registration Portal at http://127.0.0.1/.
+
+## TL;DR 
+- Check out the [Getting Started](https://github.com/StygianTheBest/StygianCore#getting-started) section!
 
 ### Support Folder Contents
 
@@ -141,7 +161,11 @@ The **Support** folder also contains documentation and other support files. You 
     - Guild Tabs are styled with icons
     - Guild Roles and Limits are set
     - Guild Tabards are designed
-  
+
+![Guildmaster Characters](https://stygianthebest.github.io/assets/img/projects/stygiancore/stygiancore_gmchars.jpg)
+
+> _Default Guildmaster Characters for Alliance & Horde_
+
 ### LIFE, DEATH, AND COMBAT
 
 - Dungeon Checkpoints: You resurrect at the last or closest boss killed with 25% health/mana.
@@ -481,7 +505,7 @@ This is the client support patch required to display and enable custom content i
 - Custom NPCs will not display the correct textures.
 - The game client will crash when attempting to access forbidden zones.
 
-> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes HD Player and Creature Models, [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom AddOns and more.
+> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes [HD Player and Creature Models](https://github.com/StygianTheBest/StygianCore/blob/master/Client/Data/StygianCore%20Client%20Patch%20Info.txt), [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom Add-Ons and more.
 
 ## REPACK UPDATES
 
@@ -602,7 +626,7 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io))
+#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
 
 ### Additional Credits
 
@@ -636,4 +660,19 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 
 ## LICENSE
 
-This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+All code and scripts are released under [GNU AGPL v3](https://stygianthebest.github.io/license/).
+
+World of Warcraft© and Blizzard Entertainment© are all trademarks or registered trademarks of Blizzard Entertainment© in the United States and/or other countries. These [terms](http://us.blizzard.com/en-us/company/about/legal-faq.html) and all related materials, logos, and images are [copyright](http://us.blizzard.com/en-us/company/about/copyrightnotices.html) Blizzard Entertainment©. This site and content is in no way associated with or endorsed by Blizzard Entertainment©.
+
+## CHANGELOG
+
+### 2019.03.01
+- COMING SOON!
+
+### 2019.01.29
+- Core Patch Update Released
+
+### 2018.12.21
+- Initial Release
+
+[:top:](https://github.com/StygianTheBest/StygianCore#news)

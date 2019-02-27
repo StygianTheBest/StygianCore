@@ -80,3 +80,9 @@ _This process will:_
 
 - Launch the World via the StygianCore Controls app, or manually with start_world.bat, and inspect the startup for any errors, indicated in red in the console, that may have been caused by recent edits.
 - Edit and rebuild as needed until the server loads without additional errors.
+
+## LICENSE
+
+All code and scripts are released under [GNU AGPL v3](https://stygianthebest.github.io/license/).
+
+World of Warcraft© and Blizzard Entertainment© are all trademarks or registered trademarks of Blizzard Entertainment© in the United States and/or other countries. These [terms](http://us.blizzard.com/en-us/company/about/legal-faq.html) and all related materials, logos, and images are [copyright](http://us.blizzard.com/en-us/company/about/copyrightnotices.html) Blizzard Entertainment©. This site and content is in no way associated with or endorsed by Blizzard Entertainment©.

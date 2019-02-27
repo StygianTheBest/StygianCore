@@ -1,6 +1,6 @@
-<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
+### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</p>
 
-<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
+#### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
 
 # Data
 
@@ -27,6 +27,10 @@ This is the client support patch required to display and enable custom content i
 
 ## StygianCore World of Warcraft 3.3.5a Client Upgrade
 
-> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes HD Player and Creature Models, [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom AddOns and more.
+> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes [HD Player and Creature Models](https://github.com/StygianTheBest/StygianCore/blob/master/Client/Data/StygianCore%20Client%20Patch%20Info.txt), [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom Add-Ons and more.
 
-TODO: Please visit the [StygianCore Client Upgrade](#) project page for more information.
+## LICENSE
+
+All code and scripts are released under [GNU AGPL v3](https://stygianthebest.github.io/license/).
+
+World of Warcraft© and Blizzard Entertainment© are all trademarks or registered trademarks of Blizzard Entertainment© in the United States and/or other countries. These [terms](http://us.blizzard.com/en-us/company/about/legal-faq.html) and all related materials, logos, and images are [copyright](http://us.blizzard.com/en-us/company/about/copyrightnotices.html) Blizzard Entertainment©. This site and content is in no way associated with or endorsed by Blizzard Entertainment©.

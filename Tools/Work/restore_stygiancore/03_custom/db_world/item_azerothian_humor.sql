@@ -73,3 +73,15 @@ INSERT INTO `page_text` VALUES (3629, 'Q: Why did the Felguard cross the road?$B
 -- --------------------------------------------------------------------------------------
 DELETE FROM `page_text` WHERE `ID`=3630;
 INSERT INTO `page_text` VALUES (3630, 'A guy enters a bar and says to a good looking girl - Are your pants purple? Because your ass is epic!$B$B$BA priest, a paladin and a rogue are on a quest to save some children from an island. They\'re on a small rowing boat and on their way back to the mainland. Suddenly they notice that the boat is slowly sinking and decide that they need to get some weight off the boat. The paladin says, $B"We must protect the young and sacrifice ourselves!"$BTo which the rogue replies, "Naah, screw all the kids."$BAnd the priest asks quietly, "Do you think we have enough time?$B$BQ: What do you call a Tauren with no legs?$B$B$BA: Ground beef!"$B$B', 0, 1);
+
+-- --------------------------------------------------------------------------------------
+--	BOOK - 701013
+-- --------------------------------------------------------------------------------------
+DELETE FROM `item_template` WHERE `entry`=701013;
+INSERT INTO `item_template` VALUES (701013, 15, 0, -1, 'The Savior of AzerothCore', 12547, 1, 0, 0, 1, 0, 0, 0, -1, -1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 0, 0, 0, -1, 0, -1, 0, 'The book is heavy and full of truth.', 895, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, -1, 0, 0, 0, 0, '', 0, 0, 0, 0, 0, 12340);
+
+-- --------------------------------------------------------------------------------------
+--	PAGE 1
+-- --------------------------------------------------------------------------------------
+DELETE FROM `page_text` WHERE `ID`=895;
+INSERT INTO `page_text` VALUES (895, 'The pages of this book are stained and unreadable.', 0, 1);
