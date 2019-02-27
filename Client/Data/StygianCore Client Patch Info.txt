@@ -1,0 +1,34 @@
+// StygianCore Client Patches
+// 
+// PATCH FILENAMES ARE SPACED TO ALLOW PATCH PLACEMENT 
+// BEFORE OR AFTER EXISTING PATCHES FOR TESTING PURPOSES. 
+//
+---------------------------------------------------------
+PATCH 	- SIZE		- DESCRIPTION
+---------------------------------------------------------
+A	-		-
+B 	- 2,018,193k	- WOD HD PLAYER MODELS BY LEEVIATHAN
+C	-		-
+D 	- 76,425k	- WOD HD GOBLIN 
+E	-		-
+F 	- 741,109k	- HD CREATURE 1 BY FINSTERNIS
+G	-		-
+H 	- 3,962		- HD CREATURE 2 BY FINSTERNIS
+I	-		-
+J 	- 24,777k	- HD DRUID BY LEEVIATHAN
+K	- 		-
+L	- 		-
+M	- 		-
+N	- 		-
+O	- 		-
+P	- 		-
+Q	- 		-
+R	- 		-
+S	- 2,097k	- IMPROVED SUNLIGHT
+T 	- 399,757k	- HD TILES 0.95 BY FINSTERNIS
+U	- 		-
+V 	- 57,299k	- EMERALD DREAM CANYON BY JBR373 
+W	- 7,379k	- WATER/SLIME/LAVA
+X 	- 1,883k	- CATA TREES
+Y 	- 13,111k	- BLOOD UPGRADE
+Z 	- 15,403k	- STYGIANCORE CUSTOM CONTENT
