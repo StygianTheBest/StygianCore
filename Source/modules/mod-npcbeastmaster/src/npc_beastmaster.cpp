@@ -1,52 +1,54 @@
 /*
 
-# BeastMaster NPC #
+# BeastMaster NPC
 
-### Description ###
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+
+### Description
 ------------------------------------------------------------------------------------------------------------------
 WhiteFang is a Beastmaster NPC that howls! This NPC allows any player, or only Hunters, to adopt and use beasts.
 He also teaches the player specific Hunter skills for use with their beasts. A player can adopt normal or exotic
 beasts depending on how you've configured the NPC. For each type of beast I use a rare spawn model of a creature
 of the same type, so they all look cool. He also sells a great selection of grub for every level of beast. Hunters
 can access the stables as well. This has been a lot of fun for players of my repack, StygianCore, and beasts work
-great and just like they do on a Hunter in or out of dungeons.
+great and just like they do on a Hunter in or out of dungeons. He can also attract the player using configurable
+emote options.
 
-
-### Features ###
+### Features
 ------------------------------------------------------------------------------------------------------------------
 - Adds a Worgen BeastMaster NPC with sounds/emotes
 - Allows adopting of beasts by level, class, and ability
 - Teaches player all required Hunter abilities
 - Sells beast food For all levels
-- The scale of the beast is configurable
+- Attracts the player using configurable emotes
+- Config:
+    - Module Announce
+    - Emote Options
+    - CorePatch check
+    - Level Requirement
+    - Enable for Hunter class only
+    - Require Beast Mastery talent
+    - Allow Exotic Beasts for all classes (Teaches Beast Mastery)
+    - Set Beast Scale Factor
 
-
-### To-Do ###
+### To-Do
 ------------------------------------------------------------------------------------------------------------------
 - Fix beast spells disappearing from beast bar on relog/dismiss (Note: they persist if added back)
 - If possible, create working stable for non-Hunter player
 - If possible, show the player's pet on the login screen for non-Hunter classes
 
-
-### Data ###
+### Data
 ------------------------------------------------------------------------------------------------------------------
 - Type: NPC
 - Script: BeastMaster
 - Config: Yes
-    - Module Announce
-    - CorePatch check
-    - Level Requirement
-    - Enabled for Hunter class only
-    - Require Beast Mastery talent
-    - Allow Exotic Beasts for all classes (Teaches Beast Mastery)
-    - Set Beast Scale Factor
 - SQL: Yes
     - NPC ID: 601026
 
-
-### Version ###
+### Version
 ------------------------------------------------------------------------------------------------------------------
-- v2019.01.23 - Bugfixes, Merged AC repo
+- v2019.02.13 - Added phrases/emotes, config options, updated AI
+- v2019.01.23 - Bugfixes, Pets Added to Config, Merged AC repo
 - v2019.01.08 - Added "Better Pet Handling" & "PetAlwaysHappy" config options
 - v2017.09.30 - Add pet->InitLevelupSpellsForLevel(); recommended by Alistar
 - v2017.09.13 - Teaches additional hunter spells (Eagle Eye, Eyes of the Beast, Beast Lore)
@@ -61,30 +63,31 @@ great and just like they do on a Hunter in or out of dungeons.
 - v2017.09.04 - Fixed Spirit Beast persistence (teaches Beast Mastery to player)
 - v2017.09.03 - Release
 
-
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-###### Additional Credits include:
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
+- [StoaBrogga](https://github.com/Stoabrogga)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
-- [Stoabrogga] - Read pets from config file, Enums
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 
@@ -101,8 +104,12 @@ std::map<std::string, uint32> RareBeasts;
 std::map<std::string, uint32> ExoticBeasts;
 
 uint32 BeastMasterMinLevel = 10;
+uint32 BeastMasterNumPhrases;
+uint32 BeastMasterMessageTimer;
+uint32 BeastMasterEmoteSpell;
+uint32 BeastMasterEmoteCommand;
 float BeastMasterBeastScale = 1.0;
-bool BeastMasterAnnounceToPlayer = 1;
+bool BeastMasterAnnounceModule = 1;
 bool BeastMasterHunterOnly = 0;
 bool BeastMasterAdoptExotic = 1;
 bool BeastMasterKeepBeastHappy = 1;
@@ -148,13 +155,26 @@ public:
             sConfigMgr->LoadMore(cfg_file.c_str());
 
             BeastMasterAdoptExotic = sConfigMgr->GetBoolDefault("BeastMaster.AdoptExotic", true);
-            BeastMasterAnnounceToPlayer = sConfigMgr->GetBoolDefault("BeastMaster.Announce", true);
+            BeastMasterAnnounceModule = sConfigMgr->GetBoolDefault("BeastMaster.Announce", true);
             BeastMasterBeastScale = sConfigMgr->GetFloatDefault("BeastMaster.BeastScale", 1.0);
             BeastMasterCorePatch = sConfigMgr->GetBoolDefault("BeastMaster.CorePatch", false);
             BeastMasterHunterOnly = sConfigMgr->GetBoolDefault("BeastMaster.HunterOnly", false);
             BeastMasterKeepBeastHappy = sConfigMgr->GetBoolDefault("BeastMaster.KeepBeastHappy", true);
             BeastMasterMinLevel = sConfigMgr->GetIntDefault("BeastMaster.MinLevel", 10);
             BeastMasterTalentRequired = sConfigMgr->GetBoolDefault("BeastMaster.TalentRequired", false);
+            BeastMasterMessageTimer = sConfigMgr->GetIntDefault("BeastMaster.MessageTimer", 60000);
+            BeastMasterNumPhrases = sConfigMgr->GetIntDefault("BeastMaster.NumPhrases", 3);
+            BeastMasterEmoteSpell = sConfigMgr->GetIntDefault("BeastMaster.EmoteSpell", 44940);
+            BeastMasterEmoteCommand = sConfigMgr->GetIntDefault("BeastMaster.EmoteCommand", 3);
+
+            // Enforce Min/Max Time
+            if (BeastMasterMessageTimer != 0)
+            {
+                if (BeastMasterMessageTimer < 60000 || BeastMasterMessageTimer > 300000)
+                {
+                    BeastMasterMessageTimer = 60000;
+                }
+            }
 
             // Sanitize (just n' case ya'll)
             if (BeastMasterMinLevel < 0 || BeastMasterMinLevel > 80)
@@ -213,10 +233,10 @@ public:
     void OnLogin(Player* player)
     {
         // Announce Module
-        if (BeastMasterAnnounceToPlayer)
+        if (BeastMasterAnnounceModule)
         {
             if (BeastMasterCorePatch)
-                ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00BeastMasterNPC (Patched) |rmodule.");
+                ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00BeastMasterNPC* |rmodule.");
             else
                 ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00BeastMasterNPC |rmodule.");
         }
@@ -229,6 +249,24 @@ class BeastMaster : public CreatureScript
 public:
 
     BeastMaster() : CreatureScript("BeastMaster") { }
+
+    static string PickPhrase()
+    {
+        // Choose and speak a random phrase to the player
+        // Phrases are stored in the config file
+        std::string phrase = "";
+        uint32 PhraseNum = urand(1, BeastMasterNumPhrases); // How many phrases does the NPC speak? 
+        phrase = "BM.P" + std::to_string(PhraseNum);
+
+        // Sanitize
+        if (phrase == "")
+        {
+            phrase = "ERROR! NPC Emote Text Not Found! Check the npc_beastmaster.conf!";
+        }
+
+        std::string randMsg = sConfigMgr->GetStringDefault(phrase.c_str(), "");
+        return randMsg.c_str();
+    }
 
     void CreatePet(Player *player, Creature * m_creature, uint32 entry)
     {
@@ -459,7 +497,6 @@ public:
 
             // Buy Food
             player->ADD_GOSSIP_ITEM(GOSSIP_ICON_MONEY_BAG, "Buy Food", GOSSIP_SENDER_MAIN, GOSSIP_OPTION_VENDOR);
-            //player->PlayerTalkClass->SendGossipMenu(DEFAULT_GOSSIP_MESSAGE, m_creature->GetGUID());
             player->PlayerTalkClass->SendGossipMenu(PET_GOSSIP_HELLO, m_creature->GetGUID());
         }
         else if (action >= PET_PAGE_START_BEASTS && action < PET_PAGE_START_RARE_BEASTS)
@@ -558,6 +595,51 @@ public:
         }
 
         return true;
+    }
+
+    // Passive Emotes
+    struct NPC_PassiveAI : public ScriptedAI
+    {
+        NPC_PassiveAI(Creature * creature) : ScriptedAI(creature) { }
+
+        uint32 MessageTimer;
+
+        // Called once when client is loaded
+        void Reset()
+        {
+            MessageTimer = urand(BeastMasterMessageTimer, 300000); // 1-5 minutes
+        }
+
+        // Called at World update tick
+        void UpdateAI(const uint32 diff)
+        {
+            if (MessageTimer <= diff)
+            {
+                std::string Message = PickPhrase();
+                me->MonsterSay(Message.c_str(), LANG_UNIVERSAL, NULL);
+
+                // Use gesture?
+                if (BeastMasterEmoteCommand != 0)
+                {
+                    me->HandleEmoteCommand(BeastMasterEmoteCommand);
+                }
+
+                // Alert players?
+                if (BeastMasterEmoteSpell != 0)
+                { 
+                    me->CastSpell(me, BeastMasterEmoteSpell);
+                }
+
+                MessageTimer = urand(BeastMasterMessageTimer, 300000);
+            }
+            else { MessageTimer -= diff; }
+        }
+    };
+
+    // CREATURE AI
+    CreatureAI * GetAI(Creature * creature) const
+    {
+        return new NPC_PassiveAI(creature);
     }
 
 private:

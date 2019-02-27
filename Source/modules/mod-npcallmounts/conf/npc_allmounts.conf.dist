@@ -15,3 +15,11 @@
 
 # Announce the module when the player logs in?
 AllMountsNPC.Announce = 1
+
+# Enable random emotes for the NPC?
+AllMountsNPC.EnableAI= 1
+
+# Enable Bengal Tiger mount?
+# Disabled if using the BengalTiger NPC which teaches Tiger Riding
+# on character creation. The tiger is then obtained in the cave.
+AllMountsNPC.TeachBengalTiger = 0

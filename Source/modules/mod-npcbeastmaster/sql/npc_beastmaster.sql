@@ -1,8 +1,23 @@
+/*
+-- ################################################################################### --
+--  ____    __                                         ____                           
+-- /\  _`\ /\ \__                  __                 /\  _`\                         
+-- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+--  \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+--    /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+--    \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+--     \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+--                      /\___/ /\____/                                                
+--                      \/__/  \_/__/          http://stygianthebest.github.io
+-- 
+-- ################################################################################### --
+*/
+
 USE stygian_world;
 
--- ######################################################--
+-- --------------------------------------------------------------------------------------
 --	BEASTMASTER - 601026
--- ######################################################--
+-- --------------------------------------------------------------------------------------
 SET
 @Entry 		:= 601026,
 @Model 		:= 729, -- Shadowfang Moonwalker (White Worgen)
@@ -35,7 +50,7 @@ INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2196, 1906, 0, 18019); 
 DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. And when, on the still cold nights, he pointed his nose at a star and howled long and wolflike, it was his ancestors, dead and dust, pointing nose at star and howling down through the centuries and through him.');
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 -- MEAT

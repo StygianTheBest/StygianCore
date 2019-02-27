@@ -1,23 +1,70 @@
 [worldserver]
-
+###################################################################################################
+#     ____    __                                         ____                           
+#    /\  _`\ /\ \__                  __                 /\  _`\                         
+#    \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+#     \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+#       /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+#       \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+#        \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+#                         /\___/ /\____/                                                
+#                         \/__/  \_/__/          http://stygianthebest.github.io                                         
 ###################################################################################################
 #	GAMBLER NPC
 ###################################################################################################
 
-# Announce the module when the player logs in?
+# -------------------------------------------------------------------------------------
+#  Announce the module when the player logs in?
+#  Enable : 1
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Gambler.Announce = 1
 
-GamblerNPC.Announce = 1
+# -------------------------------------------------------------------------------------
+#  How often does the NPC emote in milliseconds?
+#  Randomly caclulated within range 60000 (1 min, minumum) to 3000000 (5 minutes, max)
+#  Default: 60000 (1 minutes, minimum)
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Gambler.MessageTimer = 60000
 
-# Gambling amounts in gold the player can choose from.
-# The random win/loss works well, but larger amounts can be abused.
-# Defaults: 1, 2, 3, 4, 5
+# -------------------------------------------------------------------------------------
+#  The spell cast to get the player's attention
+#  Default: 44940 
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Gambler.EmoteSpell = 0
 
+# -------------------------------------------------------------------------------------
+#  Type of money allowed to gamble
+#  Enable : 1
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Gambler.EnableGold = 1
+Gambler.EnableSilver = 1
+Gambler.EnableCopper = 1
+ 
+# ------------------------------------------------------------------------------------- 
+#  Type of money to gamble
+#  1: Copper, 2: Silver, 3: Gold 
+#  Default: 2
+# -------------------------------------------------------------------------------------
+Gambler.MoneyType = 2
+
+# -------------------------------------------------------------------------------------
+#  Gambling amounts the player can choose from.
+#  The random win/loss rate works well, but larger amounts of gold can be abused.
+#  Default: 1, 5, 10, 15, 20
+# -------------------------------------------------------------------------------------
 Gambler.Amount1 = 1
-Gambler.Amount2 = 2
-Gambler.Amount3 = 3
-Gambler.Amount4 = 4
-Gambler.Amount5 = 5
+Gambler.Amount2 = 5
+Gambler.Amount3 = 10
+Gambler.Amount4 = 15
+Gambler.Amount5 = 20
 
-# Jackpot Amount In Gold (If 100 rolled in the first 10 bets)
-
+# -------------------------------------------------------------------------------------
+#  Jackpot Amount
+#  Only possible if a 100 is rolled in the first 10 consecutive bets
+#  Default: 50
+# -------------------------------------------------------------------------------------
 Gambler.Jackpot = 50

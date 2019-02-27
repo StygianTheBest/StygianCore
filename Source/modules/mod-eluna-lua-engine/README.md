@@ -1,21 +1,33 @@
-# mod-LuaEngine
- english | [chinese](README_CN.md)
+# ELUNA LUA Engine
 
-a Eluna module for AzerothCore
+_This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
-To make Eluna compatible with Azerothcore.one lua Api has been changed.
-```
-OnConfigLoad(bool reload) => OnConfigLoad(bool reload, bool isBefore)
-```
+### Description
 
-How to install:
-* download or clone this module:  
->   [download zip file.](https://github.com/azerothcore/mod-eluna-lua-engine/archive/master.zip)  
->   or clone `git clone https://github.com/azerothcore/mod-eluna-lua-engine.git`  
-* Put it in the modules folder of the Azerothcore.  
-* download or clone the ELUNA core file:  
->   [download zip file.](https://github.com/ElunaLuaEngine/Eluna/archive/master.zip)  
->   or clone `git clone https://github.com/ElunaLuaEngine/Eluna.git`  
-* Put it in the lua module folder:mod-LuaEngine/LuaEngine  
-* cmake again  
-* rebuild. 
+Enabled the ELUNA LUA scripting engine in StygianCore. This allows you to use LUA scripts for many
+different functions in the repack.
+
+### CREDITS
+
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
+
+##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
+- [Blizzard Entertainment](http://blizzard.com)
+- [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
+- [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
+- [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
+- [OregonCore](https://wiki.oregon-core.net/)
+- [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
+- [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
+
+### LICENSE
+
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).

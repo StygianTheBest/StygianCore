@@ -2,10 +2,7 @@
 
 # Enchanter NPC #
 
-### Description ###
-------------------------------------------------------------------------------------------------------------------
-- Creates an NPC that enchants the player's gear.
-
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
 ### Data ###
 ------------------------------------------------------------------------------------------------------------------
@@ -17,34 +14,36 @@
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
+- v2019.02.21 - Add AI/Phrases/Emotes, Update Menu
 - v2018.12.05 - Fix broken menu. Replace 'Enchant Weapon' function. Add creature AI and creature text.
 - v2018.12.01 - Update function, Add icons, Fix typos, Add a little personality (Emotes don't always work)
 - v2017.08.08 - Release
 
 
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-###### Additional Credits include:
-- [LordPsyan](https://bitbucket.org/lordpsyan/lordpsyan-patches)
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 
@@ -192,8 +191,12 @@ enum Enchants
     ENCHANT_RING_STAMINA = 3791,
 };
 
-uint32 roll = 0;		// Dice roll
-uint32 EnchanterAnnounceModule = 1;
+uint32 roll;
+uint32 EnchanterAnnounceModule;
+uint32 EnchanterNumPhrases;
+uint32 EnchanterMessageTimer;
+uint32 EnchanterEmoteSpell;
+uint32 EnchanterEmoteCommand;
 
 class EnchanterConfig : public WorldScript
 {
@@ -213,7 +216,20 @@ public:
             std::string cfg_def_file = cfg_file + ".dist";
             sConfigMgr->LoadMore(cfg_def_file.c_str());
             sConfigMgr->LoadMore(cfg_file.c_str());
-            EnchanterAnnounceModule = sConfigMgr->GetBoolDefault("EnchanterNPC.Announce", 1);
+            EnchanterAnnounceModule = sConfigMgr->GetBoolDefault("Enchanter.Announce", 1);
+            EnchanterNumPhrases = sConfigMgr->GetIntDefault("Enchanter.NumPhrases", 3);
+            EnchanterMessageTimer = sConfigMgr->GetIntDefault("Enchanter.MessageTimer", 60000);
+            EnchanterEmoteSpell = sConfigMgr->GetIntDefault("Enchanter.EmoteSpell", 44940);
+            EnchanterEmoteCommand = sConfigMgr->GetIntDefault("Enchanter.EmoteCommand", 3);
+
+            // Enforce Min/Max Time
+            if (EnchanterMessageTimer != 0)
+            {
+                if (EnchanterMessageTimer < 60000 || EnchanterMessageTimer > 300000)
+                {
+                    EnchanterMessageTimer = 60000;
+                }
+            }
         }
     }
 };
@@ -242,12 +258,30 @@ public:
 
     npc_enchantment() : CreatureScript("npc_enchantment") { }
 
+    // Pick Phrase
+    static string PickPhrase()
+    {
+        // Choose and speak a random phrase to the player
+        // Phrases are stored in the config file
+        std::string phrase = "";
+        uint32 PhraseNum = urand(1, EnchanterNumPhrases); // How many phrases does the NPC speak? 
+        phrase = "EC.P" + std::to_string(PhraseNum);
+
+        // Sanitize
+        if (phrase == "")
+        {
+            phrase = "ERROR! NPC Emote Text Not Found! Check the npc_enchanter.conf!";
+        }
+
+        std::string randMsg = sConfigMgr->GetStringDefault(phrase.c_str(), "");
+        return randMsg.c_str();
+    }
+
     bool OnGossipHello(Player* player, Creature* creature)
     {
-        player->ADD_GOSSIP_ITEM(1, "Need an enchant? Beauregard Boneglitter is at your service!", GOSSIP_SENDER_MAIN, 0);
-        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Enchant Weapon]", GOSSIP_SENDER_MAIN, 1);
-        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_axe_113:24:24:-18|t[Enchant 2H Weapon]", GOSSIP_SENDER_MAIN, 2);
-        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_shield_71:24:24:-18|t[Enchant Shield]", GOSSIP_SENDER_MAIN, 3);
+        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_mace_116:22:22:-18|t[Enchant Weapon]", GOSSIP_SENDER_MAIN, 1);
+        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_axe_113:20:20:-18|t[Enchant 2H Weapon]", GOSSIP_SENDER_MAIN, 2);
+        player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_shield_71:15:15:-18|t[Enchant Shield]", GOSSIP_SENDER_MAIN, 3);
         player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_helmet_29:24:24:-18|t[Enchant Head]", GOSSIP_SENDER_MAIN, 4);
         player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_shoulder_23:24:24:-18|t[Enchant Shoulders]", GOSSIP_SENDER_MAIN, 5);
         player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_misc_cape_18:24:24:-18|t[Enchant Cloak]", GOSSIP_SENDER_MAIN, 6);
@@ -271,27 +305,6 @@ public:
 
         switch (action)
         {
-            {
-                player->ADD_GOSSIP_ITEM(1, "Need an enchant? Beauregard Boneglitter is at your service!", GOSSIP_SENDER_MAIN, 0);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Enchant Weapon]", GOSSIP_SENDER_MAIN, 1);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_axe_113:24:24:-18|t[Enchant 2H Weapon]", GOSSIP_SENDER_MAIN, 2);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_shield_71:24:24:-18|t[Enchant Shield]", GOSSIP_SENDER_MAIN, 3);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_helmet_29:24:24:-18|t[Enchant Head]", GOSSIP_SENDER_MAIN, 4);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_shoulder_23:24:24:-18|t[Enchant Shoulders]", GOSSIP_SENDER_MAIN, 5);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_misc_cape_18:24:24:-18|t[Enchant Cloak]", GOSSIP_SENDER_MAIN, 6);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_chest_cloth_04:24:24:-18|t[Enchant Chest]", GOSSIP_SENDER_MAIN, 7);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_bracer_14:24:24:-18|t[Enchant Bracers]", GOSSIP_SENDER_MAIN, 8);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_gauntlets_06:24:24:-18|t[Enchant Gloves]", GOSSIP_SENDER_MAIN, 9);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_pants_11:24:24:-18|t[Enchant Legs]", GOSSIP_SENDER_MAIN, 10);
-                player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/inv_boots_05:24:24:-18|t[Enchant Boots]", GOSSIP_SENDER_MAIN, 11);
-
-                if (player->HasSkill(SKILL_ENCHANTING) && player->GetSkillValue(SKILL_ENCHANTING) == 450)
-                    player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_jewelry_ring_85:24:24:-18|t[Enchant Rings]", GOSSIP_SENDER_MAIN, 12);
-
-                player->PlayerTalkClass->SendGossipMenu(100001, creature->GetGUID());
-                return true;
-                break;
-            }
 
         case 1: // Enchant Weapon
             if (player->HasSkill(SKILL_ENCHANTING) && player->GetSkillValue(SKILL_ENCHANTING) == 450)
@@ -950,7 +963,6 @@ public:
 
         case 300:
         {
-            player->ADD_GOSSIP_ITEM(1, "Need an enchant? Beauregard Boneglitter is at your service!", GOSSIP_SENDER_MAIN, 0);
             player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_mace_116:24:24:-18|t[Enchant Weapon]", GOSSIP_SENDER_MAIN, 1);
             player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_axe_113:24:24:-18|t[Enchant 2H Weapon]", GOSSIP_SENDER_MAIN, 2);
             player->ADD_GOSSIP_ITEM(1, "|TInterface/ICONS/Inv_shield_71:24:24:-18|t[Enchant Shield]", GOSSIP_SENDER_MAIN, 3);
@@ -975,6 +987,7 @@ public:
         player->PlayerTalkClass->SendCloseGossip();
         return true;
     }
+
     void Enchant(Player* player, Creature* creature, Item* item, uint32 enchantid)
     {
         if (!item)
@@ -993,7 +1006,9 @@ public:
             return;
         }
 
+        // Roll the dice
         roll = urand(1, 100);
+
         item->ClearEnchantment(PERM_ENCHANTMENT_SLOT);
         item->SetEnchantment(PERM_ENCHANTMENT_SLOT, enchantid, 0, 0);
 
@@ -1016,6 +1031,55 @@ public:
             creature->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
             player->PlayerTalkClass->SendCloseGossip();
         }
+    }
+
+    // Passive Emotes
+    struct NPC_PassiveAI : public ScriptedAI
+    {
+        NPC_PassiveAI(Creature * creature) : ScriptedAI(creature) { }
+
+        uint32 MessageTimer;
+
+        // Called once when client is loaded
+        void Reset()
+        {
+            MessageTimer = urand(EnchanterMessageTimer, 300000); // 1-5 minutes
+        }
+
+        // Called at World update tick
+        void UpdateAI(const uint32 diff)
+        {
+            // If Enabled
+            if (EnchanterMessageTimer != 0)
+            {
+                if (MessageTimer <= diff)
+                {
+                    std::string Message = PickPhrase();
+                    me->MonsterSay(Message.c_str(), LANG_UNIVERSAL, NULL);
+
+                    // Use gesture?
+                    if (EnchanterEmoteCommand != 0)
+                    {
+                        me->HandleEmoteCommand(EnchanterEmoteCommand);
+                    }
+
+                    // Alert players?
+                    if (EnchanterEmoteSpell != 0)
+                    {
+                        me->CastSpell(me, EnchanterEmoteSpell);
+                    }
+
+                    MessageTimer = urand(EnchanterMessageTimer, 300000);
+                }
+                else { MessageTimer -= diff; }
+            }
+        }
+    };
+
+    // CREATURE AI
+    CreatureAI * GetAI(Creature * creature) const
+    {
+        return new NPC_PassiveAI(creature);
     }
 };
 

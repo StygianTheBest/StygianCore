@@ -14,7 +14,4 @@ The following things must be changed in DBC files: <br>
 Multiple items can be reloaded by splitting each entry id with a space like: .breload item 12345 23456 34567
 <br>
 <br>
-Here's an example how i change an item on the fly in the database and reload it without restarting anything:<br>
-<p>
-    <img src="Example.gif" height="747" width="595" />
-</p>
+Here's an example how i change an item on the fly in the database and reload it without restarting anything:

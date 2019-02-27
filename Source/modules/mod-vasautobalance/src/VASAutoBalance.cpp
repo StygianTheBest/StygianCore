@@ -1,6 +1,8 @@
 /*
 
-# VAS Auto-Balance #
+# VASAutoBalance #
+s
+_This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
@@ -19,34 +21,36 @@ mana, and damage.
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
-- v2018.12.12 - Release - Update module for StygianCore
+- v2018.12.12 - Update module for StygianCore
+- v2017.08.23 - Update module announce, Update strings
+-
 
-
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-- Copyright (C) 2018 AzerothCore <http://www.azerothcore.org>
-- Copyright (C) 2012 CVMagic <http://www.trinitycore.org/f/topic/6551-vas-autobalance/>
-- Copyright (C) 2008-2010 TrinityCore <http://www.trinitycore.org/>
-- Copyright (C) 2006-2009 ScriptDev2 <https://scriptdev2.svn.sourceforge.net/>
-- Copyright (C) 1985-2010 {VAS} KalCorp  <http://vasserver.dyndns.org/>
-- Original Authors: KalCorp and Vaughner
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
+
+##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+- [CVMagic](http://www.trinitycore.org/f/topic/6551-vas-autobalance/)
+- [ScriptDev2](https://scriptdev2.svn.sourceforge.net/)
+- [VAS KalCorp/Vaughner](http://vasserver.dyndns.org/)
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 

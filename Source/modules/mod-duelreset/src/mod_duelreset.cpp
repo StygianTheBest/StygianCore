@@ -1,21 +1,52 @@
 /*
- *  Originally written  for TrinityCore by ShinDarth and GigaDev90 (www.trinitycore.org)
- *  Converted as module for AzerothCore by ShinDarth and Yehonal   (www.azerothcore.org)
- *  Modifications by StygianTheBest - v2017.08.01
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU Affero General Public License as published
- *  by the Free Software Foundation, either version 3 of the License, or
- *  (at your option) any later version.
- *
- *  This program is distributed in the hope that it will be useful,
- *  but WITHOUT ANY WARRANTY; without even the implied warranty of
- *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *  GNU Affero General Public License for more details.
- *
- *  You should have received a copy of the GNU Affero General Public License
- *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
- */
+
+# Duel Reset #
+
+_This module was adapted for[StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+
+### Description ###
+------------------------------------------------------------------------------------------------------------------
+- The original module has been modified to work with StygianCore.
+- Resets player attributes after dueling.
+
+### Data ###
+------------------------------------------------------------------------------------------------------------------
+- Type: Server / Player
+- Config : Yes
+
+### Version ###
+------------------------------------------------------------------------------------------------------------------
+- v2017.09.03 - Converted to LUA
+- v2017.08.01 - Release
+
+### CREDITS
+------------------------------------------------------------------------------------------------------------------
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https ://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
+
+##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
+- Originally written  for TrinityCore by ShinDarth and GigaDev90
+- Converted as module for AzerothCore by ShinDarth and Yehonal
+- [Blizzard Entertainment](http://blizzard.com)
+- [TrinityCore](https ://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
+- [SunwellCore](http ://www.azerothcore.org/pages/sunwell.pl/)
+- [AzerothCore](https ://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
+- [OregonCore](https ://wiki.oregon-core.net/)
+- [Wowhead.com](http ://wowhead.com)
+- [OwnedCore](http ://ownedcore.com/)
+- [ModCraft.io](http ://modcraft.io/)
+- [MMO Society](https ://www.mmo-society.com/)
+- [AoWoW](https ://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
+
+### LICENSE
+------------------------------------------------------------------------------------------------------------------
+This code and content is released under the[GNU AGPL v3](https ://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+
+*/
 
 #include "ScriptMgr.h"
 #include "Player.h"

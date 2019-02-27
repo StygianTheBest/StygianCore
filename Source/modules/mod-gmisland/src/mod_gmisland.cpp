@@ -2,11 +2,12 @@
 
 # GM Island #
 
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
 This module customizes GM Island by theming it in a few different ways. This module will be expanded to include
 other GM Island related content.
-
 
 ### Data ###
 ------------------------------------------------------------------------------------------------------------------
@@ -19,32 +20,33 @@ other GM Island related content.
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
+- v2019.02.13 - Added Random NPC Model generation
 - v2018.12.01 - Trinity Script Conversion & Release
 
-
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([http://stygianthebest.github.io](stygianthebest.github.io)) ####
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-###### Additional Credits include:
-- [Arister](http://www.ac-web.org/forums/showthread.php?204335-GMIsland-Theme-Manager)
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 

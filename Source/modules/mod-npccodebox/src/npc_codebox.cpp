@@ -2,6 +2,8 @@
 
 # Codebox NPC #
 
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
 - Creates a CodeBox NPC with emotes
@@ -19,10 +21,10 @@
 
 ### Sample Codes ###
 ------------------------------------------------------------------------------------------------------------------
--- These codes will add the following items to the player's inventory:
--- artifact: A one-charge code from a questgiver or GM.
--- ballroom: A multi-charge code giving three items for a tuxedo outfit.
--- sixbags: A limited multi-charge code giving 6 Netherweave bags to the player.
+- These codes will add the following items to the player's inventory:
+    - **artifact**: A one-charge code from a questgiver or GM.
+    - **ballroom**: A multi-charge code giving three items for a tuxedo outfit.
+    - **sixbags**: A limited multi-charge code giving 6 Netherweave bags to the player.
 
 
 ### To-Do ###
@@ -31,47 +33,43 @@
 - Refactor the charges code
 
 
-### Data ###
+### Version
 ------------------------------------------------------------------------------------------------------------------
-- NPC (ID: 601021)
-- Script: codebox_npc
-- Config: Yes
-- SQL: Yes
+- v2019.02.09 - Update AI, Config
+- v2017.08.10 - Release
 
 
-### Version ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-- 2017.08.13
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
 
-### Credits ###
-------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+#### Additional Credits
 
-###### Additional Credits include:
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 
 #include "Config.h"
 
-bool CodeboxAnnounceModule = 1;
+uint32 CodeboxMessageTimer;
+bool CodeboxAnnounceModule;
 
 class CodeboxConfig : public WorldScript
 {
@@ -90,7 +88,17 @@ public:
             sConfigMgr->LoadMore(cfg_def_file.c_str());
             sConfigMgr->LoadMore(cfg_file.c_str());
 
-            CodeboxAnnounceModule = sConfigMgr->GetBoolDefault("CodeboxNPC.Announce", 1);
+            CodeboxAnnounceModule = sConfigMgr->GetBoolDefault("Codebox.Announce", true);
+            CodeboxMessageTimer = sConfigMgr->GetIntDefault("Codebox.MessageTimer", 60000);
+
+            // Enforce Min/Max Time
+            if (CodeboxMessageTimer != 0)
+            {
+                if (CodeboxMessageTimer < 60000 || CodeboxMessageTimer > 300000)
+                {
+                    CodeboxMessageTimer = 60000;
+                }
+            }
         }
     }
 };
@@ -242,40 +250,75 @@ public:
         player->CLOSE_GOSSIP_MENU();
     }
 
-    // NPC PASSIVE EMOTES
-    struct codebox_passivesAI : public ScriptedAI
+    // Passive Emotes
+    struct NPC_PassiveAI : public ScriptedAI
     {
-        codebox_passivesAI(Creature * creature) : ScriptedAI(creature) { }
+        NPC_PassiveAI(Creature * creature) : ScriptedAI(creature) { }
 
-        uint32 uiAdATimer;
+        uint32 Choice;
+        uint32 MessageTimer;
 
+        // Called once when client is loaded
         void Reset()
         {
-            uiAdATimer = 1000;
+            MessageTimer = urand(CodeboxMessageTimer, 300000); // 1-5 minutes
         }
 
-        // Speak
+        // Called at World update tick
         void UpdateAI(const uint32 diff)
         {
-            if (uiAdATimer <= diff)
+            // If Enabled
+            if (CodeboxMessageTimer != 0)
             {
-                me->MonsterSay("Do you have a code to redeem? Step right up!", LANG_UNIVERSAL, NULL);
-                me->HandleEmoteCommand(EMOTE_ONESHOT_EXCLAMATION);
-                uiAdATimer = 61000;
-            }
-            else
-            {
-                uiAdATimer -= diff;
+                if (MessageTimer <= diff)
+                {
 
+                    // Make a random message choice
+                    Choice = urand(1, 3);
+
+                    switch (Choice)
+                    {
+                    case 1:
+                    {
+                        me->MonsterSay("Do you have a code to redeem? Step right up!", LANG_UNIVERSAL, NULL);
+                        me->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                        MessageTimer = urand(CodeboxMessageTimer, 180000);
+                        break;
+                    }
+                    case 2:
+                    {
+                        me->MonsterSay("Did you receive a loot code in the mail? I can help.", LANG_UNIVERSAL, NULL);
+                        me->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                        MessageTimer = urand(CodeboxMessageTimer, 180000);
+                        break;
+                    }
+                    case 3:
+                    {
+                        me->MonsterSay("Did you find a secret code? I can help.", LANG_UNIVERSAL, NULL);
+                        me->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                        MessageTimer = urand(CodeboxMessageTimer, 180000);
+                        break;
+                    }
+                    default:
+                    {
+                        me->MonsterSay("Do you have a code to redeem? Step right up!", LANG_UNIVERSAL, NULL);
+                        me->HandleEmoteCommand(EMOTE_ONESHOT_WAVE);
+                        MessageTimer = urand(CodeboxMessageTimer, 180000);
+                        break;
+                    }
+                    }
+                }
+                else { MessageTimer -= diff; }
             }
-        }
+        };
     };
 
     // CREATURE AI
     CreatureAI * GetAI(Creature * creature) const
     {
-        return new codebox_passivesAI(creature);
+        return new NPC_PassiveAI(creature);
     }
+
 };
 
 void AddNPCCodeboxScripts()

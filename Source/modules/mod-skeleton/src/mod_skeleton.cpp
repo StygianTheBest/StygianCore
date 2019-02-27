@@ -2,29 +2,32 @@
 
 # StygianCore Skeleton Module #
 
-         _,.-------.,_
-     ,;~'             '~;,
-   ,;                     ;,
-  ;                         ;
- ,'                         ',
-,;                           ;,
-; ;      .           .      ; ;
-| ;   ______       ______   ; |
-|  `/~"     ~" . "~     "~\'  |
-|  ~  ,-~~~^~, | ,~^~~~-,  ~  |
- |   |        }:{        |   |
- |   l       / | \       !   |
- .~  (__,.--" .^. "--.,__)  ~.
- |     ---;' / | \ `;---     |
-  \__.       \/^\/       .__/
-   V| \                 / |V
-    | |T~\___!___!___/~T| |
-    | |`IIII_I_I_I_IIII'| |
-    |  \,III I I I III,/  |
-     \   `~~~~~~~~~~'    /
-       \   .       .   /     -dcau (4/15/95)
-         \.    ^    ./
-           ^~~~^~~~^
+_This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+
+
+             _,.-------.,_
+         ,;~'             '~;,
+       ,;                     ;,
+      ;                         ;
+     ,'                         ',
+    ,;                           ;,
+    ; ;      .           .      ; ;
+    | ;   ______       ______   ; |
+    |  `/~"     ~" . "~     "~\'  |
+    |  ~  ,-~~~^~, | ,~^~~~-,  ~  |
+     |   |        }:{        |   |
+     |   l       / | \       !   |
+     .~  (__,.--" .^. "--.,__)  ~.
+     |     ---;' / | \ `;---     |
+      \__.       \/^\/       .__/
+       V| \                 / |V
+        | |T~\___!___!___/~T| |
+        | |`IIII_I_I_I_IIII'| |
+        |  \,III I I I III,/  |
+         \   `~~~~~~~~~~'    /
+           \   .       .   /     -dcau (4/15/95)
+             \.    ^    ./
+               ^~~~^~~~^
 
 
 ### Description ###
@@ -50,29 +53,30 @@
 ------------------------------------------------------------------------------------------------------------------
 - v2018.12.01 - Release
 
-
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-###### Additional Credits include:
+##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 
@@ -83,10 +87,10 @@
 #include "Player.h"
 #include "Object.h"
 
-bool SkeletonEnabled = true;
-bool SkeletonAnnounceModule = true;
-bool SkeletonTestWorldEvent = false;
-bool SkeletonTestPlayerEvent = false;
+bool SkeletonEnabled;
+bool SkeletonAnnounceModule;
+bool SkeletonTestWorldEvent;
+bool SkeletonTestPlayerEvent;
 
 // Configuration
 class mod_skeleton_Conf : public WorldScript
@@ -117,8 +121,8 @@ public:
     // Load Configuration Settings
     void SetInitialWorldSettings()
     {
-        SkeletonEnabled = sConfigMgr->GetBoolDefault("Skeleton.Enable", true);
-        SkeletonAnnounceModule = sConfigMgr->GetBoolDefault("Skeleton.Announce", true);
+        SkeletonEnabled = sConfigMgr->GetBoolDefault("Skeleton.Enable", false);
+        SkeletonAnnounceModule = sConfigMgr->GetBoolDefault("Skeleton.Announce", false);
         SkeletonTestWorldEvent = sConfigMgr->GetBoolDefault("Skeleton.TestWorldEvent", false);
         SkeletonTestPlayerEvent = sConfigMgr->GetBoolDefault("Skeleton.TestPlayerEvent", false);
     }

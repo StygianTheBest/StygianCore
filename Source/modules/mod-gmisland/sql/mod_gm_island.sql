@@ -1,5 +1,5 @@
 /*
--- ###################################################################################### --
+-- ################################################################################### --
 --  ____    __                                         ____                           
 -- /\  _`\ /\ \__                  __                 /\  _`\                         
 -- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
@@ -8,35 +8,74 @@
 --    \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
 --     \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
 --                      /\___/ /\____/                                                
---                      \/__/  \_/__/          http://stygianthebest.github.io                                         
+--                      \/__/  \_/__/          http://stygianthebest.github.io
 -- 
--- ###################################################################################### --
+-- ################################################################################### --
 -- CORE MOD: GM ISLAND
 -- NPC ID: 601035
 -- 
--- This creates an NPC that will allow the player to change the theme around GM Island.
--- v2018-12-01 - Original script ported to AzerothCore module.
 -- 
--- ###################################################################################### --
+-- This creates an NPC that will allow the player to change the theme of GM Island.
+-- 
+-- v2018-12-01 - Original script ported to AzerothCore module by StygianTheBest.
+-- 
+-- ################################################################################### --
 */
 
 USE stygian_world;
 
--- ######################################################--
---	GM Island Theminator - 601035 - Molten Giant
--- ######################################################--
-SET @NPC_ENTRY := 601035;
 
-DELETE FROM `creature` WHERE `id`=@NPC_ENTRY;
-INSERT INTO `creature` (`id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) VALUES 
-(@NPC_ENTRY, 1, 1, 1, 0, 0, 16253.8, 16234.9, 33.5163, 2.3098, 300, 0, 0, 53420, 0, 0, 0, 0, 0);
+-- --------------------------------------------------------------------------------------
+--	GM Island Decorator - 601035
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601035,
+@Model 		:= 12162, -- Molten Giant
+@Name 		:= "Balrog",
+@Title 		:= "|cff00ccffIsland Decorator|r",
+@Icon 		:= "Buy",
+@GossipMenu := 0,
+@MinLevel 	:= 80,
+@MaxLevel 	:= 80,
+@Faction 	:= 35,
+@NPCFlag 	:= 1, -- 
+@Scale		:= 0.25,
+@Rank		:= 1,
+@Type 		:= 0,
+@TypeFlags 	:= 4,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "GMIsland_Theme_Generator";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
 
-DELETE FROM `creature_template` WHERE `entry`=@NPC_ENTRY;
-INSERT INTO `creature_template` (`entry`, `difficulty_entry_1`, `difficulty_entry_2`, `difficulty_entry_3`, `KillCredit1`, `KillCredit2`, `modelid1`, `modelid2`, `modelid3`, `modelid4`, `name`, `subname`, `IconName`, `gossip_menu_id`, `minlevel`, `maxlevel`, `exp`, `faction`, `npcflag`, `speed_walk`, `speed_run`, `scale`, `rank`, `mindmg`, `maxdmg`, `dmgschool`, `attackpower`, `dmg_multiplier`, `baseattacktime`, `rangeattacktime`, `unit_class`, `unit_flags`, `unit_flags2`, `dynamicflags`, `family`, `trainer_type`, `trainer_spell`, `trainer_class`, `trainer_race`, `minrangedmg`, `maxrangedmg`, `rangedattackpower`, `type`, `type_flags`, `lootid`, `pickpocketloot`, `skinloot`, `resistance1`, `resistance2`, `resistance3`, `resistance4`, `resistance5`, `resistance6`, `spell1`, `spell2`, `spell3`, `spell4`, `spell5`, `spell6`, `spell7`, `spell8`, `PetSpellDataId`, `VehicleId`, `mingold`, `maxgold`, `AIName`, `MovementType`, `InhabitType`, `HoverHeight`, `Health_mod`, `Mana_mod`, `Armor_mod`, `RacialLeader`,`movementId`, `RegenHealth`, `mechanic_immune_mask`, `flags_extra`, `ScriptName`, `VerifiedBuild`) VALUES 
-(@NPC_ENTRY, 0, 0, 0, 0, 0, 12162, 0, 0, 0, 'Theme Manager', '|cff00ccffGMIsland Theminator|r', NULL, 0, 80, 80, 0, 35, 1, 1, 1.14286, 0.25, 1, 1000, 3000, 0, 0, 15, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 0, 3, 1, 10, 1, 1, 0, 0, 1, 0, 0, 'GMIsland_Theme_Generator', 0);
+-- --------------------------------------------------------------------------------------	
+-- Dumping structure for table gmi_themes
+-- --------------------------------------------------------------------------------------
+DROP TABLE IF EXISTS `gmi_themes`;
+CREATE TABLE IF NOT EXISTS `gmi_themes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  `available` tinyint(4) NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------------------------------------
+-- Dumping data for table gmi_themes: ~2 rows (approximately)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `gmi_themes` (`id`, `name`, `available`) VALUES
+	(1, 'Merry Christmas!', 1),
+	(2, 'For the Alliance!', 1),
+	(3, 'For the Horde!', 1),
+	(4, 'Khadgar\'s Essence', 1);
+
+-- --------------------------------------------------------------------------------------
 -- Dumping structure for table gmi_logs
+-- --------------------------------------------------------------------------------------
 DROP TABLE IF EXISTS `gmi_logs`;
 CREATE TABLE IF NOT EXISTS `gmi_logs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -45,9 +84,9 @@ CREATE TABLE IF NOT EXISTS `gmi_logs` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=latin1;
 
--- deck the halls with boughs of holly.. fa la la la la, la la la la.
-
+-- --------------------------------------------------------------------------------------
 -- Dumping structure for table gmi_templates
+-- --------------------------------------------------------------------------------------
 DROP TABLE IF EXISTS `gmi_templates`;
 CREATE TABLE IF NOT EXISTS `gmi_templates` (
   `id` int(11) NOT NULL,
@@ -58,7 +97,9 @@ CREATE TABLE IF NOT EXISTS `gmi_templates` (
   `pos_o` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------------------------------------
 -- Dumping data for table gmi_templates: ~284 rows (approximately)
+-- --------------------------------------------------------------------------------------
 INSERT INTO `gmi_templates` (`id`, `entry`, `pos_x`, `pos_y`, `pos_z`, `pos_o`) VALUES
 	(1, 191790, 16223, 16271.4, 19.3186, 1.41464),
 	(1, 178432, 1655.44, -4428.89, 16.9732, -1.85005),
@@ -524,20 +565,3 @@ INSERT INTO `gmi_templates` (`id`, `entry`, `pos_x`, `pos_y`, `pos_z`, `pos_o`) 
 	(4, 192712, 16249, 16293, 22.8136, 1.62389),
 	(4, 192712, 16247.1, 16292.9, 22.8136, 1.62389),
 	(4, 193042, 16223.6, 16275.1, 13.1761, 4.62974);
-
-
--- Dumping structure for table gmi_themes
-DROP TABLE IF EXISTS `gmi_themes`;
-CREATE TABLE IF NOT EXISTS `gmi_themes` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) DEFAULT NULL,
-  `available` tinyint(4) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
--- Dumping data for table gmi_themes: ~2 rows (approximately)
-INSERT INTO `gmi_themes` (`id`, `name`, `available`) VALUES
-	(1, 'Merry Christmas', 1),
-	(2, 'For the Alliance!', 1),
-	(3, 'For the Horde!', 1),
-	(4, 'Khadgar\'s Essence', 1);

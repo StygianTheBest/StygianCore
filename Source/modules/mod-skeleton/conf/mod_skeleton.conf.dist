@@ -18,13 +18,13 @@
 #
 
 # Enable the module
-Skeleton.Enable = 1
+Skeleton.Enable = 0
 
 # Announce the module to the console
 Skeleton.Announce = 1
 
 # Enable WorldScript 
-Skeleton.TestWorldEvent = 0
+Skeleton.TestWorldEvent = 1
 
 # Enable PlayerScript event
 Skeleton.TestPlayerEvent = 1

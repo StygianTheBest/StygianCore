@@ -2,63 +2,53 @@
 
 # Congrats On Level #
 
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
 ### Description ###
 ------------------------------------------------------------------------------------------------------------------
-This module rewards players when they reach specific levels. It has the option to reward gold, two items, and a
-buff or any combination. It also announces to the world when a player levels up. All rewards can be set in the
-config file for quick modifications.
-
-
-### Features ###
-------------------------------------------------------------------------------------------------------------------
 - Announces player level up to world
 - Awards the player for gaining new levels
-- The player forfeits the rewards if their bags are full
+- The player forfeits the reward(s) if their bags are full
+- Config: Items/Gold/Buffs that are given to the player at each level
 
 
 ### Data ###
 ------------------------------------------------------------------------------------------------------------------
 - Type: Player/Server
-- Script: CongratsOnLevel
+- Script: CustomServer
 - Config: Yes
-    - Enable Module
-    - Enable Module Announce
-    - Set Items/Gold/Buffs Given At Each Level
-- SQL: No
+- SQL: Yes
 
 
 ### Version ###
 ------------------------------------------------------------------------------------------------------------------
-- v2018.12.09 - Update Config
-- v2018.12.01 - Update Announce and Config code
-- v2017.09.30 - Fix Level Display Bug. Update Strings.
 - v2017.08.06 - Release
 
 
-### Credits ###
+### CREDITS
 ------------------------------------------------------------------------------------------------------------------
-#### A module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io)) ####
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-###### Additional Credits include:
-- [LordPsyan](https://bitbucket.org/lordpsyan/lordpsyan-patches)
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-
-### License ###
+### LICENSE
 ------------------------------------------------------------------------------------------------------------------
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 

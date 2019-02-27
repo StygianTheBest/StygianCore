@@ -1,17 +1,26 @@
 /*
+
 # Loremaster NPC
 
-## Description
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
+## Description
+------------------------------------------------------------------------------------------------------------------
 This places a Loremaster NPC in the game world at various locations who recants the lore of the old world and
 brings back the lost memories of so many that sacrificed their lives for this ravaged land we all call home.
 
-As of the release of this module, I have only had time to create three of these NPCs, but I have plans for many
-more in the future, and hope that the community can contribute. I have written the module so adding new Loremaster
-NPCs is done purely in the database and will chain to one another automatically if done correctly.
+Many of you may know of the website [Warcraft Less Traveled](http://warcraftlesstraveled.com) which was
+a Podcast site where the host, Skolnick, discussed various areas in the game, mostly pre-Cata, that
+were considered hidden gems. As a Vanilla player and pre-Cata Loremaster/Seeker myself, I knew of
+every place he discussed and quite a few he didn't. My plan is to add all of these places into this
+module for players to explore and learn about.
+
+As of the release of this module, I have only had time to create three of these NPCs, and hope that the community
+can contribute. I have written the module so adding new Loremaster NPCs is done purely in the database and will
+chain to one another automatically if done correctly.
 
 ## Data
-
+------------------------------------------------------------------------------------------------------------------
 - Type: NPC
 - Script: Loremaster_NPC
 - Config: Yes
@@ -19,26 +28,36 @@ NPCs is done purely in the database and will chain to one another automatically 
   - NPC ID: 601075-601XXX
 
 ## Version
-
+------------------------------------------------------------------------------------------------------------------
+- v2019.02.27 - Add Phrase/Emote/Options
+- v2019.02.13 - Update AI
 - v2019.01.14 - Release
 
-### Credits
 
-#### An original module for AzerothCore by StygianTheBest ([stygianthebest.github.io](http://stygianthebest.github.io))
+### CREDITS
+------------------------------------------------------------------------------------------------------------------
+![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
+![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-##### Additional Credits include
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
 
-- [Michel Martin Koiter](https://web.archive.org/web/20160329220904/http://www.sonsofthestorm.com:80/memorial_twincruiser.html)
+#### Additional Credits
+
 - [Blizzard Entertainment](http://blizzard.com)
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gk
+- [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
+- [AoWoW](https://wotlk.evowow.com/)
+- [More credits are cited in the sources](https://github.com/StygianTheBest)
 
-### License
-
-- This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
+### LICENSE
+------------------------------------------------------------------------------------------------------------------
+This code and content is released under the [GNU AGPL v3](https://github.com/azerothcore/azerothcore-wotlk/blob/master/LICENSE-AGPL3).
 
 */
 
@@ -60,10 +79,13 @@ uint32 mapID;
 string destination;
 
 // Config
-bool Announce = true;
+bool LoremasterAnnounceModule = true;
+string LoremasterName;
 uint32 FirstLoremaster;
-string LoreMessage;
-uint32 LoreMessageTimer;
+uint32 LoremasterEmoteSpell;
+uint32 LoremasterEmoteCommand;
+uint32 LoremasterNumPhrases;
+uint32 LoremasterMessageTimer;
 
 class LoremasterConfig : public WorldScript
 {
@@ -92,10 +114,22 @@ public:
     void SetInitialWorldSettings()
     {
         // Get the bet amounts from config
-        Announce = sConfigMgr->GetBoolDefault("Announce", true);
         FirstLoremaster = sConfigMgr->GetIntDefault("FirstLoremasterGUID", 601075);
-        LoreMessage = sConfigMgr->GetStringDefault("LoreMessage", "This area is rich with history and lore.");
-        LoreMessageTimer = sConfigMgr->GetIntDefault("LoreMessageTimer", 120000);
+        LoremasterAnnounceModule = sConfigMgr->GetBoolDefault("Loremaster.Announce", true);
+        LoremasterName = sConfigMgr->GetStringDefault("Loremaster.Name", "Crom");
+        LoremasterNumPhrases = sConfigMgr->GetIntDefault("Loremaster.NumPhrases", 5);
+        LoremasterMessageTimer = sConfigMgr->GetIntDefault("Loremaster.MessageTimer", 60000);
+        LoremasterEmoteSpell = sConfigMgr->GetIntDefault("Loremaster.EmoteSpell", 0);
+        LoremasterEmoteCommand = sConfigMgr->GetIntDefault("Loremaster.EmoteCommand", 3);
+
+        // Enforce Min/Max Time
+        if (LoremasterMessageTimer != 0)
+        {
+            if (LoremasterMessageTimer < 60000 || LoremasterMessageTimer > 300000)
+            {
+                LoremasterMessageTimer = 60000;
+            }
+        }
     }
 };
 
@@ -108,7 +142,7 @@ public:
     void OnLogin(Player* player)
     {
         // Announce Module
-        if (Announce)
+        if (LoremasterAnnounceModule)
         {
             ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00LoremasterNPC |rmodule.");
         }
@@ -121,6 +155,25 @@ class Loremaster_NPC : public CreatureScript
 public:
 
     Loremaster_NPC() : CreatureScript("Loremaster_NPC") { }
+
+    // Pick Phrase
+    static string PickPhrase()
+    {
+        // Choose and speak a random phrase to the player
+        // Phrases are stored in the config file
+        std::string phrase = "";
+        uint32 PhraseNum = urand(1, LoremasterNumPhrases); // How many phrases does the NPC speak? 
+        phrase = "LM.P" + std::to_string(PhraseNum);
+
+        // Sanitize
+        if (phrase == "")
+        {
+            phrase = "ERROR! NPC Emote Text Not Found! Check the npc_loremaster.conf!";
+        }
+
+        std::string randMsg = sConfigMgr->GetStringDefault(phrase.c_str(), "");
+        return randMsg.c_str();
+    }
 
     // Get Loremaster Info
     void GetLoremaster(Player *player, Creature * creature)
@@ -192,7 +245,7 @@ public:
         GetLoremaster(player, creature);
 
         // Gossip Menu
-        Option1 << "Take me to " << destination << " Crom.";
+        Option1 << "Take me to " << destination << " " << LoremasterName;
         Option2 << "I think I'll explore this area for now.";
         player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, Option1.str(), GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 1);
         player->ADD_GOSSIP_ITEM(GOSSIP_ICON_CHAT, Option2.str(), GOSSIP_SENDER_MAIN, GOSSIP_ACTION_INFO_DEF + 2);
@@ -256,31 +309,48 @@ public:
     }
 
     // Passive Emotes
-    struct Loremaster_PassivesAI : public ScriptedAI
+    struct NPC_PassiveAI : public ScriptedAI
     {
-        Loremaster_PassivesAI(Creature * creature) : ScriptedAI(creature) { }
+        NPC_PassiveAI(Creature * creature) : ScriptedAI(creature) { }
 
-        uint32 uiAdATimer = LoreMessageTimer;
+        uint32 MessageTimer;
 
+        // Called once when client is loaded
+        void Reset()
+        {
+            MessageTimer = urand(LoremasterMessageTimer, 300000); // 1-5 minutes
+        }
+
+        // Called at World update tick
         void UpdateAI(const uint32 diff)
         {
-            if (uiAdATimer <= diff)
+            if (MessageTimer <= diff)
             {
-                me->MonsterSay(LoreMessage.c_str(), LANG_UNIVERSAL, NULL);
-                me->HandleEmoteCommand(EMOTE_ONESHOT_EXCLAMATION);
-                uiAdATimer = LoreMessageTimer;
+                std::string Message = PickPhrase();
+                me->MonsterSay(Message.c_str(), LANG_UNIVERSAL, NULL);
+
+                // Use gesture?
+                if (LoremasterEmoteCommand != 0)
+                {
+                    me->HandleEmoteCommand(LoremasterEmoteCommand);
+                }
+
+                // Alert players?
+                if (LoremasterEmoteSpell != 0)
+                {
+                    me->CastSpell(me, LoremasterEmoteSpell);
+                }
+
+                MessageTimer = urand(LoremasterMessageTimer, 300000);
             }
-            else
-            {
-                uiAdATimer -= diff;
-            }
+            else { MessageTimer -= diff; }
         }
     };
 
-    // Creature AI
+    // CREATURE AI
     CreatureAI * GetAI(Creature * creature) const
     {
-        return new Loremaster_PassivesAI(creature);
+        return new NPC_PassiveAI(creature);
     }
 
 };
