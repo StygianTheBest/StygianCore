@@ -1,20 +1,33 @@
-![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")
+<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
 
-##### A repack for AzerothCore by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
+<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
 
-# NEWS February 8, 2019
+## DOWNLOAD
 
-**I am releasing a new version of the repack in a few days. These downloads have been disabled. Stay tuned!**
-
-## NEWS January 24, 2019
-
-The team at AzerothCore (AC) have recently begun a process to upgrade the databases to more closely match the structure found in Trinity. What this means is that when this upgrade is finished, the AC project will be able to more easily absorb updates and fixes made to the TrinityCore 335 branch. 
-
-**What this also means is.. everything created before these changes occurred will need to be updated. This includes any existing Tools, C++ scripts, modules, SQL updates or anything else that references the old database structures.** My repack is the only AC repack, at the time of this writing, that is updated with all core and database fixes and will work with all existing tools and content. I plan to continue to develop this repack, and I've recently released a patch to bring it up to speed with the latest changes to the AC project. Eventually, when everything has matured, I will migrate it to the new AC database structure.
+**REPACK DATA FILES ARE BEING UPLOADED. LINKS WILL APPEAR WHEN COMPLETE**
 
 ## GREETINGS
 
 Welcome to StygianCore. This repack is powered by AzerothCore and would not be possible without the players, developers, and communities of the World of Warcraft MMO emulator and private server scene. A big thanks to everyone for any and all contributions absorbed to make this repack possible. Your hard work is much appreciated!
+
+#### This repack is dedicated to the late Michel Martin Koiter (May 4, 1984 – March 18, 2004). His shrine in World of Warcraft served as a place of solace for myself, my guildmates, and countless others in the classic days of World of Warcraft and beyond. 
+
+## <span style="display:block;text-align:center">![TRIBUTE TO MICHEL KOITER](https://stygianthebest.github.io/assets/img/projects/mod-michelkoiter/michel-koiter-tribute-stygianthebest.jpg "A Tribute to Michel Koiter")</span>
+
+Michel Koiter was one of Blizzard Entertainment's premium artists and a member of [Sons of the Storm](https://web.archive.org/web/20101201092653/http://www.sonsofthestorm.com/memorial_twincruiser.html). He went by the moniker "_Twincruiser_", an artistic collaboration with his twin brother René Koiter. Just a few months before World of Warcraft's release, he died of unexpected heart failure. He was 19 years old. The cause of his death was never really understood and remains shrouded in mystery.
+
+- I recreated [Michel Koiter](https://wow.gamepedia.com/Michel_Koiter)'s orc warrior, located at the [Shrine of the Fallen Warrior](https://wow.gamepedia.com/Michel_Koiter) in The Barrens, as closely as possible. It is said that the gear his orc has equipped is exactly as it was when he last logged out of the World of Warcraft Beta.
+- A custom NPC is available in normal and ghost form.
+- The Guildmaster character for the Horde is Koiter's orc warrior complete with armor and sword.
+  - This specific armor he wore was unused, marked for use by NPCs, and not accessible to players.
+  - I located each item in the data files _(quite the chore!)_ and updated the entries in the Item.dbc and ItemDisplayInfo.dbc to make them useable as item id 701005 thru 7010012.
+  - The correct shoulders were found, but not the one-shoulder variant that Koiter's orc is wearing on the shrine. After looking at the shrine again, **_my theory_** is they removed the left shoulder of the model because it would have stuck into the shrine wall.
+
+<span style="display:block;text-align:center">_It is said that his ghost still wanders the Barrens looking for a good brawl._
+</span>
+
+<span style="display:block;text-align:center">**_Rest In Peace.. See you on the other side brother._**
+</span>
 
 ## INTRODUCTION
 
@@ -22,25 +35,32 @@ StygianCore is World of Warcraft v3.3.5a server powered by a modified build of t
 
 Included are custom tools and docs for maintaining the game database and automating archive, save, and restore operations for sandboxing, testing, and development.
 
-In addition to new content, this repack includes updated versions of the modules, SQL, custom tools, and client modifications from my [AzerothCore Content](https://github.com/StygianTheBest/AzerothCore-Content) release in summer 2017.
+### A bit of history...
+In addition to new content, this repack includes updated versions of my C++ modules, SQL templates, custom tools, and client modifications from my [AzerothCore Content](https://github.com/StygianTheBest/AzerothCore-Content) release in summer 2017 which included 11 new modules and a lot of ported C++ and SQL from TrinityCore.
+
+<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianTheBestThanksYouAll.jpg)</span>
 
 ## DOCUMENTATION & SUPPORT
 
-### This repack is released with _no official support_. All questions, requests, and bug reports should be directed through the [StygianCore GitHub](https://github.com/StygianTheBest) repo(s). Be sure to follow the repos to see when I put out an update or bugfix. I will respond to all questions as time permits.
+### This repack is released with _no official support_. All questions, requests, and bug reports should be directed through the StygianCore [GitHub](https://github.com/StygianTheBest) repo(s). Be sure to follow the repos to see when I put out an update or bugfix. I will respond to all questions as time permits.
 
 Documentation for the this repack and its contents can be found throughout the documents, code, SQL, and scripts. For more information you can [visit my website](http://stygianthebest.github.io) or peruse the [GIT](https://github.com/StygianTheBest) repos. I've tried to be as detailed as possible to diminish the learning curve and get new users up and running quickly.
 
-The Support folder also contains documentation and other support files. You can view many these files by by starting the included Apache Web server and visiting the Account Registration Portal at http://127.0.0.1/.
+## READ THE FOLLOWING FILES BEFORE ATTEMPTING TO RESTORE, EDIT, OR DELETE ANY SQL OR CONFIG FILES IN THE REPACK
+
+- TOOLS\README.MD
+- TOOLS\WORK\README.MD
+
+The **Support** folder also contains documentation and other support files. You can view many these files by by starting the included Apache Web server and visiting the Account Registration Portal at http://127.0.0.1/.
 
 ### Support Folder Contents
 
-- GameMaster's Guide
+- GameMaster's QuickStart Guide
   - Accounts
   - GM Commands
   - Modules
   - Restoration and Backup
-  - Server
-- GM Commands
+- Comprehensive GM Command List
 - Custom NPC List
 - Custom Item List
 - Teleport Destination List
@@ -56,46 +76,37 @@ The Support folder also contains documentation and other support files. You can 
 
 ## CORE
 
-- AzerothCore rev.  e5fde8c8226a+ 2018-12-19 (master branch) (Win64, Release) Modified
+- AzerothCore rev. 500c04+ 2019-02-27 11:04:10 -0500 (Master, Win64, Release) Modified
 - Apache 2.2.17 Web Server with working SOAP Account Registration page
 - MySQL 5.6.42
 - PHP 5.3.5
-- Eluna LUA Engine
 - Core Modifications:
+  - Beastmaster Pet Support
   - DungeonCheckpoints
-  - Beastmaster Pet Handling
-  - Day/Night Cycle
+  - Eluna LUA Engine
+  - Multi-Vendor
+  - TimeShift
 
 ## BACKUP/RESTORE/UPDATE
 
-- Easy Backup/Restore/Save/Archive the accounts, characters, and game world.
-- A repack update function is included for updating the repack to future revisions.
-- Includes an Azerothcore (master) build sandbox mode.
-  - Saves the current server state before restore.
-  - Temporarily restores default binaries and databases for sandbox testing.
-  - Restores back to the server state prior to sandboxing.
-  - Auto-Install patches for testing and development.
-  - Restoration archives are upgradable for testing future versions of AzerothCore.
-
+- Easily backup, restore, and archive the accounts, characters, and game world.
+- A repack update function is included to support future revisions.
+- Restoration archives are upgradable.
 
 ## HIGHLIGHTS
 
-### PLAYER AND SERVER
+### SERVER, PLAYER, AND GUILD
 
-- On character creation configurable options include:
-  - Add the player to a guild
-  - Grant Exalted faction with all major cities
-  - Grant items and heirloom gear
-  - Grant additional or all weapon skills
-  - Grant special abilities of other classes such as Sprint, Remove Curse, etc.
-- Personal Teleporter - Spawns a teleport NPC that fades after use
-- Tome of World Flying - Allows learning of flying in classic zones
-- Weapon skills level up to max with each level gained
-- 11 Profession limit for each character
-- Random chance to enchant gear on drop, quest, or craft
-- Day/Night Cycle configurable - One game day passes every 6 hours
-- XP Rate configurable as you play. From the console type: .xp set <rate 0-10>
-- Cross-Faction
+- Realm type set for RP-PVP rules. Why? Nostalgia. ;)
+- XP gain for exploration has been doubled.
+- Mail Delivery Delay reduced to 10 seconds.
+- Tome of World Flying allows flying in classic zones.
+  - Flying has been disabled for battlegrounds
+- Random chance to enchant gear on drop, quest, or craft.
+- TimeShift
+  - Adjust the number of game days per real day
+  - Default: One game day passes every 3.2 hours
+- Cross-Faction enabled for:
   - Accounts
   - Auction House
   - Calendar
@@ -107,52 +118,125 @@ The Support folder also contains documentation and other support files. You can 
   - Mail
   - Trade
   - WhoList
+- On character creation configurable options include:
+  - Add the player to a guild
+  - Grant Exalted faction with all major cities
+  - Grant items and heirloom gear
+  - Grant additional or all weapon skills
+  - Grant special abilities of other classes such as Sprint, Remove Curse, etc.
+- Players start with the following:
+  - Starting Gold (Configurable - Default: 1000)
+  - Personal Teleporter - Spawns a teleport NPC that fades after use
+  - Heirloom Trinkets
+  - Heirloom Ring
+  - Foror's Crate of Endless Storage (36 slot bag)
+- Player XP rate configurable as you play. From the console type: .xp set <rate 0-10>.
+- Includes two default characters and guilds for Horde and Alliance.
+  - Guildmaster characters are owned by the Administrator account.
+  - Guildmaster characters are equipped and ready for play.
+  - Guilds are pre-configured for use:
+    - Horde Guild: _Sons of the Storm_
+    - Alliance Guild: _Emerald Dreams_
+    - Guild Banks have all tabs available
+    - Guild Tabs are styled with icons
+    - Guild Roles and Limits are set
+    - Guild Tabards are designed
   
 ### LIFE, DEATH, AND COMBAT
 
-- Dungeon Checkpoints: You resurrect at the last or closest boss killed with 25% health/mana
-- Dungeons and Raid difficulty is auto-scaled based on player count and other factors
-- Quest, Raid, and Party requirements for entering instances are ignored
-- 25% reduced creature aggro rate
-- 25% less creature assistance radius
-- 25% less creature flee assistance radius
-- Resurrection Sickness is disabled
-- Durability on resurrection has been reduced
-- PVP kills can allow the player to loot a percentage of the victim's loot.
-- A bounty system can award players money for mob or player kills based on level.
+- Dungeon Checkpoints: You resurrect at the last or closest boss killed with 25% health/mana.
+- Dungeons and Raid difficulty is auto-scaled based on player count and other factors.
+- Quest, Raid, and Party requirements for entering instances are ignored.
+- Quest's can be completed while in raid groups.
+- Creature aggro rate reduced by 25%.
+  Creature assistance radius reduced by 25%.
+- Creature flee assistance radius reduced by 25%.
+- Resurrection Sickness is disabled.
+- Durability hit on ressurrection reduced to 5% from 25%.
+- Battleground Deserter debuff is disabled.
+- PVP kills can allow the player to loot a configurable percentage of the victim's loot if desired.
+- A bounty system can award players a configurable amount of money for mob or player kills based on level if desired.
 - World, Dungeon, and PVP kills are announced to the world.
-- All classes can have Hunter tamed beasts that will assist you in battle.
+- All classes can adopt beasts like the Hunter class that will assist you in battle.
+
+### SKILLS & CRAFTING
+
+- Players can now learn up to 11 professions.
+- Weapon skills level up to max with each level gained.
+- Skill gain on crafting has been doubled.
+- Skill gain on gathering has been doubled.
+- Skill gain on greens increased to 50%.
+- Skill gain on greys increased to 25%.
+
+### WORLD
+
+> _A [client patch](https://github.com/StygianTheBest/StygianCore/tree/master/Client/Data) is required to enable this content in the repack._
+
+- Access to previously inaccessible zones:
+  - Emerald Dream
+    - [Emerald Dream Canyon](https://www.ownedcore.com/forums/world-of-warcraft/world-of-warcraft-model-editing/wow-advanced-model-edits/512219-emerald-dream-canyon.html) Mod
+  - Programmer Isle
+  - Designer Isle
 
 ### CUSTOM NPC
 
-- BeastMaster NPC: Allows all classes to have and control hunter pets
-- Buffer NPC: Buffs players with one click
-- Codebox NPC: Allows codes to be entered for gold and items
-- Enchanter NPC: Offers all weapon and armor enchantments
-- Fisherman NPC: A custom fishing vendor with a path, waypoints, and speech
-- Gambler NPC: Allows players to gamble their money
-- Gift Box NPC: Sends players gifts at specified times like level-up
-- Global Trainer NPC: Trains all classes and skills
-- Jukebox NPC: Plays much of the music content and videos in the game
-- Loremaster NPC: Recants lore and trivia of WoW at specific locations
-- Portal Master NPC: Provides quick transport all over the realm
-- Transmogrifier NPC (ELUNA): Transmog your gear
+- BeastMaster NPC: Allows all classes to have and control hunter pets.
+- Bengal Tiger NPC: If you can find the cave, she gives you the Bengal Tiger!
+- Buffer NPC: Buffs players with one click.
+- Critters NPC: Various critters (Pig, Dog, Horse, Cow, etc.)
+- Codebox NPC: Allows codes to be entered for gold and items.
+- Enchanter NPC: Offers all weapon and armor enchantments.
+- Fisherman NPC: A custom fishing vendor with a path, waypoints, and speech.
+- Gambler NPC: Allows players to gamble their money.
+- Gift Box NPC: Sends players gifts at specified times like level-up.
+- Global Trainer NPC: Trains all classes and skills.
+- Jukebox NPC: Plays much of the music content and videos in the game.
+- Loremaster NPC: Recants lore and trivia of WoW at specific locations.
+- Multi-Vendor NPC: Allows multiple item iventories on one vendor.
+- Portal Master NPC: Provides quick transport all over the realm.
+- Trollop NPC: Everyone needs someone.
+- Transmogrifier NPC (Eluna): Transmog your gear.
+- World Trainer NPC: Trains every class, skills, and flying.
 
 ### CUSTOM VENDORS
 
-- StygianCore Specialty Vendors: Over 30 new vendors with custom item sets
-- GM Island Vendor Mall + Building Theme Changer (.tele gmisland)
-- Heirloom Vendors in all player starting zones
-- Elven Gem Vendors in Moonglade (.tele gemglade)
-- Sorcerer Glyph Vendors in Undercity and Darnassus (.tele glyphcity, glyphdarn)
+StygianCore Specialty Vendors: Over 30 new vendors with custom item sets are placed in various locations throughout the land.
+
+- Here are a few locations:
+  - Booty Bay (.tele bootybay)
+  - GM Island (.tele gmisland)
+  - Moonglade (.tele vgems)
+  - Ratchet (.tele ratchet)
+  - Silithus Camp (.tele vcamp)
+  - Silvermoon (.tele silverm)
+  - Sunrock Retreat (.tele sunrock)
+  - Thunder Bluff (.tele thunderbluff)
+  - Winterspring (.tele vholiday)
+- GM Island Vendor Mall
+  - Includes all StygianCore custom vendors
+  - Includes Rownan's Twink 19 vendors
+  - Includes Island Theme Manager
+- Heirloom Vendors in all player starting zones.
+- Multi-Vendor for Gems and Glyphs (.tele bootybay)
+
+### CUSTOM NPC TOOLS
+
+- NPC Model Mall: Generates hundreds or thousands of NPCs with unique models.
+  - NPCs are spawned on Programmer Isle
+  - NPCs are named as their ModelID #
+  - Number of models and spawn location is configurable
+- NPC Model Randomizer: Randomizes the models of NPCs from a list of valid models.
+  - This is used for GM Island and Vendor Set NPCs
+  - Reseeding of random models can be done from StygianCoreTools
 
 ### ITEM PRICING
 
-- Vendor an items have been repriced using the included template
-  - Prices are adjusted for my server's solo and small group players
-  - Fishing is now much more lucrative
-  - Rare and strange items now fetch more money from vendors
-  - The repricing template can be adjusted/imported to suit your needs.
+Vendor an items have been repriced using the included item pricing template.
+
+- The included repricing template can be adjusted/imported to suit your needs.
+- Prices are adjusted for my server's solo and small group players
+- Fishing is now much more lucrative
+- Rare and strange items now fetch more money from vendors
 
 ### PLAYER ITEMS
 
@@ -162,16 +246,25 @@ The Support folder also contains documentation and other support files. You can 
 - **Level-Up Token:** An item that levels the player up on use. This is a unique item.
 - **Tome of World Flying:** Sold by all flight masters. Allows flying in classic zones.
 - **Azerothian Humor Vol.1:** A book of WoW jokes. Not sold in stores! Parents beware!
+- **GameMaster's License:** A vanity item for kids so they can brag about being a REAL GM!
 
-## ELUNA
+![Eluna](http://www.elunaengine.com/static/eluna-logo.png)
+--
 
 **This repack includes the Eluna LUA Scripting Engine.**
 
-When possible, I've moved module functions to ELUNA. This is a work in progress.
+ The Eluna Lua Engine© API allows you to add your own Lua code to be executed when certain events (called "hooks") occur.
+
+Add a new in-game command, give life to creatures with new AI, or even light players who try to duel on fire! If the hook exists, you can script it.
+
+- You can find the included and sample scripts in the _Server\Core\luascripts_ folder.
+- Eluna allows functionality such as [Rochet2's Item/Player Gossip](http://rochet2.github.io/Player-and-Item-Gossip.html) for TrinityCore.
 
 ## MODULES
 
 **StygianCore was compiled with the following modules/mods:**
+
+> Be sure to look at the config files for the world server and modules located in the Server/Core folder. You can modify these files to configure how the server and modules work and what features are available for each during gameplay.
 
 - [Better Item Reloading](https://github.com/azerothcore/mod-better-item-reloading)
 - [Congrats On Level Up](https://github.com/StygianTheBest/mod-congratsonlevel)
@@ -182,10 +275,12 @@ When possible, I've moved module functions to ELUNA. This is a work in progress.
   - Set Special Items
   - Set Heirloom Items
 - [Custom Server](https://github.com/StygianTheBest/mod-customserver)
-  - Contains Core modifications
+  - Core modifications and smaller scripts
 - [Duel Reset](https://github.com/azerothcore/mod-duel-reset)
 - [Dungeon Checkpoints](https://github.com/callmephil)
 - [Eluna LUA Engine](https://github.com/azerothcore/mod-eluna-lua-engine)
+  - Script: GM Command Handler
+  - Script: Item Gossip & other examples
   - Script: Transmogrification NPC
 - [GM Island](https://github.com/StygianTheBest/mod-gmisland)
 - [Individual XP](https://github.com/azerothcore/mod-individual-xp)
@@ -202,6 +297,8 @@ When possible, I've moved module functions to ELUNA. This is a work in progress.
 - [NPC Enchanter](https://github.com/StygianTheBest/mod-npcenchanter)
 - [NPC Gambler](https://github.com/StygianTheBest/mod-npcgambler)
 - [NPC Loremaster](https://github.com/StygianTheBest/mod-npcloremaster)
+- [NPC Multi-Vendor](http://rochet2.github.io/Multivendor.html)
+- [NPC Trollop](https://github.com/StygianTheBest/mod-npctrollop)
 - [Random Enchants](https://github.com/azerothcore/mod-random-enchants)
   - % Chance to enchant is now configurable
   - Item Quality to enchant is now configurable
@@ -209,121 +306,85 @@ When possible, I've moved module functions to ELUNA. This is a work in progress.
   - Added SQL for creating default Guild/Characters/Guild Bank
 - [VAS AutoBalance](https://github.com/azerothcore/mod-vas-autobalance)
 
-## TOOLS
-
-I've packaged a few custom tools I use for administration of the server. Batch files are used extensively to automate many file handling and database import/export functions. The custom front-end program controls batch files to launch and manage the server processes.
-
-- **StygianCoreControls.exe (SCC)**
-  - A server front-end, process monitor, and launcher.
-  - Dedicated launch icons for StygianCoreTools and HeidiSQL.
-  - Monitors server processes (World, Auth, MySQL, Apache).
-  - Restarts crashed processes.
-  - Hides running process windows.
-  - Gracefully shuts down the database to prevent data loss.
-  - Monitors and logs crashes and other system events.
-
-- **StygianCoreTools.bat**
-  - This batch file is a UI for game database management.
-  - Launch it via a dedicated launch button on the SCC launcher.
-  - AzerothCore Sandbox Mode for testing and development.
-  - Easy backup, restoration, and testing of game data from backup, archive, or patch.
-    - Dynamicly rebuilds restoration archives for quick updates.
-    - All backup and archive data is stored in the **Tools/Temp** folder.
-    - Selectively backup and restore auth/character or world databases.
-    - Auto archives any existing backups when a backup is run.
-    - Has error-checking to make sure everyting runs as intended.
-
-- **UpdateDeploy.bat**
-  - Included only for reference. Edit the paths to match your system.
-  - Launched via StygianCoreTools batch file or start_deploy.bat.
-  - Automates testing of different Visual Studio builds on the test server.
-  - Supports Debug, RelWithDebInfo, and Release configurations.
-  - Supports "Auto Start" after deploying. Great for testing build changes quickly.
-  - Extremely useful for Pre/Post Build Events if modified.
-
-- **start_'process'.bat**
-  - These are used for customizing the launch of server processes and tools and providing ways to automate tasks from the SCC launcher. There's one for each major process and a few tools.
-
-- **HeidiSQL 9.5 x64 Portable**
-  - An excellent free database mangement alternative to NaviCat.
-  - Launch it via a dedicated launch button on the SCC launcher.
-
 # GETTING STARTED
 
 This repack includes a default Administrator account. It is used to log into the server console, the WoW game client, and for SOAP communications via the Account Registration portal.
 
-    - Login: admin
-    - Password: wow
+## ADMIN LOGIN
 
-## 1) ON EACH GAME CLIENT
+- **Login: admin**
+- **Password: wow**
 
-Set your realmlist.wtf file to point to the server. For local play it should work with 127.0.0.1.
+## 1) UNZIP THE STYGIANCORE REPACK ARCHIVE
 
-- Locate and edit the WoW client file: **realmlist.wtf**
-  - Ex: \<PATH TO WOW>\Data\enUS\realmlist.wtf
-- **SET REALMLIST 127.0.0.1**
+**This server and tools are portable.** You can run it from any folder.
 
-If you are putting the server on a different system, you will need to use that system's address.
-In addition, you will need to edit the auth database to point to that system. In the example, the
-server is listening on address 192.168.1.20 and local address 127.0.0.1. Here's a sample query to change the IP.
+- **Recommended Repack Folder: C:\Games\WoW\StygianCore**
 
-    INSERT INTO `stygian_auth`.`realmlist` (`id`, `name`, `address`, `localAddress`, `localSubnetMask`, `port`, `icon`, `flag`, `timezone`, `allowedSecurityLevel`, `population`, `gamebuild`) VALUES ('1', 'StygianCore', '192.168.1.20', '127.0.0.1', '255.255.255.0', '8085', '0', '0', '2', '0', '0', '12340');
-
-## 2) UNZIP THE STYGIANCORE REPACK ARCHIVE
-
-This server and tools are portable. You should be able to run it from any folder.
-
-**Recommended Repack Folder: C:\Games\WoW\StygianCore**
-
-## 3) EXECUTE THE TOOLS
+## 2) CONFIGURE THE SCC LAUNCHER
 
 ### StygianCoreControls.exe - Launcher and Process Monitor
 
-Run StygianCoreControls.exe - This is a launch tool built for StygianCore and assists with running the processes and admin tools in the repack. It is preconfigured to run all of the server components. It controls the following processes:
+![Controls](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/app_stygiancorecontrols.jpg)
 
-- Launcher for custom batch files to run StygianCoreTools, HeidiSQL, and others.
-- Start/Stop/Restart World, Character, Auth, Web servers
-- Track process uptime
-- Log server events (Autosave)
-- Hide process windows for each server
-- Docks to systray with process uptime as balloon text
+Run **StygianCoreControls.exe** - This is a launch tool built for StygianCore and assists with running the processes and admin tools in the repack. It is preconfigured to run all of the server components. It offers the following features:
+
+- A server launcher, front-end, and process monitor.
+- Start/Stop/Restart World, Character, Auth, Web servers.
+- Dedicated launch icons for StygianCoreTools and HeidiSQL.
+- Monitors server processes (World, Auth, MySQL, Apache).
+- Restarts crashed processes.
+- Hides running process windows.
+- Gracefully shuts down the database to prevent data loss.
+- Monitors and logs crashes and other system events.
+- Docks to systray with process uptime as balloon text.
+- Track process uptime.
 - Dragons denote the status of each process:
-  - Green: Process is running and uptime timer is running
+  - Green: Process is running and uptime timer is ticking.
   - Red: Process is not running.
-  - Red (Collapsed): Process path not found. Click to set a new path.
+  - Yellow: Process path not found. Click to set a new path.
   
- This tool comes preconfigured to launch each process batch file, but if you want to change the process or path just click the Dragon icon to bring up the process configuration.
+ This tool comes preconfigured to launch each process batch file, but if you want to change the process or path just click the Dragon icon to bring up the process configuration. Each process should point to the following batch files in the repack root folder:
 
-    - WorldServer - start_world.bat
-    - AuthServer - start_auth.bat
-    - Database - start_database.bat
-    - WebServer - start_web.bat
-    - HeidiSQL - start_sql.bat
-    - DB Tools - StygianCoreTools.bat
-    - VS Deploy - start_deploy.bat
-	- Patch Core - start_corepatch.bat
+    - WORLD - start_world.bat
+    - AUTH - start_auth.bat
+    - DB - start_database.bat
+    - WEB - start_web.bat
 
-### StygianCoreTools.bat - Database Maintenance Tool
+### ICONS ![StygianCore Tools](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/icons_stygiancorecontrols.jpg)
 
-This tool handles the archive, backup, and restore processes for StygianCore. When you're ready to perform on of these tasks, click the small 'sword' icon in the bottom right of the launcher to bring up the tool.
+Each icon launches a tool or performs a function:
 
-- Archives and backups are saved to the Tools\Temp\ folder.
-- Archive, backup and restore the world, auth, and character databases.
-- Restores the database system to the default state for StygianCore or AzerothCore.
-  - Restoring StygianCore will reset the repack to the default state.
-  - Sandbox Mode will backup the current server state and restore fresh AzerothCore (master) binaries and database.
-    - Exiting Sandbox Mode restores the previously saved game state.
-- This is a great option for sandbox testing in-game.
-- Archives existing backups when making new backups.
+- Book: Expand the window to reveal the log and other options.
+- Sword: Launch StygianCore Repack Maintenance Tool.
+- Gold Coins: Launch the included HeidiSQL Portable application.
+- Shield: _Not Shown_ Hides running processes windows.
+- Potion: Drink Me!
+
+### StygianCoreTools.bat - Repack Maintenance Tool
+
+When you're ready to run an archive, backup, or restore process, click the small _Sword_ in the bottom right of the launcher to bring up the tool which performs the following tasks:
+
+- Easy backup, restore, archive, and testing of game data.
+- All backup and archive data is stored in the **Tools/Temp** folder.
+- Dynamically rebuilds restoration archives for quick updates.
 - Allows selective backup and restore for just auth/character or world databases.
+- Auto archives any existing backups when a backup is run.
+- Restores the server db and configuration to the current state of the restoration archive.
+  - This is a great feature for sandbox testing.
 - Has error-checking to make sure everything works as intended.
 
 ### StygianCore Tools Menu
 
 The menu and options on this tool are dynamic and will change as you perform different tasks. The default menu looks like this:
 
+![StygianCoreTools Menu](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/stygiancoretools_menu.jpg)
+
+#### MENU OPTIONS
+
 - **[0] Patch Core**
-  - Only available if a repack update archive is present. Updates the repack to the latest release.
+  - _Only visible if a repack update archive is found._
+  - Updates the repack to the latest release.
 - **[1] Export World**
   - This will save the current game world.
   - Worlds can be reloaded without affecting the account/character data.
@@ -332,6 +393,15 @@ The menu and options on this tool are dynamic and will change as you perform dif
   - Exports the servers current accounts, characters, guilds, etc.
   - Accounts/Characters can be reloaded without affecting the world.
   - If an existing backup is found, it is archived.
+- **[3] Import World**
+  - _Only visible if a world backup is found._
+  - Imports the saved World from Option 1.
+  - Accounts/Characters are not affected by World imports.
+  - If an existing backup is found, it is archived.  
+- **[4] Import Accounts/Characters**
+  - _Only visible if a account/character backup is found._
+  - Imports the saved Account/Character data from Option 2.
+  - If an existing backup is found, it is archived.
 - **[5] Restore Server (StygianCore)**
   - This will restore the repack to its default state.
   - This is a destructive restore. You will lose all current data.
@@ -339,21 +409,79 @@ The menu and options on this tool are dynamic and will change as you perform dif
   - Uses the newly minted restoration archive to perform the restore.
   - Saved World and Account/Character backups can be reloaded on top of a fresh restore.
   - Use this after updating game files in the restoration archive to commit the changes for future rebuilds.
-- **[6] Sandbox Mode (AzerothCore)**
-  - This will restore the repack to the default AzerothCore release.
-  - This is a destructive restore. You will lose all current data.
-  - This will rebuild the _restore_azerothcore.zip_ restoration archive before deploying.
-  - Uses the newly minted restoration archive to perform the restore.
-  - The current game state is backed up to Tools\SaveGameState.
-  - This mode is for testing for bugs, testing patches, and development.
-  - Exiting Sandbox Mode will restore the game back to its prior saved state.
-- **[7] Update MySQL Configuration**
-  - Use this to temporarily alter the ports and server credentials.
+- **[6] Start Server**
+  - Starts/Restarts the Auth and Worldserver processes.
+- **[7] NPC Model Tools**
+  - Creates the ModelMall that allows you to preview thousands of NPC models at once.
+  - Randomizes the NPC models on GM Island.
 - **[8] Deploy Visual Studio Builds**
+  - _You can ignore this option if you're not compiling._
   - Launches the UpdateDeploy.bat to handle deployment of build files.
-  - This automates copying of Debug, RelWithDBInfo, and Release builds and confs while testing.
-  - Has an 'Auto-Run' toggle for starting the server after copy.
-  - You can skip this if you're not compiling.
+  - Automates copying of Debug, RelWithDBInfo, and Release builds + confs for testing.
+  - Has an 'Auto-Run' toggle for starting the server after deploy.
+- **[9] Update MySQL Configuration**
+  - Use this to temporarily alter the ports and server credentials.  
+
+### ADDITIONAL TOOLS
+
+I've packaged a few custom tools I use for administration of the server. Batch files are used extensively to automate many file handling and database import/export functions.
+
+- **start_'process'.bat**
+
+  - These are used for customizing the launch of server processes and tools and providing ways to automate tasks from the SCC launcher or SCT.
+  - There's one for each major server process and a few tools.
+  - The header of each file contains its original filename and a description of what function it performs in the repack.
+
+- **start_deploy.bat**
+
+  - Included only for reference, but makes deploying and testing new builds of each type a lot easier. Edit the paths to match your system.
+  - Automates testing of different Visual Studio builds on my test server.
+  - Supports Debug, RelWithDebInfo, and Release configurations.
+  - Supports "Auto Start" after deploying. Great for testing build changes quickly.
+
+- **HeidiSQL 9.5 x64 Portable**
+
+  - An excellent free database management alternative to NaviCat.
+  - Launched via a dedicated launch button ![Gold Coins](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/icons_stygiancorecontrols.jpg) in the SCC launcher or via batch in the repack root folder.
+  
+## 2) CONFIGURE EACH GAME CLIENT
+
+Set your realmlist.wtf file to point to the server. For local play it should work with the default of 127.0.0.1.
+
+- Locate and edit the WoW client file: **realmlist.wtf**
+  - Ex: \<PATH TO WOW>\Data\enUS\realmlist.wtf
+  - **SET REALMLIST 127.0.0.1**
+
+> **NOTE: If you are using the StygianCore Client Pack, a batch tool called SCUpdateIP.bat is included that automates this procedure and gives you flexibility for using one client with serveral different servers.**
+
+If you are putting the server on a different system, you will need to use that system's address.
+In addition, you will need to edit the auth database _realmlist_ table to point to that system. In the example, the
+server is listening for remote connections on 192.168.1.20 with a local address of 127.0.0.1. Here's a sample query to change the IP.
+
+    INSERT INTO `stygian_auth`.`realmlist` (`id`, `name`, `address`, `localAddress`, `localSubnetMask`, `port`, `icon`, `flag`, `timezone`, `allowedSecurityLevel`, `population`, `gamebuild`) VALUES ('1', 'StygianCore', '192.168.1.20', '127.0.0.1', '255.255.255.0', '8085', '0', '0', '2', '0', '0', '12340');
+
+## 3) UPDATE YOUR WOW CLIENT INSTALLATION
+
+**Copy the client patch files from the repack's _ClientPatch_ folder to your client's Data folder. These files are required to support custom items, objects, and other content in the repack.**
+
+> **_NOTE: Be sure to delete your client's cache folder after copying the new patches!_**
+
+- ### PATCH-Z.MPQ (_REQUIRED_)
+
+This is the client support patch required to display and enable custom content in the repack.
+
+- Required to support custom items and content in the StygianCore repack.
+- Required to enable access to forbidden zones.
+- Required to enable custom textures on some custom NPCs.
+
+**_If this patch is NOT installed:_**
+  
+- Custom items will appear as a **?** icon in your character's backpack.
+- Custom NPCs will not display custom weapons and armor.
+- Custom NPCs will not display the correct textures.
+- The game client will crash when attempting to access forbidden zones.
+
+> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes HD Player and Creature Models, [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom AddOns and more.
 
 ## REPACK UPDATES
 
@@ -361,10 +489,10 @@ The menu and options on this tool are dynamic and will change as you perform dif
 
     - Client
       - Interface
-        - AddOns and Login Screen Updates
+        - Custom Addons
       - Data
-        - Game Patches
-    - Repack
+        - Required Game Patches
+    - Server
       - Server
         - Apache
           - httpdocs
@@ -372,20 +500,20 @@ The menu and options on this tool are dynamic and will change as you perform dif
             - Online Documentation
         - Core
           - lua_scripts
-            - LUA scripts for ELUNA
-      - Support
-        - Docs
-          - Server Documentation
-        - Icons
-          - For shortcuts and the like
-      - Tools
-		- Patch
-		  - Instructions on how to update the repack
-        - Work
-          - restore_stygiancore
-            - The master restoration archive.
-            - All game SQL, conf, and other updates are stored here.
-            - This is where the magic happens. The Codex of Ultmate Wisdom.
+            - LUA scripts for Eluna
+    - Support
+      - Docs
+        - Server Documentation
+      - Icons
+        - For shortcuts and the like
+    - Tools
+      - Patch
+        - Instructions on how to apply StygianCore repack updates
+      - Work
+        - restore_stygiancore
+          - The master restoration archive.
+          - All game SQL, conf, and other updates are stored here.
+          - This is where the magic happens.. The Codex of Ultmate Wisdom!
   
 ## OTHER INFORMATION
 
@@ -398,6 +526,10 @@ You will need a few things to compile the source of this repack. The source can 
 - [OpenSSL 1.0.2l](https://www.openssl.org/source/old/1.0.2/openssl-1.0.2l.tar.gz) 
 - [MySQL v5.6.42](https://dev.mysql.com/downloads/mysql/5.6.html#downloads)
 
+### TRINITYCORE DATABASES
+
+The MySQL server included in this repack also contains the TrinityCore databases from 2019-01-27. These are used for a TrinityCore Sandbox repack I've created for adding custom content with [Rochet's GOMove and DressNPC](http://rochet2.github.io/downloads/) tools. It shares the database server with StygianCore to make imports from core to core a breeze. You can find more info on that project at [my website](http://stygianthebest.github.io).
+
 ### DEVBOX
 
 - Apple i7 Mac-Mini (MID-2012), SSD, 16GB RAM, Thunderbolt
@@ -409,23 +541,41 @@ You will need a few things to compile the source of this repack. The source can 
   - SmartGIT
   - Notepad++
 
-### CORE MOD FILES
+### CORE MODIFICATIONS
 
-#### All mods are tagged with #SCMOD in the source
+#### All mods are labled with _SCMOD_ in the source
 
-- Beastmaster NPC - Better Pet Handling
-  - Edits: Pet.cpp, npc_beastmaster.cpp
+- Beastmaster NPC
+  - Pet.cpp
+  - npc_beastmaster
 
-- Day/Night Cycle Timer
-  - Edits: World.cpp, World.h, Player.cpp, mod_customserver.cpp
+- TimeShift
+  - Player.cpp
+  - World.h
+  - World.cpp
+  - mod_customserver
 
 - Dungeon Checkpoints
-  - Edits: Player.cpp, mod_customserver.cpp
+  - Player.cpp
+  - mod_customserver
+
+- Eluna
+  - _Extensive_ core edits
+  - mod-eluna-lua-engine
+
+- Multi-Vendor
+  - cs_npc.cpp
+  - GossipDefs.h
+  - Itemhandler.cpp
+  - ObjectMgr.cpp
+  - Player.cpp
+  - WorldSession.h
   
 ### ADDITIONAL TOOLS USED
 
 - Azure DevOps (TFS)
 - Cleanmem
+- Docker
 - FreeFileSync
 - Faststone Image Viewer
 - Greenshot
@@ -452,7 +602,7 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-#### A repack for AzerothCore by StygianTheBest ([GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io))
+#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io))
 
 ### Additional Credits
 
@@ -461,15 +611,28 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 - [TrinityCore](https://github.com/TrinityCore/TrinityCore/blob/3.3.5/THANKS)
 - [SunwellCore](http://www.azerothcore.org/pages/sunwell.pl/)
 - [AzerothCore](https://github.com/AzerothCore/azerothcore-wotlk/graphs/contributors)
-- [AzerothCore Discord](https://discord.gg/gkt4y2x)
-- [EMUDevs](https://youtube.com/user/EmuDevs)
-- [AC-Web](http://ac-web.org/)
-- [ModCraft.io](http://modcraft.io/)
-- [OwnedCore](http://ownedcore.com/)
 - [OregonCore](https://wiki.oregon-core.net/)
 - [Wowhead.com](http://wowhead.com)
+- [OwnedCore](http://ownedcore.com/)
+- [ModCraft.io](http://modcraft.io/)
+- [MMO Society](https://www.mmo-society.com/)
 - [AoWoW](https://wotlk.evowow.com/)
 - [More credits are cited in the sources](https://github.com/StygianTheBest)
+
+### Hellscream's Chosen Guild of Stonemaul
+
+- Bras
+- Gatog
+- Girlys
+- Jadenelle
+- Katojune
+- Mobbius
+- Pamooya
+- Ragathar
+- Retdream
+- Shootameat
+- Spaget @ Dead End Friends
+- Zagmund
 
 ## LICENSE
 

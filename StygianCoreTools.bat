@@ -34,12 +34,6 @@ IF EXIST %CD%\Tools\Work\restore_stygiancore.zip. (
 		echo ... Tools
 		echo     .. Work
 		echo        ..[X] restore_stygiancore.zip - Required for server restore.
-		IF NOT EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
-		echo        ..[X] restore_azerothcore.zip - Required for sandbox.
-		)
-		(
-			echo.
-		)
 		echo.
 		pause
 		exit
@@ -49,24 +43,18 @@ REM ############################################################################
 
 : initialize
 REM // Version
-set acoredbrev=2018.12.04
-set toolsrev=2019.01.21
-set stygianrev=2019.01.21
+set toolsrev=2019.03.01
+set stygianrev=2019.03.01
 set wowbuild=12340
 
 REM // This is for launching the deploy batch file that automates debug and release testing
 REM // This batch file should be placed in the AzerothCore Solution root folder
 set solutiondir=..\Dev\StygianCore\StygianBuild
 
-REM // DevTemp
-REM // TODO: PATCH OR UPDATE SPECIFIC SQL TABLES
-set quickupdate=item_pricing.sql
-
 REM // Command
 REM 1(Blue), 2(Green), 3(Cyan), 4(Red), 5(Purple), 6(Yellow), 7(LGray), 8(Gray)
-
 COLOR 2F
-SET mod=%1
+MODE con:cols=89 lines=45
 SET NAME=StygianCore Tools
 TITLE %NAME%
 
@@ -81,14 +69,27 @@ set login=stygian_auth
 set characters=stygian_characters
 set world=stygian_world
 
+REM // Model Mall 
+set modelmax=640
+set modelstart=18600
+
 REM // Try to turn on the lights
 cls
+goto init
 
 :init
+REM // Create needed folders
 IF EXIST %CD%\Tools\Temp\NUL (
 	goto mysql
 ) ELSE (
-	mkdir Tools\Temp
+	mkdir %CD%\Tools\Temp
+	goto mysql
+)
+
+IF EXIST %CD%\Server\Core\logs\NUL (
+	goto mysql
+) ELSE (
+	mkdir %CD%\Server\Core\logs
 	goto mysql
 )
 
@@ -134,12 +135,7 @@ echo                        /\___/ /\____/
 echo                        \/__/  \_/__/          http://stygianthebest.github.io  
 echo.
 echo.        
-
-REM CHECK FOR SAVE GAME STATE           
-IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
-	REM SAVE STATE EXISTS - SHOW RESTORE OPTIONS
-) ELSE (
-	echo ### IMPORT/EXPORT ######################################################################             
+echo ### IMPORT/EXPORT ######################################################################             
 	IF EXIST %CD%\Tools\Temp\PatchCore\patch_core_ready.txt. (
 		echo [ 0 ] - Patch Core: StygianCore %stygianrev% Release
 	)
@@ -154,46 +150,36 @@ IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
 )
 echo.
 echo ### RESTORE SERVER #####################################################################
-IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
-	echo [ 1 ] - Reset Sandbox World
-	echo [ 2 ] - Reset Sandbox Accounts 
-	echo [ 3 ] - Exit Sandbox Mode 
-) ELSE (
+echo.
 	IF EXIST %CD%\Tools\Work\restore_stygiancore.zip. (
-		echo [ 5 ] - Restore Server: StygianCore %stygianrev% Release
-	)
-	IF EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
-		echo [ 6 ] - SandBox Mode: AzerothCore %acoredbrev% Release 
+		echo [ 5 ] - Restore Server: StygianCore [%stygianrev% Release]
 	)
 )
 echo.
 echo ### TOOLS ##############################################################################                                 
-echo [ 7 ] - Update MySQL Configuration
+echo [ 6 ] - Start Server
+echo [ 7 ] - NPC Model Tools
 IF EXIST %solutiondir%\bin\RelWithDebInfo\worldserver.exe. (
 echo [ 8 ] - Deploy Visual Studio Builds
 )
+echo [ 9 ] - Update MySQL Configuration
 echo.
 echo ########################################################################################
 echo                                                                    # Tools v%toolsrev% # 
 echo.
 set /P menu=%host% @ %port%: 
 if "%menu%"=="0" (goto patch_core)
-IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql. (
-	if "%menu%"=="1" (goto import_world)
-	if "%menu%"=="2" (goto import_accounts)
-	if "%menu%"=="3" (goto restore_savestate)
-) ELSE (
-	if "%menu%"=="1" (goto export_world)
-)
+if "%menu%"=="1" (goto export_world)
 if "%menu%"=="2" (goto export_accounts)
 if "%menu%"=="3" (goto import_world)
 if "%menu%"=="4" (goto import_accounts)
 if "%menu%"=="5" (goto restore_default_sc)
-if "%menu%"=="6" (goto restore_default_ac)
-if "%menu%"=="7" (goto setup)
+if "%menu%"=="6" (goto start_server)
+if "%menu%"=="7" (goto model_tools)
 if "%menu%"=="8" (goto deploy)
-if "%menu%"=="9" (goto restore_savestate)
+if "%menu%"=="9" (goto start)
 if "%menu%"=="" (goto menu)
+
 
 REM ########################################################################################
 REM [- 0 -]
@@ -222,6 +208,7 @@ if /I "%menu%"=="y" (goto patch_backup)
 ) else (
     echo.
 	echo [- *** Invalid Core Patch Installation.. Exiting *** -]
+	echo.
 	pause
 	goto menu
 )
@@ -285,8 +272,10 @@ Tools\7Z x -y Tools\Temp\PatchCore\restore_stygiancore.zip -o.\Tools\Work\
 RD /S /Q "Tools\Temp\PatchCore"
 echo.
 echo [- Patch Complete -]
+echo.
 pause
 goto menu	
+
 
 REM ########################################################################################
 REM [- 1 -]
@@ -326,7 +315,6 @@ REM ############################################################################
 
 :export_accounts
 cls
-cls
 echo.
 echo ###] .\TOOLS\TEMP DIRECTORY CONTENTS [##################################################
 dir Tools\Temp /N /ON
@@ -358,6 +346,7 @@ if exist Tools\Temp\%characters%.sql (
 )
 echo [- Exporting Characters -]
 Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 %characters% > Tools\Temp\%characters%.sql
+echo.
 pause
 goto menu
 
@@ -369,23 +358,25 @@ REM ############################################################################
 :import_world
 cls
 echo.
-IF EXIST Tools\SaveGameState\savestate-%world%.sql. (
-	SET action=sandbox_world
-) ELSE (
-	SET action=saved_world
-)
-	set /P menu=Are you sure want to RESTORE %action% DATABASE [Y/N]?
+	set /P menu=Are you sure want to IMPORT THE WORLD DATABASE? [Y/N]
 	if /I "%menu%"=="n" (goto menu)
-	if /I "%menu%"=="y" (goto do_import_%action%)
+	if /I "%menu%"=="y" (goto do_import_saved_world)
 
 :do_import_saved_world
-cls
+
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+CLS
+
 echo.
 if exist Tools\Temp\%world%.sql. (
 	echo [- Importing World from Tools\Temp\%world%.sql -]
 	Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "DROP DATABASE %world%"
 	Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "CREATE DATABASE %world%"
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Temp\%world%.sql
+	echo.	
+	echo [- *** WORLD IMPORT COMPLETE - RESTART SERVER *** -]
 	echo.
 	pause
 	goto menu
@@ -396,24 +387,6 @@ if exist Tools\Temp\%world%.sql. (
 	goto menu
 )
 
-:do_import_sandbox_world
-cls
-echo.
-if exist Tools\SaveGameState\savestate-%world%.sql. (
-	echo [- Reset Sandbox World  -]
-	echo.
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
-	for %%i in (Tools\Temp\restore_azerothcore\01_default\db_world\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_world\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
-	echo.
-	pause
-	goto menu
-) else (
-    echo [- *** ERROR - No World Save State Found *** -]
-	echo.
-	pause
-	goto menu
-)
 
 REM ########################################################################################
 REM [- 4 -]
@@ -422,17 +395,17 @@ REM ############################################################################
 :import_accounts
 cls
 echo.
-IF EXIST Tools\SaveGameState\savestate-%characters%.sql. (
-	SET action=sandbox_accounts
-) ELSE (
-	SET action=saved_accounts
-)
-	set /P menu=Are you sure want to RESTORE %action% DATABASE [Y/N]?
+	set /P menu=Are you sure want to RESTORE THE ACCOUNT/CHARACTERS DATABASE? [Y/N]
 	if /I "%menu%"=="n" (goto menu)
-	if /I "%menu%"=="y" (goto do_import_%action%)
+	if /I "%menu%"=="y" (goto do_import_saved_accounts)
 
 :do_import_saved_accounts
-cls
+
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+CLS
+
 echo.	
 	if exist Tools\Temp\%characters%.sql. (	
 
@@ -445,34 +418,14 @@ echo.
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
 	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%characters% < Tools\Temp\%characters%.sql
-		
-	pause
-	goto menu
-) else (
-    echo [- *** ERROR - No Account Backup Found *** -]
+	
+	echo.	
+	echo [- *** ACCOUNT/CHARACTER IMPORT COMPLETE - RESTART SERVER *** -]
 	echo.
 	pause
 	goto menu
-)
-
-:do_import_sandbox_accounts
-cls
-echo.
-if exist Tools\Temp\restore_azerothcore\01_default\db_auth\realmlist.sql. (	
-	echo [- Reset Sandbox Accounts -]	
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"	
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %login%" 		
-	for %%i in (Tools\Temp\restore_azerothcore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
-
-
-	echo [- Reset Sandbox Characters -]
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
-	Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
-	for %%i in (Tools\Temp\restore_azerothcore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
-	pause 
-	goto menu
 ) else (
-    echo [- *** ERROR - FILE NOT FOUND *** -]
+    echo [- *** ERROR - No Account/Character Backup Found *** -]
 	echo.
 	pause
 	goto menu
@@ -511,7 +464,14 @@ if /I "%menu%"=="n" (goto menu)
 if /I "%menu%"=="y" (goto restore_sc_prep)
 
 :restore_sc_prep
-cls
+CLS
+
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+
+CLS
+
 RD /S /Q "Tools\Temp\restore_stygiancore"
 CD Tools\Work
 CALL build_restore_stygiancore.bat
@@ -560,7 +520,11 @@ for %%i in (Tools\Temp\restore_stygiancore\03_custom\db_characters\*sql) do if %
 echo [- Restoring Custom World -]
 for %%i in (Tools\Temp\restore_stygiancore\03_custom\db_world\*sql) do if %%i neq .\Tools\Temp\restore_stygiancore\03_custom\db_world\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
 
+echo.	
+echo [- *** SERVER RESTORE COMPLETE - RESTART SERVER *** -]
 echo.
+pause
+goto start_server
 pause
 goto menu
 
@@ -569,204 +533,89 @@ REM ############################################################################
 REM [- 6 -]
 REM ########################################################################################
 
-:restore_default_ac
-cls
+:start_server
 
-REM Check for restoration archive
-IF NOT EXIST %CD%\Tools\Work\restore_azerothcore.zip. (
-    echo [- *** No Default Restoration Archive Found *** -]
-	echo.
-	pause
-	goto menu
-)
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+CLS
 
-echo.
-echo                     [-------------------]
-echo                     [- !!! WARNING !!! -]
-echo                     [-------------------]
-echo.
-echo              You are about to enter Sandbox Mode
-echo.
-echo This process will RESTORE the default AzerothCore binaries and databases. 
-echo A backup of the current game state will be made before the restore begins. 
-echo.
-echo.
-set /P menu=Are you sure want to ENTER SANDBOX MODE? [Y/N]:
-if /I "%menu%"=="n" (goto menu)
-if /I "%menu%"=="y" (goto sandbox_mode)
-
-:sandbox_mode
-cls
-echo.
-if exist Tools\SaveGameState\savestate-%world%.sql (
-	echo [- Existing Save State Found - Exiting... -]
-	goto menu
-) else (
-
-	IF EXIST %CD%\Tools\SaveGameState\NUL (
-		REM Folder Exists
-	) ELSE (
-		mkdir %CD%\Tools\SaveGameState
-	)
-
-	echo [- Saving Game State: Auth -]
-	Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %login% > Tools\SaveGameState\savestate-%login%.sql
-
-	echo [- Saving Game State: Characters -]
-	Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %characters% > Tools\SaveGameState\savestate-%characters%.sql
-
-	echo [- Saving Game State: World -]
-	Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %world% > Tools\SaveGameState\savestate-%world%.sql
-		
-	echo [- Saving Game State: Binaries -]
-	taskkill /F /FI "IMAGENAME eq worldserver.exe"
-	taskkill /F /FI "IMAGENAME eq authserver.exe"
-	xcopy /y /q Server\Core\authserver.conf Tools\SaveGameState\
-	xcopy /y /q Server\Core\authserver.conf.dist Tools\SaveGameState\
-	xcopy /y /q Server\Core\worldserver.conf Tools\SaveGameState\
-	xcopy /y /q Server\Core\worldserver.conf.dist Tools\SaveGameState\
-	xcopy /y /q Server\Core\ace.dll Tools\SaveGameState\
-	xcopy /y /q Server\Core\authserver.exe Tools\SaveGameState\
-	xcopy /y /q Server\Core\worldserver.exe Tools\SaveGameState\	
-	goto restore_default_ac
-)
-
-:restore_default_ac
-RD /S /Q "Tools\Temp\restore_azerothcore"
-CD Tools\Work
-CALL build_restore_azerothcore.bat
-CD ..
-CD ..
-Tools\7Z x -y Tools\Work\restore_azerothcore.zip -o.\Tools\Temp\
-echo.
-echo [- Restoring Default AzerothCore Accounts -]
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %login%"
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %login%" 
-for %%i in (Tools\Temp\restore_azerothcore\01_default\db_auth\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_auth\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
-
-echo [- Restoring Default AzerothCore Characters -]
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %characters%"
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %characters%" 
-for %%i in (Tools\Temp\restore_azerothcore\01_default\db_characters\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_characters\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
-
-echo [- Restoring Default AzerothCore World -]
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
-Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
-for %%i in (Tools\Temp\restore_azerothcore\01_default\db_world\*sql) do if %%i neq Tools\Temp\restore_azerothcore\01_default\db_world\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
-
-REM -- UPDATES --
-
-echo [- Restoring AzerothCore Updates Accounts -]
-for %%i in (Tools\Temp\restore_azerothcore\02_update\db_auth\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_auth\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
-
-echo [- Restoring AzerothCore Updates Characters -]
-for %%i in (Tools\Temp\restore_azerothcore\02_update\db_characters\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_characters\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
-
-echo [- Restoring AzerothCore Updates World -]
-for %%i in (Tools\Temp\restore_azerothcore\02_update\db_world\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\02_update\db_world\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
-
-REM -- CUSTOM --
-
-echo [- Restoring AzerothCore Custom Accounts -]
-for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_auth\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_auth\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%login% < %%i
-
-echo [- Restoring AzerothCore Custom Characters -]
-for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_characters\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_characters\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%characters% < %%i
-
-echo [- Restoring AzerothCore Custom World -]
-for %%i in (Tools\Temp\restore_azerothcore\03_custom\db_world\*sql) do if %%i neq .\Tools\Temp\restore_azerothcore\03_custom\db_world\*sql .\Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
-
-echo [- Restoring Binaries -]
-xcopy /y /q Tools\Temp\restore_azerothcore\00_core\worldserver.exe Server\Core\	
-xcopy /y /q Tools\Temp\restore_azerothcore\00_core\authserver.exe Server\Core\
-xcopy /y /q Tools\Temp\restore_azerothcore\00_core\ace.dll Server\Core\
-xcopy /y /q Tools\Temp\restore_azerothcore\04_conf\authserver.conf Server\Core\
-xcopy /y /q Tools\Temp\restore_azerothcore\04_conf\authserver.conf.dist Server\Core\
-xcopy /y /q Tools\Temp\restore_azerothcore\04_conf\worldserver.conf Server\Core\
-xcopy /y /q Tools\Temp\restore_azerothcore\04_conf\worldserver.conf.dist Server\Core\
-
-pause
+START start_auth.bat
+START start_world.bat
 goto menu
 
+
 REM ########################################################################################
-REM [- 7 -]
+REM [- 7-]
+REM ########################################################################################
+
+:model_tools
+CLS
+CLS
+echo.
+echo                     [-------------------]
+echo                     [- # CORE PATCH  # -]
+echo                     [-------------------]
+echo.
+echo ########################################################################################
+echo   This process will randomize the NPC models on GM Island and set 
+echo   the models and range for the models on Programmer Isle. This process 
+echo   is useful for previewing many different NPC models at once in addition 
+echo   to changing things up a bit on GM Island.
+echo.
+echo   ** WARNING: This process will stop and restart the Auth and Worldserver **
+echo ########################################################################################
+echo.
+set /P menu=Are you sure want to Randomize NPC Models? [Y/N]:
+if /I "%menu%"=="n" (goto menu)
+if /I "%menu%"=="y" (goto gorandom)
+
+:gorandom
+
+REM Shutdown Server Processes
+taskkill /F /FI "IMAGENAME eq worldserver.exe"
+taskkill /F /FI "IMAGENAME eq authserver.exe"
+
+cls
+echo.
+echo [- Set Model Mall Parameters -]
+echo.
+set /P modelmax=Max Models (Default: 640) [%modelmax%]: 
+set /P modelstart=Start Model (Range: 13 .. 37,254) [%modelstart%]:
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% --execute="CALL UpdateModelRange(%modelmax%, %modelstart%)"
+
+echo.
+echo [- Generating Model Mall -]
+echo.
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% --execute="CALL ModelMall()"
+
+echo [- Randomizing GM Island NPC Models -]
+echo.
+Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < Tools\Temp\restore_stygiancore\03_custom\db_world\npc_gm_island_mall_rand.sql
+
+echo [- NPC Models Updated :: DELETE THE WOW CLIENT CACHE! -]
+echo.
+pause
+
+rem start start_auth.bat
+rem start start_world.bat
+
+goto menu
+
+
+REM ########################################################################################
+REM [- 8 -]
 REM ########################################################################################
 
 :deploy
 start start_deploy.bat
 goto menu
 
+
 REM ########################################################################################
 REM [- 9 -]
 REM ########################################################################################
 
-:restore_savestate
-cls
-echo.
-echo                     [------------------]
-echo                     [- !!! NOTICE !!! -]
-echo                     [------------------]
-echo.
-echo              YOU ARE ABOUT TO EXIT SANDBOX MODE
-echo.
-echo This process will EXIT SANDBOX MODE and restore the previously saved 
-echo game state.
-echo.
-set /P menu=Are you sure want to EXIT SANDBOX MODE? [Y/N]:
-if /I "%menu%"=="n" (goto menu)
-if /I "%menu%"=="y" (goto restore_game)
+REM :setup
 
-:restore_game
-IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql (
-	goto restore_game_data
-) ELSE (
-    echo [- *** ERROR - No Save State Found *** -]
-	pause
-	goto menu
-)
 
-:restore_game_data
-cls
-echo.
-
-echo [- Importing Accounts from Tools\SaveGameState\savestate-%login%.sql -]
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "DROP DATABASE %login%"
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "CREATE DATABASE %login%"
-%CD%\Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%login% < %CD%\Tools\SaveGameState\savestate-%login%.sql
-
-echo [- Importing Characters from Tools\SaveGameState\savestate-%characters%.sql -]
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "DROP DATABASE %characters%"
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "CREATE DATABASE %characters%"
-%CD%\Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%characters% < %CD%\Tools\SaveGameState\savestate-%characters%.sql
-
-echo [- Importing World from Tools\SaveGameState\savestate-%world%.sql -]
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "DROP DATABASE %world%"
-%CD%\Tools\mysql --defaults-extra-file=Server\MySQL\my.cnf -e "CREATE DATABASE %world%"
-%CD%\Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 --database=%world% < %CD%\Tools\SaveGameState\savestate-%world%.sql
-
-echo [- Restoring Binaries -]
-xcopy /y /q Tools\SaveGameState\worldserver.exe Server\Core\	
-xcopy /y /q Tools\SaveGameState\authserver.exe Server\Core\
-xcopy /y /q Tools\SaveGameState\ace.dll Server\Core\
-xcopy /y /q Tools\SaveGameState\authserver.conf Server\Core\
-xcopy /y /q Tools\SaveGameState\authserver.conf.dist Server\Core\
-xcopy /y /q Tools\SaveGameState\worldserver.conf Server\Core\
-xcopy /y /q Tools\SaveGameState\worldserver.conf.dist Server\Core\
-
-echo [- Clean Up -]
-RD /S /Q "Tools\SaveGameState"
-
-IF EXIST %CD%\Tools\SaveGameState\savestate-%world%.sql (
-    echo [- *** ERROR - Restore Failed *** -]
-	pause
-	goto menu
-) ELSE (
-	    echo [- Restore Complete - Press Any Key To Restart World -]
-		pause
-		taskkill /F /FI "IMAGENAME eq worldserver.exe"
-		start Server\Core\worldserver.exe
-		goto menu
-)
-
-goto menu
-exit
