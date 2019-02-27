@@ -13,7 +13,7 @@
 -- ###################################################################################### --
 --
 -- SQL NPC: Global Trainer
--- NPC ID: 60165
+-- NPC ID: 70105
 -- 
 -- This trainer will train all classes and includes spells that would normally be
 -- obtained through questing.
@@ -29,26 +29,25 @@
 -- Reference class to add some missing spells you get from quest and some others.
 -- --------------------------------------------------------------------------------------
 SET 
-  @Deathknight := 60165;
+  @Deathknight := 70105;
 SET 
-  @Druid := 60165;
+  @Druid := 70105;
 SET 
-  @Shaman := 60165;
+  @Shaman := 70105;
 SET 
-  @Hunter := 60165;
+  @Hunter := 70105;
 SET 
-  @Mage := 60165;
+  @Mage := 70105;
 SET 
-  @Warlock := 60165;
+  @Warlock := 70105;
 SET 
-  @Warrior := 60165;
+  @Warrior := 70105;
 SET 
-  @GMspells := 60165;
+  @GMspells := 70105;
 SET 
-  @Skills := 60165;
+  @Skills := 70105;
 SET 
-  @Trainer := 60165;
-
+  @Trainer := 70105;
  -- --------------------------------------------------------------------------------------
 -- Clean Trainer before inserting new NPC,spells & skills.
 -- --------------------------------------------------------------------------------------
@@ -110,8 +109,8 @@ VALUES
     -- KillCredit1
     0, 
     -- KillCredit2
-    14395, 
-    -- modelid1
+    25901, 
+    -- modelid1 - Deckard Cain
     0, 
     -- modelid2
     0, 
@@ -120,10 +119,10 @@ VALUES
     -- modelid4
     'Deckard Cain', 
     -- name
-    'Grandmaster of Combat', 
+    'Grandmaster Trainer', 
     -- subname
     '', 
-    -- IconeName
+    -- IconName
     0, 
     -- gossip_menu_id
     80, 
@@ -251,11 +250,29 @@ VALUES
     '' -- ScriptName
     );
 	
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Trainer;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Trainer, 'Greetings Traveler. Stay awhile.. and train!');
+	
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Trainer;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Trainer, '0', '0', 'Greetings Traveler. Stay awhile.. and train!', '12', '0', '100', '0', '0', '0', @Trainer, '0', '');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Trainer;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Trainer, '0', 'Greetings Traveler. Stay awhile.. and train!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Trainer;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Trainer, '0', '0', '0', '1', '0', '100', '0', '5000', '20000', '30000', '120000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- --------------------------------------------------------------------------------------
 -- NPC EQUIPPED
 -- --------------------------------------------------------------------------------------
-DELETE FROM `creature_equip_template` WHERE `CreatureID`=60165 AND `ID`=1;
-INSERT INTO `creature_equip_template` VALUES (60165, 1, 28184, 1168, 0, 18019); -- Millennium Blade, Skullflame Shield
+DELETE FROM `creature_equip_template` WHERE `CreatureID`= @Trainer AND `ID`=1;
+-- INSERT INTO `creature_equip_template` VALUES (@Trainer, 1, 28184, 1168, 0, 18019); -- Millennium Blade, Skullflame Shield
+INSERT INTO `creature_equip_template` VALUES (@Trainer, 1, 39422, 0, 0, 18019); -- PlagueHound Staff
+
 -- --------------------------------------------------------------------------------------
 -- Make Trainer mounted (Uncomment this part if you want him mounted)
 -- --------------------------------------------------------------------------------------

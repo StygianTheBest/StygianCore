@@ -45,13 +45,15 @@ SET
 -- --------------------------------------------------------------------------------------
 DELETE FROM creature_template WHERE entry = @ENTRY;
 DELETE FROM creature_template_addon WHERE Entry = @ENTRY ;
-DELETE FROM gossip_menu WHERE entry BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+9;
 DELETE FROM npc_text WHERE ID BETWEEN @TEXT_ID AND @TEXT_ID+5;
-DELETE FROM gossip_menu_option WHERE menu_id BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+9;
 DELETE FROM smart_scripts WHERE entryorguid = @ENTRY AND source_type = 0;
-DELETE FROM conditions WHERE (SourceTypeOrReferenceId = 15 OR SourceTypeOrReferenceId = 14) AND SourceGroup BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+9;
 DELETE from creature WHERE ID = @ENTRY;
 DELETE from gameobject WHERE ID = @RUNE AND guid >= 200000;
+
+-- UPDATE GOSSIP_MENU RANGE AFTER ADDING NEW ENTRYS
+DELETE FROM gossip_menu WHERE entry BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
+DELETE FROM gossip_menu_option WHERE menu_id BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
+DELETE FROM conditions WHERE (SourceTypeOrReferenceId = 15 OR SourceTypeOrReferenceId = 14) AND SourceGroup BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
 
 -- --------------------------------------------------------------------------------------
 -- Teleporter
@@ -98,42 +100,42 @@ INSERT INTO npc_text (ID, text0_0, em0_1) VALUES
 -- --------------------------------------------------------------------------------------
 INSERT INTO conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, ConditionTypeOrReference, ConditionValue1, Comment) VALUES
 (15, @GOSSIP_MENU, 1, 6, 469, "Stormwind"),
- (15, @GOSSIP_MENU+5, 2, 6, 469, "Dun Morogh"),
- (15, @GOSSIP_MENU+5, 3, 6, 67, "Tirisfal Glades"),
- (15, @GOSSIP_MENU+5, 4, 6, 67, "Ghostlands"),
- (15, @GOSSIP_MENU+5, 5, 6, 469, "Loch modan"),
- (15, @GOSSIP_MENU+5, 6, 6, 67, "Silverpine Forest"),
- (15, @GOSSIP_MENU+5, 7, 6, 469, "Westfall"),
- (15, @GOSSIP_MENU+5, 8, 6, 469, "Redridge mountains"),
- (15, @GOSSIP_MENU+5, 9, 6, 469, "Duskwood"),
- (15, @GOSSIP_MENU+5, 11, 6, 469, "Wetlands"),
- (15, @GOSSIP_MENU+6, 0, 6, 469, "Azuremyst Isle"),
- (15, @GOSSIP_MENU+6, 1, 6, 469, "Teldrassil"),
- (15, @GOSSIP_MENU+6, 2, 6, 67, "Durotar"),
- (15, @GOSSIP_MENU+6, 3, 6, 67, "Mulgore"),
- (15, @GOSSIP_MENU+6, 4, 6, 469, "Bloodmyst Isle"),
- (15, @GOSSIP_MENU+6, 5, 6, 469, "Darkshore"),
- (15, @GOSSIP_MENU+6, 6, 6, 67, "The Barrens"),
- (15, @GOSSIP_MENU+5, 1, 6, 67, "Eversong Woods"),
- (15, @GOSSIP_MENU+5, 0, 6, 469, "Elwynn Forest"),
- (15, @GOSSIP_MENU+4, 22, 6, 67, "Zul'Aman"),
- (15, @GOSSIP_MENU, 2, 6, 67, "Orgrimmar"),
- (15, @GOSSIP_MENU, 3, 6, 469, "Darnassus"),
- (15, @GOSSIP_MENU, 4, 6, 469, "Ironforge"),
- (15, @GOSSIP_MENU, 5, 6, 469, "Exodar"),
- (15, @GOSSIP_MENU, 6, 6, 67, "Thunder bluff"),
- (15, @GOSSIP_MENU, 7, 6, 67, "Undercity"),
- (15, @GOSSIP_MENU, 8, 6, 67, "Silvermoon city"),
- (15, @GOSSIP_MENU+1, 0, 6, 469, "Gnomeregan"),
- (15, @GOSSIP_MENU+1, 1, 6, 469, "The Deadmines"),
- (15, @GOSSIP_MENU+1, 2, 6, 469, "The Stockade"),
- (15, @GOSSIP_MENU+1, 3, 6, 67, "Ragefire Chasm"),
- (15, @GOSSIP_MENU+1, 4, 6, 67, "Razorfen Downs"),
- (15, @GOSSIP_MENU+1, 5, 6, 67, "Razorfen Kraul"),
- (15, @GOSSIP_MENU+1, 6, 6, 67, "Scarlet Monastery"),
- (15, @GOSSIP_MENU+1, 7, 6, 67, "Shadowfang Keep"),
- (15, @GOSSIP_MENU+1, 8, 6, 67, "Wailing Caverns"),
- (15, @GOSSIP_MENU+6, 9, 6, 67, "Thousand Needles"),
+(15, @GOSSIP_MENU+5, 2, 6, 469, "Dun Morogh"),
+(15, @GOSSIP_MENU+5, 3, 6, 67, "Tirisfal Glades"),
+(15, @GOSSIP_MENU+5, 4, 6, 67, "Ghostlands"),
+(15, @GOSSIP_MENU+5, 5, 6, 469, "Loch modan"),
+(15, @GOSSIP_MENU+5, 6, 6, 67, "Silverpine Forest"),
+(15, @GOSSIP_MENU+5, 7, 6, 469, "Westfall"),
+(15, @GOSSIP_MENU+5, 8, 6, 469, "Redridge mountains"),
+(15, @GOSSIP_MENU+5, 9, 6, 469, "Duskwood"),
+(15, @GOSSIP_MENU+5, 11, 6, 469, "Wetlands"),
+(15, @GOSSIP_MENU+6, 0, 6, 469, "Azuremyst Isle"),
+(15, @GOSSIP_MENU+6, 1, 6, 469, "Teldrassil"),
+(15, @GOSSIP_MENU+6, 2, 6, 67, "Durotar"),
+(15, @GOSSIP_MENU+6, 3, 6, 67, "Mulgore"),
+(15, @GOSSIP_MENU+6, 4, 6, 469, "Bloodmyst Isle"),
+(15, @GOSSIP_MENU+6, 5, 6, 469, "Darkshore"),
+(15, @GOSSIP_MENU+6, 6, 6, 67, "The Barrens"),
+(15, @GOSSIP_MENU+5, 1, 6, 67, "Eversong Woods"),
+(15, @GOSSIP_MENU+5, 0, 6, 469, "Elwynn Forest"),
+(15, @GOSSIP_MENU+4, 22, 6, 67, "Zul'Aman"),
+(15, @GOSSIP_MENU, 2, 6, 67, "Orgrimmar"),
+(15, @GOSSIP_MENU, 3, 6, 469, "Darnassus"),
+(15, @GOSSIP_MENU, 4, 6, 469, "Ironforge"),
+(15, @GOSSIP_MENU, 5, 6, 469, "Exodar"),
+(15, @GOSSIP_MENU, 6, 6, 67, "Thunder bluff"),
+(15, @GOSSIP_MENU, 7, 6, 67, "Undercity"),
+(15, @GOSSIP_MENU, 8, 6, 67, "Silvermoon city"),
+(15, @GOSSIP_MENU+1, 0, 6, 469, "Gnomeregan"),
+(15, @GOSSIP_MENU+1, 1, 6, 469, "The Deadmines"),
+(15, @GOSSIP_MENU+1, 2, 6, 469, "The Stockade"),
+(15, @GOSSIP_MENU+1, 3, 6, 67, "Ragefire Chasm"),
+(15, @GOSSIP_MENU+1, 4, 6, 67, "Razorfen Downs"),
+(15, @GOSSIP_MENU+1, 5, 6, 67, "Razorfen Kraul"),
+(15, @GOSSIP_MENU+1, 6, 6, 67, "Scarlet Monastery"),
+(15, @GOSSIP_MENU+1, 7, 6, 67, "Shadowfang Keep"),
+(15, @GOSSIP_MENU+1, 8, 6, 67, "Wailing Caverns"),
+(15, @GOSSIP_MENU+6, 9, 6, 67, "Thousand Needles"),
 (14, @GOSSIP_MENU, @TEXT_ID+1, 6, 469, "For the Alliance"),
 (14, @GOSSIP_MENU, @TEXT_ID, 6, 67, "For the Horde");
 
@@ -271,7 +273,6 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 -- --------------------------------------------------------------------------------------
 -- MAIN MENU
 -- --------------------------------------------------------------------------------------
-(@GOSSIP_MENU, 21, 9, "Stygian Portals", 1, 1, @GOSSIP_MENU+9, 0, 0, 0, NULL),
 (@GOSSIP_MENU, 1, 2, "Stormwind", 1, 1, @GOSSIP_MENU, 0, 0, 0, "Are you sure, that you want to go to Stormwind?"),
 (@GOSSIP_MENU, 2, 2, "Orgrimmar", 1, 1, @GOSSIP_MENU, 0, 0, 0, "Are you sure, that you want to go to Orgrimmar?"),
 (@GOSSIP_MENU, 3, 2, "Darnassus", 1, 1, @GOSSIP_MENU, 0, 0, 0, "Are you sure, that you want to go to Darnassus?"),
@@ -292,6 +293,8 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 (@GOSSIP_MENU, 18, 9, "BC Dungeons", 1, 1, @GOSSIP_MENU+2, 0, 0, 0, NULL),
 (@GOSSIP_MENU, 19, 9, "Wrath Dungeons", 1, 1, @GOSSIP_MENU+3, 0, 0, 0, NULL),
 (@GOSSIP_MENU, 20, 9, "Raid Teleports", 1, 1, @GOSSIP_MENU+4, 0, 0, 0, NULL),
+(@GOSSIP_MENU, 21, 9, "Stygian Portals", 1, 1, @GOSSIP_MENU+9, 0, 0, 0, NULL),
+(@GOSSIP_MENU, 22, 9, "Loremaster", 1, 1, @GOSSIP_MENU+10, 0, 0, 0, NULL),
 
 -- --------------------------------------------------------------------------------------
 -- CLASSIC DUNGEONS
@@ -454,22 +457,62 @@ INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id
 
 -- --------------------------------------------------------------------------------------
 -- Stygian Portals
--- --------------------------------------------------------------------------------------
-(@GOSSIP_MENU+9, 0, 2, "Sunrock Retreat", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Sunrock Retreat?"),
-(@GOSSIP_MENU+9, 1, 2, "Silithus Camp", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Silithus Camp?"),
-(@GOSSIP_MENU+9, 2, 2, "Koiter's Shrine", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Koiter's Shrine?"),
-(@GOSSIP_MENU+9, 3, 2, "Dead King's Crypt", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Dead King's Crypt?"),
+-- --------------*-----------------------------------------------------------------------
+(@GOSSIP_MENU+9, 0, 2, "Cairne's Overlook", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Cairne's Overlook?"),
+(@GOSSIP_MENU+9, 1, 2, "Dalaran", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Dalaran?"),
+(@GOSSIP_MENU+9, 2, 2, "Moonglade", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Moonglade?"),
+(@GOSSIP_MENU+9, 3, 2, "Sunrock Retreat", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Sunrock Retreat?"),
 (@GOSSIP_MENU+9, 4, 2, "Winterspring", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Winterspring?"),
-(@GOSSIP_MENU+9, 5, 2, "Moonglade Gem Vendors", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Moonglade Gem Vendors?"),
-(@GOSSIP_MENU+9, 6, 2, "Elise\'s Happy Place", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Elise\'s Happy Place?"),
-(@GOSSIP_MENU+9, 7, 2, "Shatterspear Vale", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Shatterspear Vale?"),
-(@GOSSIP_MENU+9, 8, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
-
+(@GOSSIP_MENU+9, 5, 2, "Zone: Designer Isle", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Designer Isle?"),
+(@GOSSIP_MENU+9, 6, 2, "Zone: Programmer Isle", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Programmer Isle?"),
+(@GOSSIP_MENU+9, 7, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL),
 
 -- --------------------------------------------------------------------------------------
--- Teleport scripts:
+-- Loremaster
+-- ---------------*----------------------------------------------------------------------
+(@GOSSIP_MENU+10, 0, 2, "Challe's Home for Little Tykes", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Challe's Home for Little Tykes?"),
+(@GOSSIP_MENU+10, 1, 2, "Dead King's Crypt", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Dead King's Crypt?"),
+(@GOSSIP_MENU+10, 2, 2, "The Emerald Dream", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to The Emerald Dream?"),
+(@GOSSIP_MENU+10, 3, 2, "The Forgotten Crypt", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to The Forgotten Crypt?"),
+(@GOSSIP_MENU+10, 4, 2, "Koiter's Shrine", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Koiter's Shrine?"),
+(@GOSSIP_MENU+10, 5, 2, "Shatterspear Vale", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Shatterspear Vale?"),
+(@GOSSIP_MENU+10, 6, 2, "Silithus Camp", 1, 1, 0, 0, 0, 0, "Are you sure, that you want to go to Silithus Camp?"),
+(@GOSSIP_MENU+10, 7, 7, "Back..", 1, 1, @GOSSIP_MENU, 0, 0, 0, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- Teleport scripts
 -- --------------------------------------------------------------------------------------
 INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event_phase_mask, event_chance, event_flags, event_param1, event_param2, event_param3, event_param4, action_type, action_param1, action_param2, action_param3, action_param4, action_param5, action_param6, target_type, target_param1, target_param2, target_param3, target_x, target_y, target_z, target_o, comment) VALUES 
+
+-- --------------------------------------------------------------------------------------
+-- StygianCore Portals
+-- SmartScript Action 62 = MAPID (0 - KALIMDOR, 1 - AZEROTH (Eastern Kingdoms))
+-- Pay attention to the value of SmartScript action 62. It needs the correct value for the teleport location to work.
+-- Asterisks show fields that must be updated when adding a new location.
+-- -----------*------------------------------------*------------*------------------------
+(@ENTRY, 0, 132, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 0, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Cairne's Overlook"),
+(@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 5813.9, 448.287, 658.752, 1.23946, "Dalaran"),
+(@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Moonglade"),
+(@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 966.147, 926.499, 104.649, 1.27231, "Sunrock Retreat"),
+(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
+(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 451, 0, 0, 0, 0, 0, 7, 0, 0, 0, 16303, -16173, 40, 0.361313, "Zone: Designer Isle"),
+(@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 451, 0, 0, 0, 0, 0, 7, 0, 0, 0, 16205.5, 16123.6, 71.5889, 5.5253, "Zone: Programmer Isle"),
+
+-- --------------------------------------------------------------------------------------
+-- Loremaster Portals
+-- SmartScript Action 62 = MAPID (0 - KALIMDOR, 1 - AZEROTH (Eastern Kingdoms))
+-- Pay attention to the value of SmartScript action 62. It needs the correct value for the teleport location to work.
+-- Asterisks show fields that must be updated when adding a new location.
+-- -----------*-------------------------------------*------------*-----------------------
+(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 0, 0, 0, 62, 530, 0, 0, 0, 0, 0, 7, 0, 0, 0, -531.232, 7401.32, 186.393, 0.939364, "Challe's Home for Little Tykes"),
+(@ENTRY, 0, 140, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 1, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
+(@ENTRY, 0, 141, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 2, 0, 0, 62, 169, 0, 0, 0, 0, 0, 7, 0, 0, 0, 2771.35, 3009.59, 23.3131, 3.58999, "The Emerald Dream"),
+(@ENTRY, 0, 142, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -11068.6, -1808.88, 52.7882, 2.32419, "The Forgotten Crypt"),
+(@ENTRY, 0, 143, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
+(@ENTRY, 0, 144, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "Shatterspear Vale"),
+(@ENTRY, 0, 145, 0, 62, 0, 100, 0, @GOSSIP_MENU+10, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silithus Camp"),
+-- --------------------------------------------------------------------------------------
+
 (@ENTRY, 0, 1, 0, 62, 0, 100, 0, @GOSSIP_MENU, 1, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -8842.09, 626.358, 94.0867, 3.61363, "Teleporter script"),
 (@ENTRY, 0, 2, 0, 62, 0, 100, 0, @GOSSIP_MENU, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 1601.08, -4378.69, 9.9846, 2.14362, "Teleporter script"),
 (@ENTRY, 0, 3, 0, 62, 0, 100, 0, @GOSSIP_MENU, 11, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -14281.9, 552.564, 8.90422, 0.860144, "Teleporter script"),
@@ -600,22 +643,9 @@ INSERT INTO smart_scripts (entryorguid, source_type, id, link, event_type, event
 (@ENTRY, 0, 128, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 6, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 5411.17, -966.37, 167.082, 1.57167, "Teleporter script"),
 (@ENTRY, 0, 129, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 7, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6120.46, -1013.89, 408.39, 5.12322, "Teleporter script"),
 (@ENTRY, 0, 130, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 8, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 8323.28, 2763.5, 655.093, 2.87223, "Teleporter script"),
-(@ENTRY, 0, 131, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 9, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 4522.23, 2828.01, 389.975, 0.215009, "Teleporter script"),
+(@ENTRY, 0, 131, 0, 62, 0, 100, 0, @GOSSIP_MENU+8, 9, 0, 0, 62, 571, 0, 0, 0, 0, 0, 7, 0, 0, 0, 4522.23, 2828.01, 389.975, 0.215009, "Teleporter script");
 
--- --------------------------------------------------------------------------------------
--- StygianCore Portals
--- SmartScript Action 62 = MAPID (0 - KALIMDOR, 1 - AZEROTH (Eastern Kingdoms))
--- Pay attention to the value of SmartScript action 62. It needs the correct value for the teleport location to work.
--- --------------------------------------------------------------------------------------
-(@ENTRY, 0, 132, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 0, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 966.147, 926.499, 104.649, 1.27231, "Sunrock Retreat"),
-(@ENTRY, 0, 133, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 1, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -10733.8, 2509.35, 5.88962, 0.899085, "Silthus Camp"),
-(@ENTRY, 0, 134, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 2, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -396.86, -2183.42, 158.1, 0.162564, "Koiter's Shrine"),
-(@ENTRY, 0, 135, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 3, 0, 0, 62, 0, 0, 0, 0, 0, 0, 7, 0, 0, 0, -6583.62, -3486.57, 318.362, 0.49825, "Dead King's Crypt"),
-(@ENTRY, 0, 136, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 4, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 6769.96, -4633.98, 721.208, 0.927772, "Winterspring"),
-(@ENTRY, 0, 137, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 5, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7758.24, -2409.7, 489.282, 4.14574, "Gem Vendors Moonglade"),
-(@ENTRY, 0, 138, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 6, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, -745.952, -989.286, 194.098, 2.01729, "Elise\'s Happy Place"),
-(@ENTRY, 0, 139, 0, 62, 0, 100, 0, @GOSSIP_MENU+9, 7, 0, 0, 62, 1, 0, 0, 0, 0, 0, 7, 0, 0, 0, 7443.72, -1690.19, 194.643, 5.49535, "Shatterspear Vale");
-
+/*
 -- --------------------------------------------------------------------------------------
 -- Teleporter Spawns
 -- --------------------------------------------------------------------------------------
@@ -644,7 +674,7 @@ INSERT INTO creature (id, map, spawnMask, phaseMask, modelid, position_x, positi
 -- --------------------------------------------------------------------------------------
 -- Rune Spawns
 -- --------------------------------------------------------------------------------------
-/*
+
 ALTER TABLE gameobject AUTO_INCREMENT = 200000;
 INSERT INTO gameobject (id, map, spawnMask, phaseMask, position_x, position_y, position_z, orientation, rotation2, rotation3, spawntimesecs, state) VALUES
 (@RUNE, 1, 1, 1, 1601.08, -4378.69, 9.9846, 2.14362, 0.878068, 0.478536, 25, 1), 

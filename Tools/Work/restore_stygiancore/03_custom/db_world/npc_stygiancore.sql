@@ -45,7 +45,8 @@
 -- 601001 - Pets		
 -- 601002 - Food		
 -- 601003 - Armor		
--- 601004 - Potions		
+-- 601004 - Potions
+-- 601005 - Fisherman		
 -- 601006 - Artifacts	
 -- 601007 - Books		
 -- 601008 - Holiday		
@@ -57,7 +58,7 @@
 -- 601014 - All Mounts
 -- 601015 - Enchanter
 -- 601016 - Buffer
--- 601017 - 
+-- 601017 - Trollop
 -- 601018 - Gift Box Sender
 -- 601019 - Portal Master
 -- 601020 - Gambler
@@ -76,7 +77,24 @@
 -- 601034 - Banker		
 -- 601035 - GM Island Decorator
 -- 601036 - Bengal Tiger Handler
-*/ 
+-- 601038 - Horse (Black)
+-- 601039 - Horse (Caravan)
+-- 601040 - Horse (Patched)
+-- 601041 - Horse (White)
+-- 601042 - Horse (Brown)
+-- 601043 - Dog
+-- 601044 - Heirloom Vendor
+-- 601045 - Global Vendor (Gems)
+-- 601046 - Global Vendor (Glyphs)
+-- 601047 - Tauren Female Warrior
+-- 601048 - Koiter (Male Orc Warrior)
+-- 601049 - Koiter's Ghost
+-- 601050 - Carrion Grub Critter
+-- 601051 - Currency Exchange
+-- 601052 - Imperial Eagle Critter
+-- 601075 - Loremaster
+--  70105 - Global Trainer
+*/
 
 USE stygian_world;
 
@@ -107,11 +125,31 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Come browse my selection of the purest exotic pet breeds.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Come browse my selection of the purest exotic pet breeds.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Come browse my selection of the purest exotic pet breeds.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2714, 0, 0, 18019); -- Lantern, None
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM `npc_vendor` WHERE `entry` = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,8494), -- Parrot Cage Hyacinth Macaw
@@ -289,11 +327,32 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Are you interested in a companion.. pet?');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Are you interested in a companion.. pet?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Are you interested in a companion.. pet?', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2714, 0, 0, 18019); -- Lantern, None
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,8485), -- Cat Carrier Bombay
@@ -362,11 +421,31 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'You got the dub? I got the grub.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'You got the dub? I got the grub.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'You got the dub? I got the grub.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2827, 3351, 0, 18019); -- Meat Cleaver, Rolling Pin
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES
 (@Entry, 21023),	-- Dirge's Kickin' Chimaerok Chops
@@ -479,7 +558,7 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 14824, 0, 0, 18019); -- War Axe, None
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,4726),	-- Chief Brigadier Cloak	
@@ -552,11 +631,31 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My spirits are aged to perfection.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My spirits are aged to perfection.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'My spirits are aged to perfection.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 13612, 0, 0, 18019);
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,8529),		-- NoggenFogger Elixer
@@ -736,7 +835,7 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 45991, 34484, 0, 18019); -- Fishing Pole, Old Ironjaw
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 -- BOOKS
@@ -802,18 +901,17 @@ INSERT INTO npc_vendor (entry, item) VALUES
 (@Entry,18229);	-- Nat Pagle's Guide to Extreme Anglin' 
 
 -- --------------------------------------------------------------------------------------
--- CLEAN UP FISHERMAN WAYPOINTS
+-- CLEAN UP FISHERMAN WAYPOINTS - SET CREATURE MOVEMENTTYPE = '2' FOR ANIMATION TO START
 -- --------------------------------------------------------------------------------------
-DELETE FROM `creature_addon` WHERE `guid`=1994210;
+DELETE FROM `creature_addon` WHERE `guid`=1993577;
 DELETE FROM `db_script_string` WHERE entry >= 2000006050 AND entry <= 2000006052;
 DELETE FROM `waypoint_scripts` WHERE guid >= 938 AND guid <= 941;
-DELETE FROM `creature` WHERE guid >= 1995303 AND guid <= 1995315;
-DELETE FROM `waypoint_data` WHERE id = 1994210 AND point <= 13;
+DELETE FROM `waypoint_data` WHERE id = 1993577 AND point <= 13;
 
 -- --------------------------------------------------------------------------------------
 -- FISHERMAN CREATURE ADDON
 -- --------------------------------------------------------------------------------------
-INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (1994210, 1994210, 0, 0, 0, 0, NULL);
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (1993577, 1993577, 0, 0, 0, 0, NULL);
 
 -- --------------------------------------------------------------------------------------
 -- FISHERMAN WAYPOINT STRINGS
@@ -835,50 +933,31 @@ VALUES
 (941, 0, 31, 601005, 0, 0, 0, 0, 0, 0, 941);	-- Equip
 
 -- --------------------------------------------------------------------------------------
--- FISHERMAN WAYPOINT GUID
--- --------------------------------------------------------------------------------------
-INSERT INTO `creature` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `modelid`, `equipment_id`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `currentwaypoint`, `curhealth`, `curmana`, `MovementType`, `npcflag`, `unit_flags`, `dynamicflags`) 
-VALUES 
-(1995315, 1, 1, 1, 1, 0, 0, -10749, 2517.63, 1.60554, 1.43331, 300, 0, 0, 41, 0, 0, 0, 33554432, 0),
-(1995314, 1, 1, 1, 1, 0, 0, -10700.2, 2523.61, 0.792882, 1.43331, 300, 0, 0, 41, 0, 0, 0, 33554432, 0),
-(1995313, 1, 1, 1, 1, 0, 0, -10702.7, 2521.03, 2.26718, 1.43331, 300, 0, 0, 2, 0, 0, 0, 33554432, 0),
-(1995312, 1, 1, 1, 1, 0, 0, -10732.6, 2518.96, 1.79036, 1.43331, 300, 0, 0, 24, 0, 0, 0, 33554432, 0),
-(1995311, 1, 1, 1, 1, 0, 0, -10745.8, 2511.96, 3.60894, 1.43331, 300, 0, 0, 42, 0, 0, 0, 33554432, 0),
-(1995310, 1, 1, 1, 1, 0, 0, -10760.3, 2513.04, 1.92615, 1.43331, 300, 0, 0, 5, 0, 0, 0, 33554432, 0),
-(1995309, 1, 1, 1, 1, 0, 0, -10791.1, 2489.84, 1.98191, 1.43331, 300, 0, 0, 10, 0, 0, 0, 33554432, 0),
-(1995308, 1, 1, 1, 1, 0, 0, -10807.8, 2461.83, 1.04805, 1.43331, 300, 0, 0, 6, 0, 0, 0, 33554432, 0),
-(1995307, 1, 1, 1, 1, 0, 0, -10805.9, 2460.9, 2.03948, 1.43331, 300, 0, 0, 20, 0, 0, 0, 33554432, 0),
-(1995306, 1, 1, 1, 1, 0, 0, -10791.4, 2490.54, 1.74961, 1.43331, 300, 0, 0, 15, 0, 0, 0, 33554432, 0),
-(1995305, 1, 1, 1, 1, 0, 0, -10777.2, 2504.67, 0.528472, 1.43331, 300, 0, 0, 38, 0, 0, 0, 33554432, 0),
-(1995304, 1, 1, 1, 1, 0, 0, -10776.3, 2503.56, 1.20431, 1.43331, 300, 0, 0, 4, 0, 0, 0, 33554432, 0),
-(1995303, 1, 1, 1, 1, 0, 0, -10749.4, 2519.6, 0.203893, 1.43331, 300, 0, 0, 50, 0, 0, 0, 33554432, 0);
-
--- --------------------------------------------------------------------------------------
 -- FISHERMAN WAYPOINT DATA
 -- --------------------------------------------------------------------------------------
 INSERT INTO `waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`) 
 VALUES 
 
 -- Start
-(1994210, 1, -10749.4, 2519.6, 0.203893, 0, 30000, 0, 939, 33, 1995303),
-(1994210, 2, -10776.3, 2503.56, 1.20431, 0, 0, 0, 0, 100, 1995304),
-(1994210, 3, -10777.2, 2504.67, 0.528472, 0, 30000, 0, 0, 100, 1995305),
+(1993577, 1, -10749.4, 2519.6, 0.203893, 0, 30000, 0, 939, 33, 1995303),
+(1993577, 2, -10776.3, 2503.56, 1.20431, 0, 0, 0, 0, 100, 1995304),
+(1993577, 3, -10777.2, 2504.67, 0.528472, 0, 30000, 0, 0, 100, 1995305),
 
 -- Headed to boats
-(1994210, 4, -10791.4, 2490.54, 1.74961, 0, 0, 0, 940, 10, 1995306),
-(1994210, 5, -10805.9, 2460.9, 2.03948, 0, 0, 0, 0, 100, 1995307),
+(1993577, 4, -10791.4, 2490.54, 1.74961, 0, 0, 0, 940, 10, 1995306),
+(1993577, 5, -10805.9, 2460.9, 2.03948, 0, 0, 0, 0, 100, 1995307),
 
 -- At the boats, TODO: equip fishing pole (EVENT 941)
-(1994210, 6, -10807.8, 2461.83, 1.04805, 0, 60000, 0, 941, 100, 1995308),
-(1994210, 7, -10791.1, 2489.84, 1.98191, 0, 0, 0, 0, 100, 1995309),
-(1994210, 8, -10760.3, 2513.04, 1.92615, 0, 0, 0, 0, 100, 1995310),
-(1994210, 9, -10745.8, 2511.96, 3.60894, 0, 0, 0, 0, 100, 1995311),
-(1994210, 10, -10732.6, 2518.96, 1.79036, 0, 0, 0, 0, 100, 1995312),
-(1994210, 11, -10702.7, 2521.03, 2.26718, 0, 0, 0, 0, 100, 1995313),
+(1993577, 6, -10807.8, 2461.83, 1.04805, 0, 60000, 0, 941, 100, 1995308),
+(1993577, 7, -10791.1, 2489.84, 1.98191, 0, 0, 0, 0, 100, 1995309),
+(1993577, 8, -10760.3, 2513.04, 1.92615, 0, 0, 0, 0, 100, 1995310),
+(1993577, 9, -10745.8, 2511.96, 3.60894, 0, 0, 0, 0, 100, 1995311),
+(1993577, 10, -10732.6, 2518.96, 1.79036, 0, 0, 0, 0, 100, 1995312),
+(1993577, 11, -10702.7, 2521.03, 2.26718, 0, 0, 0, 0, 100, 1995313),
 
 -- Looking at sunset
-(1994210, 12, -10700.2, 2523.61, 0.792882, 0, 60000, 0, 938, 33, 1995314),
-(1994210, 13, -10749, 2517.63, 1.60554, 0, 0, 0, 0, 25, 1995315);
+(1993577, 12, -10700.2, 2523.61, 0.792882, 0, 60000, 0, 938, 33, 1995314),
+(1993577, 13, -10749, 2517.63, 1.60554, 0, 0, 0, 0, 25, 1995315);
 
 -- --------------------------------------------------------------------------------------
 --	ARTIFACT VENDOR - 601006
@@ -907,11 +986,31 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My selection of antiquities is unique.. and expensive.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My selection of antiquities is unique.. and expensive.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'My selection of antiquities is unique.. and expensive.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 1906, 0, 0, 18019); -- Torch, None
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,1973),	-- Orb of Deception	
@@ -1019,11 +1118,32 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,11108),	-- Faded Photograph	
 (@Entry,701003), -- Azerothian Humor Vol. 1
+(@Entry,701013), -- Azerothian Humor Vol. 2
 (@Entry,11482),	-- Crystal Pylon User's Manual
 (@Entry,18228),	-- Autographed Picture of Foror & Tigule
 (@Entry,18229),	-- Nat Pagle's Guide to Extreme Anglin'
@@ -1074,7 +1194,27 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Want a balloon?');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Want a balloon?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Want a balloon?', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,20397),	-- Hallowed Wand: Pirate
@@ -1140,7 +1280,8 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,5507),	-- Ornate Spyglass
@@ -1159,7 +1300,7 @@ INSERT INTO npc_vendor (entry, item) VALUES
 -- --------------------------------------------------------------------------------------
 SET
 @Entry 		:= 601010,
-@Model 		:= 16695, -- Elven Banker
+@Model 		:= 18763, -- Elf in Black
 @Name 		:= "Prada Armani",
 @Title 		:= "Clothing",
 @Icon 		:= "Buy",
@@ -1181,7 +1322,27 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My elegant silken thread is soft to the touch.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My elegant silken thread is soft to the touch.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'My elegant silken thread is soft to the touch.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,154),	-- Primitive Mantle	
@@ -1324,7 +1485,27 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hey, back here, in the dark alley.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Hey, back here, in the dark alley.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Hey, back here, in the dark alley.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,23162), 		-- Foror's Crate of Endless Resist Gear Storage (36-Slot Bag)
@@ -1360,6 +1541,26 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Wanna go out with a BANG! Come talk to Sparky!');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Wanna go out with a BANG! Come talk to Sparky!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Wanna go out with a BANG! Come talk to Sparky!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIP
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2884, 0, 0, 18019); -- Dynamite Stick, None
@@ -1393,7 +1594,7 @@ INSERT INTO npc_vendor (entry, item) VALUES
 -- --------------------------------------------------------------------------------------
 SET
 @Entry 		:= 601013,
-@Model 		:= 19646, -- Soul Trader
+@Model 		:= 19772, -- Soul Trader
 @Name 		:= "Tyrion Darksoul",
 @Title 		:= "Illusionist",
 @Icon 		:= "Interact",
@@ -1416,6 +1617,26 @@ SET
 DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Appearances are my specialty!');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Appearances are my specialty!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Appearances are my specialty!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
 
 -- --------------------------------------------------------------------------------------
 --	ALL MOUNTS VENDOR - 601014
@@ -1497,7 +1718,7 @@ SET
 @Name 		:= "Buffmaster Hasselhoof",
 @Title 		:= "",
 @Icon 		:= "Speak",
-@GossipMenu := 4110,
+@GossipMenu := 0,
 @MinLevel 	:= 80,
 @MaxLevel 	:= 80,
 @Faction 	:= 35,
@@ -1518,6 +1739,51 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 1906, 0, 0, 18019); -- War Axe(14824), Torch
+
+-- --------------------------------------------------------------------------------------
+--	TROLLOP - 601017
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601017,
+@Model 		:= 10927, -- Fel Succubus
+@Name 		:= "Amouranth",
+@Title 		:= "Your New Best Friend",
+@Icon 		:= "Speak",
+@GossipMenu := 60117,
+@MinLevel	:= 80,
+@MaxLevel	:= 80,
+@Faction	:= 7,  -- Neutral, Attackable
+@NPCFlag 	:= 81,
+@Scale		:= 1.0,
+@Rank		:= 2,  -- Rare Elite
+@Type 		:= 3,  -- Demon
+@DynamicFlags:= 1, -- Lootable
+@TypeFlags 	:= 0,
+@FlagsExtra	:= 0,
+@LootID		:= 60117,
+@AIName		:= "ReactorAI",
+@Script 	:= "Trollop_NPC";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, dynamicflags, type_flags, InhabitType, RegenHealth, flags_extra, lootid, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 1, @Type, DynamicFlags, @TypeFlags, 3, 1, @FlagsExtra, @LootID, @AIName, @Script);
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hey there $N. Lookin\' for a good time?');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Loot
+DELETE FROM `stygian_world`.`creature_loot_template` WHERE `entry` = @LootID;
+INSERT INTO `stygian_world`.`creature_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `lootmode`, `groupid`, `mincountOrRef`, `maxcount`) VALUES 
+('60117', '29571', '100', '1', '0', '1', '1'),
+('60117', '37467', '75', '1', '0', '1', '1'),
+('60117', '46023', '50', '1', '0', '1', '1'),
+('60117', '54291', '25', '1', '0', '1', '1');
 
 -- --------------------------------------------------------------------------------------
 --	GAMBLER - 601020
@@ -1575,6 +1841,26 @@ SET
 DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'I am the keymaster, the lock picker, and the door opener.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I am the keymaster, the lock picker, and the door opener.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'I am the keymaster, the lock picker, and the door opener.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
 
 -- NPC EQUIP
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
@@ -1674,7 +1960,7 @@ INSERT INTO npc_vendor (entry, item) VALUES
 -- --------------------------------------------------------------------------------------
 SET
 @Entry 		:= 601024,
-@Model 		:= 18148, -- Haris Pilton
+@Model 		:= 26365, -- Elegant Blood Elf Female | 18148, -- Haris Pilton
 @Name 		:= "Andara Delaine",
 @Title 		:= "Specialty Gifts",
 @Icon 		:= "Buy",
@@ -1695,6 +1981,26 @@ SET
 DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'I have what you want. Come see.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I have what you want. Come see.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'I have what you want. Come see.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
 
 -- NPC EQUIP
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
@@ -1952,7 +2258,7 @@ INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 2196, 1906, 0, 18019); 
 DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. And when, on the still cold nights, he pointed his nose at a star and howled long and wolflike, it was his ancestors, dead and dust, pointing nose at star and howling down through the centuries and through him.');
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 -- MEAT
@@ -2029,15 +2335,15 @@ SET
 @Name 		:= "Imooen Winfield",
 @Title 		:= "Legendary Artifacts",
 @Icon 		:= "Buy",
-@GossipMenu := 0,
+@GossipMenu := 60128,
 @MinLevel 	:= 80,
 @MaxLevel 	:= 80,
 @Faction 	:= 35,
-@NPCFlag 	:= 128, -- Vendor
+@NPCFlag 	:= 129, -- Gossip+QuestGiver
 @Scale		:= 1.0,
 @Rank		:= 0,
 @Type 		:= 7,
-@TypeFlags 	:= 0,
+@TypeFlags 	:= 138412032,
 @FlagsExtra := 2,
 @AIName		:= "SmartAI",
 @Script 	:= "";
@@ -2047,12 +2353,34 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
+(@Entry, 3419);		-- Red Rose
 
-(@Entry,3419);		-- Red Rose
--- (@Entry,9254);		-- Cuergo's Treasure Map
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Gossip Menu Option
+DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'I want to see your wares', 3, 128, @Entry, 0, 0, 0, '');
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts (Speak)
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
 
 
 -- --------------------------------------------------------------------------------------
@@ -2082,11 +2410,31 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
+-- NPC TEXT
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Need a boost? Try one of these.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Need a boost? Try one of these.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Need a boost? Try one of these.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
 -- NPC EQUIPPED
 DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 13612, 0, 0, 18019); -- Wine Glass
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM npc_vendor WHERE entry = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,'2454'),
@@ -2315,7 +2663,7 @@ INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 1909, 0, 0, 18019); -- 
 DELETE FROM `creature_template_addon` WHERE `entry`=@Entry;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (@Entry, 0, 24757, 0, 0, 0, NULL); -- Great Brewfest Kodo
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM `npc_vendor` WHERE `entry` = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES 
 (@Entry,'33976'),
@@ -2475,7 +2823,7 @@ INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 21580, 0, 23889, 18019)
 DELETE FROM `creature_template_addon` WHERE `entry`=@Entry;
 INSERT INTO `creature_template_addon` (`entry`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (@Entry, 0, 14334, 0, 0, 0, NULL); -- Black Undead Horse
 
--- NPC ITEMS
+-- NPC Items
 DELETE FROM `npc_vendor` WHERE `entry` = @Entry;
 INSERT INTO npc_vendor (entry, item) VALUES
 (@Entry,'1132'),
@@ -2692,7 +3040,7 @@ SET
 @MinLevel 	:= 80,
 @MaxLevel 	:= 80,
 @Faction 	:= 35,
-@NPCFlag 	:= 3, -- 
+@NPCFlag 	:= 3, -- Gossip+QuestGiver
 @Scale		:= 1.0,
 @Rank		:= 0,
 @Type 		:= 7,
@@ -2712,7 +3060,7 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 
 -- Text
 DELETE FROM `npc_text` WHERE `ID` = @Entry;
-INSERT INTO `npc_text` (`ID`, `text0_0`, `text0_1`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild`) VALUES (@Entry, 'Greetings $N. Lucky you.. You\'ve arrived at just the right time.', NULL, 0, 0, 0, 6, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 1);
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. Lucky you.. You\'ve arrived at just the right time.');
 
 -- Gossip Menu
 DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
@@ -2734,10 +3082,186 @@ INSERT INTO smart_scripts (`entryorguid`, `source_type`, `id`, `link`, `event_ty
 UPDATE `stygian_world`.`item_template` SET `RequiredLevel`='1', `RequiredSkill`='150', `RequiredSkillRank`='1', `maxcount`='1' WHERE (`entry`='8630');
 
 -- --------------------------------------------------------------------------------------
---	HEIRLOOM VENDOR - 601704
+-- BLACK HORSE - 601038
+-- This demonstrates a full Creature Template. A PITA to create!
+-- --------------------------------------------------------------------------------------
+DELETE FROM  `stygian_world`.`creature_template` WHERE `entry` = 601038;
+SET
+@Entry 		:= 601038,
+@Model 		:= 239, -- Black Horse
+@Name 		:= "Black Beauty",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	CARAVAN HORSE - 601039
 -- --------------------------------------------------------------------------------------
 SET
-@Entry 		:= 601704,
+@Entry 		:= 601039,
+@Model 		:= 14551, -- Caravan Horse
+@Name 		:= "Ginger",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 131072, -- Banker
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	BROWN/WHITE HORSE - 601040
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601040,
+@Model 		:= 238, -- Brown/White Horse
+@Name 		:= "Hidalgo",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	WHITE HORSE - 601041
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601041,
+@Model 		:= 236, -- 
+@Name 		:= "Merrylegs",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	LIGHT BROWN HORSE - 601042
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601042,
+@Model 		:= 237, -- 
+@Name 		:= "Spirit",
+@Title 		:= "Stallion of the Cimarron",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	DOG (SAI Barking - 601043)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601043,
+@Model 		:= 9563, -- Dog
+@Name 		:= "Wolfy",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- 8 = Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Ruff! Ruff! Ruff!', '14', '0', '100', '0', '0', '10827', @Entry, '0', 'Random Bark');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Ruff! Ruff! Ruff!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '5000', '20000', '30000', '120000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Dog Bark');
+
+-- --------------------------------------------------------------------------------------
+--	HEIRLOOM VENDOR - 601044
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601044,
 @Model 		:= 25900, -- Small Tyrion
 @Name 		:= "Glowing Soul",
 @Title 		:= "Heirloom Merchant",
@@ -2759,10 +3283,6 @@ SET
 DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
-
--- Text
-DELETE FROM `npc_text` WHERE `ID` = 601017;
-INSERT INTO `npc_text` (`ID`, `text0_0`, `text0_1`, `lang0`, `Probability0`, `em0_0`, `em0_1`, `em0_2`, `em0_3`, `em0_4`, `em0_5`, `text1_0`, `text1_1`, `lang1`, `Probability1`, `em1_0`, `em1_1`, `em1_2`, `em1_3`, `em1_4`, `em1_5`, `text2_0`, `text2_1`, `lang2`, `Probability2`, `em2_0`, `em2_1`, `em2_2`, `em2_3`, `em2_4`, `em2_5`, `text3_0`, `text3_1`, `lang3`, `Probability3`, `em3_0`, `em3_1`, `em3_2`, `em3_3`, `em3_4`, `em3_5`, `text4_0`, `text4_1`, `lang4`, `Probability4`, `em4_0`, `em4_1`, `em4_2`, `em4_3`, `em4_4`, `em4_5`, `text5_0`, `text5_1`, `lang5`, `Probability5`, `em5_0`, `em5_1`, `em5_2`, `em5_3`, `em5_4`, `em5_5`, `text6_0`, `text6_1`, `lang6`, `Probability6`, `em6_0`, `em6_1`, `em6_2`, `em6_3`, `em6_4`, `em6_5`, `text7_0`, `text7_1`, `lang7`, `Probability7`, `em7_0`, `em7_1`, `em7_2`, `em7_3`, `em7_4`, `em7_5`, `VerifiedBuild`) VALUES (601017, 'Greetings $N. I carry artifacts forged from the old world to help you in your journey.', NULL, 0, 0, 0, 6, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 0, 0, 0, 0, 0, 0, 0, 0, 1);
 
 -- Items
 DELETE FROM `npc_vendor` WHERE `entry`=@Entry;
@@ -2806,3 +3326,599 @@ INSERT INTO `npc_vendor` (`entry`,`slot`,`item`,`maxcount`,`incrtime`,`ExtendedC
 (@Entry,0,48718,0,0,0), -- Repurposed Lava Dredger
 (@Entry,0,50255,0,0,0); -- Dread Pirate Ring
 
+-- --------------------------------------------------------------------------------------
+-- GEM MULTI-VENDOR
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601045,
+@Model 		:= 26414,
+@Name 		:= "Aurora Skyfall",
+@Title 		:= "Gems",
+@Icon 		:= "Buy",
+@GossipMenu := 60145,
+@MinLevel 	:= 80,
+@MaxLevel 	:= 80,
+@Faction 	:= 35,
+@NPCFlag 	:= 129, -- Vendor
+@Scale		:= 1.0,
+@Rank		:= 0,
+@UnitFlags	:= 512,
+@UnitFlags2  := 2048,
+@DynamicFlags:= 8,
+@Type 		:= 7,
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+(@GossipMenu, 0, 3, 'Blue', 3, 128, 601099, 0, 0, 0, ''),
+(@GossipMenu, 1, 3, 'Green', 3, 128, 601100, 0, 0, 0, ''),
+(@GossipMenu, 2, 3, 'Orange', 3, 128, 601101, 0, 0, 0, ''),
+(@GossipMenu, 3, 3, 'Meta', 3, 128, 601106, 0, 0, 0, ''),
+(@GossipMenu, 4, 3, 'Prismatic', 3, 128, 601105, 0, 0, 0, ''),
+(@GossipMenu, 5, 3, 'Purple', 3, 128, 601102, 0, 0, 0, ''),
+(@GossipMenu, 6, 3, 'Red', 3, 128, 601103, 0, 0, 0, ''),
+(@GossipMenu, 7, 3, 'Yellow', 3, 128, 601104, 0, 0, 0, '');
+-- (@GossipMenu, 10, 6, 'Special', 3, 128, 601003, 0, 0, 100, 'These goods are special, so pay up!');
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hello $N. My gems sparkle unlike any other.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of precious gemstones?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Have you seen my selection of precious gemstones?', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- --------------------------------------------------------------------------------------
+-- GLYPH MULTI-VENDOR
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601046,
+@Model 		:= 28119, -- Bald Butler
+@Name 		:= "Grant Higginbothom",
+@Title 		:= "Glyphs",
+@Icon 		:= "Buy",
+@GossipMenu := 60146,
+@MinLevel 	:= 80,
+@MaxLevel 	:= 80,
+@Faction 	:= 35,
+@NPCFlag 	:= 129, -- Vendor
+@Scale		:= 1.0,
+@Rank		:= 0,
+@UnitFlags	:= 512,
+@UnitFlags2  := 2048,
+@DynamicFlags:= 8,
+@Type 		:= 7,
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+(@GossipMenu, 0, 3, 'Death Knight', 3, 128, 601107, 0, 0, 0, ''),
+(@GossipMenu, 1, 3, 'Druid', 3, 128, 601108, 0, 0, 0, ''),
+(@GossipMenu, 2, 3, 'Hunter', 3, 128, 601109, 0, 0, 0, ''),
+(@GossipMenu, 3, 3, 'Mage', 3, 128, 601110, 0, 0, 0, ''),
+(@GossipMenu, 4, 3, 'Paladin', 3, 128, 601111, 0, 0, 0, ''),
+(@GossipMenu, 5, 3, 'Priest', 3, 128, 601116, 0, 0, 0, ''),
+(@GossipMenu, 6, 3, 'Rogue', 3, 128, 601112, 0, 0, 0, ''),
+(@GossipMenu, 7, 3, 'Shaman', 3, 128, 601113, 0, 0, 0, ''),
+(@GossipMenu, 8, 3, 'Warlock', 3, 128, 601114, 0, 0, 0, ''),
+(@GossipMenu, 9, 3, 'Warrior', 3, 128, 601115, 0, 0, 0, '');
+-- (@GossipMenu, 10, 6, 'Special', 3, 128, 601003, 0, 0, 100, 'These goods are special, so pay up!');
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. I have the best selection of glyphs for all classes.');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of glyphs?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Have you seen my selection of glyphs?', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- --------------------------------------------------------------------------------------
+-- Moofoku - Tauren Female Warrior
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601047,
+@Model 		:= 601047, -- Custom DBC
+@Name 		:= "Moofoku",
+@Title 		:= "Loremaster",
+@Icon 		:= "Speak",
+@GossipMenu := 60147,
+@MinLevel 	:= 85,
+@MaxLevel 	:= 85,
+@Faction 	:= 35,
+@NPCFlag 	:= 129, -- Vendor
+@Scale		:= 1.0,
+@Rank		:= 3,
+@UnitFlags	:= 1, -- 512,
+@UnitFlags2  := 2048,
+@DynamicFlags:= 8,
+@Type 		:= 7,
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`, `em0_1`) VALUES (@Entry, 'Greetings $N. I have what you seek.', '2');
+
+-- Equipped
+DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
+INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 17182, 0, 0, 18019); -- Sulfuras, Hand of Ragnaros, None
+
+-- Gossip Menu Option
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+(@GossipMenu, 0, 6, 'The Gift', 3, 128, @Entry, 0, 0, 250000, 'Do you have the gold $N?');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Aye Mr. Grubbs, May the Warsong never fade.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Aye Mr. Grubbs, May the Warsong never fade.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '30000', '60000', '120000', '300000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- Creature Model Info (Custom DBC/BLP)
+DELETE FROM `stygian_world`.`creature_model_info` WHERE DisplayID = @Entry;
+INSERT INTO `stygian_world`.`creature_model_info` (`DisplayID`, `BoundingRadius`, `CombatReach`, `Gender`, `DisplayID_Other_Gender`) VALUES (@Entry, '0', '0', '1', '0');
+
+-- --------------------------------------------------------------------------------------
+-- Koiter - Male Orc Warrior - Vendor
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601048,
+@Model 		:= 601048, -- Custom DBC
+@Name 		:= "Koiter",
+@Title 		:= "Sons of the Storm",
+@Icon 		:= "Speak",
+@GossipMenu := 60148,
+@MinLevel 	:= 85,
+@MaxLevel 	:= 85,
+@Faction 	:= 35,
+@NPCFlag 	:= 129, -- 
+@Scale		:= 1.0,
+@Rank		:= 3,
+@BaseAttack	:= 0.5,
+@MinDmg		:= 75,
+@MaxDmg		:= 150,
+@UnitFlags	:= 1, -- 512,
+@UnitFlags2  := 2048,
+@DynamicFlags:= 8,
+@Type 		:= 7,
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, mindmg, maxdmg, baseattacktime, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, @MinDmg, @MaxDmg, @BaseAttack,'1', @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+(@GossipMenu, 0, 6, 'Special', 3, 128, @Entry, 0, 0, 100, 'These goods are special, so pay up!');
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`, `em0_1`) VALUES (@Entry, 'Blood and Thunder! I feel the call of battle even in death.', '15');
+
+-- Equipped
+DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
+INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 701012, 0, 0, 18019); -- Koiter's Claymore, None
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Blood and Thunder! I feel the call of battle even in death.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- Creature Model Info
+DELETE FROM `stygian_world`.`creature_model_info` WHERE DisplayID = @Entry;
+INSERT INTO `stygian_world`.`creature_model_info` (`DisplayID`, `BoundingRadius`, `CombatReach`, `Gender`, `DisplayID_Other_Gender`) VALUES (@Entry, '0', '0', '0', '0');
+
+-- --------------------------------------------------------------------------------------
+-- Koiter's Ghost - Male Orc Warrior - Transparent
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601049,
+@Model 		:= 601049, -- Custom DBC
+@Name 		:= "Koiter",
+@Title 		:= "Sons of the Storm",
+@Icon 		:= "Speak",
+@GossipMenu := 60149,
+@Spell1		:= 12024,
+@MinLevel 	:= 85,
+@MaxLevel 	:= 85,
+@Faction 	:= 121,
+@NPCFlag 	:= 1, -- Vendor
+@Scale		:= 1.0,
+@Rank		:= 3,
+@BaseAttack	:= 0.5,
+@MinDmg		:= 75,
+@MaxDmg		:= 150,
+@UnitFlags	:= 32768, -- 512,
+@UnitFlags2 := 2048,
+@DynamicFlags:= 8,
+@Type 		:= 7,
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, spell1, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, mindmg, maxdmg, baseattacktime, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @Spell1, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, @MinDmg, @MaxDmg, @BaseAttack,'1', @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- GOSSIP MENU OPTION
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+(@GossipMenu, 0, 6, 'Special', 3, 128, @Entry, 0, 0, 100, 'These goods are special, so pay up!');
+
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`, `em0_1`) VALUES (@Entry, 'Blood and Thunder! I feel the call of battle even in death.', '15');
+
+-- Equipped
+DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
+INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 701012, 0, 0, 18019); -- Koiter's Claymore, None
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Blood and Thunder! The feel the call of battle even in death!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- Creature Model Info
+DELETE FROM `stygian_world`.`creature_model_info` WHERE DisplayID = @Entry;
+INSERT INTO `stygian_world`.`creature_model_info` (`DisplayID`, `BoundingRadius`, `CombatReach`, `Gender`, `DisplayID_Other_Gender`) VALUES (@Entry, '0', '0', '0', '0');
+
+-- Creature Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '25', '0', '100', '0', '0', '0', '0', '0', '11', '18950', '2', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'On Reset - Cast Invisibility and Stealth Detection');
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '1', '0', '0', '0', '100', '0', '0', '3000', '15000', '20000', '11', '12024', '32', '0', '0', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', 'In Combat - Cast Net');
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '2', '0', '6', '0', '100', '0', '0', '0', '0', '0', '149', '0', '0', '0', '0', '0', '0', '7', '0', '0', '0', '0', '0', '0', '0', 'On Death - Send Zone Under Attack');
+
+-- --------------------------------------------------------------------------------------
+-- Mr. Grubbs, Moofoku's Pet
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601050,
+@Model 		:= 7898, -- Carrion Grub
+@Name 		:= "Mr. Grubbs",
+@Title 		:= "Moo\'s Pet",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 190,
+@NPCFlag 	:= 0,
+@Scale		:= 0.13,
+@Rank		:= 0,
+@Type 		:= 8,	-- 8 = Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+-- Trump (Currency Exchange)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601051,
+@Model 		:= 19707,	-- Blood Elf Merchant
+@Name 		:= "Trump",
+@Title 		:= "Currency Exchange",
+@Icon 		:= "Speak",
+@GossipMenu := 60151,
+@MinLevel 	:= 85,
+@MaxLevel 	:= 85,
+@Faction 	:= 35,
+@NPCFlag 	:= 129, 	-- Vendor
+@Scale		:= 1.0,
+@Rank		:= 3,
+@UnitFlags	:= 1, 		-- 512,
+@UnitFlags2  := 2048,	-- 
+@DynamicFlags:= 8,		-- 
+@Type 		:= 7,		-- 
+@TypeFlags 	:= 138412032,
+@FlagsExtra := 2,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`, `em1_0`) VALUES (@Entry, 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '11');
+
+-- Gossip Menu
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+
+-- Gossip Menu Option
+DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
+INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'God Bless America! Show me your wares.', 3, 128, 601524, 0, 0, 0, '');
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts (Speak)
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '60000', '120000', '180000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+
+-- --------------------------------------------------------------------------------------
+-- MAGA (Trump's Pet)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601052,
+@Model 		:= 25008, -- Imperial Eagle
+@Name 		:= "MAGA",
+@Title 		:= "America First!",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 190,
+@NPCFlag 	:= 0,
+@Scale		:= 0.25,
+@Rank		:= 0,
+@Type 		:= 8,	-- 8 = Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- Creature Text
+DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Build The Wall!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Build The Wall!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+-- Smart Scripts
+DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '1', '0', '100', '0', '45000', '90000', '120000', '600000', '1', '0', '0', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'Speak');
+
+-- --------------------------------------------------------------------------------------
+--	Small Turtle - 601063
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601063,
+@Model 		:= 16259, -- 
+@Name 		:= "Speedy",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- --------------------------------------------------------------------------------------
+--	Medium Turtle - 601064
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 601064,
+@Model 		:= 16359, -- 
+@Name 		:= "Shelly",
+@Title 		:= "",
+@Icon 		:= NULL,
+@GossipMenu := 0,
+@MinLevel 	:= 1,
+@MaxLevel 	:= 1,
+@Faction 	:= 35,
+@NPCFlag 	:= 0,
+@Scale		:= 1.0,
+@Rank		:= 0,
+@Type 		:= 8,	-- Critter
+@TypeFlags 	:= 0,
+@FlagsExtra := 0,
+@AIName		:= "SmartAI",
+@Script 	:= "";
+
+-- NPC
+DELETE FROM creature_template WHERE entry = @Entry;
+INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
+(@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
+
+-- ######################################################################################
+-- GAME OBJECT CONTENT ADDITIONS
+-- ######################################################################################
+
+-- --------------------------------------------------------------------------------------
+-- Lou the Cabin Boy (Silithus Camp - Tauren in Canoo)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 27923,
+@GossipMenu := 27923,
+@GUID		:= 1993567;
+
+-- --------------------------------------------------------------------------------------
+-- CLEAN UP CANOE WAYPOINTS 
+-- SET CREATURE MOVEMENTTYPE = '2' FOR ANIMATION TO START
+-- --------------------------------------------------------------------------------------
+
+DELETE FROM `creature_addon` WHERE `guid`=@GUID;
+DELETE FROM `db_script_string` WHERE entry >= 2000006053 AND entry <= 2000006055;
+DELETE FROM `waypoint_scripts` WHERE guid >= 950 AND guid <= 952;
+DELETE FROM `waypoint_data` WHERE id = @GUID;
+
+-- --------------------------------------------------------------------------------------
+-- CANOE CREATURE ADDON (creature_addon)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `emote`, `auras`) VALUES (@GUID, @GUID, 0, 0, 0, 0, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- CANOE WAYPOINT STRINGS (db_script_string)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) 
+VALUES 
+(2000006053, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2000006054, 'It\'s not the years in your life, it\'s the life in your years.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2000006055, 'Hey! You over there! Tell Marny I\'ll be there soon!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- CANOE WAYPOINT SCRIPTS (waypoint_scripts)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `waypoint_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `dataint`, `x`, `y`, `z`, `o`, `guid`) 
+VALUES 
+(950, 0, 0, 2, 0, 2000006053, 0, 0, 0, 0, 950), -- Yell
+(951, 0, 0, 0, 0, 2000006054, 0, 0, 0, 0, 951), -- Say
+(952, 0, 0, 0, 0, 2000006055, 0, 0, 0, 0, 952); -- Say
+
+-- --------------------------------------------------------------------------------------
+-- CANOE WAYPOINT DATA (waypoint_data)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`waypoint_data` (`id`, `point`, `position_x`, `position_y`, `position_z`, `orientation`, `delay`, `move_type`, `action`, `action_chance`, `wpguid`) VALUES 
+(@GUID, '1', '-10806.5', '2381.02', '0.00353344', 	'0', '0', 	'0', '950', '100', 0),
+(@GUID, '2', '-10812.3', '2432', '0.0015548', 		'0', '3500','0', '952', '100', 0),
+(@GUID, '3', '-10826.5', '2437.39', '0.00298545', 	'0', '0', 	'0', '0', 	'100', 0),
+(@GUID, '4', '-10834.1', '2412.9', '0.00169087', 	'0', '0', 	'0', '0', 	'100', 0),
+(@GUID, '5', '-10819.4', '2186.75', '0.00169087', 	'0', '0', 	'0', '0', 	'100', 0),
+(@GUID, '6', '-10813.6', '2195.18', '0.00161761', 	'0', '3500','0', '951', '100', 0),
+(@GUID, '7', '-10780.9', '2268', '0.00161761', 		'0', '0', 	'0', '0', 	'100', 0),
+(@GUID, '8', '-10785.2', '2330.89', '0.00161761', 	'0', '0', 	'0', '0', 	'100', 0);
+
+
+-- --------------------------------------------------------------------------------------
+-- Barbarian King's Sword (Badlands Crypt)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 		:= 144181,
+@GossipMenu := 12276;
+
+-- TODO: Add npc text to object gossip dialog
+
+-- GameObject Template
+UPDATE `stygian_world`.`gameobject_template` SET `type` = '2', `Data6` = @Entry WHERE (`entry` = @Entry);
+	
+-- NPC Text
+DELETE FROM `npc_text` WHERE `ID`=@Entry;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Do you seek the Riddle of Steel $N?');
+
+-- Broadcast Text
+DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '1', 'Do you seek the Riddle of Steel $N?', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+
+
+-- --------------------------------------------------------------------------------------
+-- Large Backpacks (Hinterlands)
+-- --------------------------------------------------------------------------------------
+SET
+@Entry 				:= 128100,
+@BroadcastTextID 	:= 12810,
+@GossipMenu 		:= 12275;
+
+DELETE FROM `stygian_world`.`gameobject_template` WHERE `entry`=@Entry;
+INSERT INTO `stygian_world`.`gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `Data0`, `Data1`, `Data2`, `Data3`, `Data4`, `Data5`, `Data6`, `Data7`, `Data8`, `Data9`, `Data10`, `Data11`, `Data12`, `Data13`, `Data14`, `Data15`, `Data16`, `Data17`, `Data18`, `Data19`, `Data20`, `Data21`, `Data22`, `Data23`, `AIName`, `ScriptName`, `VerifiedBuild`) VALUES (@Entry, '2', '3079', 'Moofoku\'s Backpacks', '', '', '', '0', '0', '1', '0', '3365', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '', '12340');
+
+-- TODO: Add npc text to object gossip dialog
+	
