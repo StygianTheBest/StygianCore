@@ -1,8 +1,27 @@
-// StygianCore Client Patches
-// 
-// PATCH FILENAMES ARE SPACED TO ALLOW PATCH PLACEMENT 
-// BEFORE OR AFTER EXISTING PATCHES FOR TESTING PURPOSES. 
-//
+/*
+-- ################################################################################### --
+--  ____    __                                         ____                           
+-- /\  _`\ /\ \__                  __                 /\  _`\                         
+-- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+--  \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+--    /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+--    \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+--     \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+--                      /\___/ /\____/                                                
+--                      \/__/  \_/__/          http://stygianthebest.github.io                                         
+-- 
+-- ################################################################################### --
+--
+--  StygianCore Custom Client Patches
+--
+--  This lists a description for each client patch file in the StygianCore Client
+--  Update Pack. If you are just running the repack, all you need is PATCH-Z.MPQ
+--
+--  PATCH FILENAMES ARE SPACED TO ALLOW PATCH PLACEMENT BEFORE OR AFTER EXISTING 
+--  PATCHES FOR TESTING PURPOSES. 
+--
+-- ################################################################################### --
+
 ---------------------------------------------------------
 PATCH 	- SIZE		- DESCRIPTION
 ---------------------------------------------------------
@@ -32,3 +51,5 @@ W	- 7,379k	- WATER/SLIME/LAVA
 X 	- 1,883k	- CATA TREES
 Y 	- 13,111k	- BLOOD UPGRADE
 Z 	- 15,403k	- STYGIANCORE CUSTOM CONTENT
+
+-- Sailing on the seas of cheese..
