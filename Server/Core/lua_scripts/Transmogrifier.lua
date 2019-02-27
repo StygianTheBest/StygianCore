@@ -1,34 +1,46 @@
 --[[
-4.0
-Transmogrification for Classic & TBC & WoTLK - Gossip Menu
-By Rochet2
-
-Eluna version
-
-TODO:
-Make DB saving even better (Deleting)? What about coding?
-
-Fix the cost formula
-
-TODO in the distant future:
-
-Are the qualities right? Blizzard might have changed the quality requirements.
-What can and cant be used as source or target..?
-
-Cant transmogrify:
-rediculus items -- Foereaper: would be fun to stab people with a fish
--- Cant think of any good way to handle this easily
-
-Cataclysm:
-Test on cata : implement UI xD?
-Item link icon to Are You sure text
-]]
+-- ################################################################################### --
+--  ____    __                                         ____                           
+-- /\  _`\ /\ \__                  __                 /\  _`\                         
+-- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+--  \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+--    /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+--    \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+--     \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+--                      /\___/ /\____/                                                
+--                      \/__/  \_/__/          http://stygianthebest.github.io                                         
+-- 
+-- ################################################################################### --
+-- 
+-- NPC: Transmogrifier
+-- Transmogrification for Classic & TBC & WoTLK
+-- Gossip Menu By Rochet2
+-- 
+-- ELUNA version 4.0
+-- 
+-- TODO:
+-- - Make DB saving even better (Deleting)? What about coding?
+-- - Fix the cost formula
+-- 
+-- TODO in the distant future:
+-- - Are the qualities right? Blizzard might have changed the quality requirements.
+-- - What can and cant be used as source or target..?
+-- - Cant transmogrify: Ridiculous Items 
+-- 	- Foereaper: would be fun to stab people with a fish
+-- 	- Cant think of any good way to handle this easily
+-- 
+-- Cataclysm:
+-- - Test on cata : implement UI xD?
+-- - Item link icon to Are You sure text
+--
+-- ################################################################################### --
+--]]
 
 local NPC_Entry = 601013
 
 local RequireGold = 1
 local GoldModifier = 1.0
-local GoldCost = 100000
+local GoldCost = 2500
 
 local RequireToken = false
 local TokenEntry = 49426
@@ -39,13 +51,13 @@ local AllowMixedWeaponTypes = true
 
 local Qualities =
 {
-    [0]  = false, -- AllowPoor
-    [1]  = false, -- AllowCommon
-    [2]  = true , -- AllowUncommon
-    [3]  = true , -- AllowRare
-    [4]  = true , -- AllowEpic
-    [5]  = false, -- AllowLegendary
-    [6]  = false, -- AllowArtifact
+    [0]  = true, -- AllowPoor
+    [1]  = true, -- AllowCommon
+    [2]  = true, -- AllowUncommon
+    [3]  = true, -- AllowRare
+    [4]  = true, -- AllowEpic
+    [5]  = true, -- AllowLegendary
+    [6]  = true, -- AllowArtifact
     [7]  = true , -- AllowHeirloom
 }
 
