@@ -180,9 +180,9 @@ enum WorldFloatConfigs
     CONFIG_ARENA_LOSE_RATING_MODIFIER,
     CONFIG_ARENA_MATCHMAKER_RATING_MODIFIER,
 
-    // #SCMOD#
-        CONFIG_TIMEISTIMEPLUS, // Dunjeon: Ported from lasyan3 TC R2
-    // #SCMOD#
+    // #SCMOD TIMESHIFT
+    CONFIG_TIMEISTIMEPLUS, // Dunjeon: Ported from lasyan3 TC R2
+    // #SCMOD
 
     FLOAT_CONFIG_VALUE_COUNT
 };

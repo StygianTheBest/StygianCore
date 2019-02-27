@@ -1304,8 +1304,8 @@ void World::LoadConfigSettings(bool reload)
     m_bool_configs[CONFIG_ENABLE_CONTINENT_TRANSPORT_PRELOADING] = sConfigMgr->GetBoolDefault("IsPreloadedContinentTransport.Enabled", false);
 
     // #SCMOD#
-        // Ported from lasyan3 TC R2
-        m_float_configs[CONFIG_TIMEISTIMEPLUS] = sConfigMgr->GetFloatDefault("TimeIsTimePlus", 1.0f);
+    // Ported from lasyan3 TC R2
+    m_float_configs[CONFIG_TIMEISTIMEPLUS] = sConfigMgr->GetFloatDefault("TimeShift", 1.0f);
     // #SCMOD
 
     // call ScriptMgr if we're reloading the configuration

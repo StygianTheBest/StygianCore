@@ -44,6 +44,7 @@
 #include "MapManager.h"
 #include "ObjectAccessor.h"
 #include "ObjectMgr.h"
+#include "ObjectGuid.h"
 #include "Opcodes.h"
 #include "OutdoorPvP.h"
 #include "OutdoorPvPMgr.h"
@@ -1209,6 +1210,8 @@ bool Player::Create(uint32 guidlow, CharacterCreateInfo* createInfo)
         }
     }
     // all item positions resolved
+
+    CheckAllAchievementCriteria();
 
     return true;
 }
@@ -6727,7 +6730,7 @@ void Player::SendActionButtons(uint32 state) const
             else
                 data << uint32(0);
         }
-}
+    }
 
     GetSession()->SendPacket(&data);
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
@@ -6747,7 +6750,7 @@ bool Player::IsActionButtonDataValid(uint8 button, uint32 action, uint8 type)
     {
         sLog->outError("Action %u not added into button %u for player %s: action must be < %u", action, button, GetName().c_str(), MAX_ACTION_BUTTON_ACTION_VALUE);
         return false;
-}
+    }
 
     switch (type)
     {
@@ -8427,8 +8430,8 @@ void Player::ApplyEquipSpell(SpellInfo const* spellInfo, Item* item, bool apply,
             if (spellInfo->Effects[i].Effect == SPELL_EFFECT_SUMMON)
                 RemoveAllMinionsByEntry(spellInfo->Effects[i].MiscValue);
         }
-        }
     }
+}
 
 void Player::UpdateEquipSpellsAtFormChange()
 {
@@ -8824,8 +8827,8 @@ void Player::_ApplyAllItemMods()
 
             if (i == EQUIPMENT_SLOT_RANGED)
                 _ApplyAmmoBonuses();
+        }
     }
-}
 
     for (uint8 i = 0; i < INVENTORY_SLOT_BAG_END; ++i)
     {
@@ -8991,7 +8994,7 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
             go->ForceValuesUpdateAtIndex(GAMEOBJECT_BYTES_1);
             SendLootRelease(guid);
             return;
-    }
+        }
 
         loot = &go->loot;
 
@@ -9087,7 +9090,7 @@ void Player::SendLoot(uint64 guid, LootType loot_type)
             else
                 permission = ALL_PERMISSION;
         }
-}
+    }
     else if (IS_ITEM_GUID(guid))
     {
         Item* item = GetItemByGuid(guid);
@@ -11153,7 +11156,7 @@ InventoryResult Player::CanStoreItem(uint8 bag, uint8 slot, ItemPosCountVec &des
                 *no_space_count = count;
             return EQUIP_ERR_DONT_OWN_THAT_ITEM;
         }
-}
+    }
 
     // check count of items (skip for auto move for same player from bank)
     uint32 no_similar_count = 0;                            // can't store this amount similar items
@@ -13119,7 +13122,7 @@ void Player::DestroyItemCount(uint32 itemEntry, uint32 count, bool update, bool 
 
                     if (remcount >= count)
                         return;
-            }
+                }
                 else
                 {
                     ItemRemovedQuestCheck(item->GetEntry(), count - remcount);
@@ -13129,9 +13132,9 @@ void Player::DestroyItemCount(uint32 itemEntry, uint32 count, bool update, bool 
                     item->SetState(ITEM_CHANGED, this);
                     return;
                 }
+            }
         }
     }
-}
 
     for (uint8 i = KEYRING_SLOT_START; i < CURRENCYTOKEN_SLOT_END; ++i)
     {
@@ -13553,7 +13556,7 @@ void Player::SwapItem(uint16 src, uint16 dst)
         //best error message found for attempting to swap while looting
         SendEquipError(EQUIP_ERR_CANT_DO_RIGHT_NOW, pSrcItem, NULL);
         return;
-}
+    }
 
     // check unequip potability for equipped items and bank bags
     if (IsEquipmentPos(src) || IsBagPos(src))
@@ -13986,7 +13989,7 @@ void Player::RemoveItemFromBuyBackSlot(uint32 slot, bool del)
         // if current backslot is filled set to now free slot
         if (m_items[m_currentBuybackSlot])
             m_currentBuybackSlot = slot;
-}
+    }
 }
 
 void Player::SendEquipError(InventoryResult msg, Item* pItem, Item* pItem2, uint32 itemid)
@@ -14029,8 +14032,8 @@ void Player::SendEquipError(InventoryResult msg, Item* pItem, Item* pItem2, uint
         }
         default:
             break;
+        }
     }
-}
     GetSession()->SendPacket(&data);
 }
 
@@ -14660,7 +14663,7 @@ void Player::ApplyEnchantment(Item* item, EnchantmentSlot slot, bool apply, bool
                     break;
                 }
                 break;
-                }
+            }
             case ITEM_ENCHANTMENT_TYPE_TOTEM:           // Shaman Rockbiter Weapon
             {
                 if (getClass() == CLASS_SHAMAN)
@@ -14676,7 +14679,7 @@ void Player::ApplyEnchantment(Item* item, EnchantmentSlot slot, bool apply, bool
                         addValue = float(enchant_amount * item->GetTemplate()->Delay / 1000.0f);
                         HandleStatModifier(UNIT_MOD_DAMAGE_OFFHAND, TOTAL_VALUE, addValue, apply);
                     }
-            }
+                }
                 break;
             }
             case ITEM_ENCHANTMENT_TYPE_USE_SPELL:
@@ -14854,12 +14857,17 @@ void Player::PrepareGossipMenu(WorldObject* source, uint32 menuId /*= 0*/, bool 
                 break;
             case GOSSIP_OPTION_VENDOR:
             {
-                VendorItemData const* vendorItems = creature->GetVendorItems();
+                //VendorItemData const* vendorItems = creature->GetVendorItems();
+                //if (!vendorItems || vendorItems->Empty())
+                // #SCMOD - MULTI-VENDOR
+                VendorItemData const* vendorItems = itr->second.ActionMenuId ? nullptr : creature->GetVendorItems();
+
                 if (!vendorItems || vendorItems->Empty())
-                {
-                    sLog->outErrorDb("Creature %u (Entry: %u) have UNIT_NPC_FLAG_VENDOR but have empty trading item list.", creature->GetGUIDLow(), creature->GetEntry());
-                    canTalk = false;
-                }
+                    if (!itr->second.ActionMenuId && (!vendorItems || vendorItems->Empty()))
+                    {
+                        sLog->outErrorDb("Creature %u (Entry: %u) have UNIT_NPC_FLAG_VENDOR but have empty trading item list.", creature->GetGUIDLow(), creature->GetEntry());
+                        canTalk = false;
+                    }
                 break;
             }
             case GOSSIP_OPTION_LEARNDUALSPEC:
@@ -15043,7 +15051,9 @@ void Player::OnGossipSelect(WorldObject* source, uint32 gossipListId, uint32 men
         break;
     case GOSSIP_OPTION_VENDOR:
     case GOSSIP_OPTION_ARMORER:
-        GetSession()->SendListInventory(guid);
+        // #SCMOD - MULTI-VENDOR
+        // GetSession()->SendListInventory(guid);
+        GetSession()->SendListInventory(guid, menuItemData->GossipActionMenuId);
         break;
     case GOSSIP_OPTION_STABLEPET:
         GetSession()->SendStablePet(guid);
@@ -16043,7 +16053,7 @@ bool Player::SatisfyQuestLog(bool msg)
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
         sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Sent SMSG_QUESTLOG_FULL");
 #endif
-    }
+}
     return false;
 }
 
@@ -16123,7 +16133,7 @@ bool Player::SatisfyQuestPreviousQuest(Quest const* qInfo, bool msg) const
                 return true;
             }
         }
-}
+    }
 
     // Has only positive prev. quests in non-rewarded state
     // and negative prev. quests in non-active state
@@ -16218,7 +16228,7 @@ bool Player::SatisfyQuestConditions(Quest const* qInfo, bool msg)
         sLog->outDebug(LOG_FILTER_CONDITIONSYS, "Player::SatisfyQuestConditions: conditions not met for quest %u", qInfo->GetQuestId());
 #endif
         return false;
-    }
+}
     return true;
 }
 
@@ -17286,7 +17296,7 @@ void Player::SendQuestComplete(uint32 quest_id)
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
         sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Sent SMSG_QUESTUPDATE_COMPLETE quest = %u", quest_id);
 #endif
-    }
+}
 }
 
 void Player::SendQuestReward(Quest const* quest, uint32 XP)
@@ -17308,7 +17318,7 @@ void Player::SendQuestReward(Quest const* quest, uint32 XP)
     {
         data << uint32(0);
         data << uint32(quest->GetRewOrReqMoney() + int32(quest->GetRewMoneyMaxLevel() * sWorld->getRate(RATE_DROP_MONEY)));
-}
+    }
 
     data << uint32(10 * quest->CalculateHonorGain(GetQuestLevel(quest)));
     data << uint32(quest->GetBonusTalents());              // bonus talents
@@ -17340,7 +17350,7 @@ void Player::SendQuestTimerFailed(uint32 quest_id)
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
         sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Sent SMSG_QUESTUPDATE_FAILEDTIMER");
 #endif
-    }
+}
 }
 
 void Player::SendCanTakeQuestResponse(uint32 msg) const
@@ -17946,7 +17956,7 @@ bool Player::LoadFromDB(uint32 guid, SQLQueryHolder *holder)
             if (!save || save->GetInstanceId() != instanceId)
                 instanceId = 0;
         }
-    }
+}
 
     // if the player is in an instance and it has been reset in the meantime teleport him to the entrance
     if ((instanceId && !sInstanceSaveMgr->GetInstanceSave(instanceId) && !mapEntry->IsBattlegroundOrArena()) || (!instanceId && mapEntry->IsDungeon()))
@@ -18450,10 +18460,10 @@ void Player::_LoadAuras(PreparedQueryResult result, uint32 timediff)
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
                 sLog->outDetail("Added aura spellid %u, effectmask %u", spellInfo->Id, effmask);
 #endif
-            }
-    } while (result->NextRow());
-}
-}
+                }
+            } while (result->NextRow());
+        }
+    }
 
 void Player::_LoadGlyphAuras()
 {
@@ -18483,8 +18493,8 @@ void Player::_LoadGlyphAuras()
 
             // On any error remove glyph
             SetGlyph(i, 0, true);
+        }
     }
-}
 }
 
 void Player::LoadCorpse()
@@ -18698,8 +18708,8 @@ Item* Player::_LoadItem(SQLTransaction& trans, uint32 zoneId, uint32 timeDiff, F
 #endif
                         item->RemoveFlag(ITEM_FIELD_FLAGS, ITEM_FLAG_REFUNDABLE);
                     }
+                    }
                 }
-            }
             else if (item->HasFlag(ITEM_FIELD_FLAGS, ITEM_FLAG_BOP_TRADEABLE))
             {
                 stmt = CharacterDatabase.GetPreparedStatement(CHAR_SEL_ITEM_BOP_TRADE);
@@ -18719,7 +18729,7 @@ Item* Player::_LoadItem(SQLTransaction& trans, uint32 zoneId, uint32 timeDiff, F
                     }
                     else
                         item->ClearSoulboundTradeable(this);
-            }
+                }
                 else
                 {
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
@@ -18728,7 +18738,7 @@ Item* Player::_LoadItem(SQLTransaction& trans, uint32 zoneId, uint32 timeDiff, F
 #endif
                     item->RemoveFlag(ITEM_FIELD_FLAGS, ITEM_FLAG_BOP_TRADEABLE);
                 }
-            }
+                }
             else if (proto->HolidayId)
             {
                 remove = true;
@@ -18740,10 +18750,10 @@ Item* Player::_LoadItem(SQLTransaction& trans, uint32 zoneId, uint32 timeDiff, F
                     {
                         remove = false;
                         break;
+                    }
+                }
             }
-        }
-    }
-}
+            }
         else
         {
             sLog->outError("Player::_LoadInventory: player (GUID: %u, name: '%s') has broken item (GUID: %u, entry: %u) in inventory. Deleting item.",
@@ -18767,7 +18777,7 @@ Item* Player::_LoadItem(SQLTransaction& trans, uint32 zoneId, uint32 timeDiff, F
         Item::DeleteFromDB(trans, itemGuid);
     }
     return item;
-                    }
+        }
 
 // load mailed item which should receive current player
 void Player::_LoadMailedItems(Mail* mail)
@@ -19188,10 +19198,10 @@ void Player::_LoadWeeklyQuestStatus(PreparedQueryResult result)
             sLog->outDebug(LOG_FILTER_PLAYER_LOADING, "Weekly quest {%u} cooldown for player (GUID: %u)", quest_id, GetGUIDLow());
 #endif
         } while (result->NextRow());
-}
+    }
 
     m_WeeklyQuestChanged = false;
-    }
+}
 
 void Player::_LoadSeasonalQuestStatus(PreparedQueryResult result)
 {
@@ -19213,10 +19223,10 @@ void Player::_LoadSeasonalQuestStatus(PreparedQueryResult result)
             sLog->outDebug(LOG_FILTER_PLAYER_LOADING, "Seasonal quest {%u} cooldown for player (GUID: %u)", quest_id, GetGUIDLow());
 #endif
         } while (result->NextRow());
-}
+    }
 
     m_SeasonalQuestChanged = false;
-    }
+}
 
 void Player::_LoadMonthlyQuestStatus(PreparedQueryResult result)
 {
@@ -19235,7 +19245,7 @@ void Player::_LoadMonthlyQuestStatus(PreparedQueryResult result)
             m_monthlyquests.insert(quest_id);
             sLog->outDebug(LOG_FILTER_PLAYER_LOADING, "Monthly quest {%u} cooldown for player (GUID: %u)", quest_id, GetGUIDLow());
         } while (result->NextRow());
-}
+    }
 
     m_MonthlyQuestChanged = false;
 }
@@ -19530,7 +19540,7 @@ bool Player::_LoadHomeBind(PreparedQueryResult result)
         m_homebindMapId, m_homebindAreaId, m_homebindX, m_homebindY, m_homebindZ);
 #endif
     return true;
-}
+    }
 
 /*********************************************************/
 /***                   SAVE SYSTEM                     ***/
@@ -19543,7 +19553,7 @@ void Player::SaveToDB(bool create, bool logout)
     {
         ScheduleDelayedOperation(DELAYED_SAVE_PLAYER);
         return;
-}
+    }
 
     // pussywizard: full save now, so clear partial additional saves
     m_additionalSaveTimer = 0;
@@ -20696,9 +20706,9 @@ void Player::RemovePet(Pet* pet, PetSaveMode mode, bool returnreagent)
                     }
                 }
             }
-    }
+        }
         m_temporaryUnsummonedPetNumber = 0;
-}
+    }
 
     if (!pet || pet->GetOwnerGUID() != GetGUID())
         return;
@@ -20728,7 +20738,7 @@ void Player::RemovePet(Pet* pet, PetSaveMode mode, bool returnreagent)
         ArenaSpectator::SendCommand_UInt32Value(FindMap(), GetGUID(), "PHP", 0);
         ArenaSpectator::SendCommand_UInt32Value(FindMap(), GetGUID(), "PET", 0);
     }
-    }
+}
 
 void Player::StopCastingCharm()
 {
@@ -21138,8 +21148,8 @@ void Player::AddSpellMod(SpellModifier* mod, bool apply)
             data << uint8(mod->op);
             data << int32(val);
             SendDirectMessage(&data);
+        }
     }
-}
 
     if (apply)
     {
@@ -21945,7 +21955,34 @@ bool Player::BuyItemFromVendorSlot(uint64 vendorguid, uint32 vendorslot, uint32 
         return false;
     }
 
-    VendorItemData const* vItems = creature->GetVendorItems();
+    // #SCMOD - MULTI-VENDOR
+
+    // uint32 currentVendor = creature->GetGUID();
+    uint32 currentVendor = GetSession()->GetCurrentVendor();
+
+    /*
+
+    // TODO: The check fails on mutli-vendor NPCs. Works fine for regular vendor NPCs. I tested
+    // many different ways and don't have time to suss out the fix. I even added the missing
+    // _senderGUID calls in GossipDefs that were not part of Rochet2's original/latest commit.
+    // The GUID of the vendorlist selected from the multi-vendor is resolving to 0, so it fails
+    // the check.
+    //
+    // Since StygianCore is not designed to be run by profiteering little turds in places like
+    // France and Russia, I've disabled it as it's not needed for a private SOLO/LAN server.
+    // 
+
+    // Check for cheating by comparing GUIDs
+    // if (currentVendor && vendorguid != PlayerTalkClass->GetGossipOptionSender(currentVendor))
+    if (currentVendor && vendorguid != PlayerTalkClass->GetGossipMenu().GetSenderGUID())
+    {
+        return false; // Cheating
+    }
+
+    */
+
+    VendorItemData const* vItems = currentVendor ? sObjectMgr->GetNpcVendorItemList(currentVendor) : creature->GetVendorItems();
+    //VendorItemData const* vItems = creature->GetVendorItems();
     if (!vItems || vItems->Empty())
     {
         SendBuyError(BUY_ERR_CANT_FIND_ITEM, creature, item, 0);
@@ -21957,6 +21994,7 @@ bool Player::BuyItemFromVendorSlot(uint64 vendorguid, uint32 vendorslot, uint32 
         SendBuyError(BUY_ERR_CANT_FIND_ITEM, creature, item, 0);
         return false;
     }
+
 
     VendorItem const* crItem = vItems->GetItem(vendorslot);
     // store diff item (cheating)
@@ -22067,7 +22105,7 @@ bool Player::BuyItemFromVendorSlot(uint64 vendorguid, uint32 vendorslot, uint32 
     }
 
     return crItem->maxcount != 0;
-    }
+}
 
 uint32 Player::GetMaxPersonalArenaRatingRequirement(uint32 minarenaslot) const
 {
@@ -22142,8 +22180,8 @@ void Player::UpdatePvPState(bool onlyFFA)
             SetByteFlag(UNIT_FIELD_BYTES_2, 1, UNIT_BYTE2_FLAG_FFA_PVP);
             for (ControlSet::iterator itr = m_Controlled.begin(); itr != m_Controlled.end(); ++itr)
                 (*itr)->SetByteValue(UNIT_FIELD_BYTES_2, 1, UNIT_BYTE2_FLAG_FFA_PVP);
+        }
     }
-}
     else if (IsFFAPvP())
     {
         RemoveByteFlag(UNIT_FIELD_BYTES_2, 1, UNIT_BYTE2_FLAG_FFA_PVP);
@@ -22439,14 +22477,14 @@ bool Player::EnchantmentFitsRequirements(uint32 enchantmentcondition, int8 slot)
             activate &= (_cur_gem >= _cmp_gem) ? true : false;
             break;
         }
-    }
+        }
 
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
     sLog->outDebug(LOG_FILTER_PLAYER_ITEMS, "Checking Condition %u, there are %u Meta Gems, %u Red Gems, %u Yellow Gems and %u Blue Gems, Activate:%s", enchantmentcondition, curcount[0], curcount[1], curcount[2], curcount[3], activate ? "yes" : "no");
 #endif
 
     return activate;
-}
+    }
 
 void Player::CorrectMetaGemEnchants(uint8 exceptslot, bool apply)
 {
@@ -23050,11 +23088,11 @@ void Player::SendInitialPacketsBeforeAddToMap()
 
     SendEquipmentSetList();
 
-    // #SCMOD#
+    // #SCMOD TIMESHIFT
         // Ported from lasyan3 TC R2
     float speedrate = sWorld->getFloatConfig(CONFIG_TIMEISTIMEPLUS);
     uint32 speedtime = ((sWorld->GetGameTime() - sWorld->GetUptime()) + (sWorld->GetUptime() * speedrate));
-    // #SCMOD#
+    // #SCMOD
 
     data.Initialize(SMSG_LOGIN_SETTIMESPEED, 4 + 4 + 4);
     data.AppendPackedTime(speedtime);                       // Old:  data.AppendPackedTime(sWorld->GetGameTime());
@@ -24581,7 +24619,7 @@ void Player::SetViewpoint(WorldObject* target, bool apply)
 
         //WorldPacket data(SMSG_CLEAR_FAR_SIGHT_IMMEDIATE, 0);
         //GetSession()->SendPacket(&data);
-    }
+}
 }
 
 WorldObject* Player::GetViewpoint() const
@@ -25407,13 +25445,13 @@ void Player::HandleFall(MovementInfo const& movementInfo)
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
             sLog->outStaticDebug("FALLDAMAGE mZ=%f z=%f fallTime=%u damage=%u SF=%d", movementInfo.pos.GetPositionZ(), GetPositionZ(), movementInfo.fallTime, damage, safe_fall);
 #endif
-        }
+            }
 
         // recheck alive, might have died of EnvironmentalDamage, avoid cases when player die in fact like Spirit of Redemption case
         if (IsAlive() && final_damage < original_health)
             UpdateAchievementCriteria(ACHIEVEMENT_CRITERIA_TYPE_FALL_WITHOUT_DYING, uint32(z_diff * 100));
+        }
     }
-}
 
 void Player::CheckAllAchievementCriteria()
 {
@@ -27047,8 +27085,7 @@ bool Player::AddItem(uint32 itemId, uint32 count)
     if (count == 0 || dest.empty())
     {
         // -- TODO: Send to mailbox if no space
-        // -- StygianTheBest: IF item has maxcount = 1, report that ELSE not enough space.
-        ChatHandler(GetSession()).PSendSysMessage("Sorry, you don't have room or have too many of this item!");
+        ChatHandler(GetSession()).PSendSysMessage("You don't have any space in your bags.");
         return false;
     }
 
@@ -27113,7 +27150,7 @@ void Player::RefundItem(Item* item)
                 store_error = true;
                 break;
             }
-    }
+        }
     }
 
     if (store_error)

@@ -873,7 +873,9 @@ void WorldSession::HandleListInventoryOpcode(WorldPacket & recvData)
     SendListInventory(guid);
 }
 
-void WorldSession::SendListInventory(uint64 vendorGuid)
+// #SCMOD
+// void WorldSession::SendListInventory(uint64 vendorGuid)
+void WorldSession::SendListInventory(ObjectGuid vendorGuid, uint32 vendorEntry)
 {
 #if defined(ENABLE_EXTRAS) && defined(ENABLE_EXTRA_LOGS)
     sLog->outDebug(LOG_FILTER_NETWORKIO, "WORLD: Sent SMSG_LIST_INVENTORY");
@@ -897,8 +899,16 @@ void WorldSession::SendListInventory(uint64 vendorGuid)
     if (vendor->HasUnitState(UNIT_STATE_MOVING))
         vendor->StopMoving();
 
-    VendorItemData const* items = vendor->GetVendorItems();
+
+// #SCMOD
+//    VendorItemData const* items = vendor->GetVendorItems();
+//    if (!items)
+
+    SetCurrentVendor(vendorEntry);
+
+    VendorItemData const* items = vendorEntry ? sObjectMgr->GetNpcVendorItemList(vendorEntry) : vendor->GetVendorItems();
     if (!items)
+
     {
         WorldPacket data(SMSG_LIST_INVENTORY, 8 + 1 + 1);
         data << uint64(vendorGuid);
