@@ -13,5 +13,18 @@
 #	CODEBOX NPC
 ###################################################################################################
 
-# Announce the module when the player logs in?
-CodeboxNPC.Announce = 1
+# -------------------------------------------------------------------------------------
+#  Announce the module when the player logs in?
+#  Enable : 1
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Codebox.Announce = 1
+
+# -------------------------------------------------------------------------------------
+#  How often does the NPC emote in milliseconds?
+#  Randomly caclulated within range 60000 (1 min, minumum) to 3000000 (5 minutes, max)
+#  Default: 60000 (1 minutes, minimum)
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Codebox.MessageTimer = 60000
+

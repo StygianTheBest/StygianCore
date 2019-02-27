@@ -10,38 +10,22 @@
 #                         /\___/ /\____/                                                
 #                         \/__/  \_/__/          http://stygianthebest.github.io                                         
 ###################################################################################################
-#	LOREMASTER NPC
+#   TROLLOP NPC
 ###################################################################################################
-#
 
 # -------------------------------------------------------------------------------------
-#  Enable the module
+#  Announce the module when the player logs in?
 #  Enable : 1
-#  Disabled = 0
-# -------------------------------------------------------------------------------------
-Loremaster.Announce = 1
-
-# -------------------------------------------------------------------------------------
-#  The name of the Loremaster NPC
-#  Default: Crom
-# -------------------------------------------------------------------------------------
-Loremaster.Name = Crom
-
-# -------------------------------------------------------------------------------------
-#  The GUID of the FIRST Loremaster NPC
-#  This allows the Loremaster teleport locations to loop.
-#  This value is set in the included npc_loremaster.sql file.
-#  If this GUID is invalid, a default GUID will be used.
-#  Default:     601075
-# -------------------------------------------------------------------------------------
-FirstLoremasterGUID = 601075
-
-# -------------------------------------------------------------------------------------
-#  The spell cast to get the player's attention
-#  Default: 44940
 #  Disable: 0
 # -------------------------------------------------------------------------------------
-Loremaster.EmoteSpell = 0
+Trollop.Announce = 1
+
+# -------------------------------------------------------------------------------------
+#  Over 18 Content Enabled?
+#  Enable : 1
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Trollop.Over18Content = 0
 
 # -------------------------------------------------------------------------------------
 #  How often does the NPC emote in milliseconds?
@@ -49,21 +33,49 @@ Loremaster.EmoteSpell = 0
 #  Default: 60000 (1 minutes, minimum)
 #  Disable: 0
 # -------------------------------------------------------------------------------------
-Loremaster.MessageTimer = 60000
+Trollop.MessageTimer = 60000
 
 # -------------------------------------------------------------------------------------
-#  How many pharases does the NPC have?
+#  How many pharases does the NPC have? 
 #  Default: 3
 # -------------------------------------------------------------------------------------
-Loremaster.NumPhrases = 3
+Trollop.NumPhrases = 3
 
 # -------------------------------------------------------------------------------------
 #  NPC Phrases - Add your own!
 #  Spoken randomly to the world
 # -------------------------------------------------------------------------------------
-LM.P1 = "Stay Awhile.. and Listen!"
-LM.P2 = "The Old Gods kept many secrets."
-LM.P3 = "Have you located any artifacts left behind by the Titans?"
+TP.P1 = "Come see me.. Everyone needs someone."
+TP.P2 = "I know the secrets of Kings.. and Queens."
+TP.P3 = "Don't hate me because I'm beautiful."
+
+# -------------------------------------------------------------------------------------
+#  How many whispers does the NPC have?
+#  Default: 3
+# -------------------------------------------------------------------------------------
+Trollop.NumWhispers = 3
+
+# -------------------------------------------------------------------------------------
+#  NPC Whisper Phrases - Add your own!
+#  Whispered to the player after interaction
+#  Use '%s%' to include the player's name
+# -------------------------------------------------------------------------------------
+TP.W1 = "Thanks for putting a little sugar in my bowl %s."
+TP.W2 = "Thanks for being my little human sacrifice %s."
+TP.W3 = "Do my kisses burn? Do they take your breath $s?"
+
+# -------------------------------------------------------------------------------------
+#  The spell cast to get the player's attention
+#  Default: 44940
+#  Disable: 0
+# -------------------------------------------------------------------------------------
+Trollop.EmoteSpell = 0
+
+# -------------------------------------------------------------------------------------
+#  A sound emote used by the NPC
+#  Default: 9102
+# -------------------------------------------------------------------------------------
+Trollop.EmoteSound = 9102
 
 # -------------------------------------------------------------------------------------
 #  The gesture the NPC performs when speaking emote text
@@ -91,5 +103,5 @@ LM.P3 = "Have you located any artifacts left behind by the Titans?"
 #  23 - FLEX       
 #  24 - SHY        
 #  25 - POINT      
-# -------------------------------------------------------------------------------------   
-Loremaster.EmoteCommand = 3
+# -------------------------------------------------------------------------------------  
+Trollop.EmoteCommand = 3
