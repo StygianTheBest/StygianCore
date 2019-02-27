@@ -1,6 +1,10 @@
-# StygianCore Master Restoration Archives
+<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
 
-## DO NOT DELETE THIS FOLDER OR ITS CONTENTS
+<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
+
+# StygianCore Master Restoration Archive
+
+## _!! DO NOT DELETE THIS FOLDER OR ITS CONTENTS !!_
 
 This folder contains the master restoration folders and archives. These folders serve as the master repository for the files included in the restoration archives. All edits to game content should be made here so they are bundled and deployed during a restore event. The various batch files included in this repack will not run if files are missing.
 
@@ -8,65 +12,71 @@ This folder contains the master restoration folders and archives. These folders 
 
 ### Folder: restore_stygiancore
 
-- Required to restore the StygianCore repack to defaults.
-- Contains the modified StygianCore content. This is the main working folder for the StygianCore restoration archive.
-- All edits to data files used by StygianCore are made here and then deployed via the restore process.
+This folder holds all of the default, update, and custom game data and configuration files.
 
-### Folder: restore_azerothcore
+> **This folder is required to run the restore process.**
 
-- Required to convert to AzerothCore Sandbox Mode.
-- Contains the vanilla AzerothCore (master) branch content.
+- Folder Structure:
+  - **01_default**
+    - TrinityCore/SunwellCore base files that make up the original WOTLK content.
+    - _DO NOT EDIT THESE FILES!_
+  - **02_update**
+    - AzerothCore bugfixes and updates.
+    - _DO NOT EDIT THESE FILES!_
+  - **03_custom**
+    - StygianCore bugfixes, updates, and custom content.
+    - **All content edits and updates are made here.**
+  - **04_conf**
+    - Server and Module configuration files.
+    - **All configuration updates are made here.**
+  - **05_pdump**
+    - PDump command reference and sample characters.
+    - See the README.MD in the folder for more information.
 
 ### Batch File: build_restore_stygiancore.bat
 
 - This file builds a new StygianCore restoration archive from the restore_stygiancore folder contents.
-- After building, the restore_stygiancore.zip is copied to the Tools folder for use with the restoration process.
-
-### Batch File: build_restore_azerothcore.bat
-
-- This file creates a new AzerothCore restoration archive from the restore_azerothcore folder contents.
-- After building, the restore_azerothcore.zip is copied to the Tools folder for use with the restoration process.
-
-## Updating the restoration archives
-
-**There are two restoration archives and a folder for each:**
-
-- StygianCore: restore_stygiancore
-- AzerothCore: restore_azerothcore
-
-These two folders hold all of the game data and should be used for making edits to the game you'd like to see added when performing a future restore.
 
 ## Workflow for updating the restoration archive with new data
 
 ### 1) Make changes or add new files to the following folder
-  
-- Tools\Work\restore_stygiancore\03_custom\
-  - Maybe you change the model of the Portal Master NPC
-  - Maybe you adjust the price on an item
-  - Maybe you add a new .SQL file with your custom changes
+
+#### Task
+
+- Maybe you change the model of the Beastmaster NPC
+- Maybe you need to adjust the price of an item
+- Maybe you add a new .SQL file with your custom changes
+
+#### Example Workflow
+
+- Task: _Change the name of the Beastmaster NPC_
+  - Locate the file to edit:
+    - restore_stygiancore\03_custom\db_world\npc_stygiancore.sql
+  - Locate the Beastmaster NPC ID in the NPC Index (ID: 601026)
+  - Search for the ID and edit the NPC name
+  - Save the file
 
 ### 2) Load StygianCoreTools.bat
 
-- Launch it from the StygianCore Controls
-- Or.. run it using the batch file in the root folder of the repack
+![Controls](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/app_stygiancorecontrols.jpg)
+
+- Launch the tools by clicking the sword icon in the bottom right corner of the app.
+- Or.. run it using the batch file in the root folder of the repack.
 
 ### 3) Choose Option [5] to rebuild the restoration archive and reset the server
 
-_This process will:_
-  
-- Create a new restoration archive from the folder
-- The new archive will be used to restore the server
-- The server is now restored with the new changes
+![Controls](https://stygianthebest.github.io/assets/img/projects/stygiancore_controls/restore_command.jpg)
 
-Alternatively, you can use the included build_restorestygiancore.bat file to rebuild the restoration archive without importing afterwards.
+_This process will:_
+
+- Create a new restoration archive from the _restore_stygiancore_ folder contents which now includes your changes to the Beastmaster NPC which will then be used to restore the server.
+- The same process would be used to update the configuration files for the server or modules.
+- This method ensures that your changes are preserved and restored when performing a reset.
+- You can rename an existing restoration archive to make a backup prior to making changes or performing a reset. Just right click, copy, and paste to make restore_stygiancore - Copy.zip until you've confirmed everything works as intended.
+
+> Alternatively, you can run the included build_restorestygiancore.bat file manually to rebuild the restoration archive without performing a restore.
 
 ## Testing the updates
 
-- Launch the World (worldserver.exe) and inpsect the startup for any errors that may have bene caused by edits to files in the restoration archive
-- Edit as needed until the server loads without additional errors
-
-## Sandbox Restore
-
-### Choose Option [6] to enter AzerothCore Sandbox Mode
-
-Use the exact same process described above for updating and deploying this default AzerothCore build. I suggest leaving this build alone unless you are updating it to a later version for testing and development.
+- Launch the World via the StygianCore Controls app, or manually with start_world.bat, and inspect the startup for any errors, indicated in red in the console, that may have been caused by recent edits.
+- Edit and rebuild as needed until the server loads without additional errors.

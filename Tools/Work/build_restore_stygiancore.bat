@@ -1,6 +1,5 @@
 del /F /Q restore_stygiancore.zip
 ..\7z.exe a -tzip -mx1 .\restore_stygiancore.zip restore_stygiancore
-copy /y restore_stygiancore.zip ..\
 
 
 

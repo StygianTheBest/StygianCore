@@ -1,6 +1,6 @@
-# NEWS February 8, 2019
+<span style="display:block;text-align:center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</span>
 
-**I am releasing a new version of the repack in a few days. These downloads have been disabled. Stay tuned!**
+<span style="display:block;text-align:center">A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</span>
 
 # How to update the StygianCore Repack
 
