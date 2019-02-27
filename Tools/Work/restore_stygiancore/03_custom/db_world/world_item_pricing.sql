@@ -678,10 +678,10 @@ UPDATE item_template SET sellprice=@1G, buyprice=@1G WHERE entry = 19483; 	-- Pe
 UPDATE item_template SET sellprice=@1G, buyprice=@1G WHERE entry = 11482; 	-- Crystal Pilon User's Manual
 UPDATE item_template SET sellprice=@1G, buyprice=@1G WHERE entry = 19851; 	-- Grom's Tribute
 UPDATE item_template SET sellprice=@1G, buyprice=@1G WHERE entry = 39317; 	-- News from the North
-UPDATE item_template SET sellprice=@2G, buyprice=@2G WHERE entry = 29571; 	-- A Steamy Romance Novel
-UPDATE item_template SET sellprice=@2G, buyprice=@2G WHERE entry = 37467; 	-- A Steamy Romance Novel
-UPDATE item_template SET sellprice=@2G, buyprice=@2G WHERE entry = 46023; 	-- A Steamy Romance Novel
-UPDATE item_template SET sellprice=@2G, buyprice=@2G WHERE entry = 54291; 	-- A Steamy Romance Novel
+UPDATE item_template SET sellprice=@25S, buyprice=@25S WHERE entry = 29571; -- A Steamy Romance Novel
+UPDATE item_template SET sellprice=@50S, buyprice=@50S WHERE entry = 37467; -- A Steamy Romance Novel
+UPDATE item_template SET sellprice=@75S, buyprice=@75S WHERE entry = 46023; -- A Steamy Romance Novel
+UPDATE item_template SET sellprice=@1G, buyprice=@1G WHERE entry = 54291; 	-- A Steamy Romance Novel
 
 -- --------------------------------------------------------------------------------------
 --	ENGINEERING

@@ -22,7 +22,8 @@
 USE stygian_world;
 
 -- ################################################################################### --
--- Update StygianCore table structure for GOMove object import
+-- Update StygianCore table structure for easy Trinity object import
+-- This allows me to design in Trinity using good tools and then port to StygianCore
 -- ################################################################################### --
 
 -- ALTER TABLE `stygian_world`.`gameobject` DROP COLUMN zoneId;
@@ -30,28 +31,66 @@ USE stygian_world;
 -- ALTER TABLE `stygian_world`.`gameobject` DROP COLUMN ScriptName;
 
 ALTER TABLE `stygian_world`.`gameobject`
-ADD zoneId smallint(5),
-ADD areaId smallint(5),
+ADD zoneId smallint(5) DEFAULT 0,
+ADD areaId smallint(5) DEFAULT 0,
 ADD ScriptName char(64);
+
+-- ################################################################################### --
+-- OBJECT SPAWN INDEX
+-- ################################################################################### --
+--
+-- CITIES, TOWNS, WILDERNESS
+-- SILITHUS CAMP
+--
+-- ################################################################################### --
+
 
 -- ################################################################################### --
 --	CITIES, TOWNS, WILDERNESS
 -- ################################################################################### --
 
 -- --------------------------------------------------------------------------------------
--- Bengal Tiger Cave
+-- Hinterlands
 -- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (502359, 502350, 502324, 502439, 502438, 502409);
+
+-- Fish Rack
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`) VALUES (502409, 181252, 0, 0, 0, 1, 1, 630.95, -3420.2, 107.301, 3.33284, -0, -0, -0.995432, 0.0954775, 0, 255, 1, '', 0);
+
+-- Stool Left
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`) VALUES (502439, 182596, 0, 0, 0, 1, 1, 618.638, -3417.09, 105.475, 5.28859, -0, -0, -0.477052, 0.878875, 300, 255, 1, '', 0);
+
+-- Stool Right
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`) VALUES (502438, 182596, 0, 0, 0, 1, 1, 621.316, -3420.92, 105.268, 2.07631, -0, -0, -0.86147, -0.507809, 300, 255, 1, '', 0);
+
+-- Large Backpacks
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502359', '164953', '0', '1', '1', 622.623, -3414.16, 107.202, 3.27334, -0, -0, -0.997831, 0.065826, '300', '0', '1', '0', NULL, NULL, NULL);
+
+-- Tent
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502350', '188185', '0', '1', '1', 623.343, -3416.31, 106.849, 3.75042, -0, -0, -0.954023, 0.299734, '300', '0', '1', '0', NULL, NULL, NULL);
 
 -- Campfire
-DELETE FROM `stygian_world`.`gameobject` WHERE `guid` = 501960;			
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502324', '190293', '0', '1', '1', '619.94', '-3419.09', '105.358', '4.08818', '-0', '-0', '-0.890072', '0.455819', '300', '0', '1', '0', NULL, NULL, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- Ratchet
+-- --------------------------------------------------------------------------------------
+-- DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (502221);
+
+
+-- --------------------------------------------------------------------------------------
+-- Bengal Tiger Cave
+-- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (501960);
+
+-- Campfire		
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES ('501960', '191775', '0', '1', '1', '-12834.9', '-1377.37', '112.856', '0.540488', '-0', '-0', '-0.266967', '-0.963706', '300', '0', '1', '0');
+
 
 -- --------------------------------------------------------------------------------------
 -- Sunrock Retreat
 -- --------------------------------------------------------------------------------------
-
--- Clean Up GUIDs
-DELETE FROM `gameobject` WHERE guid >= 269190 AND guid <= 269200;
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (269190, 269191, 269192);
 
 -- Campfire
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (269190, 192719, 1, 1, 1, 929.697, 968.275, 103.289, 2.31689, -0, -0, -0.916181, -0.400765, 300, 0, 1, 0);
@@ -64,6 +103,7 @@ INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `pha
 -- --------------------------------------------------------------------------------------
 -- Everlook
 -- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (269193, 269194, 269195, 269196, 269197, 269198, 501443, 501437);
 
 -- Christmas Tree
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES ('269193', '178667', '1', '1', '1', '6862.36', '-4677.75', '701.166', '1.86956', '-0', '-0', '-0.804469', '-0.593995', '300', '0', '1', '0'); 
@@ -93,19 +133,19 @@ INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `pha
 -- --------------------------------------------------------------------------------------
 -- Alterac Mountains
 -- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (501444, 501455);
 
 -- Christmas Tree
-DELETE FROM `gameobject` WHERE `guid`=501444;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501444, 192129, 0, 1, 1, 171.202, -275.448, 150.482, 6.23073, -0, -0, -0.0262259, 0.999656, 300, 0, 1, 0);
 
 -- Christmas Tree
-DELETE FROM `gameobject` WHERE `guid`=501445;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501455, 178558, 0, 1, 1, 179.436, -270.605, 148.081, 0.139975, -0, -0, -0.0699302, -0.997552, 300, 0, 1, 0);
 
 
 -- --------------------------------------------------------------------------------------
 -- Thunder Bluff
 -- --------------------------------------------------------------------------------------
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (269199, 501857);
 
 -- Campfire (Pet Vendor)
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (269199, 194017, 1, 1, 1, -1105.89, 33.3562, 140.598, 0.616385, -0, -0, -0.303337, -0.952883, 300, 0, 1, 0); 
@@ -117,64 +157,85 @@ INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `pha
 -- ################################################################################### --
 --	SILITHUS CAMP
 -- ################################################################################### --
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (502090, 502086, 502085, 502062, 500467, 500469, 501064, 501042, 501040, 500694, 500927, 500802, 501164, 500352, 500354, 500353, 501268, 501272, 501285, 501282, 501281, 501280, 501275);
+
+-- --------------------------------------------------------------------------------------
+-- Lighthouse Crystal (Silithus Camp)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502090', '177547', '1', '1', '1', '-10710.7', '2482.52', '23.7422', '1.87447', '-0', '-0', '-0.805926', '-0.592017', '300', '0', '1', '0', NULL, NULL, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- Torches (Silithus Camp)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502086', '187653', '1', '1', '1', '-10712.5', '2418.62', '7.60764', '2.42273', '-0', '-0', '-0.936096', '-0.351744', '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502085', '187653', '1', '1', '1', '-10718.3', '2411.25', '7.60481', '2.61123', '-0', '-0', '-0.965045', '-0.262083', '300', '0', '1', '0', NULL, NULL, NULL);
+
+-- --------------------------------------------------------------------------------------
+-- Dog House (Silithus Camp)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502062', '180033', '1', '1', '1', '-10720.8', '2408.9', '7.60409', '2.24994', '-0', '-0', '-0.902255', '-0.431202', '300', '0', '1', '0', NULL, NULL, NULL);
 
 -- --------------------------------------------------------------------------------------
 -- Fisherman Items (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=500467; -- Fishing Chair
+
+-- Fishing Chair
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500467, 186475, 1, 1, 1, -10749.2, 2516.27, 2.26279, 1.81423, -0, -0, -0.787729, -0.616021, 300, 0, 1, 0);
 
-DELETE FROM `gameobject` WHERE `guid`=500469; -- Oily Blackmouth School
+-- Oily Blackmouth School
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500469, 180682, 1, 1, 1, -10750.8, 2527.94, 0.00143518, 3.84841, -0, -0, -0.938199, 0.346096, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
 -- Large Bonfire (Silithus Camp - Front of Cave Near Sea)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=501064;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501064, 191824, 1, 1, 1, -10792.9, 2187.16, 2.47621, 6.28232, -0, -0, -0.000415137, 1, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
 -- Ghostly Cooking Fires (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=501042; -- Near Haystack
+
+-- Near Haystack
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501042, 195087, 1, 1, 1, -10726.9, 2444.32, 7.60427, 4.2097, -0, -0, -0.860752, 0.509025, 300, 0, 1, 0);
 
-DELETE FROM `gameobject` WHERE `guid`=501040; -- Near Haystack
+-- Near Haystack
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (501040, 195087, 1, 1, 1, -10722.7, 2442.5, 7.60622, 4.14294, -0, -0, -0.87726, 0.480015, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
 -- Forge In Tent (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=500694;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500694, 192572, 1, 1, 1, -10710.3, 2411.39, 7.60782, 5.82762, -0, -0, -0.22582, 0.974169, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
 -- Anvil In Tent (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=500927;
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500927, 192019, 1, 1, 1, -10712.2, 2412.71, 7.60568, 5.69013, -0, -0, -0.2922, 0.956357, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
 -- Mailbox (Silithus Camp)
--- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=500802;
-INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500802, 195629, 1, 1, 1, -10725, 2471.15, 7.58998, 0.506509, -0, -0, -0.250556, -0.968102, 300, 0, 1, 0);
+-- -------------------------------------------------------------------------------------
+INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500802, 195558, 1, 1, 1, -10725, 2471.15, 7.58998, 0.506509, -0, -0, -0.250556, -0.968102, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
--- Guild Bank Totem (Silithus Camp)
+-- Horde Guild Bank - Totem - (Silithus Camp)
 -- --------------------------------------------------------------------------------------
 INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES ('501164', '187295', '1', '1', '1', '-10714', '2467.41', '7.60594', '3.67938', '-0', '-0', '-0.964065', '0.265667', '300', '0', '1', '0');
 
 -- --------------------------------------------------------------------------------------
+-- Alliance Guild Bank - Mining Cart - (Silithus Camp)
+-- --------------------------------------------------------------------------------------
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502588', '132834', '1', '1', '1', '-10723', '2469.25', '7.92594', '0.114576', '-0', '-0', '-0.0572568', '-0.99836', '300', '0', '1', '0', '0', '0', NULL);
+
+-- --------------------------------------------------------------------------------------
 -- Campfire + Totems (Legendary Vendor, Silithus Cave)
 -- --------------------------------------------------------------------------------------
-DELETE FROM `gameobject` WHERE `guid`=500352; -- Campfire
+
+-- Campfire
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500352, 191341, 1, 1, 1, -10663.7, 2086.46, -47.2649, 6.16928, -0, -0, -0.0569244, 0.998379, 300, 0, 1, 0);
 
-DELETE FROM `gameobject` WHERE `guid`=500354; -- Fire Totem
+-- Fire Totem
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500354, 211036, 1, 1, 1, -10668, 2089.45, -47.2756, 5.26214, -0, -0, -0.488635, 0.872488, 300, 0, 1, 0);
 
-DELETE FROM `gameobject` WHERE `guid`=500353; -- Fire Totem
+-- Fire Totem
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`) VALUES (500353, 211036, 1, 1, 1, -10665, 2084.24, -47.4209, 5.15611, -0, -0, -0.534181, 0.84537, 300, 0, 1, 0);
 
 -- --------------------------------------------------------------------------------------
