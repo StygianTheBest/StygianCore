@@ -1,0 +1,77 @@
+###################################################################################################
+#     ____    __                                         ____                           
+#    /\  _`\ /\ \__                  __                 /\  _`\                         
+#    \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
+#     \/_\__ \\ \ \/ /\ \/\ \  /'_ `\/\ \  /'__`\  /' _ `\ \ \/_/_  / __`\/\`'__\/'__`\ 
+#       /\ \L\ \ \ \_\ \ \_\ \/\ \L\ \ \ \/\ \L\.\_/\ \/\ \ \ \L\ \/\ \L\ \ \ \//\  __/ 
+#       \ `\____\ \__\\/`____ \ \____ \ \_\ \__/.\_\ \_\ \_\ \____/\ \____/\ \_\\ \____\
+#        \/_____/\/__/ `/___/> \/___L\ \/_/\/__/\/_/\/_/\/_/\/___/  \/___/  \/_/ \/____/
+#                         /\___/ /\____/                                                
+#                         \/__/  \_/__/          http://stygianthebest.github.io                                         
+###################################################################################################
+#   NPC WAYPOINT COMMANDS
+###################################################################################################
+
+
+--------------------------------------------------------
+-- STEP 1: CREATE PATH
+--------------------------------------------------------
+.npc set movetype <GUID> way
+.wp add <GUID>
+.reload waypoint_data
+.reload waypoint_scripts
+
+
+--------------------------------------------------------
+-- STEP 2: MAKE NPC WALK WAYPOINT PATH
+--------------------------------------------------------
+.wp load <GUID> 
+
+**NOTE** 
+This sets the creature entry to MovementType="2" which is 
+required for the NPC to animate and follow the waypoint 
+path. If adding manually, make sure this is set.
+
+
+--------------------------------------------------------
+-- STEP 3: MODIFY WAYPOINT NODES
+--------------------------------------------------------
+.wp show on
+.wp modify delay <VALUE>
+.wp modify move_flag <O-walk, 1-run)
+
+
+--------------------------------------------------------
+-- STEP 4: CREATE WAYPOINT EVENT
+--------------------------------------------------------
+.wp event add (creates Event GUID)
+	-- The GUID is the same as the EVENTID
+.wp event mod <GUID> setid EVENTID
+	-- The GUID is the same as the EVENTID for the first event.
+	-- When we add a second event, we will get a new GUID, but we will 
+	-- set the EVENTID to the GUID of the first event.
+
+	
+--------------------------------------------------------
+-- STEP 5: ADD CREATURE TEXT
+--------------------------------------------------------
+Add creature text to db_script_string table (must be between 200 000 0000 and 200 001 0000)
+
+
+--------------------------------------------------------
+-- STEP 6: ADD EVENT TO WAYPOINT NODE
+--------------------------------------------------------
+.wp event mod <EVENTID> command <0-talk)
+.wp event mod <EVENTID> datalong <0-say, 2-yell)
+.wp event mod <EVENTID> dataint <DB_SCRIPT_STRING>
+.wp mod action <EVENTID>
+.wp mod action_chance <PERCENT>
+
+
+--------------------------------------------------------
+-- OTHER WAYPOINT COMMANDS
+--------------------------------------------------------
+.wp delete
+.wp move
+.wp show first, last
+.wp show info
