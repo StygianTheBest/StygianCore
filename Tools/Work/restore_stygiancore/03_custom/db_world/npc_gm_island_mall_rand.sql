@@ -22,32 +22,33 @@
 --   /______\/______\		
 --
 --
--- This was adapted from TrinityCore Triforce Mall v3.7 and includes Rownan's Level 19 
--- Twink vendors.
---
--- 2017.07.29: Release
--- 2018.12.14: 
--- 			Class trainers replaced with Global Trainer from npc_globaltrainer.sql
--- 			Town portals replaced with Portal master from npc_portalmaster.sql
--- 2018.12.28:
---			Randomize NPC models
+--  This was adapted from TrinityCore Triforce Mall v3.7 and includes Rownan's Level 19 
+--  Twink vendors.
+--  
+--  2018.12.28: Randomize NPC models
+--  2018.12.14: Class trainers replaced with Global Trainer from npc_globaltrainer.sql
+--  		    Town portals replaced with Portal master from npc_portalmaster.sql
+--  2017.07.29: Release
 --
 -- ################################################################################### --
 --
--- This builds a list of valid model ids to use when choosing random models for
--- the GM Island vendors. All model ID values were extracted directly from the
--- modelid1 value in the creature table.
--- 
--- This assumes they are all valid and used by NPCs in game, but some are not valid 
--- and will show up as errors in the worldserver console. This may be due to several 
--- factors, but it's harmless and easily fixed. 
--- 
--- You may also find that certain ranges produce extremely large models which obstruct
--- the view of other NPCS. This can be avoided by choosing a smaller range or by luck
--- of the draw! In any case, it's an easy way to get variety out of the NPCs.
--- 
--- Rerun the noc_gm_island_mall_rand.sql file to regenerate the models of all NPCs on
--- the island if any errors are present or to try a different set of models.
+--  This builds a list of valid model ids to use when choosing random models for
+--  the GM Island vendors. All model ID values were extracted directly from the
+--  modelid1 value in the creature table.
+--  
+--  This assumes they are all valid and used by NPCs in game, but some are not valid 
+--  and will show up as errors in the worldserver console. This may be due to several 
+--  factors, but it's harmless and easily fixed. 
+--  
+--  You may also find that certain ranges produce extremely large models which obstruct
+--  the view of other NPCS. This can be avoided by choosing a smaller range or by luck
+--  of the draw! In any case, it's an easy way to get variety out of the NPCs.
+--  
+--  Rerun the noc_gm_island_mall_rand.sql file to regenerate the models of all NPCs on
+--  the island if any errors are present or to try a different set of models.
+--  
+--  If you want to pick specific models for each, check out my npc_creature_model SQL
+--  and visit the Model Mall to preview any of the creature models in the list.
 --
 -- ################################################################################### --
 */
@@ -62,7 +63,7 @@ BEGIN
 	DECLARE model_pick INT;
 	SELECT modelid1
 	INTO model_pick
-	FROM npc_gmisland_models
+	FROM npc_creature_model
 	WHERE modelid1 > modelStart AND modelid1 < modelEnd
 	ORDER BY RAND() 
 	LIMIT 1;
