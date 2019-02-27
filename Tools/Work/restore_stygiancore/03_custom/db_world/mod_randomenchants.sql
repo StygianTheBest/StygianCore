@@ -1,5 +1,5 @@
 /*
--- ################################################################################### --
+-- ###################################################################################### --
 --  ____    __                                         ____                           
 -- /\  _`\ /\ \__                  __                 /\  _`\                         
 -- \ \,\L\_\ \ ,_\  __  __     __ /\_\     __      ___\ \ \/\_\    ___   _ __    __   
@@ -10,18 +10,16 @@
 --                      /\___/ /\____/                                                
 --                      \/__/  \_/__/          http://stygianthebest.github.io                                         
 -- 
--- ################################################################################### --
--- 
--- MOD: RANDOM ENCHANTMENT
+-- ###################################################################################### --
 --
--- ################################################################################### --
+-- CORE MOD: RANDOM ENCHANTS
+--
+-- Adds a random chance for drops to be imbued with an enchantment.
+--
+-- ###################################################################################### --
 */
 
-USE stygian_world;
-
--- --------------------------------------------------------------------------------------
 -- Dumping structure for table world.item_enchantment_random_tiers
--- --------------------------------------------------------------------------------------
 CREATE TABLE IF NOT EXISTS `item_enchantment_random_tiers` (
   `enchantID` int(11) DEFAULT NULL,
   `tier` int(11) DEFAULT NULL,
@@ -29,10 +27,9 @@ CREATE TABLE IF NOT EXISTS `item_enchantment_random_tiers` (
   `exclusiveSubClass` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------------------------------------
 -- Dumping data for table world.item_enchantment_random_tiers: ~700 rows (approximately)
--- --------------------------------------------------------------------------------------
 DELETE FROM `item_enchantment_random_tiers`;
+/*!40000 ALTER TABLE `item_enchantment_random_tiers` DISABLE KEYS */;
 INSERT INTO `item_enchantment_random_tiers` (`enchantID`, `tier`, `class`, `exclusiveSubClass`) VALUES
 	(24, 1, 'ANY', NULL),
 	(28, 1, 'ANY', NULL),
@@ -734,3 +731,6 @@ INSERT INTO `item_enchantment_random_tiers` (`enchantID`, `tier`, `class`, `excl
 	(2716, 4, 'ARMOR', NULL),
 	(2718, 3, 'WEAPON', NULL),
 	(2719, 5, 'WEAPON', NULL);
+	
+	
+	-- END OF LINE
