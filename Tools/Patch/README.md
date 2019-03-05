@@ -2,41 +2,51 @@
 
 #### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
 
-# How to update the StygianCore Repack
+# StygianCore Repack Update
 
-### Welcome to StygianCore. This update will upgrade the server binaries, module config files, world database, and restoration archive to the latest release.
+> #### When a patch is released the entire repack is updated within _72 hours_, so re-downloading the repack from the [StygianCore Project](#) page at that time will also include any changes introduced in this patch.
 
-### 1) Download the Repack Update
+## 1) Download the Patch
 
-- [Download Repack Update](#)
-	- **start_corepatch.bat** - The tool for preparing the patch archive for install.
-	- **StygianCorePatch_Revision_XXXX_XX_XX.zip** - The core patch archive.
+- [Mirror 1 (MEGA)](https://rebrand.ly/stygiancorepatch_mega) - StygianCore Patch v2019.03.05
 
-### 2) Prepare the Update
+## 1) Prepare the Update
 
-- Copy the downloaded files to the StygianCore root folder.
-- Run the start_corepatch.bat file.
+#### Patch updates will upgrade server binaries, databases, module config files, and the restoration archive as needed. 
 
-### 3) Upgrade the World
+- Copy the downloaded patch file, **_StygianCore_Revision_XXXX_XX_XX.zip_**, to the StygianCore root folder.
+- Run the **_start_corepatch.bat_** file.
+
+## 2) Upgrade the World
 
 - Once the patch has been prepared for install, it will launch StygianCoreTools.
 - A **[0] Patch Core** menu option should be visible. Choose this to start the update process.
-- This will backup the contents of your **Server\Core** folder and your World database to the **Tools\PatchBackup** folder.
+- The update process will backup the following to the **Tools\PatchBackup** folder before applying the update:
+  - **stygian_world** database
+  - **Server\Core** folder contents 
+  - **restore_stygiancore** folder contents and archive 
 - Once the backup is complete, it will patch your core with the updates.
   - **This update will not affect any existing accounts, players, mail, or other player data.**
-- Once complete, you should be able to launch the server via the launcher or batch files.
-- You can safely delete the **StygianCore_Revision_XXXX_XX_XX.zip**.
-- **DO NOT DELETE** the **start_corepatch.bat** as it will be used for future updates.
+- Once complete, you should be able to restart the server via the launcher or batch files.
+- You can delete the **StygianCore_Revision_XXXX_XX_XX.zip** in the repack root folder.
 
-### Notes
+## Changelog 
+
+- **v2019.03.05**
+  - Fixed an issue with Custom Login Abilities being unlearned on logoff
+  - All abilities are now configurable in the Custom Login module's config file
+  - Learning Town Portals is now a configurable option
+  - Fixed an NPC dialogue typo
+
+## Notes
 
 - The **[5] Restore StygianCore** option in StygianCoreTools will now use the updated restoration archive.
 
-### Bugs or problems?
+## Bugs or problems?
 
 Please [submit a bug report on Github](https://github.com/StygianTheBest/StygianCore) and I'll take a look when time permits.
 
-### Have fun!
+## Have fun!
 _- StygianTheBest_
 
 

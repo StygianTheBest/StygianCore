@@ -136,15 +136,15 @@ echo                        \/__/  \_/__/          http://stygianthebest.github.
 echo.
 echo.        
 echo ### IMPORT/EXPORT ######################################################################             
-	IF EXIST %CD%\Tools\Temp\PatchCore\patch_core_ready.txt. (
+	IF EXIST Tools\Temp\PatchCore\patch_core_ready.txt. (
 		echo [ 0 ] - Patch Core: StygianCore %stygianrev% Release
 	)
 	echo [ 1 ] - Export World
 	echo [ 2 ] - Export Accounts/Characters
-	IF EXIST %CD%\Tools\Temp\%world%.sql. (
+	IF EXIST Tools\Temp\%world%.sql. (
 		echo [ 3 ] - Import World
 	)
-	IF EXIST %CD%\Tools\Temp\%login%.sql. (
+	IF EXIST Tools\Temp\%login%.sql. (
 		echo [ 4 ] - Import Accounts/Characters
 	)
 )
@@ -220,7 +220,9 @@ REM Create Patch Folder
 IF EXIST %CD%\Tools\PatchBackup\NUL (
 	REM Folder Exists
 ) ELSE (
-	mkdir %CD%\Tools\PatchBackup
+	mkdir Tools\PatchBackup
+	mkdir Tools\PatchBackup\DB
+	mkdir Tools\PatchBackuP\Core	
 )
 
 REM Shutdown Server Processes
@@ -229,50 +231,77 @@ taskkill /F /FI "IMAGENAME eq authserver.exe"
 CLS
 
 echo.
-echo [- Backing Up Current Core To Tools\PatchBackup -]
-xcopy /y /q Server\Core\* Tools\PatchBackup\
+echo [- Backing Up Current Core To Tools\PatchBackup\Core -]
+xcopy /y /q Server\Core\* Tools\PatchBackup\Core\
 
 echo.
-echo [- Backing Up Current World To Tools\PatchBackup -]
-Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %world% > Tools\PatchBackup\%world%.sql
+echo [- Backing Up Current World To Tools\PatchBackup\DB -]
+Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf %world% > Tools\PatchBackup\DB\%world%.sql
 
 echo.
+echo [- Backup Restoration Archive With Existing Restoration Files -]
 IF EXIST Tools\Work\restore_stygiancore\01_default\db_world\creature.sql. (
-	echo [- Building Backup Restoration Archive To Tools\PatchBackup -]
+	rem echo [- Building Backup Restoration Archive To Tools\PatchBackup -]
 	CD Tools\Work
 	CALL build_restore_stygiancore.bat
 	CD ..
 	CD ..
-	xcopy /y /q Tools\Work\restore_stygiancore.zip Tools\PatchBackup\	
+	xcopy /y /q Tools\Work\restore_stygiancore.zip Tools\PatchBackup\
 ) ELSE (
 	IF EXIST Tools\Work\restore_stygiancore.zip. (
-		echo [- WARNING!!! RESTORATION ARCHIVE DATA CORRUPT! CAN'T REBUILD! COPYING EXISTING ARCHIVE! -]
+		echo.
+		echo [- WARNING!!! RESTORATION DATA CORRUPT! CAN'T REBUILD! COPYING EXISTING ARCHIVE! -]
 		xcopy /y /q Tools\Work\restore_stygiancore.zip Tools\PatchBackup\
 	) ELSE (
-		echo [- WARNING!!! RESTORATION ARCHIVE DATA CORRUPT! CAN'T BACKUP! -]
+		echo [- WARNING!!! RESTORATION ARCHIVE AND DATA MISSING! CAN'T BACKUP! -]
 	)
 )
 
 echo.
 echo [- Patching Core -]
-xcopy /y /q Tools\Temp\PatchCore\*.dll Server\Core\
-xcopy /y /q Tools\Temp\PatchCore\*.exe Server\Core\
-xcopy /y /q Tools\Temp\PatchCore\*.dist Server\Core\
+xcopy /y /q Tools\Temp\PatchCore\Server\Core\*.dll Server\Core\
+xcopy /y /q Tools\Temp\PatchCore\Server\Core\*.exe Server\Core\
+xcopy /y /q Tools\Temp\PatchCore\Server\Core\*.dist Server\Core\
 
+REM IF a world update exists...
+IF EXIST Tools\Temp\PatchCore\DB\stygiancore_worldupdate.sql. (
 echo.
 echo [- Patching World -]
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "DROP DATABASE %world%"
 Tools\mysql.exe --defaults-extra-file=Server/MySQL/my.cnf -e "CREATE DATABASE %world%" 
 for %%i in (Tools\Temp\PatchCore\*sql) do if %%i neq Tools\Temp\PatchCore\*sql Tools\mysql --defaults-extra-file=Server/MySQL/my.cnf --default-character-set=utf8 -f --database=%world% < %%i
+) ELSE (
+	echo.
+	echo [- No World Updates Found -]
+)
 
 echo.
-echo [- Patching Restoration Archive -]
-RD /S /Q "Tools\Work\restore_stygiancore"
-Tools\7Z x -y Tools\Temp\PatchCore\restore_stygiancore.zip -o.\Tools\Work\
+echo [- Pulling Restoration Archive Data -]
+xcopy /y /s /q Tools\Work\restore_stygiancore\*.* Tools\Temp\PatchCore\restore_stygiancore\
+
+echo [- Updating db_auth -]
+rem xcopy /y /q Tools\Temp\PatchCore\Tools\Work\restore_stygiancore\db_auth\*.sql Tools\Temp\PatchCore\restore_stygiancore\03_custom\db_auth\	
+
+echo [- Updating db_character -]
+rem xcopy /y /q Tools\Temp\PatchCore\Tools\Work\restore_stygiancore\db_characters\*.sql Tools\Temp\PatchCore\restore_stygiancore\03_custom\db_characters\	
+
+echo [- Updating db_world -]
+xcopy /y /q Tools\Temp\PatchCore\Tools\Work\restore_stygiancore\03_custom\db_world\*.sql Tools\Temp\PatchCore\restore_stygiancore\03_custom\db_world\
+
+echo [- Updating 04_conf -]
+xcopy /y /q Tools\Temp\PatchCore\Tools\Work\restore_stygiancore\04_conf\*.dist Tools\Temp\PatchCore\restore_stygiancore\04_conf\
+
+echo [- Pushing Restoration Archive Data -]
+xcopy /y /s /q Tools\Temp\PatchCore\restore_stygiancore\*.* Tools\Work\restore_stygiancore\	
+
+echo.
+echo [- Cleaning Up -]
 RD /S /Q "Tools\Temp\PatchCore"
+
 echo.
 echo [- Patch Complete -]
 echo.
+
 pause
 goto menu	
 
@@ -298,7 +327,7 @@ cls
 echo.
 if exist Tools\Temp\%world%.sql (
 	echo [- Archiving Existing World -]
-	ren "Tools\Temp\%world%.sql" "%world%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%world%.sql" "%world%-%date:~10,4%%date:~4,2%%date:~7,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No World Backup Found *** -]
 )
@@ -330,7 +359,7 @@ cls
 echo.
 if exist Tools\Temp\%login%.sql (
 	echo [- Archiving Existing Accounts -]
-	ren "Tools\Temp\%login%.sql" "%login%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%login%.sql" "%login%-%date:~10,4%%date:~4,2%%date:~7,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No Account Backup Found *** -]
 )
@@ -340,7 +369,7 @@ Tools\mysqldump.exe --defaults-extra-file=Server/MySQL/my.cnf --default-characte
 if exist Tools\Temp\%characters%.sql (
 	echo.
 	echo [- Archiving Existing Characters -]
-	ren "Tools\Temp\%characters%.sql" "%characters%-%date:~10,4%%date:~7,2%%date:~4,2%-%time:~0,2%%time:~3,2%.sql"
+	ren "Tools\Temp\%characters%.sql" "%characters%-%date:~10,4%%date:~4,2%%date:~7,2%-%time:~0,2%%time:~3,2%.sql"
 ) else (
     REM echo [- *** No Character Backup Found *** -]
 )

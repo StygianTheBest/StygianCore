@@ -19,13 +19,13 @@ REM
 REM ########################################################################################
 
 REM 1(Blue), 2(Green), 3(Cyan), 4(Red), 5(Purple), 6(Yellow), 7(LGray), 8(Gray)
-COLOR 8F
+COLOR 4F
 SET NAME=StygianCore Patch Utility
 TITLE %NAME%
 
 CLS
 
-IF EXIST %CD%\StygianCore_Revision*. (
+IF EXIST StygianCore_Revision*. (
 echo.
 echo                     [-------------------]
 echo                     [- # CORE PATCH  # -]
@@ -59,24 +59,11 @@ echo.
 echo [- Preparing Patch Archive -]
 echo.
 
-REM Create Patch Folder
-IF EXIST %CD%\Tools\Temp\PatchCore\NUL (
-	REM Folder Exists
-) ELSE (
-	mkdir %CD%\Tools\Temp\PatchCore
-)
-
-REM Clear Temp\PatchCore
-RD /S /Q "Tools\Temp\PatchCore"
-
 REM Unzip Patch Archive
 Tools\7Z x -y StygianCore_Revision_*.* -o.\Tools\Temp\PatchCore\
-Tools\7Z x -y Tools\Temp\PatchCore\StygianCorePatch.zip -o.\Tools\Temp\PatchCore\
 
 REM Upgrade StygianCoreTools.bat
 xcopy /y /q Tools\Temp\PatchCore\StygianCoreTools.bat
 
 Call StygianCoreTools.bat
 exit
-
-
