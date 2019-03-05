@@ -3493,7 +3493,7 @@ INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 17182, 0, 0, 18019); --
 -- Gossip Menu Option
 DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
 INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
-(@GossipMenu, 0, 6, 'The Gift', 3, 128, @Entry, 0, 0, 250000, 'Do you have the gold $N?');
+(@GossipMenu, 0, 6, 'The Gift', 3, 128, @Entry, 0, 0, 250000, 'Do you have the gold?');
 
 -- Gossip Menu
 DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
