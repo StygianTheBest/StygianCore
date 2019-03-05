@@ -1,20 +1,22 @@
 /*
 
-# Custom Login #
+# Custom Login
 
 _This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
-### Description ###
+### Description
 ------------------------------------------------------------------------------------------------------------------
 - All options can be enabled or disabled in config
 - Player ([ Faction ] - Name - Logon/Logoff message) notification can be announced to the world
 - New characters can receive items, bags, and class-specific heirlooms on first login
 - New characters can receive class-specific skills on first login
 - New characters can receive specialized skills on first login
+  - Special Abilities are configurable in the modules config file
+- New characters can learn their faction's Town Portals on first login
 - New characters can receive exalted rep with capital cities (Ambassador) on first login
 
 
-### Data ###
+### Data
 ------------------------------------------------------------------------------------------------------------------
 - Type: Player/Server
 - Script: LoginMods
@@ -22,8 +24,9 @@ _This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject
 - SQL: No
 
 
-### Version ###
+### Version
 ------------------------------------------------------------------------------------------------------------------
+- v2019.03.05 - Fix Logoff Bug, Add Config for Ability/Portal
 - v2017.08.01 - Release
 
 
@@ -79,6 +82,15 @@ bool LoginBOAWeapon3 = 1;
 bool LoginSkills = 1;
 bool LoginSpecialAbility = 0;
 bool LoginReputation = 1;
+bool LoginPortals;
+uint32 LoginAbility1;
+uint32 LoginAbility2;
+uint32 LoginAbility3;
+uint32 LoginAbility4;
+uint32 LoginAbility5;
+uint32 LoginAbility6;
+
+
 
 class LoginConfig : public WorldScript
 {
@@ -112,19 +124,26 @@ public:
         LoginPlayerAnnounce = sConfigMgr->GetBoolDefault("Login.PlayerAnnounce", 1);
         LoginBOA = sConfigMgr->GetBoolDefault("Login.BoA", 1);
         LoginBOARing = sConfigMgr->GetBoolDefault("Login.BoA.Ring", 1);
-        LoginBOABags = sConfigMgr->GetBoolDefault("Login.BoA.Bags",1);
-        LoginBOAShoulders = sConfigMgr->GetBoolDefault("Login.BoA.Shoulders", 1);
-        LoginBOAShoulders2 = sConfigMgr->GetBoolDefault("Login.BoA.Shoulders2",1);
-        LoginBOAChest = sConfigMgr->GetBoolDefault("Login.BoA.Chest",1);
-        LoginBOAChest2 = sConfigMgr->GetBoolDefault("Login.BoA.Chest2",1);
-        LoginBOATrinket = sConfigMgr->GetBoolDefault("Login.BoA.Trinket",1);
-        LoginBOATrinket2 = sConfigMgr->GetBoolDefault("Login.BoA.Trinket2",1);
-        LoginBOAWeapon = sConfigMgr->GetBoolDefault("Login.BoA.Weapon",1);
-        LoginBOAWeapon2 = sConfigMgr->GetBoolDefault("Login.BoA.Weapon2",1);
-        LoginBOAWeapon3 = sConfigMgr->GetBoolDefault("Login.BoA.Weapon3",1);
+        LoginBOABags = sConfigMgr->GetBoolDefault("Login.BoA.Bags", 1);
+        LoginBOAShoulders = sConfigMgr->GetBoolDefault("Login.BoA.Shoulders", 0);
+        LoginBOAShoulders2 = sConfigMgr->GetBoolDefault("Login.BoA.Shoulders2", 0);
+        LoginBOAChest = sConfigMgr->GetBoolDefault("Login.BoA.Chest", 0);
+        LoginBOAChest2 = sConfigMgr->GetBoolDefault("Login.BoA.Chest2", 0);
+        LoginBOATrinket = sConfigMgr->GetBoolDefault("Login.BoA.Trinket", 1);
+        LoginBOATrinket2 = sConfigMgr->GetBoolDefault("Login.BoA.Trinket2", 0);
+        LoginBOAWeapon = sConfigMgr->GetBoolDefault("Login.BoA.Weapon", 0);
+        LoginBOAWeapon2 = sConfigMgr->GetBoolDefault("Login.BoA.Weapon2", 0);
+        LoginBOAWeapon3 = sConfigMgr->GetBoolDefault("Login.BoA.Weapon3", 0);
         LoginSkills = sConfigMgr->GetBoolDefault("Login.Skills", 1);
-        LoginSpecialAbility = sConfigMgr->GetBoolDefault("Login.SpecialAbility", 1);
         LoginReputation = sConfigMgr->GetBoolDefault("Login.Reputation", 1);
+        LoginPortals = sConfigMgr->GetBoolDefault("Login.LearnPortals", 0);
+        LoginSpecialAbility = sConfigMgr->GetBoolDefault("Login.SpecialAbility", 0);
+        LoginAbility1 = sConfigMgr->GetIntDefault("Login.Ability1", 1784);
+        LoginAbility2 = sConfigMgr->GetIntDefault("Login.Ability2", 921);
+        LoginAbility3 = sConfigMgr->GetIntDefault("Login.Ability3", 1804);
+        LoginAbility4 = sConfigMgr->GetIntDefault("Login.Ability4", 2983);
+        LoginAbility5 = sConfigMgr->GetIntDefault("Login.Ability5", 5384);
+        LoginAbility6 = sConfigMgr->GetIntDefault("Login.Ability6", 475);
     }
 };
 
@@ -478,7 +497,7 @@ public:
 
                 // Inform the player they have new skills
                 std::ostringstream ss;
-                ss << "|cffFF8000[|cFFBDB76BCL|cffFF8000] You have been granted |cFFBDB76Badditional weapon skills|cffFF8000.";
+                ss << "|cffFF8000[|cFFBDB76BCL|cffFF8000] You have been taught |cFFBDB76BAdditional Weapon Skills|cffFF8000.";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
 
@@ -486,16 +505,36 @@ public:
             if (LoginSpecialAbility)
             {
                 // Learn Specialized Skills
-                player->learnSpell(1784);	// Stealth
-                player->learnSpell(921);	// Pick Pocket
-                player->learnSpell(1804);	// Lockpicking
-                player->learnSpell(11305);	// Sprint (3)
-                player->learnSpell(5384);	// Feign Death
-                player->learnSpell(475);	// Remove Curse
+                player->learnSpell(LoginAbility1);	// 1784 - Stealth
+                player->learnSpell(LoginAbility2);	//  921 - Pick Pocket
+                player->learnSpell(LoginAbility3);	// 1804 - Lockpicking
+                player->learnSpell(LoginAbility4);  // 2983 - Sprint
+                player->learnSpell(LoginAbility5);	// 5384 - Feign Death
+                player->learnSpell(LoginAbility6);	//  475 - Remove Curse
 
                 // Add a few teleportation runes
                 player->AddItem(17031, 5);	// Rune of Teleportation
 
+                // Add the spells to the character_spell table
+                // This fixes spells persisting after logoff
+                // guid, spell, specMask
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility1, 255);
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility2, 255);
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility3, 255);
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility4, 255);
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility5, 255);
+                CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), LoginAbility6, 255);
+
+                // Inform the player they have new skills
+                std::ostringstream ss;
+                ss << "|cffFF8000[|cFFBDB76BCL|cffFF8000] Your spellbook has been scribed with |cFFBDB76BSpecial Abilities|cffFF8000.";
+                ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
+
+            }
+
+            // If enabled... learn town portals
+            if (LoginPortals)
+            {
                 // Learn Teleports
                 switch (player->GetTeamId())
                 {
@@ -506,8 +545,17 @@ public:
                     player->learnSpell(3565);	// Darnassus
                     player->learnSpell(32271);	// Exodar
                     player->learnSpell(3562);	// Ironforge
-                    player->learnSpell(33690);	// Shattrath
+                    player->learnSpell(57676);	// Shattrath
                     player->learnSpell(3561);	// Stormwind
+
+                    // Add the spells to the character_spell table
+                    // This fixes spells persisting after logoff
+                    // guid, spell, specMask
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3565, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 32271, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3562, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 57676, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3561, 255);
                     break;
 
                 case TEAM_HORDE:
@@ -518,15 +566,24 @@ public:
                     player->learnSpell(32272);	// Silvermoon
                     player->learnSpell(3566);	// Thunder Bluff
                     player->learnSpell(3563);	// Undercity
+
+                    // Add the spells to the character_spell table
+                    // This fixes spells persisting after logoff
+                    // guid, spell, specMask
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3567, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 35715, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 32272, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3566, 255);
+                    CharacterDatabase.PQuery("INSERT INTO character_spell (guid, spell, specMask) VALUES (%u, %u, %u);", player->GetGUID(), 3563, 255);
                     break;
 
                 default:
                     break;
                 }
 
-                // Inform the player they have new skills
+                // Inform the player they have town portals
                 std::ostringstream ss;
-                ss << "|cffFF8000[|cFFBDB76BCL|cffFF8000] Your spellbook has been scribed with |cFFBDB76Bspecial abilities|cffFF8000.";
+                ss << "|cffFF8000[|cFFBDB76BCL|cffFF8000] Your spellbook has been scribed with |cFFBDB76BTown Portals|cffFF8000.";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
 

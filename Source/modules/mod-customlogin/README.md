@@ -1,18 +1,20 @@
-# Custom Login #
+# Custom Login
 
 _This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
-### Description ###
+### Description
 
 - All options can be enabled or disabled in config
 - Player ([ Faction ] - Name - Logon/Logoff message) notification can be announced to the world
 - New characters can receive items, bags, and class-specific heirlooms on first login
 - New characters can receive class-specific skills on first login
 - New characters can receive specialized skills on first login
+  - Special Abilities are configurable in the modules config file
+- New characters can learn their faction's Town Portals on first login
 - New characters can receive exalted rep with capital cities (Ambassador) on first login
 
 
-### Data ###
+### Data
 
 - Type: Player/Server
 - Script: LoginMods
@@ -20,8 +22,9 @@ _This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject
 - SQL: No
 
 
-### Version ###
+### Version
 
+- v2019.03.05 - Fix Logoff Bug, Add Config for Ability/Portal
 - v2017.08.01 - Release
 
 

@@ -13,20 +13,42 @@
 #   CUSTOM LOGIN
 ###################################################################################################
 
-# Enable the module? (default: 1)
+
+# Enable the module?
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
 Login.Enable = 1
 
-# Announce the module when the player logs in? (default: 1)
+
+# Announce the module when the player logs in?
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
 Login.Announce = 1
 
-# Inform when players enter and exit the game (default: 1)
+
+# Inform when players enter and exit the game
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
 Login.PlayerAnnounce = 1
 
-# New characters start with BoA items? (default: 1)
+
+# New characters start with Exalted reputation for main city factions?
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
+Login.Reputation = 1
+
+
+# New characters start with BoA items?
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
 Login.BoA = 1
 
-# Which items should we give the player? (default: 1)
+
+# Which items should we give the player?
 # I prefer the ring and a trinket for new players.
+#        Default:     0  - (Disabled)
+#                     1  - (Enabled)
+
 Login.BoA.Ring = 1
 Login.BoA.Bags = 1
 Login.BoA.Shoulders = 0
@@ -39,14 +61,49 @@ Login.BoA.Weapon = 0
 Login.BoA.Weapon2 = 0
 Login.BoA.Weapon3 = 0
 
-# New characters start with additional weapon skills? (default: 1)
+
+# New characters start with additional weapon skills?
+#        Default:     1  - (Enabled)
+#                     0  - (Disabled)
 Login.Skills = 1
 
-# New characters start with special abilities? (default: 0)
+
+# New characters start with special abilities?
+#        Default:     0  - (Disabled)
+#                     1  - (Enabled)
+Login.LearnPortals = 0
+
+
+# New characters start with special abilities?
+#        Default:     0  - (Disabled)
+#                     1  - (Enabled)
 Login.SpecialAbility = 0
 
-# New characters start with Exalted reputation for main city factions? (default: 1)
-Login.Reputation = 1
 
+# Define Six Special Abilities
+# You can look these up in-game using .lo sp "name"
+# ***WARNING*** - Using incorrect values here can cause a server crash!
 
+# Stealth
+# Default: 1784
+Login.Ability1 = 1784
 
+# Pick Pocket 
+# Default: 921
+Login.Ability2 = 921
+
+# Lockpicking
+# Default: 1804
+Login.Ability3 = 1804
+
+# Sprint
+# Default: 2983
+Login.Ability4 = 2983
+
+# Feign Death
+# Default: 5384
+Login.Ability5 = 5384
+
+# Remove Curse
+# Default: 475
+Login.Ability6 = 475
