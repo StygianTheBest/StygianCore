@@ -74,12 +74,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings.. $N.$B$BHellscream\'s Chosen was founded by all of the fine players you see standing here. We signed our guild charter at Grom Hellscream\'s Monument in Ashenvale on April 17th, 2010. $B$BThese are but visions of our former selves from days long past - mere memories of what used to be. Please, enjoy your stay here in Dalaran and don\'t mind our chatter.$B$BMay we meet again, in a different realm, and reminisce of days long past… battles hard fought… and dreams redeemed $N.$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'LFM TANK+HEALS 10M TOC - MUST KNOW FIGHTS! - PST FOR QUICK INVITE', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'LFM TANK+HEALS 10M TOC - MUST KNOW FIGHTS! - PST FOR QUICK INVITE', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -119,12 +119,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Pamooya.$B$BThey consider me the mom of the guild. I take care of everyone with buffs, fish feasts, and my friendly demeanor. I\'m also one of the best raid healers you\'ll come across. Just ask all the PUGs I\'ve saved from certain doom!$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'If you misbehave, I will have to unleash the wolves.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'If you misbehave, I will have to unleash the wolves.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -163,12 +163,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Girlys.$B$BIn adishun to being a great GUY, I\'m one of the most relyuble and skilled tank healers on Stonemaul. I may have some ishews spelling sumtimes, but I still get my point across. Oh yea, I learned evrything about healing from Pam.$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I lerned evrything about how to heel because of Pam!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I lerned evrything about how to heel because of Pam!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -208,12 +208,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m brother Ragathar!$B$BI\'m the guy with the most guild spirit, and I\'ll DPS your face off! No raid is complete without my good cheer, enthusiasm, and emotes!$B$BRAGATHAR SMASH!$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'FOR HELLSCREAM! FOR THE WARSONG!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'FOR HELLSCREAM! FOR THE WARSONG!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -254,12 +254,12 @@ INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Mobb
 
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'LOK\'TAR OGAR BROTHERS! WE RIDE FOR THE HORDE!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'LOK\'TAR OGAR BROTHERS! WE RIDE FOR THE HORDE!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -300,12 +300,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Zagmund.$B$BI am the resident Loremaster and classic WoW guru. I usually coordinate all of our classic content runs. Got any questions about the old world or rare items?$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Why yes, I do have Cuergo\'s Gold with Worm.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Why yes, I do have Cuergo\'s Gold with Worm.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -345,12 +345,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Jadenelle.$B$BI\'m usually begging for loot and getting myself in the middle of a little drama in an outside of the guild. Aside from that, I\'m pretty tolerable and always have plenty of Sulfuron Slammers to go \'round.$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Do you have any loot for little old me? lol', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Do you have any loot for little old me? lol', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -389,12 +389,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Gatog.$B$BI love classic runs and collecting old world gear.$B$BDid someone say Thunderfury Blessed Blade of the Windseeker?$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Did someone say Thunderfury Blessed Blade of the Windseeker?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Did someone say Thunderfury Blessed Blade of the Windseeker?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -432,12 +432,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Katojune.$B$BI\'m one of the best Elemental DPS Shaman you\'ll find on Stonemaul. I also assist the guildmaster and officer in keeping order when needed. LOK\'TAR OGAR BROTHERS! WE RIDE FOR THE HORDE!$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'SHAMMY TWIN POWERS ACTIVATE!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'SHAMMY TWIN POWERS ACTIVATE!', '14', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -477,12 +477,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hi there $N. I\'m Bras.$B$BI\'ve got many alts and am a good guy to have around if you need mats of any kind. I\'m also the oldest player in the guild at over 50.$B$BMay the Warsong Never Fade!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Hahaha! You guys are awesome. Have a stack of Sulfuron Slammers on the house.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Hahaha! You guys are awesome. Have a stack of Sulfuron Slammers on the house.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;

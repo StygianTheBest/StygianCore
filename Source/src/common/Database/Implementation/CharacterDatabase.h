@@ -1,6 +1,5 @@
 /*
- * Copyright (C) 
- *
+ * Copyright (C) 2016+     AzerothCore <www.azerothcore.org>
  * Copyright (C) 2008-2016 TrinityCore <http://www.trinitycore.org/>
  * Copyright (C) 2005-2009 MaNGOS <http://getmangos.com/>
  */
@@ -493,6 +492,11 @@ enum CharacterDatabaseStatements
     CHAR_SEL_PVPSTATS_FACTIONS_OVERALL,
 
     CHAR_INS_DESERTER_TRACK,
+
+    CHAR_INS_QUEST_TRACK,
+    CHAR_UPD_QUEST_TRACK_GM_COMPLETE,
+    CHAR_UPD_QUEST_TRACK_COMPLETE_TIME,
+    CHAR_UPD_QUEST_TRACK_ABANDON_TIME,
 
     MAX_CHARACTERDATABASE_STATEMENTS
 };

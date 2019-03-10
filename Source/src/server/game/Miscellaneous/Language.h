@@ -876,8 +876,9 @@ enum TrinityStrings
     LANG_SQLDRIVER_QUERY_LOGGING_ENABLED  = 1027,
     LANG_SQLDRIVER_QUERY_LOGGING_DISABLED = 1028,
     // 1029-1030 used in other client versions
-
     // Room for more level 4              1031-1099 not used
+    LANG_ACCOUNT_PASS_TOO_LONG            = 1031,
+
 
     // Level 3 (continue)
     LANG_ACCOUNT_SETADDON               = 1100,
@@ -1146,7 +1147,7 @@ enum TrinityStrings
     LANG_COMMAND_MUTEHISTORY_EMPTY      = 5060,
     LANG_COMMAND_MUTEHISTORY_OUTPUT     = 5061,
 
-    // Room for more Trinity strings      5062-9999
+    // Room for more Trinity strings    5062-9999
 
     // Level requirement notifications
     LANG_SAY_REQ                        = 6604,

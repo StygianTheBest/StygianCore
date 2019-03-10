@@ -19,7 +19,7 @@
 -- To save an NPC location for a future import, copy or export the corresponding 
 -- GUID entry of the NPC in the table. 
 --
--- Last Updated: 2018-12-14
+-- Last Updated: 2019-03-11
 --
 -- ################################################################################### --
 --
@@ -41,7 +41,11 @@
 -- ################################################################################### --
 -- STYGIANCORE CUSTOM NPC/VENDOR/TRAINER
 -- ################################################################################### --
--- ID	TITLE                       SUB-TITLE
+-- ID	TITLE                       SUB-TITLE / TYPE
+-- ----------------------------------------------------------------------------------- --
+
+-- ----------------------------------------------------------------------------------- --
+-- 601XXX
 -- ----------------------------------------------------------------------------------- --
 601000	Grizzly Adams				Exotic Pets
 601001	Petra O'Shea				Pets & Supplies
@@ -60,7 +64,7 @@
 601014	The Mountain				Mount Trainer
 601015	Beauregard Boneglitter		Enchantments
 601016	Buffmaster Hasselhoof		Buffs
-601017	-							-
+601017	Amouranth					Trollop
 601018	Landro						Gift Box Sender
 601019	Johnny Lightblink			Portal Master
 601020	Skinny						Gambler
@@ -77,9 +81,43 @@
 601031	Cutie Pig					For Elise
 601032	Ravak Grimtotem				Exotic Mounts
 601033	Warmaster Molog				Mounts
-601035	Theme Manager				GMIsland Decorator
+601034  Marny						Female Tauren Banker
+601035	Balrog						GM Island Decorator
+601036 	Reina Sands					Bengal Tiger Handler		
+601038 	Black Beauty 				Black Horse
+601039 	Ginger						Caravan Horse (Banker)
+601040 	Hidalgo						Patched Horse
+601041 	Merrylegs					White Horse
+601042 	Spriit						Brown Horse
+601043 	Wolfy						Dog
 601704	Glowing Soul				Heirloom Merchant
+601045	Aurora Skyfall 				Multi-Vendor (Gems)
+601046	Grant Higginbothom			Multi-Vendor (Glyphs)
+601047	Moofoku						Tauren Female Warrior
+601048	Koiter						Koiter
+601049	Koiter						Koiter (Ghost Form)
+601050	Mr. Grubbs					Carrion Grub Critter
+601051	Trump						Currency Exchange
+601052	MAGA						Imperial Eagle Critter
+601053	Retdream					Blood Elf Paladin
+601054	Pamooya						Tauren Shaman
+601055	Girlys						Blood Elf Paladin
+601056	Ragathar					Orc Warrior
+601057	Mobbius						Undead Warlock
+601058	Zagmund						Undead Warrior
+601059	Jadenelle					Undead Mage
+601060	Gatog						Troll Hunter
+601061	Katojune					Orc Shaman
+601062	Bras						Tauren Warrior
+601063	Speedy						Turtle
+601064	Shelly						Turtle
+601075	Crom						Loremaster
+
+-- ----------------------------------------------------------------------------------- --
+-- 6016XX
+-- ----------------------------------------------------------------------------------- --
 601645	The Lich King				Blizzard Entertainment GM Supplies
+
 
 -- ################################################################################### --
 -- GM ISLAND TRAINERS
@@ -98,7 +136,6 @@
 60162	Cooking						Grandmaster Trainer
 60163	First Aid					Grandmaster Trainer
 60164	Fishing						Grandmaster Trainer
-60165	All Classes					Grandmaster Trainer
 
 -- ################################################################################### --
 -- GM ISLAND VENDORS
@@ -274,4 +311,6 @@
 601700	Tailoring Materials			Recipes
 601701	Tailoring Recipes			Recipes
 601702	Ranged 						Weapons	
-601703	Mounts						Mounts	
+601703	Mounts						Mounts
+
+-- For no one - no one in this world can you trust. Not men, not women, not beasts.

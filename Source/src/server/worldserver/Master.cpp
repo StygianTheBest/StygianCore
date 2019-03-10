@@ -133,6 +133,7 @@ int Master::Run()
 
     sLog->outString("    StygianCore 3.3.5a  -  stygianthebest.github.io\n");
 
+
     /// worldserver PID file creation
     std::string pidFile = sConfigMgr->GetStringDefault("PidFile", "");
     if (!pidFile.empty())

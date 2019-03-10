@@ -125,7 +125,7 @@ WorldSession::WorldSession(uint32 id, WorldSocket* sock, AccountTypes sec, uint8
     {
         m_Address = sock->GetRemoteAddress();
         sock->AddReference();
-        ResetTimeOutTime();
+        ResetTimeOutTime(false);
         LoginDatabase.PExecute("UPDATE account SET online = online | (1<<(%u-1)) WHERE id = %u;", realmID, GetAccountId());
     }
 
@@ -144,7 +144,7 @@ WorldSession::~WorldSession()
     /// - If have unclosed socket, close it
     if (m_Socket)
     {
-        m_Socket->CloseSocket();
+        m_Socket->CloseSocket("WorldSession destructor");
         m_Socket->RemoveReference();
         m_Socket = NULL;
     }
@@ -236,7 +236,7 @@ void WorldSession::SendPacket(WorldPacket const* packet)
 #endif
 
     if (m_Socket->SendPacket(*packet) == -1)
-        m_Socket->CloseSocket();
+        m_Socket->CloseSocket("m_Socket->SendPacket(*packet) == -1");
 }
 
 /// Add an incoming packet to the queue
@@ -251,8 +251,11 @@ bool WorldSession::Update(uint32 diff, PacketFilter& updater)
     if (updater.ProcessLogout())
     {
         UpdateTimeOutTime(diff);
-        if (IsConnectionIdle())
-            m_Socket->CloseSocket();
+        
+        /// If necessary, kick the player because the client didn't send anything for too long
+        /// (or they've been idling in character select)
+        if (sWorld->getBoolConfig(CONFIG_CLOSE_IDLE_CONNECTIONS) && IsConnectionIdle())
+            m_Socket->CloseSocket("Client didn't send anything for too long");
     }
 
     HandleTeleportTimeout(updater.ProcessLogout());
@@ -608,10 +611,10 @@ void WorldSession::LogoutPlayer(bool save)
 }
 
 /// Kick a player out of the World
-void WorldSession::KickPlayer(bool setKicked)
+void WorldSession::KickPlayer(std::string const& reason, bool setKicked)
 {
     if (m_Socket)
-        m_Socket->CloseSocket();
+        m_Socket->CloseSocket(reason);
 
     if (setKicked)
         SetKicked(true); // pussywizard: the session won't be left ingame for 60 seconds and to also kick offline session
@@ -652,7 +655,7 @@ void WorldSession::SendNotification(uint32 string_id, ...)
     }
 }
 
-const char *WorldSession::GetTrinityString(int32 entry) const
+char const* WorldSession::GetTrinityString(uint32 entry) const
 {
     return sObjectMgr->GetTrinityString(entry, GetSessionDbLocaleIndex());
 }

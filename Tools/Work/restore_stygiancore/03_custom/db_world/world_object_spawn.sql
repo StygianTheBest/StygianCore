@@ -20,7 +20,7 @@
 */
 
 USE stygian_world;
-
+/*
 -- ################################################################################### --
 -- Update StygianCore table structure for easy Trinity object import
 -- This allows me to design in Trinity using good tools and then port to StygianCore
@@ -34,7 +34,7 @@ ALTER TABLE `stygian_world`.`gameobject`
 ADD zoneId smallint(5) DEFAULT 0,
 ADD areaId smallint(5) DEFAULT 0,
 ADD ScriptName char(64);
-
+*/
 -- ################################################################################### --
 -- OBJECT SPAWN INDEX
 -- ################################################################################### --
@@ -64,13 +64,13 @@ INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, 
 INSERT INTO `gameobject` (`guid`, `id`, `map`, `zoneId`, `areaId`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `ScriptName`, `VerifiedBuild`) VALUES (502438, 182596, 0, 0, 0, 1, 1, 621.316, -3420.92, 105.268, 2.07631, -0, -0, -0.86147, -0.507809, 300, 255, 1, '', 0);
 
 -- Large Backpacks
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502359', '164953', '0', '1', '1', 622.623, -3414.16, 107.202, 3.27334, -0, -0, -0.997831, 0.065826, '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502359', '164953', '0', '1', '1', 622.623, -3414.16, 107.202, 3.27334, -0, -0, -0.997831, 0.065826, '300', '0', '1', '0', 0, 0, "");
 
 -- Tent
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502350', '188185', '0', '1', '1', 623.343, -3416.31, 106.849, 3.75042, -0, -0, -0.954023, 0.299734, '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502350', '188185', '0', '1', '1', 623.343, -3416.31, 106.849, 3.75042, -0, -0, -0.954023, 0.299734, '300', '0', '1', '0', 0, 0, "");
 
 -- Campfire
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502324', '190293', '0', '1', '1', '619.94', '-3419.09', '105.358', '4.08818', '-0', '-0', '-0.890072', '0.455819', '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502324', '190293', '0', '1', '1', '619.94', '-3419.09', '105.358', '4.08818', '-0', '-0', '-0.890072', '0.455819', '300', '0', '1', '0', 0, 0, "");
 
 -- --------------------------------------------------------------------------------------
 -- Ratchet
@@ -157,23 +157,23 @@ INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `pha
 -- ################################################################################### --
 --	SILITHUS CAMP
 -- ################################################################################### --
-DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (502090, 502086, 502085, 502062, 500467, 500469, 501064, 501042, 501040, 500694, 500927, 500802, 501164, 500352, 500354, 500353, 501268, 501272, 501285, 501282, 501281, 501280, 501275);
+DELETE FROM `stygian_world`.`gameobject` WHERE `guid` IN (502090, 502086, 502085, 502062, 500467, 500469, 501064, 501042, 501040, 500694, 500927, 500802, 501164, 500352, 500354, 500353, 501268, 501272, 501285, 501282, 501281, 501280, 501275, 502588);
 
 -- --------------------------------------------------------------------------------------
 -- Lighthouse Crystal (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502090', '177547', '1', '1', '1', '-10710.7', '2482.52', '23.7422', '1.87447', '-0', '-0', '-0.805926', '-0.592017', '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502090', '177547', '1', '1', '1', '-10710.7', '2482.52', '23.7422', '1.87447', '-0', '-0', '-0.805926', '-0.592017', '300', '0', '1', '0', 0, 0, "");
 
 -- --------------------------------------------------------------------------------------
 -- Torches (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502086', '187653', '1', '1', '1', '-10712.5', '2418.62', '7.60764', '2.42273', '-0', '-0', '-0.936096', '-0.351744', '300', '0', '1', '0', NULL, NULL, NULL);
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502085', '187653', '1', '1', '1', '-10718.3', '2411.25', '7.60481', '2.61123', '-0', '-0', '-0.965045', '-0.262083', '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502086', '187653', '1', '1', '1', '-10712.5', '2418.62', '7.60764', '2.42273', '-0', '-0', '-0.936096', '-0.351744', '300', '0', '1', '0', 0, 0, "");
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502085', '187653', '1', '1', '1', '-10718.3', '2411.25', '7.60481', '2.61123', '-0', '-0', '-0.965045', '-0.262083', '300', '0', '1', '0', 0, 0, "");
 
 -- --------------------------------------------------------------------------------------
 -- Dog House (Silithus Camp)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502062', '180033', '1', '1', '1', '-10720.8', '2408.9', '7.60409', '2.24994', '-0', '-0', '-0.902255', '-0.431202', '300', '0', '1', '0', NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`gameobject` (`guid`, `id`, `map`, `spawnMask`, `phaseMask`, `position_x`, `position_y`, `position_z`, `orientation`, `rotation0`, `rotation1`, `rotation2`, `rotation3`, `spawntimesecs`, `animprogress`, `state`, `VerifiedBuild`, `zoneId`, `areaId`, `ScriptName`) VALUES ('502062', '180033', '1', '1', '1', '-10720.8', '2408.9', '7.60409', '2.24994', '-0', '-0', '-0.902255', '-0.431202', '300', '0', '1', '0', 0, 0, "");
 
 -- --------------------------------------------------------------------------------------
 -- Fisherman Items (Silithus Camp)

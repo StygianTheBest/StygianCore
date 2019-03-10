@@ -4,23 +4,26 @@
 
 ## NEWS
 
-### StygianCore v2019.03.01 has been released! 
+### StygianCore <span style="font-weight: bold; color: green;">v2019.03.10</span> has been released!
 
-- [Changelog](https://github.com/StygianTheBest/StygianCore#changelog) | [Bugfixes](https://github.com/StygianTheBest/StygianCore/blob/master/Tools/Work/restore_stygiancore/03_custom/db_world/world_update_bugfix.sql)
-- There are **MANY** new improvements and additions in this version.
-- If you are running a previous version, I **highly recommend** moving to this one ASAP.
+The StygianCore repack and sources have been completely upgraded to the latest revision of [AzerothCore](http://www.azerothcore.org/). I did not want to delay the initial _v2019.03.01_ release of the StygianCore repack, so it did not include the recently revised database structures or important commits that greatly improve the core. If you are running a previous version, I **highly recommend** moving to this one ASAP.
+
+The StygianCore repack will now be released _quarterly_ and will incorporate the latest AzerothCore changes as well as any updated or additional StygianCore custom content. The project sources will be continually updated as I make changes and pull from the AzerothCore repository.
+
+- StygianCore: [Changelog](https://github.com/StygianTheBest/StygianCore#changelog) | [Commits](https://github.com/StygianTheBest/StygianCore/commits/master) | [Bugs](https://github.com/StygianTheBest/StygianCore/issues)
+
+- AzerothCore: [Commits](https://github.com/azerothcore/azerothcore-wotlk/commits/master) | [Bugs](https://github.com/azerothcore/azerothcore-wotlk/issues)
 
 ## DOWNLOAD
 
-- **StygianCore Repack** _(Release v2019.03.01)_
+- **StygianCore Repack** _(Release v2019.03.10)_
   - [Mirror 1 (MEGA)](https://rebrand.ly/stygiancore_release_mega)
   - [Mirror 2 (Google)](https://rebrand.ly/stygiancore_release_google)
 
-- **StygianCore HD Client Upgrade** _(Release v2019.03.01)_
+- **StygianCore HD Client Upgrade** _(Release v2019.03.10)_
   - [View Project Details](https://rebrand.ly/stygiancore335client)
   - [Mirror 1 (MEGA)](https://rebrand.ly/stygiancore_client_mega)
   - [Mirror 2 (Google)](https://rebrand.ly/stygiancore_client_google)
-
 
 ## GREETINGS
 
@@ -666,11 +669,18 @@ World of Warcraft© and Blizzard Entertainment© are all trademarks or registere
 
 ## CHANGELOG
 
+## :wrench: 2019.03.10
+
+#### _Core_
+
+- Source/Binary/Database is now up to date with [AzerothCore](http://www.azerothcore.org/) repository
+
+#### _Module_
+
+- Loremaster Module: Forgotten Crypt text updated
+- Chased down a few typos
+
 ## :wrench: 2019.03.05
-
-#### _Download_
-
-- [StygianCore Patch](https://github.com/StygianTheBest/StygianCore/tree/master/Tools/Patch)
 
 #### _Module_
 

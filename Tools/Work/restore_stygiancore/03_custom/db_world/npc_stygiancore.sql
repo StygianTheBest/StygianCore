@@ -92,6 +92,26 @@
 -- 601050 - Carrion Grub Critter
 -- 601051 - Currency Exchange
 -- 601052 - Imperial Eagle Critter
+-- 601045 - Aurora Skyfall 		Multi-Vendor (Gems)
+-- 601046 - Grant Higginbothom	Multi-Vendor (Glyphs)
+-- 601047 - Moofoku
+-- 601048 - Koiter	
+-- 601049 - Koiter (Ghost)		
+-- 601050 - Mr. Grubbs
+-- 601051 - Trump
+-- 601052 - MAGA		
+-- 601053 - Retdream
+-- 601054 - Pamooya	
+-- 601055 - Girlys	
+-- 601056 - Ragathar
+-- 601057 - Mobbius	
+-- 601058 - Zagmund
+-- 601059 - Jadenelle
+-- 601060 - Gatog
+-- 601061 - Katojune
+-- 601062 - Bras
+-- 601063 - Speedy (Turtle)
+-- 601064 - Shelly (Turtle)
 -- 601075 - Loremaster
 --  70105 - Global Trainer
 */
@@ -130,12 +150,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Come browse my selection of the purest exotic pet breeds.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Come browse my selection of the purest exotic pet breeds.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Come browse my selection of the purest exotic pet breeds.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -333,12 +353,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Are you interested in a companion.. pet?');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Are you interested in a companion.. pet?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Are you interested in a companion.. pet?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -426,12 +446,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'You got the dub? I got the grub.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'You got the dub? I got the grub.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'You got the dub? I got the grub.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -636,12 +656,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My spirits are aged to perfection.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My spirits are aged to perfection.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My spirits are aged to perfection.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -904,7 +924,7 @@ INSERT INTO npc_vendor (entry, item) VALUES
 -- CLEAN UP FISHERMAN WAYPOINTS - SET CREATURE MOVEMENTTYPE = '2' FOR ANIMATION TO START
 -- --------------------------------------------------------------------------------------
 DELETE FROM `creature_addon` WHERE `guid`=1993577;
-DELETE FROM `db_script_string` WHERE entry >= 2000006050 AND entry <= 2000006052;
+DELETE FROM `broadcast_text` WHERE ID >= 77500 AND ID <= 77502;
 DELETE FROM `waypoint_scripts` WHERE guid >= 938 AND guid <= 941;
 DELETE FROM `waypoint_data` WHERE id = 1993577 AND point <= 13;
 
@@ -916,20 +936,20 @@ INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `e
 -- --------------------------------------------------------------------------------------
 -- FISHERMAN WAYPOINT STRINGS
 -- --------------------------------------------------------------------------------------
-INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) 
-VALUES 
-(2000006050, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2000006051, 'Many men go fishing all of their lives without knowing that it is not fish they are after.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2000006052, 'I wonder if they ever found that hidden treasure buried on the Isle of Dread?', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`) 
+VALUES
+(77500, 0, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.'),
+(77501, 0, 'Many men go fishing all of their lives without knowing that it is not fish they are after.'),
+(77502, 0, 'I wonder if they ever found that hidden treasure buried on the Isle of Dread?');
 
 -- --------------------------------------------------------------------------------------
 -- FISHERMAN WAYPOINT SCRIPTS
 -- --------------------------------------------------------------------------------------
 INSERT INTO `waypoint_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `dataint`, `x`, `y`, `z`, `o`, `guid`) 
 VALUES 
-(938, 0, 0, 0, 0, 2000006050, 0, 0, 0, 0, 938), -- Say
-(939, 0, 0, 0, 0, 2000006051, 0, 0, 0, 0, 939), -- Say
-(940, 0, 0, 0, 0, 2000006052, 0, 0, 0, 0, 940), -- Say
+(938, 0, 0, 0, 0, 77500, 0, 0, 0, 0, 938), -- Say
+(939, 0, 0, 0, 0, 77501, 0, 0, 0, 0, 939), -- Say
+(940, 0, 0, 0, 0, 77502, 0, 0, 0, 0, 940), -- Say
 (941, 0, 31, 601005, 0, 0, 0, 0, 0, 0, 941);	-- Equip
 
 -- --------------------------------------------------------------------------------------
@@ -991,12 +1011,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My selection of antiquities is unique.. and expensive.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My selection of antiquities is unique.. and expensive.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My selection of antiquities is unique.. and expensive.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1123,12 +1143,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Books are a uniquely portable magic. A reader lives a thousand lives before he dies.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1199,12 +1219,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Want a balloon?');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Want a balloon?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Want a balloon?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1327,12 +1347,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My elegant silken thread is soft to the touch.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My elegant silken thread is soft to the touch.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My elegant silken thread is soft to the touch.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1490,12 +1510,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hey, back here, in the dark alley.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Hey, back here, in the dark alley.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Hey, back here, in the dark alley.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1546,12 +1566,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Wanna go out with a BANG! Come talk to Sparky!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Wanna go out with a BANG! Come talk to Sparky!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Wanna go out with a BANG! Come talk to Sparky!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1623,12 +1643,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Appearances are my specialty!');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Appearances are my specialty!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Appearances are my specialty!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1774,12 +1794,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hey there $N. Lookin\' for a good time?');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Loot
 DELETE FROM `stygian_world`.`creature_loot_template` WHERE `entry` = @LootID;
-INSERT INTO `stygian_world`.`creature_loot_template` (`entry`, `item`, `ChanceOrQuestChance`, `lootmode`, `groupid`, `mincountOrRef`, `maxcount`) VALUES 
+INSERT INTO `stygian_world`.`creature_loot_template` (`entry`, `item`, `Chance`, `lootmode`, `groupid`, `MinCount`, `maxcount`) VALUES 
 ('60117', '29571', '100', '1', '0', '1', '1'),
 ('60117', '37467', '75', '1', '0', '1', '1'),
 ('60117', '46023', '50', '1', '0', '1', '1'),
@@ -1847,12 +1867,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'I am the keymaster, the lock picker, and the door opener.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I am the keymaster, the lock picker, and the door opener.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I am the keymaster, the lock picker, and the door opener.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -1987,12 +2007,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'I have what you want. Come see.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I have what you want. Come see.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'I have what you want. Come see.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -2363,16 +2383,16 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Gossip Menu Option
-DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'I want to see your wares', 3, 128, @Entry, 0, 0, 0, '');
+DELETE FROM `gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO gossip_menu_option (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES (@GossipMenu, 0, 3, 'I want to see your wares', 3, 128, @Entry, 0, 0, 0, '');
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'My child, no matter how many years go by, no matter how far you\'re away from me, nothing can change the bond between us, my baby you\'ll always be.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -2415,12 +2435,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Need a boost? Try one of these.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Need a boost? Try one of these.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Need a boost? Try one of these.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3063,14 +3083,14 @@ DELETE FROM `npc_text` WHERE `ID` = @Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. Lucky you.. You\'ve arrived at just the right time.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Gossip Menu Option
-DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'Train Tiger Riding', 1, 1, @GossipMenu, 0, 0, 0, '');
-INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 1, 2, 'Adopt a Bengal Tiger', 1, 1, @GossipMenu, 0, 0, 0, '');
-INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 2, 9, 'Pray to Elune', 1, 1, @GossipMenu, 0, 0, 0, '');
+DELETE FROM `gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES (@GossipMenu, 0, 3, 'Train Tiger Riding', 1, 1, @GossipMenu, 0, 0, 0, '');
+INSERT INTO `gossip_menu_option`  (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES (@GossipMenu, 1, 2, 'Adopt a Bengal Tiger', 1, 1, @GossipMenu, 0, 0, 0, '');
+INSERT INTO `gossip_menu_option`  (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES (@GossipMenu, 2, 9, 'Pray to Elune', 1, 1, @GossipMenu, 0, 0, 0, '');
 
 -- Smart Scripts
 DELETE FROM `smart_scripts` WHERE `entryorguid` = @Entry;
@@ -3246,8 +3266,8 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Ruff! Ruff! Ruff!', '14', '0', '100', '0', '0', '10827', @Entry, '0', 'Random Bark');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Ruff! Ruff! Ruff!', '14', '0', '100', '0', '0', '10827', @Entry, '0', 'Random Bark');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3356,8 +3376,8 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
-DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES
 (@GossipMenu, 0, 3, 'Blue', 3, 128, 601099, 0, 0, 0, ''),
 (@GossipMenu, 1, 3, 'Green', 3, 128, 601100, 0, 0, 0, ''),
 (@GossipMenu, 2, 3, 'Orange', 3, 128, 601101, 0, 0, 0, ''),
@@ -3373,12 +3393,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Hello $N. My gems sparkle unlike any other.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of precious gemstones?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of precious gemstones?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3418,8 +3438,8 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
-DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES
 (@GossipMenu, 0, 3, 'Death Knight', 3, 128, 601107, 0, 0, 0, ''),
 (@GossipMenu, 1, 3, 'Druid', 3, 128, 601108, 0, 0, 0, ''),
 (@GossipMenu, 2, 3, 'Hunter', 3, 128, 601109, 0, 0, 0, ''),
@@ -3437,12 +3457,12 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. I have the best selection of glyphs for all classes.');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of glyphs?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Have you seen my selection of glyphs?', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3491,17 +3511,17 @@ DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 17182, 0, 0, 18019); -- Sulfuras, Hand of Ragnaros, None
 
 -- Gossip Menu Option
-DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES
 (@GossipMenu, 0, 6, 'The Gift', 3, 128, @Entry, 0, 0, 250000, 'Do you have the gold?');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Aye Mr. Grubbs, May the Warsong never fade.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Aye Mr. Grubbs, May the Warsong never fade.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3548,8 +3568,8 @@ DELETE FROM creature_template WHERE entry = @Entry;
 INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_menu_id, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, mindmg, maxdmg, baseattacktime, unit_class, unit_flags, unit_flags2, dynamicflags, type, type_flags, InhabitType, RegenHealth, flags_extra, AiName, ScriptName) VALUES
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, @MinDmg, @MaxDmg, @BaseAttack,'1', @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
-DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES
 (@GossipMenu, 0, 6, 'Special', 3, 128, @Entry, 0, 0, 100, 'These goods are special, so pay up!');
 
 -- NPC Text
@@ -3561,12 +3581,12 @@ DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 701012, 0, 0, 18019); -- Koiter's Claymore, None
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3615,8 +3635,8 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, spell1,
 (@Entry, @Model, @Name, @Title, @Icon, @Spell1, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, @MinDmg, @MaxDmg, @BaseAttack,'1', @UnitFlags, @UnitFlags2, @DynamicFlags, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
 -- GOSSIP MENU OPTION
-DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu_option` (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES
+DELETE FROM `stygian_world`.`gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu_option` (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES
 (@GossipMenu, 0, 6, 'Special', 3, 128, @Entry, 0, 0, 100, 'These goods are special, so pay up!');
 
 
@@ -3629,16 +3649,16 @@ DELETE FROM `creature_equip_template` WHERE `CreatureID`=@Entry AND `ID`=1;
 INSERT INTO `creature_equip_template` VALUES (@Entry, 1, 701012, 0, 0, 18019); -- Koiter's Claymore, None
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Blood and Thunder! I feel the call of battle even in death.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
-INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Blood and Thunder! The feel the call of battle even in death!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`, `FemaleText`, `EmoteID0`, `EmoteID1`, `EmoteID2`, `EmoteDelay0`, `EmoteDelay1`, `EmoteDelay2`, `SoundId`, `Unk1`, `Unk2`, `VerifiedBuild`) VALUES (@Entry, '0', 'Blood and Thunder! I feel the call of battle even in death!', '', '0', '0', '0', '0', '0', '0', '0', '0', '1', '12034');
 
 -- Smart Scripts
 DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
@@ -3652,7 +3672,7 @@ INSERT INTO `stygian_world`.`creature_model_info` (`DisplayID`, `BoundingRadius`
 DELETE FROM `stygian_world`.`smart_scripts` WHERE `entryorguid` = @Entry;
 INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '0', '0', '25', '0', '100', '0', '0', '0', '0', '0', '11', '18950', '2', '0', '0', '0', '0', '1', '0', '0', '0', '0', '0', '0', '0', 'On Reset - Cast Invisibility and Stealth Detection');
 INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '1', '0', '0', '0', '100', '0', '0', '3000', '15000', '20000', '11', '12024', '32', '0', '0', '0', '0', '2', '0', '0', '0', '0', '0', '0', '0', 'In Combat - Cast Net');
-INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '2', '0', '6', '0', '100', '0', '0', '0', '0', '0', '149', '0', '0', '0', '0', '0', '0', '7', '0', '0', '0', '0', '0', '0', '0', 'On Death - Send Zone Under Attack');
+INSERT INTO `stygian_world`.`smart_scripts` (`entryorguid`, `source_type`, `id`, `link`, `event_type`, `event_phase_mask`, `event_chance`, `event_flags`, `event_param1`, `event_param2`, `event_param3`, `event_param4`, `action_type`, `action_param1`, `action_param2`, `action_param3`, `action_param4`, `action_param5`, `action_param6`, `target_type`, `target_param1`, `target_param2`, `target_param3`, `target_x`, `target_y`, `target_z`, `target_o`, `comment`) VALUES (@Entry, '0', '2', '0', '6', '0', '100', '0', '0', '0', '0', '0', '214', '0', '0', '0', '0', '0', '0', '7', '0', '0', '0', '0', '0', '0', '0', 'On Death - Send Zone Under Attack');
 
 -- --------------------------------------------------------------------------------------
 -- Mr. Grubbs, Moofoku's Pet
@@ -3716,16 +3736,16 @@ DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`, `em1_0`) VALUES (@Entry, 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '11');
 
 -- Gossip Menu
-DELETE FROM `stygian_world`.`gossip_menu` WHERE `entry` = @GossipMenu;
-INSERT INTO `stygian_world`.`gossip_menu` (`entry`, `text_id`) VALUES (@GossipMenu, @Entry);
+DELETE FROM `stygian_world`.`gossip_menu` WHERE `MenuID` = @GossipMenu;
+INSERT INTO `stygian_world`.`gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipMenu, @Entry);
 
 -- Gossip Menu Option
-DELETE FROM `gossip_menu_option` WHERE `menu_id` = @GossipMenu;
-INSERT INTO gossip_menu_option  (`menu_id`, `id`, `option_icon`, `option_text`, `option_id`, `npc_option_npcflag`, `action_menu_id`, `action_poi_id`, `box_coded`, `box_money`, `box_text`) VALUES (@GossipMenu, 0, 3, 'God Bless America! Show me your wares.', 3, 128, 601524, 0, 0, 0, '');
+DELETE FROM `gossip_menu_option` WHERE `MenuID` = @GossipMenu;
+INSERT INTO gossip_menu_option  (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`) VALUES (@GossipMenu, 0, 3, 'God Bless America! Show me your wares.', 3, 128, 601524, 0, 0, 0, '');
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'So to all Americans, in every city near and far, small and large, from mountain to mountain, and from ocean to ocean, hear these words: You will never be ignored again. Your voice, your hopes, and your dreams will define our American destiny. And your courage and goodness and love will forever guide us along the way.', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3764,8 +3784,8 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 (@Entry, @Model, @Name, @Title, @Icon, @GossipMenu, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1, 1.14286, @Scale, @Rank, 1, 2, @Type, @TypeFlags, 3, 1, @FlagsExtra, @AIName, @Script);
 
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Entry;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Build The Wall!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Entry;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Entry, '0', '0', 'Build The Wall!', '12', '0', '100', '0', '0', '0', @Entry, '0', 'Speak');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Entry;
@@ -3848,6 +3868,7 @@ SET
 
 DELETE FROM `creature_addon` WHERE `guid`=@GUID;
 DELETE FROM `db_script_string` WHERE entry >= 2000006053 AND entry <= 2000006055;
+DELETE FROM `broadcast_text` WHERE ID >= 77503 AND ID <= 77505;
 DELETE FROM `waypoint_scripts` WHERE guid >= 950 AND guid <= 952;
 DELETE FROM `waypoint_data` WHERE id = @GUID;
 
@@ -3859,20 +3880,20 @@ INSERT INTO `creature_addon` (`guid`, `path_id`, `mount`, `bytes1`, `bytes2`, `e
 -- --------------------------------------------------------------------------------------
 -- CANOE WAYPOINT STRINGS (db_script_string)
 -- --------------------------------------------------------------------------------------
-INSERT INTO `db_script_string` (`entry`, `content_default`, `content_loc1`, `content_loc2`, `content_loc3`, `content_loc4`, `content_loc5`, `content_loc6`, `content_loc7`, `content_loc8`) 
-VALUES 
-(2000006053, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2000006054, 'It\'s not the years in your life, it\'s the life in your years.', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2000006055, 'Hey! You over there! Tell Marny I\'ll be there soon!', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `stygian_world`.`broadcast_text` (`ID`, `Language`, `MaleText`) 
+VALUES
+(77503, 0, 'Ahh.. the sea. Once it casts its spell, it holds one in its net of wonder forever.'),
+(77504, 0, 'It\'s not the years in your life, it\'s the life in your years.'),
+(77505, 0, 'Hey! You over there! Tell Marny I\'ll be there soon!');
 
 -- --------------------------------------------------------------------------------------
 -- CANOE WAYPOINT SCRIPTS (waypoint_scripts)
 -- --------------------------------------------------------------------------------------
 INSERT INTO `waypoint_scripts` (`id`, `delay`, `command`, `datalong`, `datalong2`, `dataint`, `x`, `y`, `z`, `o`, `guid`) 
 VALUES 
-(950, 0, 0, 2, 0, 2000006053, 0, 0, 0, 0, 950), -- Yell
-(951, 0, 0, 0, 0, 2000006054, 0, 0, 0, 0, 951), -- Say
-(952, 0, 0, 0, 0, 2000006055, 0, 0, 0, 0, 952); -- Say
+(950, 0, 0, 2, 0, 77503, 0, 0, 0, 0, 950), -- Yell
+(951, 0, 0, 0, 0, 77504, 0, 0, 0, 0, 951), -- Say
+(952, 0, 0, 0, 0, 77505, 0, 0, 0, 0, 952); -- Say
 
 -- --------------------------------------------------------------------------------------
 -- CANOE WAYPOINT DATA (waypoint_data)
@@ -3918,7 +3939,7 @@ SET
 @GossipMenu 		:= 12275;
 
 DELETE FROM `stygian_world`.`gameobject_template` WHERE `entry`=@Entry;
-INSERT INTO `stygian_world`.`gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `faction`, `flags`, `size`, `Data0`, `Data1`, `Data2`, `Data3`, `Data4`, `Data5`, `Data6`, `Data7`, `Data8`, `Data9`, `Data10`, `Data11`, `Data12`, `Data13`, `Data14`, `Data15`, `Data16`, `Data17`, `Data18`, `Data19`, `Data20`, `Data21`, `Data22`, `Data23`, `AIName`, `ScriptName`, `VerifiedBuild`) VALUES (@Entry, '2', '3079', 'Moofoku\'s Backpacks', '', '', '', '0', '0', '1', '0', '3365', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '', '12340');
+INSERT INTO `stygian_world`.`gameobject_template` (`entry`, `type`, `displayId`, `name`, `IconName`, `castBarCaption`, `unk1`, `size`, `Data0`, `Data1`, `Data2`, `Data3`, `Data4`, `Data5`, `Data6`, `Data7`, `Data8`, `Data9`, `Data10`, `Data11`, `Data12`, `Data13`, `Data14`, `Data15`, `Data16`, `Data17`, `Data18`, `Data19`, `Data20`, `Data21`, `Data22`, `Data23`, `AIName`, `ScriptName`, `VerifiedBuild`) VALUES (@Entry, '2', '3079', 'Moofoku\'s Backpacks', '', '', '', '1', '0', '3365', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '0', '', '', '12340');
 
 -- TODO: Add npc text to object gossip dialog
 	

@@ -64,7 +64,7 @@ SET
 DELETE FROM `npc_loremaster` WHERE `id`>= @StartEntry AND `id` <= @EndEntry;
 DELETE FROM `creature_template` WHERE `entry` >= @StartEntry AND `entry` <= @EndEntry;
 DELETE FROM `npc_text` WHERE `ID` >= @StartEntry AND `ID` <= @EndEntry;
-DELETE FROM `gossip_menu` WHERE `entry` >= @StartGossipEntry AND `entry` <= @EndGossipEntry; 
+DELETE FROM `gossip_menu` WHERE `MenuID` >= @StartGossipEntry AND `MenuID` <= @EndGossipEntry; 
 DELETE FROM `creature_equip_template` WHERE `CreatureID` >= @StartEntry AND `CreatureID` <= @EndEntry;
 DELETE FROM `creature_template_addon` WHERE `entry` >= @StartEntry AND `entry` <= @EndEntry;
 DELETE FROM `creature` WHERE `guid` >= @StartGUID AND `guid` <= @EndGUID;
@@ -114,16 +114,18 @@ SET
 -- --------------------------------------------------------------------------------------
 
 -- Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@StartGUID, @StartEntry, @WorldMap, '1', '1', '0', '1', '-383.47', '-2181.44', '157.881', '0.135076', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES 
+(@StartGUID, @StartEntry, @WorldMap, '-383.47', '-2181.44', '157.881', '0.135076', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@StartEntry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@StartEntry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @StartGossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@StartEntry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @StartGossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@StartEntry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@StartGossipEntry, @StartEntry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@StartGossipEntry, @StartEntry);
 INSERT INTO `creature_template_addon` VALUES (@StartEntry, '0', '0', '0', '0', '0', '');
 
 /*
@@ -162,16 +164,18 @@ SET
 -- --------------------------------------------------------------------------------------
 
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '-6571.03', '-3465.89', '304.625', '5.50124', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES  
+(@GUID, @Entry, @WorldMap, '-6571.03', '-3465.89', '304.625', '5.50124', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');
 
 /*
@@ -210,16 +214,18 @@ SET
 -- --------------------------------------------------------------------------------------
 
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '7452.25', '-1694.05', '195.624', '3.19806', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES 
+(@GUID, @Entry, @WorldMap, '7452.25', '-1694.05', '195.624', '3.19806', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');
 
 /*
@@ -254,20 +260,22 @@ SET
 @WorldMap		:= 1,
 
 -- Loremaster Text
-@NPCText := "Greetings $N..$B$BThis abandoned Tauren camp was destroyed during the Cataclysm. Only the small cave network to the east remains. The caves remained empty except for a sleeping red dragon named Andrestrasz — added much later — and several piles of bones of various sizes. Although some bones could possibly be from Tauren, the area is free of any signs of conflict.$B$BThe camp was reachable by swimming west from Land's End Beach and past Silithus or south from the western corner of Feralas. At normal speed, without buffs, the journey here took ten minutes or more.$B$BThe area was probably meant as a stronghold for the Horde, Cenarion Enclave, or Grimtotem tribe. Due to its hard to reach position — by swimming or water walking, thus making use of the aquatic form — it might have had also something to do with druid training. There were no NPCs or interactive objects, either alive or as a ghost, in this village... until now!";
+@NPCText := "Greetings $N..$B$BThis abandoned Tauren camp was destroyed during the Cataclysm. Only the small cave network to the east remained. The caves remained empty except for a sleeping red dragon named Andrestrasz — added much later — and several piles of bones of various sizes. Although some bones could possibly be from Tauren, the area is free of any signs of conflict.$B$BThe camp was reachable by swimming west from Land's End Beach and past Silithus or south from the western corner of Feralas. At normal speed, without buffs, the journey here took ten minutes or more.$B$BThe area was probably meant as a stronghold for the Horde, Cenarion Enclave, or Grimtotem tribe. Due to its hard to reach position — by swimming or water walking, thus making use of the aquatic form — it might have had also something to do with druid training. There were no NPCs or interactive objects, either alive or as a ghost, in this village... until now!";
 -- --------------------------------------------------------------------------------------
 
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '-10797.7', '2437.68', '3.34298', '0.412124', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES 
+(@GUID, @Entry, @WorldMap, '-10797.7', '2437.68', '3.34298', '0.412124', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');
 
 /*
@@ -306,16 +314,18 @@ SET
 -- --------------------------------------------------------------------------------------
 			
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '2580.66', '2906.98', '24.472', '0.892148', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES  
+(@GUID, @Entry, @WorldMap, '2580.66', '2906.98', '24.472', '0.892148', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');
 
 
@@ -337,20 +347,22 @@ SET
 @WorldMap		:= 0,
 
 -- Loremaster Text
-@NPCText := "Join me for a minute $N..$B$BThis Forgotten Crypt lies behind the tower of Karazhan, in the cemetery at Morgan's Plot. According to John Staats, author of the WoW Diary, it was one of the few areas he designed that wasn't used by Blizzard. I've reached out to him and will update this if he responds with more information. This crypt was only accessible by glitching through the metal gate either by dying and ressurecting on the other side or later using a Warlocks portal.$B$BInside the crypt there are several interesting locations: Well of the Forgotten, The Upside Down Sinners, Tomb of the Unrepentant, and the Pit of Criminals with a LARGE pile of bones. Claw marks abound around the well and in other areas. Another interesting detail is that the crypt runs under the Tranquil Gardens Cemetery in Duskwood.$B$BThis area was finally put to use as the location for last step of the epic quest chain 'Lucid Nightmare' in Legion.$B$B\"The way is now open. To the greatest secret never told. A fitting end to your journey.\"";
+@NPCText := "Join me for a minute $N..$B$BThis Forgotten Crypt lies behind the tower of Karazhan, in the cemetery at Morgan's Plot. According to John Staats, author of \"The WoW Diary\" and designer of Karazhan, it was one of the few areas he designed that wasn't used by Blizzard. I spoke with John and he told me the Upside Down Sinners area was a reference to the movie \"Big Trouble in Little China,\" which puts to rest some speculation about the area that has circulated throughout the WoW community over the years.$B$BThis crypt was only accessible by glitching through the metal gate either by dying and resurrecting on the other side or by using a Warlock's portal. Once inside, other players could be summoned.$B$BInside the crypt there are several interesting locations: Well of the Forgotten that drops down to a LARGE pile of bones, The Upside Down Sinners, Pauper's Walk, The Pit of Criminals, and a few others. Claw marks can be seen on the walls and floors, and bones are littered throughout the crypt. The crypt's tunnels run under the Tranquil Gardens Cemetery in Duskwood which might have been intended as a future entryway or is merely a coincidence.$B$BThis long dormant crypt was finally put to use in the epic quest chain \"Lucid Nightmare\" from the Legion expansion. The following is the last clue in the quest chain which leads you to this crypt..$B$B\"The way is now open. To the greatest secret never told. A fitting end to your journey.\"$B$BAnd now, thanks to the crypt's designer, the secret has finally been revealed.$B$B- StygianTheBest (2019-03-09)";
 -- --------------------------------------------------------------------------------------
 
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '-11102.3', '-1797.4', '52.5843', '6.25904', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES
+(@GUID, @Entry, @WorldMap, '-11102.3', '-1797.4', '52.5843', '6.25904', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');
 
 
@@ -376,14 +388,16 @@ SET
 -- --------------------------------------------------------------------------------------
 
 -- Loremaster NPC Spawn Coords - Copy this from the database after placing a Loremaster NPC
-INSERT INTO `creature` VALUES (@GUID, @Entry, @WorldMap, '1', '1', '0', '1', '-506.222', '7424.26', '174.948', '4.63585', '300', '0', '0', '12600', '0', '0', '0', '0', '0');
+INSERT INTO `creature` (`guid`, `id`, `map`, `position_x`, `position_y`, `position_z`, `orientation`, `spawntimesecs`, `spawndist`, `curhealth`)
+VALUES 
+(@GUID, @Entry, @WorldMap, '-506.222', '7424.26', '174.948', '4.63585', '300', '0', '12600');
 
 -- Edit this to change what the NPC has equipped
 INSERT INTO `creature_equip_template` VALUES (@Entry, '1', '45861', '1906', '0', '18019'); -- Diamond Tipped Cane, Torch
 
 -- No changes needed
 INSERT INTO `npc_loremaster` VALUES (@GUID, @XPos, @YPos, @ZPos, @Orientation, @WorldMap, @Location);
-INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, Health_mod, Mana_mod, Armor_mod, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
+INSERT INTO `creature_template` (entry, name, subname, minlevel, maxlevel, faction, npcflag, speed_walk, speed_run, scale, rank, dmgschool, BaseAttackTime, RangeAttackTime, unit_class, unit_flags, unit_flags2, dynamicflags, family, trainer_type, trainer_spell, trainer_class, trainer_race, type, type_flags, lootid, pickpocketloot, skinloot, PetSpellDataId, VehicleId, mingold, maxgold, AIName, MovementType, InhabitType, HoverHeight, HealthModifier, ManaModifier, ArmorModifier, mindmg, maxdmg, RacialLeader, RegenHealth, mechanic_immune_mask, flags_extra, exp, modelid1, modelid2, modelid3, modelid4, resistance1, resistance2, resistance3, resistance4, resistance5, resistance6, difficulty_entry_1, difficulty_entry_2, difficulty_entry_3, spell1, spell2, spell3, spell4, spell5, spell6, spell7, spell8, ScriptName, gossip_menu_id) VALUES (@Entry, @Name, @Title, @MinLevel, @MaxLevel, @Faction, @NPCFlag, 1.1, 1.17, @Scale, @Rank, 0, 500, 500, 1, 0, 0, 1, 0, 0, 0, 0, 0, @Type, @TypeFlags, 0, 0, 0, 0, 0, 0, 0, @AIName, 0, 3, 1, 1, 1, 1, @MinDmg, @MaxDmg, 0, @RegenHealth, 0, @FlagsExtra, @Exp, @Model, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, @Script, @GossipEntry);
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, @NPCText);
-INSERT INTO `gossip_menu` (`entry`, `text_id`) VALUES (@GossipEntry, @Entry);
+INSERT INTO `gossip_menu` (`MenuID`, `TextID`) VALUES (@GossipEntry, @Entry);
 INSERT INTO `creature_template_addon` VALUES (@Entry, '0', '0', '0', '0', '0', '');

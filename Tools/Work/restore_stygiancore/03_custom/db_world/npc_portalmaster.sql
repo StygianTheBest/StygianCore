@@ -51,8 +51,8 @@ DELETE from creature WHERE ID = @ENTRY;
 DELETE from gameobject WHERE ID = @RUNE AND guid >= 200000;
 
 -- UPDATE GOSSIP_MENU RANGE AFTER ADDING NEW ENTRYS
-DELETE FROM gossip_menu WHERE entry BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
-DELETE FROM gossip_menu_option WHERE menu_id BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
+DELETE FROM gossip_menu WHERE MenuID BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
+DELETE FROM gossip_menu_option WHERE MenuID BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
 DELETE FROM conditions WHERE (SourceTypeOrReferenceId = 15 OR SourceTypeOrReferenceId = 14) AND SourceGroup BETWEEN @GOSSIP_MENU AND @GOSSIP_MENU+10;
 
 -- --------------------------------------------------------------------------------------
@@ -69,7 +69,7 @@ INSERT INTO creature_template_addon (entry, mount, bytes1, bytes2, emote, path_i
 -- --------------------------------------------------------------------------------------
 -- Gossip header text link to menus
 -- --------------------------------------------------------------------------------------
-INSERT INTO gossip_menu (entry, text_id) VALUES
+INSERT INTO gossip_menu (MenuID, TextID) VALUES
 (@GOSSIP_MENU+4, @TEXT_ID+3),
 (@GOSSIP_MENU+3, @TEXT_ID+2),
 (@GOSSIP_MENU+2, @TEXT_ID+2),
@@ -268,7 +268,8 @@ INSERT INTO conditions (SourceTypeOrReferenceId, SourceGroup, SourceEntry, Condi
 (15, @GOSSIP_MENU, 10, 27, 57, 3, 0, "Portal Master - Level req"),
 (15, @GOSSIP_MENU, 9, 27, 67, 3, 0, "Portal Master - Level req");
 
-INSERT INTO gossip_menu_option (menu_id, id, option_icon, option_text, option_id, npc_option_npcflag, action_menu_id, action_poi_id, box_coded, box_money, box_text) VALUES
+INSERT INTO gossip_menu_option (`MenuID`, `OptionID`, `OptionIcon`, `OptionText`, `OptionType`, `OptionNPCFlag`, `ActionMenuID`, `ActionPoiID`, `BoxCoded`, `BoxMoney`, `BoxText`)
+VALUES
 
 -- --------------------------------------------------------------------------------------
 -- MAIN MENU

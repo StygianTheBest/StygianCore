@@ -8,7 +8,11 @@
 #define AZEROTHCORE_GOSSIP_H
 
 #include "Common.h"
-#include "ObjectGuid.h" // #SCMOD
+
+// #StygianCore (#SCMOD - Multi-Vendor)
+#include "ObjectGuid.h"
+// #StygianCore (#SCMOD - Multi-Vendor)
+
 #include "QuestDef.h"
 #include "NPCHandler.h"
 
@@ -157,8 +161,12 @@ class GossipMenu
         
         void SetMenuId(uint32 menu_id) { _menuId = menu_id; }
         uint32 GetMenuId() const { return _menuId; }
-        void SetSenderGUID(ObjectGuid guid) { _senderGUID = guid; } // # SCMOD
-        ObjectGuid GetSenderGUID() const { return _senderGUID; }  // # SCMOD
+
+        // #StygianCore (#SCMOD - Multi-Vendor)
+        void SetSenderGUID(ObjectGuid guid) { _senderGUID = guid; }
+        ObjectGuid GetSenderGUID() const { return _senderGUID; }
+        // #StygianCore (#SCMOD - Multi-Vendor)
+
         void SetLocale(LocaleConstant locale) { _locale = locale; }
         LocaleConstant GetLocale() const { return _locale; }
 
@@ -214,7 +222,11 @@ class GossipMenu
         GossipMenuItemContainer _menuItems;
         GossipMenuItemDataContainer _menuItemData;
         uint32 _menuId;
+
+        // #StygianCore (#SCMOD - Multi-Vendor)
         ObjectGuid _senderGUID; // # SCMOD
+        // #StygianCore (#SCMOD - Multi-Vendor)
+
         LocaleConstant _locale;
 };
 

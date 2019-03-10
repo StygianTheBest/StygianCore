@@ -16,7 +16,11 @@
 #include "AddonMgr.h"
 #include "DatabaseEnv.h"
 #include "World.h"
-#include "ObjectGuid.h" // #SCMOD
+
+// #StygianCore (#SCMOD - Multi-Vendor)
+#include "ObjectGuid.h" 
+// #StygianCore (#SCMOD - Multi-Vendor)
+
 #include "WorldPacket.h"
 #include "GossipDef.h"
 #include "Cryptography/BigNumber.h"
@@ -218,8 +222,10 @@ class WorldSession
         std::string const& GetPlayerName() const;
         std::string GetPlayerInfo() const;
 
+        // #StygianCore (#SCMOD - Multi-Vendor)
         uint32 GetCurrentVendor() const { return m_currentVendorEntry; }
         void SetCurrentVendor(uint32 vendorEntry) { m_currentVendorEntry = vendorEntry; }
+        // #StygianCore (#SCMOD - Multi-Vendor)
 
         uint32 GetGuidLow() const;
         void SetSecurity(AccountTypes security) { _security = security; }
@@ -251,7 +257,8 @@ class WorldSession
         }
 
         void LogoutPlayer(bool save);
-        void KickPlayer(bool setKicked = true);
+        void KickPlayer(bool setKicked = true) { return this->KickPlayer("Unknown reason", setKicked); }
+        void KickPlayer(std::string const& reason, bool setKicked = true);
 
         void QueuePacket(WorldPacket* new_packet);
         bool Update(uint32 diff, PacketFilter& updater);
@@ -264,9 +271,12 @@ class WorldSession
 
         void SendTrainerList(uint64 guid);
         void SendTrainerList(uint64 guid, std::string const& strTitle);
-        // #SCMOD
+
+        // #StygianCore (#SCMOD - Multi-Vendor)
         //void SendListInventory(uint64 guid);
         void SendListInventory(ObjectGuid guid, uint32 vendorEntry = 0);
+        // #StygianCore (#SCMOD - Multi-Vendor)
+
         void SendShowBank(uint64 guid);
         bool CanOpenMailBox(uint64 guid);
         void SendShowMailBox(uint64 guid);
@@ -347,7 +357,7 @@ class WorldSession
         // Locales
         LocaleConstant GetSessionDbcLocale() const { return m_sessionDbcLocale; }
         LocaleConstant GetSessionDbLocaleIndex() const { return m_sessionDbLocaleIndex; }
-        const char *GetTrinityString(int32 entry) const;
+        char const* GetTrinityString(uint32 entry) const;
 
         uint32 GetLatency() const { return m_latency; }
         void SetLatency(uint32 latency) { m_latency = latency; }
@@ -361,9 +371,12 @@ class WorldSession
             else
                 m_timeOutTime -= diff;
         }
-        void ResetTimeOutTime()
+        void ResetTimeOutTime(bool onlyActive)
         {
-            m_timeOutTime = sWorld->getIntConfig(CONFIG_SOCKET_TIMEOUTTIME);
+            if (GetPlayer())
+                m_timeOutTime = int32(sWorld->getIntConfig(CONFIG_SOCKET_TIMEOUTTIME_ACTIVE));
+            else if (!onlyActive)
+                m_timeOutTime = int32(sWorld->getIntConfig(CONFIG_SOCKET_TIMEOUTTIME));
         }
         bool IsConnectionIdle() const
         {
@@ -968,6 +981,7 @@ class WorldSession
         Player* _player;
         WorldSocket* m_Socket;
         std::string m_Address;
+        // std::string m_LAddress;                             // Last Attempted Remote Adress - we can not set attempted ip for a non-existing session!
 
         AccountTypes _security;
         bool _skipQueue;
@@ -997,7 +1011,11 @@ class WorldSession
         bool isRecruiter;
         ACE_Based::LockedQueue<WorldPacket*, ACE_Thread_Mutex> _recvQueue;
         uint64 m_currentBankerGUID;
+
+        // #StygianCore (#SCMOD - Multi-Vendor)
         uint32 m_currentVendorEntry = 0;
+        // #StygianCore (#SCMOD - Multi-Vendor)
+
         time_t timeWhoCommandAllowed;
         uint32 _offlineTime;
         bool _kicked;

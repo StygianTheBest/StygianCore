@@ -22,6 +22,7 @@
 #include "BattlefieldMgr.h"
 #include "InstanceScript.h"
 #include "Player.h"
+#include "GameGraveyard.h"
 
 bool IsPrimaryProfessionSkill(uint32 skill)
 {
@@ -3883,6 +3884,10 @@ void SpellMgr::LoadDbcDataCorrections()
         case 55268:
             spellInfo->AttributesEx3 |= SPELL_ATTR3_BLOCKABLE_SPELL;
             break;
+        // Death Knight T10 Tank 2p Bonus
+        case 70650:
+            spellInfo->EffectApplyAuraName[0] = SPELL_AURA_ADD_PCT_MODIFIER;
+            break;
 
 
 
@@ -5722,6 +5727,7 @@ void SpellMgr::LoadDbcDataCorrections()
         case 69030: // Val'kyr Target Search
             spellInfo->EffectRadiusIndex[0] = EFFECT_RADIUS_200_YARDS;   // 200yd
             spellInfo->EffectRadiusIndex[1] = EFFECT_RADIUS_200_YARDS;   // 200yd
+            spellInfo->Attributes |= SPELL_ATTR0_UNAFFECTED_BY_INVULNERABILITY;
             break;
         case 73654: // Harvest Souls
         case 74295: // Harvest Souls
@@ -5839,6 +5845,17 @@ void SpellMgr::LoadDbcDataCorrections()
         // Meteor Strike
         case 74637:
             spellInfo->speed = 0;
+            break;
+        //Blazing Aura
+        case 75885:
+        case 75886:
+            spellInfo->AttributesEx4 &= ~SPELL_ATTR4_IGNORE_RESISTANCES;
+            break;
+        //Meteor Strike
+        case 75952:
+        //Combustion Periodic
+        case 74629:
+            spellInfo->AttributesEx4 &= ~SPELL_ATTR4_IGNORE_RESISTANCES;
             break;
 
 
@@ -6033,6 +6050,13 @@ void SpellMgr::LoadDbcDataCorrections()
         //Crushing the Crown
         case 71024:
             spellInfo->EffectImplicitTargetA[0] = TARGET_DEST_DYNOBJ_NONE;
+            break;
+        // Battle for the Undercity
+        case 59892: // Cyclone fall
+            spellInfo->Effect[EFFECT_0] = SPELL_EFFECT_APPLY_AREA_AURA_FRIEND;
+            spellInfo->EffectRadiusIndex[0] = EFFECT_RADIUS_10_YARDS;
+            spellInfo->AttributesEx &= ~SPELL_ATTR0_CANT_CANCEL;
+            spellInfo->AttributesEx3 |= SPELL_ATTR3_ONLY_TARGET_PLAYERS;
             break;
 
         // ///////////////////////////////////////////
@@ -6342,10 +6366,10 @@ void SpellMgr::LoadDbcDataCorrections()
 
 
     // Ring of Valor starting Locations
-    WorldSafeLocsEntry const* entry = sWorldSafeLocsStore.LookupEntry(1364);
-    const_cast<WorldSafeLocsEntry*>(entry)->z += 6.0f;
-    entry = sWorldSafeLocsStore.LookupEntry(1365);
-    const_cast<WorldSafeLocsEntry*>(entry)->z += 6.0f;
+    GraveyardStruct const* entry = sGraveyard->GetGraveyard(1364);
+    const_cast<GraveyardStruct*>(entry)->z += 6.0f;
+    entry = sGraveyard->GetGraveyard(1365);
+    const_cast<GraveyardStruct*>(entry)->z += 6.0f;
 
     LockEntry* key = const_cast<LockEntry*>(sLockStore.LookupEntry(36)); // 3366 Opening, allows to open without proper key
     key->Type[2] = LOCK_KEY_NONE;

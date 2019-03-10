@@ -25,17 +25,31 @@
   .tele deadkingscrypt, then click on the sword
 
 // Example Spells
-  25823 -- Spotlight
-  62296 -- Red Spotlight
-  16609 -- Lightning
-  56525 -- Blessing of Kings
+	25823 -- Spotlight
+	62296 -- Red Spotlight
+	16609 -- Lightning
+	56525 -- Blessing of Kings
 
 // Example Models
-    999 -- Crab
-   2177 -- Cockroach
-   9786 -- Skeleton
-  18043 -- Spider
-  11828 -- Worm
+	  999 -- Crab
+	 2177 -- Cockroach	
+	 9786 -- Skeleton
+	18043 -- Spider
+	11828 -- Worm
+  
+// Gossip Icons
+	GOSSIP_ICON_CHAT                = 0,      //white chat bubble
+	GOSSIP_ICON_VENDOR              = 1,      //brown bag
+	GOSSIP_ICON_TAXI                = 2,      //flight
+	GOSSIP_ICON_TRAINER             = 3,      //book
+	GOSSIP_ICON_INTERACT_1          = 4,      //interaction wheel
+	GOSSIP_ICON_INTERACT_2          = 5,      //interaction wheel
+	GOSSIP_ICON_MONEY_BAG           = 6,      //brown bag with yellow dot
+	GOSSIP_ICON_TALK                = 7,      //white chat bubble with black dots
+	GOSSIP_ICON_TABARD              = 8,      //tabard
+	GOSSIP_ICON_BATTLE              = 9,      //two swords
+	GOSSIP_ICON_DOT                 = 10,     //yellow dot
+
 
 -- ################################################################################### --
 

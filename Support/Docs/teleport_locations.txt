@@ -22,6 +22,7 @@ AbandonedArmory
 AbyssalSands
 AC
 AccessShaftZeon
+acherus
 AddlesStead
 AeriePeak
 AerisLanding
@@ -108,6 +109,7 @@ BathransHaunt
 BattleRing
 BayOfStorms
 BearsHead
+bearsheadtower
 BeezilsWreck
 BeggarsHaunt
 BerensPeril
@@ -187,6 +189,8 @@ BrackwellPumpkinPatch
 BramblebladeRavine
 Bramblescar
 BRD
+brdfallsbridge
+brdtorturedslave
 BrewnallVillage
 BrightwaterLake
 BrightwoodGrove
@@ -214,6 +218,7 @@ CampKosh
 CampMojache
 CampNarache
 CampOfBoom
+campsilithus
 CampTaurajo
 CampWinterhoof
 CampWurg
@@ -231,6 +236,7 @@ CenarionHold
 CenarionPost
 CenarionRefuge
 CenarionThicket
+challe
 ChamberOfAspects
 ChapelYard
 ChillBreezeValley
@@ -288,6 +294,7 @@ DarrowShire
 DawningLane
 DawnstarSpire
 DeadeyeShore
+deadkingscrypt
 DeadmansCrossing
 Deadmines
 DeadwindPass
@@ -305,6 +312,7 @@ DemonFallRidge
 DemontsPlace
 DenOfHaalEsh
 DerelictCaravan
+designisle
 Desolace
 dfarmtunnel
 DigOne
@@ -355,6 +363,9 @@ DustwindCave
 dwarvenairport
 DwarvenDistrict
 dwarvenfarm
+e1
+e2
+e3
 EasternPlaguelands
 EasternStrand
 EastmoonRuins
@@ -376,6 +387,10 @@ ElrendarFalls
 ElrendarRiver
 ElwynnForest
 EmberstrifesDen
+emdream1
+emdream2
+emdream3
+emdream4
 EmeraldSanctuary
 EOTS
 EthelRethor
@@ -462,6 +477,7 @@ GatesOfAhnQiraj
 GavinsNaze
 GeezlesCamp
 GelkisVillage
+gemmoon
 Ghostlands
 GhostWalkerPost
 GMIsland
@@ -539,6 +555,7 @@ HowlingFjord
 HowlingZiggurat
 HunterRise
 HuntressOfTheSun
+hyjalgates
 HyjalSummit
 Icecrown
 IcecrownCitadelRaid
@@ -590,7 +607,7 @@ KilsorrowFortress
 KirinVarVillage
 KodoGraveyard
 KodoRock
-Koiter
+koiter
 KolgarCrag
 KolgarVillage
 KormeksHut
@@ -695,6 +712,7 @@ Moonglade
 MoongladeHordeFlypoint
 MoongrazeWoods
 MoonwingDen
+mooscamp
 MorgansVigil
 MorlosAran
 MorshanBaseCamp
@@ -778,7 +796,9 @@ PoolsOfAggonar
 PoolsOfArlithrien
 PortalClearing
 Prison
+programisle
 ProtectorateWatchPost
+psa
 PurgationIsle
 PyrewoodVillage
 QuaggRidge
@@ -928,6 +948,7 @@ ShrineOfRemulos
 ShrineOfTheDeceiver
 ShrineOfTheDormantFlame
 Silithus
+silithuscamp
 SiltingShore
 SilvermoonCity
 SilvermystIsle
@@ -999,6 +1020,7 @@ StendelsPond
 StillpineHold
 StillwaterPond
 StillwhisperPond
+stockades
 Stonard
 StonebreakerHold
 StonebullLake
@@ -1048,6 +1070,7 @@ Tanaris
 TannerCamp
 TarrenMill
 Taunka'leVillage
+tb1
 TBTotemTop
 Telaar
 TelaariBasin
@@ -1060,6 +1083,7 @@ TempleOfAtalHakkar
 TempleOfTelhamat
 TempleOfTheMoon
 TempleOfZinMalor
+terkyscave
 TerokkarForest
 TerokksRest
 TerraceOfLight
@@ -1288,6 +1312,7 @@ ThunderlordStronghold
 ThunderRidge
 ThuronsLivery
 TidefuryCove
+tigercave
 TimbermawHold
 TimbermawPost
 TinkerTown
@@ -1362,6 +1387,7 @@ Valormok
 ValorsRest
 ValorwindLake
 VaultOfArchavon
+vcamp
 VeilAlaRak
 VeilHarrIk
 VeilLashh
@@ -1378,6 +1404,8 @@ VenomwebVale
 VentureCoBaseCamp
 VerdantisRiver
 VeridianPoint
+vgems
+vholiday
 VimGolsCircle
 VindicatorsRest
 VoidwindPlateau

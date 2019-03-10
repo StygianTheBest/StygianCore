@@ -77,7 +77,7 @@ Login.LearnPortals = 0
 # New characters start with special abilities?
 #        Default:     0  - (Disabled)
 #                     1  - (Enabled)
-Login.SpecialAbility = 0
+Login.SpecialAbility = 1
 
 
 # Define Six Special Abilities

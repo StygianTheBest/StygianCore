@@ -26,7 +26,7 @@ USE stygian_world;
 -- --------------------------------------------------------------------------------------
 SET
 @GUID := 1993500;
-DELETE FROM `creature` WHERE `guid` >= @GUID AND `guid` <= GUID+157;
+DELETE FROM `creature` WHERE `guid` >= @GUID AND `guid` <= @GUID+157;
 
 -- --------------------------------------------------------------------------------------
 -- NPC SPAWN INDEX

@@ -76,7 +76,7 @@ INSERT INTO `creature_template` (
   `maxlevel`, `exp`, `faction`, `npcflag`, 
   `speed_walk`, `speed_run`, `scale`, 
   `rank`, `mindmg`, `maxdmg`, `dmgschool`, 
-  `attackpower`, `dmg_multiplier`, 
+  `attackpower`, `DamageModifier`, 
   `baseattacktime`, `rangeattacktime`, 
   `unit_class`, `unit_flags`, `dynamicflags`, 
   `family`, `trainer_type`, `trainer_spell`, 
@@ -90,7 +90,7 @@ INSERT INTO `creature_template` (
   `spell7`, `spell8`, `PetSpellDataId`, 
   `VehicleId`, `mingold`, `maxgold`, 
   `AIName`, `MovementType`, `InhabitType`, 
-  `Health_mod`, `Mana_mod`, `Armor_mod`, 
+  `HealthModifier`, `ManaModifier`, `ArmorModifier`, 
   `RacialLeader`, `movementId`, `RegenHealth`, 
   `mechanic_immune_mask`, `flags_extra`, 
   `ScriptName`
@@ -152,7 +152,7 @@ VALUES
     1504, 
     -- attackpower
     1, 
-    -- dmg_multiplier
+    -- DamageModifier
     1500, 
     -- baseattacktime
     0, 
@@ -232,11 +232,11 @@ VALUES
     3, 
     -- InhabitType
     1, 
-    -- Health_mod
+    -- HealthModifier
     1, 
-    -- Mana_mod
+    -- ManaModifier
     1, 
-    -- Armor_mod
+    -- ArmorModifier
     0, 
     -- RacialLeader
     0, 
@@ -253,10 +253,10 @@ VALUES
 -- NPC TEXT
 DELETE FROM `npc_text` WHERE `ID`=@Trainer;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Trainer, 'Greetings Traveler. Stay awhile.. and train!');
-	
+
 -- Creature Text
-DELETE FROM `stygian_world`.`creature_text` WHERE `entry` = @Trainer;
-INSERT INTO `stygian_world`.`creature_text` (`entry`, `groupid`, `id`, `text`, `type`, `language`, `probability`, `emote`, `duration`, `sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Trainer, '0', '0', 'Greetings Traveler. Stay awhile.. and train!', '12', '0', '100', '0', '0', '0', @Trainer, '0', '');
+DELETE FROM `stygian_world`.`creature_text` WHERE `CreatureID` = @Trainer;
+INSERT INTO `stygian_world`.`creature_text` (`CreatureID`, `GroupID`, `ID`, `Text`, `Type`, `Language`, `Probability`, `Emote`, `Duration`, `Sound`, `BroadcastTextID`, `TextRange`, `comment`) VALUES (@Trainer, '0', '0', 'Greetings Traveler. Stay awhile.. and train!', '12', '0', '100', '0', '0', '0', @Trainer, '0', '');
 
 -- Broadcast Text
 DELETE FROM `stygian_world`.`broadcast_text` WHERE `ID` = @Trainer;
