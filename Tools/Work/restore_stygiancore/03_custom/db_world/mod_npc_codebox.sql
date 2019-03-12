@@ -19,7 +19,8 @@
 -- NPC takes codes from the player and checks them against custom database tables to 
 -- determine the loot. You can set charges for items to allow players to use the code 
 -- once or a specific number of times. It also supports unique codes that can only be 
--- used once by any player.
+-- used once by any player. GM's can create/read/update/delete codes in-game. Players
+-- can use codes to initiate race, name, and faction changes upon next login.
 --
 -- // Sample Codes
 -- These codes will add the following items to the player's inventory:
@@ -66,6 +67,12 @@ INSERT INTO creature_template (entry, modelid1, name, subname, IconName, gossip_
 -- NPC Text
 DELETE FROM `npc_text` WHERE `ID`=@Entry;
 INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry, 'Greetings $N. Do you have a loot code to redeem?');
+DELETE FROM `npc_text` WHERE `ID`=@Entry+1;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry+1, '[GM] Add Loot Code');
+DELETE FROM `npc_text` WHERE `ID`=@Entry+18;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry+18, '[GM] Delete Loot Code');
+DELETE FROM `npc_text` WHERE `ID`=@Entry+28;
+INSERT INTO `npc_text` (`ID`, `text0_0`) VALUES (@Entry+28, '[GM] View Loot Codes');
 
 -- --------------------------------------------------------------------------------------
 -- Table structure for lootcode_items
@@ -78,6 +85,7 @@ CREATE TABLE `lootcode_items` (
   `name` varchar(255) DEFAULT NULL,
   `quantity` int(14) NOT NULL DEFAULT '1',
   `gold` int(14) unsigned DEFAULT NULL,
+  `customize` int(14) unsigned DEFAULT '0',
   `charges` tinyint(5) DEFAULT '1',
   `isUnique` tinyint(1) unsigned NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
@@ -85,14 +93,23 @@ CREATE TABLE `lootcode_items` (
 
 -- --------------------------------------------------------------------------------------
 -- Default Records of lootcode_items
--- --------------------------------------------------------------------------------------
---                                    ID     CODE        ITEMID   NAME             Q     G    C    U
-INSERT INTO `lootcode_items` VALUES ('1', 'threebags', '21841', 'Netherweave Bag', '1', '0', '1', '0');
-INSERT INTO `lootcode_items` VALUES ('2', 'artifact', '4696', 'Lapidis Tankard of Tidesippe', '1', '0', '1', '1');
-INSERT INTO `lootcode_items` VALUES ('3', 'ballroom', '3419', 'Red Rose', '1', '0', '3', '0');
-INSERT INTO `lootcode_items` VALUES ('4', 'ballroom', '6833', 'Tuxedo Shirt', '1', '0', '3', '0');
-INSERT INTO `lootcode_items` VALUES ('5', 'ballroom', '6835', 'Tuxedo Pants', '1', '0', '3', '0');
-INSERT INTO `lootcode_items` VALUES ('6', 'lockpick', '15869', 'Skeleton Key', '5', '0', '3', '0');
+-- Q 	= Quantity
+-- G 	= Gold
+-- CU	= Customize
+-- C	= Charges
+-- U	= Is Unique Item
+-- -------------------------------------------------------------------------------------------------------------------
+--                                    ID     CODE        ITEMID   NAME             Q     G   CU    C    U
+-- -------------------------------------------------------------------------------------------------------------------
+INSERT INTO `lootcode_items` VALUES ('1', 'threebags', '21841', 'Netherweave Bag', '3', '0', '0', '1', '0');
+INSERT INTO `lootcode_items` VALUES ('2', 'artifact', '4696', 'Lapidis Tankard of Tidesippe', '1', '0', '0','1', '1');
+INSERT INTO `lootcode_items` VALUES ('3', 'ballroom', '3419', 'Red Rose', '1', '0', '0', '3', '0');
+INSERT INTO `lootcode_items` VALUES ('4', 'ballroom', '6833', 'Tuxedo Shirt', '1', '0', '0', '3', '0');
+INSERT INTO `lootcode_items` VALUES ('5', 'ballroom', '6835', 'Tuxedo Pants', '1', '0', '0', '3', '0');
+INSERT INTO `lootcode_items` VALUES ('6', 'lockpick', '15869', 'Skeleton Key', '5', '0', '0', '3', '0');
+INSERT INTO `lootcode_items` VALUES ('7', 'faction', '0', 'Faction Change', '1', '0', '1', '1', '0');
+INSERT INTO `lootcode_items` VALUES ('8', 'race', '0', 'Race Change', '1', '0', '2', '1', '0');
+INSERT INTO `lootcode_items` VALUES ('9', 'rename', '0', 'Rename Character', '1', '0', '3', '1', '0');
 
 -- --------------------------------------------------------------------------------------
 -- Table structure for lootcode_player
@@ -103,6 +120,7 @@ CREATE TABLE `lootcode_player` (
   `id` int(7) unsigned NOT NULL AUTO_INCREMENT,
   `code` varchar(255) DEFAULT NULL,
   `playerGUID` int(7) unsigned DEFAULT NULL,
+  `playerName` varchar(100) DEFAULT NULL,
   `isUnique` tinyint(1) unsigned NOT NULL DEFAULT '0',
   `redeemed` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
