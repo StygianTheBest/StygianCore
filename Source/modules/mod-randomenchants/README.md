@@ -6,14 +6,15 @@ _This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject
 
 This module adds random enchantments to gear the player acquires.
 
-- % Chance
-  - Each item has a chance to receive up to 3 enchants, so the settings allow you to control the % chance for each possibility. 
+- **% Chance1-3**
+  - Each item has a chance to receive up to 3 enchants.
+  - Each settings controls the chance for that enchant to occur.
+  
+- **Item Quality to Enchant**
+  - Quality is minimum and maximum item quality to enchant.
+  - Example: To enchant only Blue (Item Quality 4) items, set the Min and Max to 4.
   - The module supports 1(Gray) to 5(Epic).
   
-- Item Quality to Enchant
-  - Quality is minimum and maximum item quality to enchant. 
-  - Example: To enchant only Blue (Item Quality 4) items, set the Min and Max to 4.
-
   ![Item Quality](https://i.imgur.com/Uemt47M.png)
 
 ### Data
