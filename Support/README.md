@@ -1,6 +1,6 @@
 ### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</p>
 
-#### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
+#### <p align="center"> An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
 
 # GM Quick Start Guide
 
@@ -255,7 +255,7 @@ The menu and options on this tool are dynamic and will change as you perform dif
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
+#### An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
 
 ### Additional Credits
 

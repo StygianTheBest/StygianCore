@@ -2,7 +2,7 @@
 
 # Trollop NPC
 
-_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+_This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
 ## Description
 ------------------------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ Everybody needs someone...
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+##### This module was created for [StygianCore](https://rebrand.ly/stygiancoreproject). An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
 
 #### Additional Credits
 

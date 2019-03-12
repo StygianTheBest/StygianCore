@@ -2,7 +2,7 @@
 
 # Random Enchants
 
-_This module was adapted for[StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
+_This module was adapted for[StygianCore](https://rebrand.ly/stygiancoreproject). An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))_
 
 ### Description
 ------------------------------------------------------------------------------------------------------------------
@@ -25,7 +25,7 @@ This module adds random enchantments to gear the player acquires.
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https ://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
+##### This module was adapted for [StygianCore](https://rebrand.ly/stygiancoreproject). An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://rebrand.ly/stygiangithub) | [Website](https://rebrand.ly/stygianthebest))
 
 #### Additional Credits
 -[Blizzard Entertainment](http ://blizzard.com)

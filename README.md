@@ -1,6 +1,6 @@
 ### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/logo/world_of_stygiancore.png "StygianCore")</p>
 
-#### <p align="center"> A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
+#### <p align="center"> An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)</p>
 
 ## NEWS
 
@@ -10,7 +10,7 @@ The StygianCore repack and sources have been completely upgraded to the latest r
 
 The StygianCore repack will now be released _quarterly_ and will incorporate the latest AzerothCore changes as well as any updated or additional StygianCore custom content. The project sources will be continually updated as I make changes and pull from the AzerothCore repository.
 
-- StygianCore: [Changelog](https://github.com/StygianTheBest/StygianCore#changelog) | [Commits](https://github.com/StygianTheBest/StygianCore/commits/master) | [Bugs](https://github.com/StygianTheBest/StygianCore/issues)
+- StygianCore: [Changelog](https://github.com/StygianTheBest/StygianCore/blob/master/CHANGELOG.md) | [Commits](https://github.com/StygianTheBest/StygianCore/commits/master) | [Bugs](https://github.com/StygianTheBest/StygianCore/issues)
 
 - AzerothCore: [Commits](https://github.com/azerothcore/azerothcore-wotlk/commits/master) | [Bugs](https://github.com/azerothcore/azerothcore-wotlk/issues)
 
@@ -27,7 +27,7 @@ The StygianCore repack will now be released _quarterly_ and will incorporate the
 
 ## GREETINGS
 
-Welcome to StygianCore. This repack is powered by AzerothCore and would not be possible without the players, developers, and communities of the World of Warcraft MMO emulator and private server scene. A big thanks to everyone for any and all contributions absorbed to make this repack possible. Your hard work is much appreciated!
+Welcome to StygianCore. This repack is powered by AzerothCore and would not be possible without the players, developers, and communities of the MMO emulator and private server scene. A big thanks to everyone for any and all contributions absorbed to make this repack possible. Your hard work is much appreciated!
 
 <div style="font-weight: bold; color:green;">This project is, and will always be, FREE! I designed it with lots of comments and templates to make life easier for new developers and creators to get started. My hope is that all of the hard work I put into this will inspire others to get involved and create more cool and interesting projects for the WoW Emulation community.</div>
 
@@ -51,7 +51,7 @@ Michel Koiter was one of Blizzard Entertainment's premium artists and a member o
 
 ## INTRODUCTION
 
-StygianCore is World of Warcraft v3.3.5a server powered by a modified build of the AzerothCore World of Warcraft v3.3.5a server emulator. Last fall I promised to release a repack of this server for friends to host at home. Additionally, I wanted to share a fun levelling server for solo or 4-10 player groups and help others who want to exprience the nostalgia of the past and get started with development, scripting, and building their own server experience.
+StygianCore is a custom build of the AzerothCore v3.3.5a MMO server emulator. Last fall I promised to release a repack of this server for friends to host at home. Additionally, I wanted to share a fun levelling server for solo or 4-10 player groups and help others who want to exprience the nostalgia of the past and get started with development, scripting, and building their own server experience.
 
 Included are custom tools and docs for maintaining the game database and automating archive, save, and restore operations for sandboxing, testing, and development.
 
@@ -59,6 +59,10 @@ Included are custom tools and docs for maintaining the game database and automat
 In addition to new content, this repack includes updated versions of my C++ modules, SQL templates, custom tools, and client modifications from my [AzerothCore Content](https://github.com/StygianTheBest/AzerothCore-Content) release in summer 2017 which included 11 new modules and a lot of ported C++ and SQL from TrinityCore.
 
 ### <p align="center">![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianTheBestThanksYouAll.jpg)</p>
+
+## TL;DR
+
+**You should read the rest of this document thoroughly before submitting any questions or bug reports.** From here you can continue reading - _probably a good idea_ - or skip to the [Getting Started](https://stygianthebest.github.io/projects/server-stygiancore#getting-started) section.
 
 ## DOCUMENTATION & SUPPORT
 
@@ -73,28 +77,24 @@ Documentation for the this repack and its contents can be found throughout the d
 
 The **Support** folder also contains documentation and other support files. You can view many these files by by starting the included Apache Web server and visiting the Account Registration Portal at http://127.0.0.1/.
 
-## TL;DR 
-- Check out the [Getting Started](https://github.com/StygianTheBest/StygianCore#getting-started) section!
-
 ### Support Folder Contents
 
-- GameMaster's QuickStart Guide
-  - Accounts
-  - GM Commands
-  - Modules
-  - Restoration and Backup
-- Comprehensive GM Command List
-- Custom NPC List
-- Custom Item List
-- Teleport Destination List
+- [GameMaster's QuickStart Guide](https://github.com/StygianTheBest/StygianCore/tree/master/Support/README.md)
+  - [Accounts](https://github.com/StygianTheBest/StygianCore/tree/master/Support/README.md#accounts)
+  - [GM Commands](https://github.com/StygianTheBest/StygianCore/tree/master/Support/README.md#gm-commands)
+  - [Modules](https://github.com/StygianTheBest/StygianCore/tree/master/Support/README.md#modules)
+  - [Restoration and Backup](https://github.com/StygianTheBest/StygianCore/tree/master/Support/README.md#restoration-and-backup)
+- [Comprehensive GM Command List](https://web.archive.org/web/20171112140309/https://www.reaper-x.com/2009/01/01/trinity-core-gm-commands/)
+- [Custom NPC & Item List](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/stygiancore_npc_id_list.txt)
+- [Teleport Destination List](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/teleport_locations.txt)
+- [Mount ID List](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/mount_id_list.txt)
+- [Race/Class ID List](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/race_class_codes.txt)
+- [Chat Icon List](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/chat_icon_list.txt)
+- [LUA Color Reference](https://github.com/StygianTheBest/StygianCore/blob/master/Support/Docs/lua_colors.txt)
 - Item Reference
 - Spell Reference
 - Quest Reference
-- Chat Icon List
-- LUA Color Reference
-- Mount ID List
-- Race/Class ID List
-- Unused Item ID List
+- Unused Item ID Reference
 - A few other useful texts
 
 ## CORE
@@ -275,7 +275,7 @@ Vendor an items have been repriced using the included item pricing template.
 - **Azerothian Humor Vol.1:** A book of WoW jokes. Not sold in stores! Parents beware!
 - **GameMaster's License:** A vanity item for kids so they can brag about being a REAL GM!
 
-![Eluna](http://www.elunaengine.com/static/eluna-logo.png)
+![Eluna](https://elunaluaengine.github.io/static/eluna-logo.png)
 --
 
 **This repack includes the Eluna LUA Scripting Engine.**
@@ -293,15 +293,15 @@ Add a new in-game command, give life to creatures with new AI, or even light pla
 
 > Be sure to look at the config files for the world server and modules located in the Server/Core folder. You can modify these files to configure how the server and modules work and what features are available for each during gameplay.
 
-- [Better Item Reloading](https://github.com/azerothcore/mod-better-item-reloading)
+- [Better Item Reloading](https://github.com/azerothcore/mod-better-item-reloading/blob/master/README.md)
 - [Congrats On Level Up](https://github.com/StygianTheBest/mod-congratsonlevel)
-- [Custom Login](https://github.com/StygianTheBest/mod-customlogin)
+- [Custom Login](https://github.com/StygianTheBest/mod-customlogin/blob/master/README.md)
   - Set Reputation
   - Set Skills
   - Set Special Abilities
   - Set Special Items
   - Set Heirloom Items
-- [Custom Server](https://github.com/StygianTheBest/mod-customserver)
+- [Custom Server](https://github.com/StygianTheBest/mod-customserver/blob/master/README.md)
   - Core modifications and smaller scripts
 - [Duel Reset](https://github.com/azerothcore/mod-duel-reset)
 - [Dungeon Checkpoints](https://github.com/callmephil)
@@ -309,29 +309,29 @@ Add a new in-game command, give life to creatures with new AI, or even light pla
   - Script: GM Command Handler
   - Script: Item Gossip & other examples
   - Script: Transmogrification NPC
-- [GM Island](https://github.com/StygianTheBest/mod-gmisland)
-- [Individual XP](https://github.com/azerothcore/mod-individual-xp)
-- [Item Level-Up](https://github.com/StygianTheBest/mod-item-level-up)
-- [Money For Kills](https://github.com/StygianTheBest/mod-moneyforkills)
+- [GM Island](https://github.com/StygianTheBest/mod-gmisland/blob/master/README.md)
+- [Individual XP](https://github.com/azerothcore/mod-individual-xp/blob/master/README.md)
+- [Item Level-Up](https://github.com/StygianTheBest/mod-item-level-up/blob/master/README.md)
+- [Money For Kills](https://github.com/StygianTheBest/mod-moneyforkills/blob/master/README.md)
   - World/Dungeon Boss Kill Announcer
   - PVP Kill Announcer
   - Suicide Announcer
-- [NPC All Mounts Vendor](https://github.com/StygianTheBest/mod-npcallmounts)
-- [NPC Beastmaster](https://github.com/StygianTheBest/mod-npcbeastmaster)
-- [NPC Buffer](https://github.com/StygianTheBest/mod-npcbuffer)
+- [NPC All Mounts Vendor](https://github.com/StygianTheBest/mod-npcallmounts/blob/master/README.md)
+- [NPC Beastmaster](https://github.com/StygianTheBest/mod-npcbeastmaster/blob/master/README.md)
+- [NPC Buffer](https://github.com/StygianTheBest/mod-npcbuffer/blob/master/README.md)
   - Updated with emotes, speech, config options
-- [NPC Codebox](https://github.com/StygianTheBest/mod-npccodebox)
-- [NPC Enchanter](https://github.com/StygianTheBest/mod-npcenchanter)
-- [NPC Gambler](https://github.com/StygianTheBest/mod-npcgambler)
-- [NPC Loremaster](https://github.com/StygianTheBest/mod-npcloremaster)
+- [NPC Codebox](https://github.com/StygianTheBest/mod-npccodebox/blob/master/README.md)
+- [NPC Enchanter](https://github.com/StygianTheBest/mod-npcenchanter/blob/master/README.md)
+- [NPC Gambler](https://github.com/StygianTheBest/mod-npcgambler/blob/master/README.md)
+- [NPC Loremaster](https://github.com/StygianTheBest/mod-npcloremaster/blob/master/README.MD)
 - [NPC Multi-Vendor](http://rochet2.github.io/Multivendor.html)
-- [NPC Trollop](https://github.com/StygianTheBest/mod-npctrollop)
-- [Random Enchants](https://github.com/azerothcore/mod-random-enchants)
+- [NPC Trollop](https://github.com/StygianTheBest/mod-npctrollop/blob/master/README.MD)
+- [Random Enchants](https://github.com/StygianTheBest/StygianCore/blob/master/Source/modules/mod-randomenchants/README.md)
   - % Chance to enchant is now configurable
   - Item Quality to enchant is now configurable
-- [Starting Guild](https://github.com/StygianTheBest/mod-startguild)
+- [Starting Guild](https://github.com/StygianTheBest/mod-startguild/blob/master/README.md)
   - Added SQL for creating default Guild/Characters/Guild Bank
-- [VAS AutoBalance](https://github.com/azerothcore/mod-vas-autobalance)
+- [VAS AutoBalance](https://github.com/azerothcore/mod-vas-autobalance/blob/master/README.md)
 
 # GETTING STARTED
 
@@ -508,7 +508,7 @@ This is the client support patch required to display and enable custom content i
 - Custom NPCs will not display the correct textures.
 - The game client will crash when attempting to access forbidden zones.
 
-> To complete the StygianCore experience, I suggest downloading my [World of Warcraft 3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335clients) which includes [HD Player and Creature Models](https://github.com/StygianTheBest/StygianCore/blob/master/Client/Data/StygianCore%20Client%20Patch%20Info.txt), [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom Add-Ons and more.
+> To complete the StygianCore experience, I suggest downloading my [3.3.5a Client Upgrade](https://rebrand.ly/stygiancore335client) which includes HD Player and Creature Models, [Random Animated Login Screens](https://rebrand.ly/randomloginscreens), Custom Add-Ons and more.
 
 ## REPACK UPDATES
 
@@ -523,7 +523,7 @@ This is the client support patch required to display and enable custom content i
       - Server
         - Apache
           - httpdocs
-            - Account Registgration Portal
+            - Account Registration Portal
             - Online Documentation
         - Core
           - lua_scripts
@@ -533,6 +533,8 @@ This is the client support patch required to display and enable custom content i
         - Server Documentation
       - Icons
         - For shortcuts and the like
+      - Template
+        - SQL templates for creating items, npcs, etc.
     - Tools
       - Patch
         - Instructions on how to apply StygianCore repack updates
@@ -629,7 +631,7 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 ![Styx](https://stygianthebest.github.io/assets/img/avatar/avatar-128.jpg "Styx")
 ![StygianCore](https://stygianthebest.github.io/assets/img/projects/stygiancore/StygianCore.png "StygianCore")
 
-#### A World of Warcraft 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
+#### An AzerothCore 3.3.5a Solo/LAN repack by StygianTheBest | [GitHub](https://github.com/StygianTheBest) | [Website](http://stygianthebest.github.io)
 
 ### Additional Credits
 
@@ -666,81 +668,5 @@ This is the timing for Restore (Option #5) in StygianCoreTools.bat.
 All code and scripts are released under [GNU AGPL v3](https://stygianthebest.github.io/license/).
 
 World of Warcraft© and Blizzard Entertainment© are all trademarks or registered trademarks of Blizzard Entertainment© in the United States and/or other countries. These [terms](http://us.blizzard.com/en-us/company/about/legal-faq.html) and all related materials, logos, and images are [copyright](http://us.blizzard.com/en-us/company/about/copyrightnotices.html) Blizzard Entertainment©. This site and content is in no way associated with or endorsed by Blizzard Entertainment©.
-
-## CHANGELOG
-
-## :wrench: 2019.03.10
-
-#### _Core_
-
-- Source/Binary/Database is now up to date with [AzerothCore](http://www.azerothcore.org/) repository
-
-#### _Module_
-
-- Loremaster Module: Forgotten Crypt text updated
-- Chased down a few typos
-
-## :wrench: 2019.03.05
-
-#### _Module_
-
-- Fixed an issue with Custom Login Abilities being unlearned on logoff
-- All abilities are now configurable in the Custom Login module's config file
-- Learning Town Portals is now a configurable option
-
-## :wrench: 2019.03.01
-
-#### _Core_
-
-- Multi-Vendor Support Added
-
-#### _Account/Character_
-
-- GameMaster Account
-  - Default characters updated and now fully armored
-  - PDUMP files have been updated
-
-#### _Module_
-
-- Most modules have been updated and improved
-- New Module: Trollop NPC
-- NPC Gambler
-  - Gambler can now gamble copper, silver, or gold
-  - Coin type can be configured in the module's config
-
-#### _NPC_
-
-- Many NPCs now speak AI phrases and emotes
-- Multi-Vendor: Gem Vendor placed in Booty Bay
-- Multi-Vendor: Glyph Vendor placed in Booty Bay
-- Global Trainer: Placed in Silithus Camp
-- Loremaster: New locations added
-- Custom Vendor: Placed many in Booty Bay and Ratchet
-- Koiter's ghost now watches over The Barrens
-- Portal Master: Teleport destinations added
-- Several critters have been added
-- Captain Lou is now ferrying near the Silithus Camp
-- A few Trollops have been sighted in dark places
-
-#### _Item/Object_
-
-- Pocket Portal
-  - Model Updated to Spinning Ulduar Globe
-  - Teleport destination added
-
-#### _World_
-
-- Silithus Camp: Added NPCS, Objects, and Critters
-- Zone: Added Emerald Dream Canyon
-- Zone: Added Programmer Isle
-- Zone: Added Designer Isle
-
-## :wrench: 2019.01.29
-
-- Core Patch Update Released
-
-## :wrench: 2018.12.21
-
-- Initial Release
 
 [:top:](https://github.com/StygianTheBest/StygianCore#news)
