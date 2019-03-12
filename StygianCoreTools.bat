@@ -43,8 +43,8 @@ REM ############################################################################
 
 : initialize
 REM // Version
-set toolsrev=2019.03.10
-set stygianrev=2019.03.10
+set toolsrev=2019.03.11
+set stygianrev=2019.03.11
 set wowbuild=12340
 
 REM // This is for launching the deploy batch file that automates debug and release testing
@@ -159,7 +159,7 @@ echo.
 echo ### TOOLS ##############################################################################                                 
 echo [ 6 ] - Start Server
 echo [ 7 ] - NPC Model Tools
-IF EXIST %solutiondir%\bin\RelWithDebInfo\worldserver.exe. (
+IF EXIST %solutiondir%\UpdateDeploy.bat. (
 echo [ 8 ] - Deploy Visual Studio Builds
 )
 echo [ 9 ] - Update MySQL Configuration
